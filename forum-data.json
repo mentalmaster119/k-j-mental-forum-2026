@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-29T07:54:00+10:00",
+  "lastUpdated": "2026-09-28T22:20:42.493Z",
   "speakers": [
     {
       "id": "aoyagi",
@@ -235,17 +235,17 @@
       "bg": "linear-gradient(135deg, #d97706, #fbbf24)",
       "photoUrl": "assets/images/speaker-tsuge.jpg",
       "name": {
-        "ko": "츠게 요이치로 대표 (陽さん)",
+        "ko": "츠게 요이치로 대표",
         "ja": "柘植 陽一郎 代表（陽さん）",
         "en": "Yoichiro Tsuge"
       },
       "role": {
-        "ko": "대표 / 총괄 멘탈코치",
+        "ko": "대표 / 멘탈 마스터",
         "ja": "代表 / エグゼクティブメンタルコーチ",
         "en": "President & Executive Coach"
       },
       "org": {
-        "ko": "Field Flow Japan",
+        "ko": "Field Flow",
         "ja": "Field Flow Japan",
         "en": "Field Flow Japan"
       },
@@ -924,12 +924,12 @@
     "korea": {
       "orgName": "국제멘탈코칭센터 (MCCI)",
       "contactPerson": "천비키 코치 (MCCI 부대표)",
-      "phone": "010-4457-3850",
-      "email": "secretariat@mentalforum2026.org",
+      "phone": "+82-010-4457-3850",
+      "email": "mentalcoach119@naver.com",
       "address": "서울시 서초구 양재천로15길 1, 제이애드빌딩 3층"
     },
     "japan": {
-      "orgName": "Field Flow Japan",
+      "orgName": "Field Flow",
       "contactPerson": "",
       "phone": "",
       "email": "",
