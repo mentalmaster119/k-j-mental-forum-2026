@@ -135,6 +135,9 @@
     .badge-japan   { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
     .badge-workshop{ background: #fefce8; color: #854d0e; border: 1px solid #fef08a; }
     .badge-reception{ background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; }
+    .badge-performance { background: #fff1f2; color: #e11d48; border: 1px solid #fecdd3; }
+    .badge-break       { background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; }
+    .badge-photo       { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
     .program-session-title { font-size: 1.05rem; font-weight: 700; color: var(--primary-900); margin-bottom: 0.35rem; }
     .program-session-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.5; }
     .program-speaker-col { width: 240px; font-size: 0.9rem; font-weight: 600; color: var(--primary-800); }
@@ -465,102 +468,219 @@
             </tr>
           </thead>
           <tbody id="program-table-body">
-            <tr>
-              <td class="program-time-col">09:40 – 10:00</td>
-              <td><span class="program-badge badge-general">General</span></td>
+            <tr data-session-id="s01">
+              <td class="program-time-col">10:00 – 10:15</td>
+              <td><span class="program-badge badge-general">Opening</span></td>
               <td>
-                <div class="program-session-title">Registration & Welcome Check-in</div>
-                <div class="program-session-desc">1F Campus Lobby check-in, receive badges & lunch vouchers, proceed to 17F.</div>
+                <div class="program-session-title">Opening Ceremony & Welcoming Remarks</div>
+                <div class="program-session-desc">Welcome addresses by Yoichiro Tsuge (Field Flow) & Chul Soo Park (MCCI), introduction of Dr. Aoyagi.</div>
               </td>
-              <td class="program-speaker-col">Forum Secretariat & Staff</td>
+              <td class="program-speaker-col">Yoichiro Tsuge, Chul Soo Park</td>
             </tr>
-            <tr>
-              <td class="program-time-col">10:00 – 10:20</td>
-              <td><span class="program-badge badge-general">General</span></td>
+            <tr data-session-id="s02">
+              <td class="program-time-col">10:15 – 10:35</td>
+              <td><span class="program-badge badge-general">Icebreak</span></td>
               <td>
-                <div class="program-session-title">Opening Ceremony & Welcome Remarks</div>
-                <div class="program-session-desc">Opening address by representatives; 'Evolution Together' keynote intro.</div>
-              </td>
-              <td class="program-speaker-col">Organizing Committee Chairs</td>
-            </tr>
-            <tr>
-              <td class="program-time-col">10:20 – 10:40</td>
-              <td><span class="program-badge badge-general">General</span></td>
-              <td>
-                <div class="program-session-title">Icebreaking & Networking Warm-up</div>
-                <div class="program-session-desc">Interactive session to build rapport across language boundaries.</div>
+                <div class="program-session-title">Icebreaking & Rapport Building</div>
+                <div class="program-session-desc">Interactive warm-up building cross-cultural psychological safety and connection across languages.</div>
               </td>
               <td class="program-speaker-col">Forum Facilitator</td>
             </tr>
-            <tr>
-              <td class="program-time-col">10:40 – 11:40</td>
-              <td><span class="program-badge badge-keynote">Keynote Lecture</span></td>
+            <tr data-session-id="s03">
+              <td class="program-time-col">10:35 – 11:35</td>
+              <td><span class="program-badge badge-keynote">Keynote</span></td>
               <td>
-                <div class="program-session-title">Keynote Lecture: The Horizon of Contemporary Sports & Mental Science</div>
-                <div class="program-session-desc">Systemic coaching, psychological resilience, and evidence-based mental mastery.</div>
+                <div class="program-session-title">Keynote: "The Impact of Personal Coaching on Athletes" — Kumotori Card Workshop</div>
+                <div class="program-session-desc">Dr. Aoyagi explores evidence-based somatic and mental mechanisms in athletes, featuring Kumotori Card Workshop.</div>
               </td>
-              <td class="program-speaker-col">Prof. Aoyagi (Kanto Gakuin Univ.)</td>
+              <td class="program-speaker-col">Dr. Aoyagi (Kanto Gakuin Univ.)</td>
             </tr>
-            <tr>
-              <td class="program-time-col">11:40 – 13:00</td>
-              <td><span class="program-badge badge-general">General</span></td>
+            <tr data-session-id="s04">
+              <td class="program-time-col">11:35 – 11:40</td>
+              <td><span class="program-badge badge-performance">Performance</span></td>
               <td>
-                <div class="program-session-title">Lunch & Informal Networking</div>
-                <div class="program-session-desc">Japanese Bento (Meat or Fish pre-selected) & networking lounge.</div>
+                <div class="program-session-title">Cultural Performance by Korea</div>
+                <div class="program-session-desc">Celebratory cultural performance by the Korean delegation.</div>
               </td>
-              <td class="program-speaker-col">All Participants</td>
+              <td class="program-speaker-col">Korea Performance Team</td>
             </tr>
-            <tr>
-              <td class="program-time-col">13:00 – 14:40</td>
-              <td><span class="program-badge badge-korea">Korea Session</span></td>
+            <tr data-session-id="s05">
+              <td class="program-time-col">11:40 – 11:45</td>
+              <td><span class="program-badge badge-break">Break</span></td>
               <td>
-                <div class="program-session-title">Korea Session Presentations (4 Speakers)</div>
-                <div class="program-session-desc">1) Dong Chul Yeom · 2) Tae Ryeon Yoon · 3) Sung Min Kim · 4) Chul Soo Park</div>
+                <div class="program-session-title">Short Transition Break</div>
+                <div class="program-session-desc">5-minute transition break before the Korea presentation.</div>
               </td>
-              <td class="program-speaker-col">Dong Chul Yeom, Tae Ryeon Yoon, Sung Min Kim, Chul Soo Park</td>
+              <td class="program-speaker-col">—</td>
             </tr>
-            <tr>
-              <td class="program-time-col">14:40 – 15:00</td>
-              <td><span class="program-badge badge-general">General</span></td>
+            <tr data-session-id="s06">
+              <td class="program-time-col">11:45 – 12:35</td>
+              <td><span class="program-badge badge-korea">Korea Presentation</span></td>
               <td>
-                <div class="program-session-title">Break & Live Celebration Performance</div>
-                <div class="program-session-desc">Refreshing tea break featuring an artistic celebration stage.</div>
+                <div class="program-session-title">Dong Chul Yeom: "When Leaders Change, Schools Change"</div>
+                <div class="program-session-desc">How athletic directors and educators transform student athletes' autonomy and athletic culture through coaching leadership.</div>
               </td>
-              <td class="program-speaker-col">Guest Artist & Performers</td>
+              <td class="program-speaker-col">Dong Chul Yeom (Korea National Sport Univ.)</td>
             </tr>
-            <tr>
-              <td class="program-time-col">15:00 – 16:30</td>
-              <td><span class="program-badge badge-japan">Japan Session</span></td>
+            <tr data-session-id="s07">
+              <td class="program-time-col">12:35 – 12:40</td>
+              <td><span class="program-badge badge-general">Announcement</span></td>
               <td>
-                <div class="program-session-title">Japan Session Presentations (3 Speakers)</div>
-                <div class="program-session-desc">High-performance coaching, youth development, and systemic field dynamics.</div>
+                <div class="program-session-title">Announcements & Lunch Logistics</div>
+                <div class="program-session-desc">Bento distribution, venue logistics, and afternoon schedule announcement.</div>
               </td>
-              <td class="program-speaker-col">Motonari Takahashi · Japan Speakers</td>
+              <td class="program-speaker-col">Forum Secretariat</td>
             </tr>
-            <tr>
-              <td class="program-time-col">16:30 – 17:30</td>
-              <td><span class="program-badge badge-workshop">Workshop</span></td>
+            <tr data-session-id="s08">
+              <td class="program-time-col">12:40 – 13:40</td>
+              <td><span class="program-badge badge-general">Lunch Break</span></td>
               <td>
-                <div class="program-session-title">Interactive Group Workshop & Discussion</div>
-                <div class="program-session-desc">Cross-border breakout circles: Shared challenges & co-creating future roadmaps.</div>
-              </td>
-              <td class="program-speaker-col">Bilingual Group Facilitators</td>
-            </tr>
-            <tr>
-              <td class="program-time-col">17:30 – 18:00</td>
-              <td><span class="program-badge badge-general">General</span></td>
-              <td>
-                <div class="program-session-title">Reflections, Commemorative Photo & Closing</div>
-                <div class="program-session-desc">Closing reflections, announcement of future initiatives, group commemorative photo.</div>
+                <div class="program-session-title">Lunch Break & Networking (Japanese Bento Provided)</div>
+                <div class="program-session-desc">Japanese bento lunch provided at the 17F venue with informal bilingual networking.</div>
               </td>
               <td class="program-speaker-col">All Participants</td>
             </tr>
-            <tr>
+            <tr data-session-id="s09">
+              <td class="program-time-col">13:40 – 14:10</td>
+              <td><span class="program-badge badge-korea">Korea Presentation</span></td>
+              <td>
+                <div class="program-session-title">Sung Min Kim: "When the Body Is Stable, the Mind Becomes Clearer"</div>
+                <div class="program-session-desc">Postural alignment, breathing mechanics, and sensory integration as the neurological foundation for clarity of thought.</div>
+              </td>
+              <td class="program-speaker-col">Sung Min Kim (Body Balance Coaching)</td>
+            </tr>
+            <tr data-session-id="s10">
+              <td class="program-time-col">14:10 – 15:00</td>
+              <td><span class="program-badge badge-japan">Japan Presentation</span></td>
+              <td>
+                <div class="program-session-title">Motonari Takahashi: "Transcending Differences to Become One Team — Lessons on Communication & Mental Support from Japan National Deaf Soccer Team"</div>
+                <div class="program-session-desc">Non-verbal empathy, psychological safety, and collective resonance built with the Japan National Deaf Soccer Team.</div>
+              </td>
+              <td class="program-speaker-col">Motonari Takahashi (WINGIFT / Field Flow)</td>
+            </tr>
+            <tr data-session-id="s11">
+              <td class="program-time-col">15:00 – 15:05</td>
+              <td><span class="program-badge badge-performance">Performance</span></td>
+              <td>
+                <div class="program-session-title">Cultural Performance by Japan</div>
+                <div class="program-session-desc">Artistic celebration performance presented by the Japanese delegation.</div>
+              </td>
+              <td class="program-speaker-col">Japan Performance Team</td>
+            </tr>
+            <tr data-session-id="s12">
+              <td class="program-time-col">15:05 – 15:55</td>
+              <td><span class="program-badge badge-korea">Korea Presentation</span></td>
+              <td>
+                <div class="program-session-title">Tae Ryeon Yoon: "When Physical Training Meets Mental Coaching"</div>
+                <div class="program-session-desc">Bridging elite conditioning, somatic rehabilitation, and mental tenacity to overcome injury anxiety and maximize performance.</div>
+              </td>
+              <td class="program-speaker-col">Tae Ryeon Yoon (All That Conditioning)</td>
+            </tr>
+            <tr data-session-id="s13">
+              <td class="program-time-col">15:55 – 16:00</td>
+              <td><span class="program-badge badge-performance">Performance</span></td>
+              <td>
+                <div class="program-session-title">Cultural Performance by Korea</div>
+                <div class="program-session-desc">Special celebratory cultural stage by the Korean delegation.</div>
+              </td>
+              <td class="program-speaker-col">Korea Performance Team</td>
+            </tr>
+            <tr data-session-id="s14">
+              <td class="program-time-col">16:00 – 16:10</td>
+              <td><span class="program-badge badge-break">Break</span></td>
+              <td>
+                <div class="program-session-title">Refreshment & Tea Break</div>
+                <div class="program-session-desc">10-minute tea and coffee break before the 10th anniversary vision keynotes.</div>
+              </td>
+              <td class="program-speaker-col">—</td>
+            </tr>
+            <tr data-session-id="s15">
+              <td class="program-time-col">16:10 – 16:30</td>
+              <td><span class="program-badge badge-japan">Japan Presentation</span></td>
+              <td>
+                <div class="program-session-title">Yoichiro Tsuge: "The Future of Mental Coaching"</div>
+                <div class="program-session-desc">Field Flow's 10-year journey coaching systemic field dynamics, collective resonance, and the next-generation coaching paradigm.</div>
+              </td>
+              <td class="program-speaker-col">Yoichiro Tsuge (Field Flow President)</td>
+            </tr>
+            <tr data-session-id="s16">
+              <td class="program-time-col">16:30 – 16:50</td>
+              <td><span class="program-badge badge-korea">Korea Presentation</span></td>
+              <td>
+                <div class="program-session-title">Chul Soo Park: "The Future of Mental Coaching"</div>
+                <div class="program-session-desc">MCCI's 10-year standard-setting mission: Transcending technology towards human agency, dignity, and authentic self-determination.</div>
+              </td>
+              <td class="program-speaker-col">Chul Soo Park (MCCI President)</td>
+            </tr>
+            <tr data-session-id="s17">
+              <td class="program-time-col">16:50 – 17:00</td>
+              <td><span class="program-badge badge-general">Reflection</span></td>
+              <td>
+                <div class="program-session-title">Reflection & Pair Sharing ("In Pairs")</div>
+                <div class="program-session-desc">Pair dialogue reflecting on insights and aspirations from the vision lectures by both founders.</div>
+              </td>
+              <td class="program-speaker-col">All Participants</td>
+            </tr>
+            <tr data-session-id="s18">
+              <td class="program-time-col">17:00 – 17:05</td>
+              <td><span class="program-badge badge-performance">Performance</span></td>
+              <td>
+                <div class="program-session-title">Cultural Celebration Performance by Japan</div>
+                <div class="program-session-desc">Celebratory cultural performance inspiring friendship and solidarity.</div>
+              </td>
+              <td class="program-speaker-col">Japan Performance Team</td>
+            </tr>
+            <tr data-session-id="s19">
+              <td class="program-time-col">17:05 – 17:15</td>
+              <td><span class="program-badge badge-break">Break</span></td>
+              <td>
+                <div class="program-session-title">Workshop Transition Break</div>
+                <div class="program-session-desc">Brief intermission and seating arrangement for the grand interactive group workshop.</div>
+              </td>
+              <td class="program-speaker-col">—</td>
+            </tr>
+            <tr data-session-id="s20">
+              <td class="program-time-col">17:15 – 18:05</td>
+              <td><span class="program-badge badge-workshop">Group Work</span></td>
+              <td>
+                <div class="program-session-title">Interactive Group Workshop: "Together into the Future"</div>
+                <div class="program-session-desc">Bilingual roundtable breakout circles co-creating future initiatives, shared challenges, and collaborative action plans.</div>
+              </td>
+              <td class="program-speaker-col">All Participants & Facilitators</td>
+            </tr>
+            <tr data-session-id="s21">
+              <td class="program-time-col">18:05 – 18:10</td>
+              <td><span class="program-badge badge-general">Closing</span></td>
+              <td>
+                <div class="program-session-title">Closing Ceremony & Remarks</div>
+                <div class="program-session-desc">Closing reflections by organizing chairs, acknowledgment of participants, and official forum conclusion.</div>
+              </td>
+              <td class="program-speaker-col">Organizing Committee</td>
+            </tr>
+            <tr data-session-id="s22">
+              <td class="program-time-col">18:10 – 18:25</td>
+              <td><span class="program-badge badge-photo">Photo Session</span></td>
+              <td>
+                <div class="program-session-title">Commemorative Group Photo Session</div>
+                <div class="program-session-desc">Official group photograph capturing all participants, speakers, and organizers at the 17F main hall.</div>
+              </td>
+              <td class="program-speaker-col">All Participants</td>
+            </tr>
+            <tr data-session-id="s23">
+              <td class="program-time-col">18:25</td>
+              <td><span class="program-badge badge-general">Clearance</span></td>
+              <td>
+                <div class="program-session-title">Complete Venue Clearance</div>
+                <div class="program-session-desc">Venue clean-up and transition to the evening networking dinner location.</div>
+              </td>
+              <td class="program-speaker-col">Organizing Staff</td>
+            </tr>
+            <tr data-session-id="s24">
               <td class="program-time-col">19:00 – 21:00</td>
-              <td><span class="program-badge badge-reception">Reception Dinner</span></td>
+              <td><span class="program-badge badge-reception">After Party</span></td>
               <td>
-                <div class="program-session-title">Official Networking Reception & Dinner</div>
-                <div class="program-session-desc">Sumibi Yakitori Oogiya Yokohama Kannai (3-min walk). Included in registration fee.</div>
+                <div class="program-session-title">Official Networking Reception Dinner (After Party)</div>
+                <div class="program-session-desc">Sumibi Yakitori OHGIYA Yokohama Kannai (3-min walk). Deepening friendship and celebrating the 10th milestone.</div>
               </td>
               <td class="program-speaker-col">All Registered Guests</td>
             </tr>
@@ -580,26 +700,26 @@
       </div>
 
       <div class="speaker-filters">
-        <button class="filter-btn active" data-filter="all" data-i18n="speakers.filterAll">All Speakers</button>
+        <button class="filter-btn active" data-filter="all" data-i18n="speakers.filterAll">All Speakers (7)</button>
         <button class="filter-btn" data-filter="keynote" data-i18n="speakers.filterKeynote">Keynote</button>
-        <button class="filter-btn" data-filter="korea" data-i18n="speakers.filterKorea">Korea Presenters</button>
-        <button class="filter-btn" data-filter="japan" data-i18n="speakers.filterJapan">Japan Presenters</button>
+        <button class="filter-btn" data-filter="korea" data-i18n="speakers.filterKorea">Korea Presenters (4)</button>
+        <button class="filter-btn" data-filter="japan" data-i18n="speakers.filterJapan">Japan Presenters (3)</button>
       </div>
 
       <div class="speakers-grid" id="speakers-grid">
-        <!-- 1. Keynote Prof. Aoyagi -->
-        <div class="speaker-card">
+        <!-- 1. Keynote Dr. Aoyagi -->
+        <div class="speaker-card" data-speaker-country="jp" data-speaker-cat="keynote">
           <div class="speaker-card-header" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">
-            <span class="speaker-flag-badge">Keynote</span>
+            <span class="speaker-flag-badge">Keynote · Japan</span>
             <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);"><span>AO</span></div>
           </div>
           <div class="speaker-card-body">
-            <h3 class="speaker-name">Prof. Aoyagi</h3>
+            <h3 class="speaker-name">Dr. Aoyagi</h3>
             <div class="speaker-role">Professor of Sports Psychology</div>
             <div class="speaker-org">Kanto Gakuin University</div>
             <div class="speaker-topic-box">
-              <div class="speaker-topic-label">Topic</div>
-              <div class="speaker-topic-title">The Horizon of Contemporary Sports & Mental Science</div>
+              <div class="speaker-topic-label">Keynote (10:35–11:35)</div>
+              <div class="speaker-topic-title">"The Impact of Personal Coaching on Athletes" — Kumotori Card Workshop</div>
             </div>
             <div class="speaker-card-actions">
               <button class="btn-card-outline" onclick="openSpeakerModal('aoyagi')">View Abstract</button>
@@ -609,7 +729,7 @@
         </div>
 
         <!-- 2. Dong Chul Yeom -->
-        <div class="speaker-card">
+        <div class="speaker-card" data-speaker-country="kr" data-speaker-cat="korea">
           <div class="speaker-card-header" style="background: linear-gradient(135deg, #047857, #10b981);">
             <span class="speaker-flag-badge">🇰🇷 Korea</span>
             <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #047857, #10b981);"><span>DY</span></div>
@@ -619,7 +739,7 @@
             <div class="speaker-role">Professor, Weightlifting Dept.</div>
             <div class="speaker-org">Korea National Sport University</div>
             <div class="speaker-topic-box">
-              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-label">Korea Session (11:45–12:35)</div>
               <div class="speaker-topic-title">When Leaders Change, Schools Change</div>
             </div>
             <div class="speaker-card-actions">
@@ -629,39 +749,18 @@
           </div>
         </div>
 
-        <!-- 3. Tae Ryeon Yoon -->
-        <div class="speaker-card">
-          <div class="speaker-card-header" style="background: linear-gradient(135deg, #b45309, #f59e0b);">
-            <span class="speaker-flag-badge">🇰🇷 Korea</span>
-            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #b45309, #f59e0b);"><span>TY</span></div>
-          </div>
-          <div class="speaker-card-body">
-            <h3 class="speaker-name">Tae Ryeon Yoon</h3>
-            <div class="speaker-role">CEO & Master Conditioning Specialist</div>
-            <div class="speaker-org">All That Conditioning</div>
-            <div class="speaker-topic-box">
-              <div class="speaker-topic-label">Topic</div>
-              <div class="speaker-topic-title">When Physical Training Meets Mental Coaching</div>
-            </div>
-            <div class="speaker-card-actions">
-              <button class="btn-card-outline" onclick="openSpeakerModal('yoon')">View Abstract</button>
-              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. Sung Min Kim -->
-        <div class="speaker-card">
+        <!-- 3. Sung Min Kim -->
+        <div class="speaker-card" data-speaker-country="kr" data-speaker-cat="korea">
           <div class="speaker-card-header" style="background: linear-gradient(135deg, #4338ca, #6366f1);">
             <span class="speaker-flag-badge">🇰🇷 Korea</span>
             <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #4338ca, #6366f1);"><span>SK</span></div>
           </div>
           <div class="speaker-card-body">
             <h3 class="speaker-name">Sung Min Kim</h3>
-            <div class="speaker-role">CEO & Movement Performance Coach</div>
-            <div class="speaker-org">BALANCED</div>
+            <div class="speaker-role">Movement & Mental Performance Specialist</div>
+            <div class="speaker-org">Body Balance Clinic & Coaching</div>
             <div class="speaker-topic-box">
-              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-label">Korea Session (13:40–14:10)</div>
               <div class="speaker-topic-title">When the Body Is Stable, the Mind Becomes Clearer</div>
             </div>
             <div class="speaker-card-actions">
@@ -671,8 +770,71 @@
           </div>
         </div>
 
-        <!-- 5. Chul Soo Park -->
-        <div class="speaker-card">
+        <!-- 4. Motonari Takahashi -->
+        <div class="speaker-card" data-speaker-country="jp" data-speaker-cat="japan">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #c026d3, #e879f9);">
+            <span class="speaker-flag-badge">🇯🇵 Japan</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #c026d3, #e879f9);"><span>MT</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Motonari Takahashi</h3>
+            <div class="speaker-role">Sports Mental Coach</div>
+            <div class="speaker-org">WINGIFT · Field Flow Japan</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">Japan Session (14:10–15:00)</div>
+              <div class="speaker-topic-title">Transcending Differences to Become One Team — Lessons from Japan National Deaf Soccer Team</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('takahashi')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Tae Ryeon Yoon -->
+        <div class="speaker-card" data-speaker-country="kr" data-speaker-cat="korea">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #b45309, #f59e0b);">
+            <span class="speaker-flag-badge">🇰🇷 Korea</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #b45309, #f59e0b);"><span>TY</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Tae Ryeon Yoon</h3>
+            <div class="speaker-role">CEO & Master Conditioning Specialist</div>
+            <div class="speaker-org">All That Conditioning</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">Korea Session (15:05–15:55)</div>
+              <div class="speaker-topic-title">When Physical Training Meets Mental Coaching</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('yoon')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Yoichiro Tsuge -->
+        <div class="speaker-card" data-speaker-country="jp" data-speaker-cat="japan">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #d97706, #fbbf24);">
+            <span class="speaker-flag-badge">🇯🇵 Japan</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #d97706, #fbbf24);"><span>YT</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Yoichiro Tsuge</h3>
+            <div class="speaker-role">President & Executive Coach</div>
+            <div class="speaker-org">Field Flow Japan</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">10th Vision Session (16:10–16:30)</div>
+              <div class="speaker-topic-title">The Future of Mental Coaching</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('tsuge')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Chul Soo Park -->
+        <div class="speaker-card" data-speaker-country="kr" data-speaker-cat="korea">
           <div class="speaker-card-header" style="background: linear-gradient(135deg, #0f766e, #14b8a6);">
             <span class="speaker-flag-badge">🇰🇷 Korea</span>
             <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #0f766e, #14b8a6);"><span>CP</span></div>
@@ -682,7 +844,7 @@
             <div class="speaker-role">Korea Representative / Mental Coach</div>
             <div class="speaker-org">MCCI (Mental Coaching Center Int'l / 국제멘탈코칭센터)</div>
             <div class="speaker-topic-box">
-              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-label">10th Vision Session (16:30–16:50)</div>
               <div class="speaker-topic-title">The Future of Mental Coaching</div>
             </div>
             <div class="speaker-card-actions">
@@ -691,70 +853,7 @@
             </div>
           </div>
         </div>
-
-        <!-- 6. Motonari Takahashi -->
-        <div class="speaker-card">
-          <div class="speaker-card-header" style="background: linear-gradient(135deg, #c026d3, #e879f9);">
-            <span class="speaker-flag-badge">🇯🇵 Japan</span>
-            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #c026d3, #e879f9);"><span>MT</span></div>
-          </div>
-          <div class="speaker-card-body">
-            <h3 class="speaker-name">Motonari Takahashi</h3>
-            <div class="speaker-role">Executive Mental Coach</div>
-            <div class="speaker-org">Field Flow Japan</div>
-            <div class="speaker-topic-box">
-              <div class="speaker-topic-label">Topic</div>
-              <div class="speaker-topic-title">Coaching the Invisible: Systemic Field Dynamics</div>
             </div>
-            <div class="speaker-card-actions">
-              <button class="btn-card-outline" onclick="openSpeakerModal('takahashi')">View Abstract</button>
-              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 7. Japan Speaker 02 -->
-        <div class="speaker-card">
-          <div class="speaker-card-header" style="background: linear-gradient(135deg, #be123c, #fb7185);">
-            <span class="speaker-flag-badge">🇯🇵 Japan</span>
-            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #be123c, #fb7185);"><span>JS</span></div>
-          </div>
-          <div class="speaker-card-body">
-            <h3 class="speaker-name">Japan Speaker 02</h3>
-            <div class="speaker-role">Mental Performance Specialist</div>
-            <div class="speaker-org">Japan Mental Training Association</div>
-            <div class="speaker-topic-box">
-              <div class="speaker-topic-label">Topic</div>
-              <div class="speaker-topic-title">Cultivating Inner Autonomy in Youth Athletics</div>
-            </div>
-            <div class="speaker-card-actions">
-              <button class="btn-card-outline" onclick="openSpeakerModal('jp02')">View Abstract</button>
-              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 8. Japan Speaker 03 -->
-        <div class="speaker-card">
-          <div class="speaker-card-header" style="background: linear-gradient(135deg, #0369a1, #38bdf8);">
-            <span class="speaker-flag-badge">🇯🇵 Japan</span>
-            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #0369a1, #38bdf8);"><span>JS</span></div>
-          </div>
-          <div class="speaker-card-body">
-            <h3 class="speaker-name">Japan Speaker 03</h3>
-            <div class="speaker-role">Organizational Coach</div>
-            <div class="speaker-org">Field Flow Alliance</div>
-            <div class="speaker-topic-box">
-              <div class="speaker-topic-label">Topic</div>
-              <div class="speaker-topic-title">Bridging East Asian Perspectives in Mental Coaching</div>
-            </div>
-            <div class="speaker-card-actions">
-              <button class="btn-card-outline" onclick="openSpeakerModal('jp03')">View Abstract</button>
-              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1300,47 +1399,44 @@
 
         speakersDetails: {
           aoyagi: {
-            abstractEn: "Exploring the neurological and psychological frameworks that underpin elite athletic performance, psychological safety in high-stakes environments, and how evidence-based mental coaching transforms sports institutions.",
-            abstractKo: "엘리트 운동선수의 최적 수행 상태를 이끄는 신경심리학적 기전과 심리적 안전감의 역할을 규명하고, 실증적 멘탈코칭이 개인과 스포츠 조직의 패러다임을 어떻게 전환하는지 심층적으로 조망합니다.",
-            abstractJa: "トップアスリートのピークパフォーマンスを支える神経心理学的メカニズムと心理的安全性の意義を紐解き、エビデンスに基づくメンタルコーチングが個と組織をどのように変革するかを提示します。"
+            abstractEn: "Exploring the neurological and psychological impact of personal coaching on athletes, featuring the interactive Kumotori Card Workshop.",
+            abstractKo: "선수에 대한 퍼스널 코칭이 미치는 심리·신체적 작용 메커니즘을 규명하고, 실전 '쿠모토리 카드' 워크숍을 통해 현장 적용법을 함께 나눕니다.",
+            abstractJa: "アスリートへのパーソナルコーチングがもたらす科学的作用を紐解き、現場で即活用できる「雲取りカード」ワークショップを実施します。"
           },
           yeom: {
             abstractEn: "How leadership mindsets among athletic educators create profound systemic transformations in student athletes' well-being and long-term athletic success.",
             abstractKo: "체육 지도자와 학교 관리자의 리더십 패러다임 변화가 학생 선수들의 정서적 안정과 자율적 동기부여, 학교 체육 시스템 전체의 질적 도약을 어떻게 이끄는지를 실천 사례를 바탕으로 논증합니다.",
             abstractJa: "指導者や学校管理職のマインドセット変革が、生徒・アスリートの主体性や自己肯定感、さらには学校全体のカルチャーをどのように好転させるかを豊富な実例から解き明かします。"
           },
-          yoon: {
-            abstractEn: "Unveiling the symbiotic bridge between somatic conditioning and mental tenacity in elite competitive sports.",
-            abstractKo: "신체 트레이닝과 멘탈코칭의 유기적 결합 모델을 제시합니다. 부상 회복 과정과 근신경계 밸런스 회복이 선수의 불안을 극복하고 실전 집중력을 극대화하는 프로세스를 설명합니다.",
-            abstractJa: "身体のコンディショニングとメンタルトレーニングのシナジーを追求。ケガのリハビリや筋神経系の調和が、選手の不安軽減と試合での強靱な集中力にどう寄与するかを実証します。"
-          },
           kim: {
             abstractEn: "Exploring postural equilibrium, sensory integration, and breathing biomechanics as the primary physical foundation for clarity of thought and stress management.",
             abstractKo: "신체의 정렬과 호흡, 고유수용성 감각의 안정이 선수의 인지적 판단력과 멘탈의 선명도에 직결되는 메커니즘을 밝히고, 일상과 경기장에서 즉각 활용 가능한 밸런스 테크닉을 공유합니다.",
             abstractJa: "身体のアライメント、呼吸、深部感覚の安定が、いかに思考の明晰さや決断の迅速さにつながるかを解説。現場で即実践できるボディ・マインド調律法を公開します。"
           },
+          takahashi: {
+            abstractEn: "Unveiling non-verbal empathy, psychological safety, and unified team dynamics developed through mental coaching with the Japan National Deaf Soccer Team.",
+            abstractKo: "청각장애인 축구 일본대표팀 현장에서 구축한 언어를 뛰어넘는 공감과 심리적 안전감, 원팀(One Team) 멘탈 서포트 실천기를 공유합니다.",
+            abstractJa: "デフサッカー日本代表の現場で実践された、言葉や感覚の違いを超えてチームが一つになるコミュニケーションとメンタル支援の知見を公開します。"
+          },
+          yoon: {
+            abstractEn: "Unveiling the symbiotic bridge between somatic conditioning and mental tenacity in elite competitive sports.",
+            abstractKo: "신체 트레이닝과 멘탈코칭의 유기적 결합 모델을 제시합니다. 부상 회복 과정과 근신경계 밸런스 회복이 선수의 불안을 극복하고 실전 집중력을 극대화하는 프로세스를 설명합니다.",
+            abstractJa: "身体のコンディショニングとメンタルトレーニングのシナジーを追求。ケガのリハビリや筋神経系の調和が、選手の不安軽減と試合での強靱な集中力にどう寄与するかを実証します。"
+          },
+          tsuge: {
+            abstractEn: "Field Flow's 10-year journey coaching systemic field dynamics, collective resonance, and the next-generation coaching paradigm for the AI era.",
+            abstractKo: "지난 10년간 스포츠 및 비즈니스 조직에서 '장(Field)'의 흐름과 팀 시너지를 극대화해 온 Field Flow의 발자취와 향후 미래 멘탈코칭의 새로운 패러다임을 제언합니다.",
+            abstractJa: "過去10年にわたりスポーツとビジネスの現場で「場」のダイナミクスとチームフローを切り拓いてきたField Flowの軌跡と、次世代メンタルコーチングの未来展望を提示します。"
+          },
           park: {
             abstractEn: "In an era saturated with AI and predictive algorithms, mental coaching must surpass technological utility. The coach's genuine role is to deeply understand human existence and empower individuals to make authentic, values-aligned choices.",
             abstractKo: "AI와 첨단 알고리즘이 범람하는 시대일수록 멘탈코칭은 단순한 기능 경쟁을 뛰어넘어야 합니다. 인간에 대한 깊은 공감과 존중을 바탕으로, 내담자가 자신의 진정한 가치관에 입각해 주체적으로 선택하고 행동하도록 이끄는 멘탈코칭의 미래 사명을 제언합니다.",
             abstractJa: "AIやテクノロジーが進化する現代だからこそ、メンタルコーチングは技術競争を超えた本質に立ち返る必要があります。人間への深い理解に基づき、クライアントが自らのコアバリューに沿って自律的に選択・行動することを支援する真の役割を提起します。"
-          },
-          takahashi: {
-            abstractEn: "Analyzing the unseen team atmosphere, emotional contagion, and communicative resonance in competitive teams, offering practical tools to shift collective team consciousness into peak performance.",
-            abstractKo: "경기 현장에서 선수 개개인을 넘어 팀 전체를 지배하는 집단적 에너지와 분위기(장, Field)를 진단하고, 팀의 응집력과 몰입을 극대화하는 일본 현장 코칭 기법을 소개합니다.",
-            abstractJa: "チーム内に漂う目に見えない「空気感」や感情伝播を捉え、個人の限界を超えてチーム全体がフロー状態に入るための場のデザイン手法と実践知を共有します。"
-          },
-          jp02: {
-            abstractEn: "A progressive pedagogy to nurture self-directed problem-solving and intrinsic motivation in young athletes through inquiry-based coaching.",
-            abstractKo: "지시와 통제 방식의 전통적 지도법을 벗어나, 유소년 선수들이 스스로 질문하고 목표를 설정하며 실패 속에서 배우도록 돕는 자율형 멘탈코칭 실천 방안을 제시합니다.",
-            abstractJa: "指示命令型から問いかけ型へ。育成期のアスリートが自らの頭で考え、失敗を学びに変える「自律型メンタリティ」を育む指導プロセスの実例を公開します。"
-          },
-          jp03: {
-            abstractEn: "Synthesizing Western psychological frameworks with Eastern relational values (harmony, empathy, intuition) to create a distinctive, culturally resonant model of coaching.",
-            abstractKo: "서구 심리학 모델에 동양적 관계성(조화, 맥락, 비언어적 공감)을 결합하여, 한·일 양국 문화적 토양에 최적화된 새로운 코칭 패러다임을 제안합니다.",
-            abstractJa: "西洋的な心理モデルに東洋的な関係性や共感、間（ま）の思想を調和させ、アジア発の新たなコーチング・スタンダードを拓くビジョンを提示します。"
           }
         }
       };
+
+      const SESSIONS = [{"id": "s01", "time": "10:00 – 10:15", "badgeClass": "badge-general", "badgeEn": "Opening", "badgeKo": "개회", "badgeJa": "オープニング", "titleEn": "Opening Ceremony & Welcoming Remarks", "titleKo": "개회식 및 연사 소개 (오프닝)", "titleJa": "開会挨拶（陽さん、パクさん、青柳先生ご紹介）", "descEn": "Welcome addresses by Yoichiro Tsuge (Field Flow) & Chul Soo Park (MCCI), introduction of Dr. Aoyagi.", "descKo": "츠게 요이치로 대표(Field Flow)와 박철수 대표(MCCI)의 개회사 및 기조강연자 아오야기 교수 소개.", "descJa": "Field Flow 柘植代表とMCCI 朴代表による開会挨拶、基調講演 青柳先生のご紹介。", "speakerEn": "Yoichiro Tsuge, Chul Soo Park", "speakerKo": "츠게 요이치로, 박철수", "speakerJa": "柘植 陽一郎, 朴 哲秀"}, {"id": "s02", "time": "10:15 – 10:35", "badgeClass": "badge-general", "badgeEn": "Icebreak", "badgeKo": "아이스브레이크", "badgeJa": "アイスブレイク", "titleEn": "Icebreaking & Rapport Building", "titleKo": "아이스브레이크 (마음 열기 & 라포 형성)", "titleJa": "アイスブレイク", "descEn": "Interactive warm-up building cross-cultural psychological safety and connection across languages.", "descKo": "언어와 국경을 넘어 참가자 간의 친밀감과 심리적 안전감을 형성하는 교류 워밍업.", "descJa": "言語の壁を越え、日韓の参加者同士のつながりと心理的安全性を築くウォームアップ。", "speakerEn": "Forum Facilitator", "speakerKo": "포럼 퍼실리테이터", "speakerJa": "ファシリテーター"}, {"id": "s03", "time": "10:35 – 11:35", "badgeClass": "badge-keynote", "badgeEn": "Keynote", "badgeKo": "기조강연", "badgeJa": "基調講演", "titleEn": "Keynote: \"The Impact of Personal Coaching on Athletes\" — Kumotori Card Workshop", "titleKo": "기조강연: 『선수에 대한 퍼스널 코칭의 작용』 — 雲取り(쿠모토리) 카드 워크숍", "titleJa": "基調講演：『アスリートへのパーソナルコーチングの作用』 雲取りカードワークショップ", "descEn": "Dr. Aoyagi explores evidence-based somatic and mental mechanisms in athletes, featuring Kumotori Card Workshop.", "descKo": "아오야기 교수가 밝히는 운동선수에 대한 퍼스널 코칭의 과학적 메커니즘과 참여형 쿠모토리 카드 워크숍.", "descJa": "アスリートへのパーソナルコーチングの科学的作用と、体験型「雲取りカード」ワークショップ。", "speakerEn": "Dr. Aoyagi (Kanto Gakuin Univ.)", "speakerKo": "아오야기 교수 (관동학원대)", "speakerJa": "青柳 敏久 教授（関東学院大）"}, {"id": "s04", "time": "11:35 – 11:40", "badgeClass": "badge-performance", "badgeEn": "Performance", "badgeKo": "특별 공연", "badgeJa": "パフォーマンス", "titleEn": "Cultural Performance by Korea", "titleKo": "한국 특별 축하 퍼포먼스 공연", "titleJa": "韓国のパフォーマンス", "descEn": "Celebratory cultural performance by the Korean delegation.", "descKo": "한국 참가단이 선보이는 활력 넘치는 문화 축하 무대.", "descJa": "韓国代表団による祝賀パフォーマンス・ステージ。", "speakerEn": "Korea Performance Team", "speakerKo": "한국 공연팀", "speakerJa": "韓国パフォーマンス"}, {"id": "s05", "time": "11:40 – 11:45", "badgeClass": "badge-break", "badgeEn": "Break", "badgeKo": "휴식", "badgeJa": "休憩", "titleEn": "Short Transition Break", "titleKo": "짧은 휴식", "titleJa": "休憩（ショートブレイク）", "descEn": "5-minute transition break before the Korea presentation.", "descKo": "오전 사례발표 세션 전 5분간의 환기 휴식.", "descJa": "事例発表前の5分間ショートブレイク。", "speakerEn": "—", "speakerKo": "—", "speakerJa": "—"}, {"id": "s06", "time": "11:45 – 12:35", "badgeClass": "badge-korea", "badgeEn": "Korea Presentation", "badgeKo": "한국 사례발표", "badgeJa": "事例発表（韓国）", "titleEn": "Dong Chul Yeom: \"When Leaders Change, Schools Change\"", "titleKo": "염동철 교수: 『리더가 변하면, 학교도 변한다』", "titleJa": "ヨム・ドンチョル：『リーダーが変われば、学校も変わる』", "descEn": "How athletic directors and educators transform student athletes' autonomy and athletic culture through coaching leadership.", "descKo": "체육 지도자와 학교 관리자의 리더십 패러다임 전환이 학생 선수의 자율성과 학교 체육 문화를 혁신하는 실천 모델.", "descJa": "指導者や学校管理職のマインドセット変革が、生徒の主体性と学校スポーツを好転させる実例。", "speakerEn": "Dong Chul Yeom (Korea National Sport Univ.)", "speakerKo": "염동철 교수 (한국체육대학교)", "speakerJa": "ヨム・ドンチョル 教授（韓国体育大学）"}, {"id": "s07", "time": "12:35 – 12:40", "badgeClass": "badge-general", "badgeEn": "Announcement", "badgeKo": "안내", "badgeJa": "アナウンス", "titleEn": "Announcements & Lunch Logistics", "titleKo": "공지사항 및 점심 식사 안내", "titleJa": "会場アナウンス・午後のご案内", "descEn": "Bento distribution, venue logistics, and afternoon schedule announcement.", "descKo": "도시락 수령 방법, 좌석 안내 및 오후 세션 진행 공지.", "descJa": "お弁当の配布および午後のプログラムに関するご案内。", "speakerEn": "Forum Secretariat", "speakerKo": "포럼 사무국", "speakerJa": "運営事務局"}, {"id": "s08", "time": "12:40 – 13:40", "badgeClass": "badge-general", "badgeEn": "Lunch Break", "badgeKo": "점심 식사", "badgeJa": "ランチ・休憩", "titleEn": "Lunch Break & Networking (Japanese Bento Provided)", "titleKo": "점심 식사 & 네트워킹 (회장 내 일식 도시락 제공)", "titleJa": "会場にてランチ・休憩（お弁当あり）", "descEn": "Japanese bento lunch provided at the 17F venue with informal bilingual networking.", "descKo": "17층 메인홀에서 제공되는 정갈한 일식 도시락과 함께하는 자유로운 한·일 교류 시간.", "descJa": "会場にて特製お弁当をご用意。参加者同士の自由な交流をお楽しみください。", "speakerEn": "All Participants", "speakerKo": "참가자 전원", "speakerJa": "参加者全員"}, {"id": "s09", "time": "13:40 – 14:10", "badgeClass": "badge-korea", "badgeEn": "Korea Presentation", "badgeKo": "한국 사례발표", "badgeJa": "事例発表（韓国）", "titleEn": "Sung Min Kim: \"When the Body Is Stable, the Mind Becomes Clearer\"", "titleKo": "김성민 대표: 『몸이 안정되면, 마음도 더욱 명석해진다』", "titleJa": "キム・ソンミン：『体が安定すれば、心もより明晰になる』", "descEn": "Postural alignment, breathing mechanics, and sensory integration as the neurological foundation for clarity of thought.", "descKo": "신체의 정렬과 호흡, 고유수용성 감각 안정이 선수의 인지적 판단력과 멘탈의 선명도를 높이는 원리와 실전 기법.", "descJa": "身体のアライメントと深部感覚の安定が、思考の明晰さや決断の迅速さにつながる身体・心理統合アプローチ。", "speakerEn": "Sung Min Kim (Body Balance Coaching)", "speakerKo": "김성민 대표 (바디밸런스 코칭)", "speakerJa": "キム・ソンミン 代表（ボディバランス）"}, {"id": "s10", "time": "14:10 – 15:00", "badgeClass": "badge-japan", "badgeEn": "Japan Presentation", "badgeKo": "일본 사례발표", "badgeJa": "事例発表（日本）", "titleEn": "Motonari Takahashi: \"Transcending Differences to Become One Team — Lessons on Communication & Mental Support from Japan National Deaf Soccer Team\"", "titleKo": "타카하시 모토나리: 『차이를 넘어, 하나의 팀으로』 데프사커(청각장애인 축구) 일본 대표팀에서 배우는 소통과 멘탈 서포트", "titleJa": "髙橋 基成（WINGIFT）：『違いを越えて、ひとつのチームへ』 デフサッカー日本代表から学ぶコミュニケーションとメンタルサポート", "descEn": "Non-verbal empathy, psychological safety, and collective resonance built with the Japan National Deaf Soccer Team.", "descKo": "청각장애인 축구 일본대표팀 현장에서 구축한 언어를 뛰어넘는 공감과 심리적 안전감, 원팀(One Team) 멘탈 서포트 실천기.", "descJa": "デフサッカー日本代表の現場で実践された、言葉や感覚の違いを超えてチームが一つになるコミュニケーションとメンタル支援。", "speakerEn": "Motonari Takahashi (WINGIFT / Field Flow)", "speakerKo": "타카하시 모토나리 (WINGIFT 스포츠멘탈코치)", "speakerJa": "髙橋 基成（WINGIFT スポーツメンタルコーチ）"}, {"id": "s11", "time": "15:00 – 15:05", "badgeClass": "badge-performance", "badgeEn": "Performance", "badgeKo": "특별 공연", "badgeJa": "パフォーマンス", "titleEn": "Cultural Performance by Japan", "titleKo": "일본 특별 축하 퍼포먼스 공연", "titleJa": "日本のパフォーマンス", "descEn": "Artistic celebration performance presented by the Japanese delegation.", "descKo": "일본 참가단이 선보이는 특별 문화 예술 퍼포먼스.", "descJa": "日本側による祝賀パフォーマンス・ステージ。", "speakerEn": "Japan Performance Team", "speakerKo": "일본 공연팀", "speakerJa": "日本パフォーマンス"}, {"id": "s12", "time": "15:05 – 15:55", "badgeClass": "badge-korea", "badgeEn": "Korea Presentation", "badgeKo": "한국 사례발표", "badgeJa": "事例発表（韓国）", "titleEn": "Tae Ryeon Yoon: \"When Physical Training Meets Mental Coaching\"", "titleKo": "윤태련 대표: 『피지컬 트레이닝과 멘탈코칭의 융합』", "titleJa": "ユン・テリョン：『フィジカルトレーニングとメンタルコーチングの融合』", "descEn": "Bridging elite conditioning, somatic rehabilitation, and mental tenacity to overcome injury anxiety and maximize performance.", "descKo": "신체 컨디셔닝 회복과 멘탈코칭의 융합 모델을 통해 부상 불안을 극복하고 실전 시합 집중력을 극대화하는 프로세스.", "descJa": "身体のコンディショニングとメンタルトレーニングのシナジー。ケガからの復帰と試合での強靱な集中力の実証事例。", "speakerEn": "Tae Ryeon Yoon (All That Conditioning)", "speakerKo": "윤태련 대표 (올댓컨디셔닝)", "speakerJa": "ユン・テリョン 代表（オールザットコンディショニング）"}, {"id": "s13", "time": "15:55 – 16:00", "badgeClass": "badge-performance", "badgeEn": "Performance", "badgeKo": "특별 공연", "badgeJa": "パフォーマンス", "titleEn": "Cultural Performance by Korea", "titleKo": "한국 특별 축하 퍼포먼스 공연", "titleJa": "韓国パフォーマンス", "descEn": "Special celebratory cultural stage by the Korean delegation.", "descKo": "오후 세션의 열기를 더하는 한국 공연단의 문화 퍼포먼스.", "descJa": "午後の活気を高める韓国パフォーマンス・ステージ。", "speakerEn": "Korea Performance Team", "speakerKo": "한국 공연팀", "speakerJa": "韓国パフォーマンス"}, {"id": "s14", "time": "16:00 – 16:10", "badgeClass": "badge-break", "badgeEn": "Break", "badgeKo": "휴식", "badgeJa": "休憩", "titleEn": "Refreshment & Tea Break", "titleKo": "휴식 및 티타임", "titleJa": "休憩（リフレッシュタイム）", "descEn": "10-minute tea and coffee break before the 10th anniversary vision keynotes.", "descKo": "한·일 공동 10주년 비전 발표를 앞두고 차와 함께하는 10분간의 휴식.", "descJa": "両国代表によるビジョン講演前の10分間リフレッシュ休憩。", "speakerEn": "—", "speakerKo": "—", "speakerJa": "—"}, {"id": "s15", "time": "16:10 – 16:30", "badgeClass": "badge-japan", "badgeEn": "Japan Presentation", "badgeKo": "일본 특별발표", "badgeJa": "陽さん講演", "titleEn": "Yoichiro Tsuge: \"The Future of Mental Coaching\"", "titleKo": "츠게 요이치로 대표 (陽さん): 『멘탈코칭의 향후에 대하여』 (Field Flow의 비전)", "titleJa": "陽さん（柘植 陽一郎）：『メンタルコーチングの今後について』", "descEn": "Field Flow's 10-year journey coaching systemic field dynamics, collective resonance, and the next-generation coaching paradigm.", "descKo": "지난 10년간 '장(Field)'의 흐름과 집단 몰입을 개척해 온 Field Flow의 발자취와 향후 미래 코칭의 방향성 제언.", "descJa": "目に見えない「場」の力と共鳴を引き出してきた10年の歩みと、次世代メンタルコーチングの未来展望。", "speakerEn": "Yoichiro Tsuge (Field Flow President)", "speakerKo": "츠게 요이치로 대표 (Field Flow)", "speakerJa": "柘植 陽一郎 代表（Field Flow）"}, {"id": "s16", "time": "16:30 – 16:50", "badgeClass": "badge-korea", "badgeEn": "Korea Presentation", "badgeKo": "한국 특별발표", "badgeJa": "パクさん講演", "titleEn": "Chul Soo Park: \"The Future of Mental Coaching\"", "titleKo": "박철수 대표 (パクさん): 『멘탈코칭의 향후에 대하여』 (MCCI의 사명과 인간 존엄)", "titleJa": "パクさん（朴 哲秀）：『メンタルコーチングの今後について』", "descEn": "MCCI's 10-year standard-setting mission: Transcending technology towards human agency, dignity, and authentic self-determination.", "descKo": "한국 멘탈코칭 표준화를 이끌어 온 MCCI의 10년 사명과 AI 시대 기술을 넘어 인간의 존엄과 주체적 선택을 돕는 코칭의 본질.", "descJa": "韓国メンタルコーチング確立への10年。AI時代だからこそ際立つ人間の尊厳と主体的選択を支える真の使命。", "speakerEn": "Chul Soo Park (MCCI President)", "speakerKo": "박철수 대표 (MCCI 국제멘탈코칭센터)", "speakerJa": "朴 哲秀 代表（MCCI 国際メンタルコーチングセンター）"}, {"id": "s17", "time": "16:50 – 17:00", "badgeClass": "badge-general", "badgeEn": "Reflection", "badgeKo": "짝나눔", "badgeJa": "シェアタイム", "titleEn": "Reflection & Pair Sharing (\"In Pairs\")", "titleKo": "성찰 및 짝나눔 (가까운 두 사람이 소감 공유)", "titleJa": "シェアタイム（近くの二人でペアシェア）", "descEn": "Pair dialogue reflecting on insights and aspirations from the vision lectures by both founders.", "descKo": "두 대표의 비전 강연을 들은 후, 인접한 참가자 두 명이 짝을 지어 떠오른 생각과 배움을 나누는 성찰 시간.", "descJa": "両代表のビジョンを受けて、隣り合う2人組で気づきや想いを言葉にして分かち合う対話時間。", "speakerEn": "All Participants", "speakerKo": "참가자 전원", "speakerJa": "参加者全員"}, {"id": "s18", "time": "17:00 – 17:05", "badgeClass": "badge-performance", "badgeEn": "Performance", "badgeKo": "특별 공연", "badgeJa": "パフォーマンス", "titleEn": "Cultural Celebration Performance by Japan", "titleKo": "일본 특별 축하 퍼포먼스 공연", "titleJa": "日本のパフォーマンス", "descEn": "Celebratory cultural performance inspiring friendship and solidarity.", "descKo": "한·일의 연대와 우정을 기념하는 일본 공연단의 특별 축하 무대.", "descJa": "日韓の絆を祝う日本側パフォーマンス・ステージ。", "speakerEn": "Japan Performance Team", "speakerKo": "일본 공연팀", "speakerJa": "日本パフォーマンス"}, {"id": "s19", "time": "17:05 – 17:15", "badgeClass": "badge-break", "badgeEn": "Break", "badgeKo": "휴식", "badgeJa": "休憩", "titleEn": "Workshop Transition Break", "titleKo": "휴식 및 워크숍 좌석 정돈", "titleJa": "休憩（ワークショップ準備）", "descEn": "Brief intermission and seating arrangement for the grand interactive group workshop.", "descKo": "전원 참여 인터랙티브 그룹워크를 위한 좌석 정돈 및 휴식.", "descJa": "グループワークへの移行とテーブル準備のための小休憩。", "speakerEn": "—", "speakerKo": "—", "speakerJa": "—"}, {"id": "s20", "time": "17:15 – 18:05", "badgeClass": "badge-workshop", "badgeEn": "Group Work", "badgeKo": "그룹워크", "badgeJa": "グループワーク", "titleEn": "Interactive Group Workshop: \"Together into the Future\"", "titleKo": "전원 참여 그룹워크: 『미래로 함께』 (未来へともに)", "titleJa": "グループワーク：『未来へともに』", "descEn": "Bilingual roundtable breakout circles co-creating future initiatives, shared challenges, and collaborative action plans.", "descKo": "한·일 참가자가 원탁에 둘러앉아 언어의 장벽을 넘어 함께 고민하고, 향후 10년의 구체적 협력 프로젝트를 공창하는 시간.", "descJa": "日韓混合の円卓テーブルで、未来へ向けた共通の課題と具体的な協働アクションを共創する対話ワーク。", "speakerEn": "All Participants & Facilitators", "speakerKo": "참가자 전원 및 퍼실리테이터", "speakerJa": "参加者全員 & ファシリテーター"}, {"id": "s21", "time": "18:05 – 18:10", "badgeClass": "badge-general", "badgeEn": "Closing", "badgeKo": "폐회", "badgeJa": "クロージング", "titleEn": "Closing Ceremony & Remarks", "titleKo": "폐회사 및 마무리 인사", "titleJa": "クロージング（閉会総括）", "descEn": "Closing reflections by organizing chairs, acknowledgment of participants, and official forum conclusion.", "descKo": "조직위원회의 마무리 총괄 인사 및 참가자 모두에 대한 감사 표명, 포럼 공식 폐회 선언.", "descJa": "運営委員会による総括と感謝の言葉、次期フォーラムへの展望と閉会宣言。", "speakerEn": "Organizing Committee", "speakerKo": "포럼 조직위원회", "speakerJa": "フォーラム運営委員会"}, {"id": "s22", "time": "18:10 – 18:25", "badgeClass": "badge-photo", "badgeEn": "Photo Session", "badgeKo": "사진 촬영", "badgeJa": "集合写真撮影", "titleEn": "Commemorative Group Photo Session", "titleKo": "전원 단체 기념사진 촬영", "titleJa": "全員集合写真撮影", "descEn": "Official group photograph capturing all participants, speakers, and organizers at the 17F main hall.", "descKo": "17층 메인홀에서 제3회 한·일 포럼 및 MCCI·Field Flow 10주년을 기념하는 전원 단체 사진 촬영.", "descJa": "17階メイン会場にて、登壇者・参加者全員による公式記念写真の撮影。", "speakerEn": "All Participants", "speakerKo": "참가자 전원", "speakerJa": "参加者全員"}, {"id": "s23", "time": "18:25", "badgeClass": "badge-general", "badgeEn": "Clearance", "badgeKo": "회장 철수", "badgeJa": "完全撤収", "titleEn": "Complete Venue Clearance", "titleKo": "행사장 정돈 및 완전 철수", "titleJa": "完全撤収", "descEn": "Venue clean-up and transition to the evening networking dinner location.", "descKo": "17층 콘퍼런스홀 정돈 및 저녁 네트워킹 만찬장(오오기야)으로 이동.", "descJa": "17階会場の片付け完了と懇親会会場への移動案内。", "speakerEn": "Organizing Staff", "speakerKo": "사무국 및 운영진", "speakerJa": "運営スタッフ"}, {"id": "s24", "time": "19:00 – 21:00", "badgeClass": "badge-reception", "badgeEn": "After Party", "badgeKo": "만찬", "badgeJa": "懇親会", "titleEn": "Official Networking Reception Dinner (After Party)", "titleKo": "공식 네트워킹 만찬 (간친회 / 애프터 파티)", "titleJa": "懇親会（炭火やきとり オオギヤ 横浜関内店）", "descEn": "Sumibi Yakitori OHGIYA Yokohama Kannai (3-min walk). Deepening friendship and celebrating the 10th milestone.", "descKo": "숯불 야키토리 오오기야 요코하마 간나이점 (캠퍼스 도보 3분). 한·일 코치진의 깊은 우정과 10주년 축하 만찬.", "descJa": "炭火やきとり オオギヤ 横浜関内店（徒歩3分）。親睦を深め、10周年を祝う熱気あふれる懇親会。", "speakerEn": "All Registered Guests", "speakerKo": "만찬 신청자 전원", "speakerJa": "懇親会参加者"}];
 
       let currentLang = 'en';
       let currentPhase = 'pre';
@@ -1376,6 +1472,26 @@
         const heroCta2 = document.getElementById('hero-cta-secondary');
         if (heroCta1 && phaseInfo) heroCta1.innerHTML = phaseInfo.heroCtaPrimary + ' ↓';
         if (heroCta2 && phaseInfo) heroCta2.innerHTML = phaseInfo.heroCtaSecondary + ' ↗';
+
+        // Re-render schedule table in selected language
+        const tbody = document.getElementById('program-table-body');
+        if (tbody && typeof SESSIONS !== 'undefined') {
+          tbody.innerHTML = SESSIONS.map(s => {
+            const badge = lang === 'ko' ? s.badgeKo : (lang === 'ja' ? s.badgeJa : s.badgeEn);
+            const title = lang === 'ko' ? s.titleKo : (lang === 'ja' ? s.titleJa : s.titleEn);
+            const desc = lang === 'ko' ? s.descKo : (lang === 'ja' ? s.descJa : s.descEn);
+            const speaker = lang === 'ko' ? s.speakerKo : (lang === 'ja' ? s.speakerJa : s.speakerEn);
+            return `<tr>
+              <td class="program-time-col">${s.time}</td>
+              <td><span class="program-badge ${s.badgeClass}">${badge}</span></td>
+              <td>
+                <div class="program-session-title">${title}</div>
+                <div class="program-session-desc">${desc}</div>
+              </td>
+              <td class="program-speaker-col">${speaker}</td>
+            </tr>`;
+          }).join('');
+        }
       }
 
       function setPhase(phase) {
@@ -1400,36 +1516,33 @@
         if (!item || !modalOverlay) return;
 
         const titles = {
-          aoyagi: "The Horizon of Contemporary Sports & Mental Science",
-          yeom: "When Leaders Change, Schools Change",
-          yoon: "When Physical Training Meets Mental Coaching",
-          kim: "When the Body Is Stable, the Mind Becomes Clearer",
-          park: "The Future of Mental Coaching",
-          takahashi: "Coaching the Invisible: Systemic Field Dynamics",
-          jp02: "Cultivating Inner Autonomy in Youth Athletics",
-          jp03: "Bridging East Asian Perspectives in Mental Coaching"
+          aoyagi: currentLang === 'ko' ? "기조강연: 『선수에 대한 퍼스널 코칭의 작용』 — 雲取り 카드 워크숍" : (currentLang === 'ja' ? "基調講演：『アスリートへのパーソナルコーチングの作用』 雲取りカードワークショップ" : ""The Impact of Personal Coaching on Athletes" — Kumotori Card Workshop"),
+          yeom: currentLang === 'ko' ? "리더가 변하면, 학교도 변한다" : (currentLang === 'ja' ? "リーダーが変われば、学校も変わる" : "When Leaders Change, Schools Change"),
+          kim: currentLang === 'ko' ? "몸이 안정되면, 마음도 더욱 명석해진다" : (currentLang === 'ja' ? "体が安定すれば、心もより明晰になる" : "When the Body Is Stable, the Mind Becomes Clearer"),
+          takahashi: currentLang === 'ko' ? "차이를 넘어, 하나의 팀으로 — 데프사커 일본대표팀에서 배우는 소통과 멘탈 서포트" : (currentLang === 'ja' ? "『違いを越えて、ひとつのチームへ』 デフサッカー日本代表から学ぶコミュニケーションとメンタルサポート" : "Transcending Differences to Become One Team — Lessons from Japan National Deaf Soccer Team"),
+          yoon: currentLang === 'ko' ? "피지컬 트레이닝과 멘탈코칭의 융합" : (currentLang === 'ja' ? "フィジカルトレーニングとメンタルコーチングの融合" : "When Physical Training Meets Mental Coaching"),
+          tsuge: currentLang === 'ko' ? "멘탈코칭의 향후에 대하여 (Field Flow의 비전)" : (currentLang === 'ja' ? "メンタルコーチングの今後について" : "The Future of Mental Coaching"),
+          park: currentLang === 'ko' ? "멘탈코칭의 향후에 대하여 (MCCI의 10년 사명과 미래)" : (currentLang === 'ja' ? "メンタルコーチングの今後について" : "The Future of Mental Coaching")
         };
 
         const names = {
-          aoyagi: currentLang === 'ko' ? "아오야기 교수" : (currentLang === 'ja' ? "青柳 教授" : "Prof. Aoyagi"),
+          aoyagi: currentLang === 'ko' ? "아오야기 교수" : (currentLang === 'ja' ? "青柳 敏久 教授" : "Dr. Aoyagi"),
           yeom: currentLang === 'ko' ? "염동철 교수" : (currentLang === 'ja' ? "ヨム・ドンチョル 教授" : "Dong Chul Yeom"),
-          yoon: currentLang === 'ko' ? "윤태련 대표" : (currentLang === 'ja' ? "ユン・テリョン 代表" : "Tae Ryeon Yoon"),
           kim: currentLang === 'ko' ? "김성민 대표" : (currentLang === 'ja' ? "キム・ソンミン 代表" : "Sung Min Kim"),
-          park: currentLang === 'ko' ? "박철수 대표" : (currentLang === 'ja' ? "パク・チョルス 代表" : "Chul Soo Park"),
-          takahashi: currentLang === 'ko' ? "타카하시 모토나리 코치" : (currentLang === 'ja' ? "高橋 元成 氏" : "Motonari Takahashi"),
-          jp02: currentLang === 'ko' ? "일본 발표자 02" : (currentLang === 'ja' ? "日本側 登壇者 02" : "Japan Speaker 02"),
-          jp03: currentLang === 'ko' ? "일본 발표자 03" : (currentLang === 'ja' ? "日本側 登壇者 03" : "Japan Speaker 03")
+          takahashi: currentLang === 'ko' ? "타카하시 모토나리 코치" : (currentLang === 'ja' ? "髙橋 基成 コーチ" : "Motonari Takahashi"),
+          yoon: currentLang === 'ko' ? "윤태련 대표" : (currentLang === 'ja' ? "ユン・テリョン 代表" : "Tae Ryeon Yoon"),
+          tsuge: currentLang === 'ko' ? "츠게 요이치로 대표 (陽さん)" : (currentLang === 'ja' ? "柘植 陽一郎 代表（陽さん）" : "Yoichiro Tsuge"),
+          park: currentLang === 'ko' ? "박철수 대표 (パクさん)" : (currentLang === 'ja' ? "朴 哲秀 代表（パクさん）" : "Chul Soo Park")
         };
 
         const orgs = {
           aoyagi: currentLang === "ko" ? "관동학원대학 스포츠심리학 교수" : (currentLang === "ja" ? "関東学院大学 スポーツ心理学教授" : "Kanto Gakuin University"),
           yeom: currentLang === "ko" ? "한국체육대학교 역도부 교수" : (currentLang === "ja" ? "韓国体育大学 重量挙げ部教授" : "Korea National Sport University"),
-          yoon: currentLang === "ko" ? "올댓컨디셔닝 대표" : (currentLang === "ja" ? "オールザットコンディショニング代表" : "All That Conditioning"),
           kim: currentLang === "ko" ? "바디밸런스 클리닉 & 코칭 대표" : (currentLang === "ja" ? "ボディバランス 代表" : "Body Balance Clinic & Coaching"),
-          park: currentLang === "ko" ? "MCCI (국제멘탈코칭센터) 한국대표" : (currentLang === "ja" ? "MCCI（国際メンタルコーチングセンター）韓国代表" : "MCCI (Mental Coaching Center Int'l) Korea Rep."),
-          takahashi: currentLang === "ko" ? "Field Flow Japan 총괄 코치" : (currentLang === "ja" ? "Field Flow Japan 代表 / エグゼクティブメンタルコーチ" : "Field Flow Japan"),
-          jp02: currentLang === "ko" ? "일본 멘탈트레이닝 협회" : (currentLang === "ja" ? "日本メンタルトレーニング協会" : "Japan Mental Training Association"),
-          jp03: currentLang === "ko" ? "Field Flow 얼라이언스" : (currentLang === "ja" ? "Field Flow アライアンス" : "Field Flow Alliance")
+          takahashi: currentLang === "ko" ? "WINGIFT 스포츠멘탈코치 · Field Flow" : (currentLang === "ja" ? "WINGIFT スポーツメンタルコーチ · Field Flow" : "WINGIFT · Field Flow Japan"),
+          yoon: currentLang === "ko" ? "올댓컨디셔닝 대표" : (currentLang === "ja" ? "オールザットコンディショニング代表" : "All That Conditioning"),
+          tsuge: currentLang === "ko" ? "Field Flow Japan 대표 / 총괄 멘탈코치" : (currentLang === "ja" ? "Field Flow Japan 代表 / エグゼクティブメンタルコーチ" : "Field Flow Japan President"),
+          park: currentLang === "ko" ? "MCCI (국제멘탈코칭센터) 한국대표" : (currentLang === "ja" ? "MCCI（国際メンタルコーチングセンター）韓国代表" : "MCCI (Mental Coaching Center Int'l) Korea Rep.")
         };
 
         document.getElementById('modal-speaker-name').textContent = names[speakerId] || "Speaker";
