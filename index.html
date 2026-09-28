@@ -1086,19 +1086,40 @@
             </div>
           </div>
 
-          <!-- Korea MCCI Secretariat Details -->
-          <div class="contact-detail-group" style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem;">
-            <div class="contact-detail-label" style="color: var(--accent-600);" data-i18n="contact.koreaOfficeLabel">Korea Secretariat (MCCI)</div>
-            <div style="font-weight: 700; color: var(--primary-900); font-size: 1.05rem; margin-bottom: 0.5rem;" data-i18n="contact.koreaOrgName">
-              Mental Coaching Center Int'l (국제멘탈코칭센터)
+          <!-- Secretariats Grid: Korea MCCI & Japan Field Flow -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+            <!-- Korea MCCI Secretariat Details -->
+            <div class="contact-detail-group" style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; margin-bottom: 0;">
+              <div class="contact-detail-label" style="color: var(--accent-600);" data-i18n="contact.koreaOfficeLabel">Korea Secretariat (MCCI)</div>
+              <div style="font-weight: 700; color: var(--primary-900); font-size: 1.05rem; margin-bottom: 0.5rem;" id="korea-org-name" data-i18n="contact.koreaOrgName">
+                Mental Coaching Center Int'l (국제멘탈코칭센터)
+              </div>
+              <div style="font-size: 0.875rem; color: var(--text-main); line-height: 1.7; margin-bottom: 0.6rem;">
+                <div>📍 <span id="korea-address" data-i18n="contact.koreaAddress">3F, J-Add Bldg., 1, Yangjaecheon-ro 15-gil, Seocho-gu, Seoul, Korea</span></div>
+                <div>👤 <span id="korea-person" data-i18n="contact.koreaContactPerson">Coach Vicky Cheon (Vice President, MCCI)</span></div>
+              </div>
+              <a href="tel:01044573850" id="korea-phone-link" class="btn btn-secondary" style="padding: 0.4rem 0.9rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent-600); border-color: #cbd5e1; background: #ffffff;">
+                <span>📞</span> <span id="korea-phone" data-i18n="contact.koreaPhone">010-4457-3850</span>
+              </a>
             </div>
-            <div style="font-size: 0.875rem; color: var(--text-main); line-height: 1.7; margin-bottom: 0.6rem;">
-              <div>📍 <span data-i18n="contact.koreaAddress">3F, J-Add Bldg., 1, Yangjaecheon-ro 15-gil, Seocho-gu, Seoul, Korea</span></div>
-              <div>👤 <span data-i18n="contact.koreaContactPerson">Coach Vicky Cheon (Vice President, MCCI)</span></div>
+
+            <!-- Japan Field Flow Secretariat Details -->
+            <div class="contact-detail-group" style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; margin-bottom: 0;">
+              <div class="contact-detail-label" style="color: #2563eb;" data-i18n="contact.japanOfficeLabel">Japan Secretariat (Field Flow)</div>
+              <div style="font-weight: 700; color: var(--primary-900); font-size: 1.05rem; margin-bottom: 0.5rem;" id="japan-org-name">
+                Field Flow Japan
+              </div>
+              <div style="font-size: 0.875rem; color: var(--text-main); line-height: 1.7; margin-bottom: 0.6rem;">
+                <div id="jp-addr-row" style="display: none;">📍 <span id="japan-address"></span></div>
+                <div id="jp-person-row" style="display: none;">👤 <span id="japan-person"></span></div>
+                <div id="jp-email-row" style="display: none;">✉️ <a href="#" id="japan-email-link" style="color: #2563eb; text-decoration: underline;"><span id="japan-email"></span></a></div>
+              </div>
+              <div id="japan-phone-wrap">
+                <a href="#" id="japan-phone-link" class="btn btn-secondary" style="padding: 0.4rem 0.9rem; font-size: 0.85rem; display: none; align-items: center; gap: 0.4rem; color: #2563eb; border-color: #cbd5e1; background: #ffffff;">
+                  <span>📞</span> <span id="japan-phone"></span>
+                </a>
+              </div>
             </div>
-            <a href="tel:01044573850" class="btn btn-secondary" style="padding: 0.4rem 0.9rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent-600); border-color: #cbd5e1; background: #ffffff;">
-              <span>📞</span> <span data-i18n="contact.koreaPhone">010-4457-3850</span>
-            </a>
           </div>
 
           <div class="contact-detail-group">
@@ -1251,6 +1272,11 @@
               koreaAddress: "3F, J-Add Bldg., 1, Yangjaecheon-ro 15-gil, Seocho-gu, Seoul, Korea",
               koreaContactPerson: "Coach Vicky Cheon (Vice President, MCCI)",
               koreaPhone: "010-4457-3850",
+              japanOfficeLabel: "Japan Secretariat (Field Flow)",
+              japanOrgName: "Field Flow Japan",
+              japanAddress: "",
+              japanContactPerson: "",
+              japanPhone: "",
               forumSummaryLabel: "Forum Schedule Summary",
               formName: "Your Full Name", formEmail: "Email Address", formMessage: "Message / Inquiry", formSubmit: "Send Message",
               privacyNotice: "Your personal data will only be utilized for answering your forum inquiry in accordance with our privacy practices."
@@ -1323,6 +1349,11 @@
               koreaAddress: "서울시 서초구 양재천로15길 1, 제이애드빌딩 3층",
               koreaContactPerson: "천비키 코치 (MCCI 부대표)",
               koreaPhone: "010-4457-3850",
+              japanOfficeLabel: "일본 사무국 (Field Flow)",
+              japanOrgName: "Field Flow Japan",
+              japanAddress: "",
+              japanContactPerson: "",
+              japanPhone: "",
               forumSummaryLabel: "포럼 행사 개요",
               formName: "이름", formEmail: "이메일 주소", formMessage: "문의 내용", formSubmit: "문의 보내기",
               privacyNotice: "남겨주신 개인정보는 포럼 문의 답변 처리 목적으로만 안전하게 활용됩니다."
@@ -1395,6 +1426,11 @@
               koreaAddress: "ソウル特別市瑞草区良才川路15キル1、J-Addビル3階",
               koreaContactPerson: "チョン・ビキ コーチ（MCCI副代表）",
               koreaPhone: "+82-10-4457-3850",
+              japanOfficeLabel: "日本事務局（Field Flow）",
+              japanOrgName: "Field Flow Japan",
+              japanAddress: "",
+              japanContactPerson: "",
+              japanPhone: "",
               forumSummaryLabel: "フォーラム開催概要",
               formName: "お名前", formEmail: "メールアドレス", formMessage: "お問い合わせ内容", formSubmit: "送信する",
               privacyNotice: "ご入力いただいた個人情報は、お問い合わせへの回答目的のみに使用いたします。"
@@ -1439,6 +1475,23 @@
             abstractKo: "AI와 첨단 알고리즘이 범람하는 시대일수록 멘탈코칭은 단순한 기능 경쟁을 뛰어넘어야 합니다. 인간에 대한 깊은 공감과 존중을 바탕으로, 내담자가 자신의 진정한 가치관에 입각해 주체적으로 선택하고 행동하도록 이끄는 멘탈코칭의 미래 사명을 제언합니다.",
             abstractJa: "AIやテクノロジーが進化する現代だからこそ、メンタルコーチングは技術競争を超えた本質に立ち返る必要があります。人間への深い理解に基づき、クライアントが自らのコアバリューに沿って自律的に選択・行動することを支援する真の役割を提起します。"
           }
+        }
+      };
+
+      let CONTACTS_DATA = {
+        korea: {
+          orgName: "Mental Coaching Center Int'l (국제멘탈코칭센터)",
+          address: "서울시 서초구 양재천로15길 1, 제이애드빌딩 3층",
+          contactPerson: "천비키 코치 (MCCI 부대표)",
+          phone: "010-4457-3850",
+          email: "secretariat@mentalforum2026.org"
+        },
+        japan: {
+          orgName: "Field Flow Japan",
+          address: "",
+          contactPerson: "",
+          phone: "",
+          email: ""
         }
       };
 
@@ -1856,6 +1909,74 @@
         applySpeakerFilter(currentFilter);
       }
 
+      function renderContacts(lang) {
+        if (typeof CONTACTS_DATA === 'undefined' || !CONTACTS_DATA) return;
+        const k = CONTACTS_DATA.korea || {};
+        const j = CONTACTS_DATA.japan || {};
+
+        // Korea
+        const elKrOrg = document.getElementById('korea-org-name');
+        const elKrAddr = document.getElementById('korea-address');
+        const elKrPerson = document.getElementById('korea-person');
+        const elKrPhone = document.getElementById('korea-phone');
+        const elKrPhoneLink = document.getElementById('korea-phone-link');
+
+        const krOrgVal = typeof k.orgName === 'object' ? (k.orgName[lang] || k.orgName.ko || '') : (k.orgName || '');
+        const krAddrVal = typeof k.address === 'object' ? (k.address[lang] || k.address.ko || '') : (k.address || '');
+        const krPersonVal = typeof k.contactPerson === 'object' ? (k.contactPerson[lang] || k.contactPerson.ko || '') : (k.contactPerson || '');
+        if (elKrOrg && krOrgVal) elKrOrg.textContent = krOrgVal;
+        if (elKrAddr && krAddrVal) elKrAddr.textContent = krAddrVal;
+        if (elKrPerson && krPersonVal) elKrPerson.textContent = krPersonVal;
+        if (elKrPhone && k.phone) {
+          elKrPhone.textContent = k.phone;
+          if (elKrPhoneLink) elKrPhoneLink.href = 'tel:' + k.phone.replace(/[^0-9+]/g, '');
+        }
+
+        // Japan
+        const elJpOrg = document.getElementById('japan-org-name');
+        const elJpAddr = document.getElementById('japan-address');
+        const elJpPerson = document.getElementById('japan-person');
+        const elJpPhone = document.getElementById('japan-phone');
+        const elJpPhoneLink = document.getElementById('japan-phone-link');
+        const elJpEmail = document.getElementById('japan-email');
+        const elJpEmailLink = document.getElementById('japan-email-link');
+        const rowJpAddr = document.getElementById('jp-addr-row');
+        const rowJpPerson = document.getElementById('jp-person-row');
+        const rowJpEmail = document.getElementById('jp-email-row');
+
+        const jpOrgVal = typeof j.orgName === 'object' ? (j.orgName[lang] || j.orgName.ja || 'Field Flow Japan') : (j.orgName || 'Field Flow Japan');
+        if (elJpOrg) elJpOrg.textContent = jpOrgVal;
+
+        const jpAddrVal = typeof j.address === 'object' ? (j.address[lang] || j.address.ja || '') : (j.address || '');
+        if (elJpAddr) elJpAddr.textContent = jpAddrVal;
+        if (rowJpAddr) rowJpAddr.style.display = jpAddrVal ? 'block' : 'none';
+
+        const jpPersonVal = typeof j.contactPerson === 'object' ? (j.contactPerson[lang] || j.contactPerson.ja || '') : (j.contactPerson || '');
+        if (elJpPerson) elJpPerson.textContent = jpPersonVal;
+        if (rowJpPerson) rowJpPerson.style.display = jpPersonVal ? 'block' : 'none';
+
+        if (elJpEmail && elJpEmailLink) {
+          const jpEmailVal = j.email || '';
+          if (jpEmailVal) {
+            elJpEmail.textContent = jpEmailVal;
+            elJpEmailLink.href = 'mailto:' + jpEmailVal;
+            if (rowJpEmail) rowJpEmail.style.display = 'block';
+          } else {
+            if (rowJpEmail) rowJpEmail.style.display = 'none';
+          }
+        }
+
+        if (elJpPhone && elJpPhoneLink) {
+          if (j.phone) {
+            elJpPhone.textContent = j.phone;
+            elJpPhoneLink.href = 'tel:' + j.phone.replace(/[^0-9+]/g, '');
+            elJpPhoneLink.style.display = 'inline-flex';
+          } else {
+            elJpPhoneLink.style.display = 'none';
+          }
+        }
+      }
+
       function setLanguage(lang) {
         currentLang = lang;
         langButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
@@ -1867,10 +1988,11 @@
           if (val !== undefined) el.textContent = val;
         });
 
-        // Re-render speakers grid in selected language
+        // Re-render components in selected language
         renderSpeakers(lang);
         renderMaterials(lang);
         renderGuides(lang);
+        renderContacts(lang);
 
         // Update speaker cards translations if needed
         const phaseInfo = dict.phases[currentPhase];
@@ -2050,6 +2172,15 @@
             if (Array.isArray(remote.guides) && remote.guides.length > 0) {
               GUIDES_DATA = remote.guides;
               renderGuides(currentLang);
+            }
+            if (remote.contacts) {
+              if (remote.contacts.korea) {
+                CONTACTS_DATA.korea = remote.contacts.korea;
+              }
+              if (remote.contacts.japan) {
+                CONTACTS_DATA.japan = remote.contacts.japan;
+              }
+              renderContacts(currentLang);
             }
           }
         } catch (e) {

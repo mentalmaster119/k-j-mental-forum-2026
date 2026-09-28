@@ -707,45 +707,65 @@
         <div class="section-header">
           <div>
             <h2 class="section-title">🏢 사무국 연락처 및 시스템 설정</h2>
-            <p class="section-desc">MCCI 한국 사무국, Field Flow 일본 사무국, 공식 계좌 안내 및 GitHub 연동 키를 관리합니다.</p>
+            <p class="section-desc">MCCI 한국 사무국, Field Flow 일본 사무국 및 GitHub 연동 키를 관리합니다.</p>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-header">
-            <span class="card-header-title">🇰🇷 한국 사무국 (MCCI) 연락처 정보</span>
-          </div>
-          <div class="card-body">
-            <div class="form-grid-2">
+        <div class="form-grid-2">
+          <!-- Korea MCCI -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-header-title">🇰🇷 한국 사무국 (MCCI) 연락처 정보</span>
+            </div>
+            <div class="card-body">
               <div class="form-group">
                 <label class="form-label">기관명</label>
-                <input type="text" id="contact-kr-org" class="form-control">
+                <input type="text" id="contact-kr-org" class="form-control" placeholder="국제멘탈코칭센터 (MCCI)" oninput="syncContactsBack()">
               </div>
               <div class="form-group">
                 <label class="form-label">담당자</label>
-                <input type="text" id="contact-kr-person" class="form-control">
+                <input type="text" id="contact-kr-person" class="form-control" placeholder="천비키 코치 (MCCI 부대표)" oninput="syncContactsBack()">
               </div>
               <div class="form-group">
                 <label class="form-label">전화번호</label>
-                <input type="text" id="contact-kr-phone" class="form-control">
+                <input type="text" id="contact-kr-phone" class="form-control" placeholder="010-4457-3850" oninput="syncContactsBack()">
               </div>
               <div class="form-group">
                 <label class="form-label">공식 이메일</label>
-                <input type="text" id="contact-kr-email" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">주소</label>
-              <input type="text" id="contact-kr-address" class="form-control">
-            </div>
-            <div class="form-grid-2" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border);">
-              <div class="form-group">
-                <label class="form-label">참가비 입금 계좌</label>
-                <input type="text" id="contact-bank-info" class="form-control">
+                <input type="text" id="contact-kr-email" class="form-control" placeholder="secretariat@mentalforum2026.org" oninput="syncContactsBack()">
               </div>
               <div class="form-group">
-                <label class="form-label">참가비 금액 안내 (한화)</label>
-                <input type="text" id="contact-fee-krw" class="form-control">
+                <label class="form-label">주소</label>
+                <input type="text" id="contact-kr-address" class="form-control" placeholder="서울시 서초구 양재천로15길 1, 제이애드빌딩 3층" oninput="syncContactsBack()">
+              </div>
+            </div>
+          </div>
+
+          <!-- Japan Field Flow -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-header-title">🇯🇵 일본 사무국 (Field Flow) 연락처 정보</span>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label">기관명</label>
+                <input type="text" id="contact-jp-org" class="form-control" placeholder="Field Flow Japan" oninput="syncContactsBack()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">담당자 (없으면 공란)</label>
+                <input type="text" id="contact-jp-person" class="form-control" placeholder="정보가 없는 항목은 비워두세요" oninput="syncContactsBack()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">전화번호 (없으면 공란)</label>
+                <input type="text" id="contact-jp-phone" class="form-control" placeholder="정보가 없는 항목은 비워두세요" oninput="syncContactsBack()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">공식 이메일 (없으면 공란)</label>
+                <input type="text" id="contact-jp-email" class="form-control" placeholder="정보가 없는 항목은 비워두세요" oninput="syncContactsBack()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">주소 (없으면 공란)</label>
+                <input type="text" id="contact-jp-address" class="form-control" placeholder="정보가 없는 항목은 비워두세요" oninput="syncContactsBack()">
               </div>
             </div>
           </div>
@@ -1243,23 +1263,36 @@
     function renderContactsEditor() {
       if (!FORUM_DATA.contacts) return;
       const c = FORUM_DATA.contacts;
+      // Korea Secretariat
       document.getElementById('contact-kr-org').value = c.korea?.orgName || '';
       document.getElementById('contact-kr-person').value = c.korea?.contactPerson || '';
       document.getElementById('contact-kr-phone').value = c.korea?.phone || '';
       document.getElementById('contact-kr-email').value = c.korea?.email || '';
       document.getElementById('contact-kr-address').value = c.korea?.address || '';
-      document.getElementById('contact-bank-info').value = c.bank?.accountNumber ? `${c.bank.bankName} ${c.bank.accountNumber} (${c.bank.holder})` : '';
-      document.getElementById('contact-fee-krw').value = c.bank?.feeKrw || '';
+      // Japan Secretariat
+      document.getElementById('contact-jp-org').value = c.japan?.orgName || '';
+      document.getElementById('contact-jp-person').value = c.japan?.contactPerson || '';
+      document.getElementById('contact-jp-phone').value = c.japan?.phone || '';
+      document.getElementById('contact-jp-email').value = c.japan?.email || '';
+      document.getElementById('contact-jp-address').value = c.japan?.address || '';
     }
 
     function syncContactsBack() {
-      if (!FORUM_DATA.contacts) FORUM_DATA.contacts = { korea: {}, bank: {} };
-      FORUM_DATA.contacts.korea.orgName = document.getElementById('contact-kr-org').value;
-      FORUM_DATA.contacts.korea.contactPerson = document.getElementById('contact-kr-person').value;
-      FORUM_DATA.contacts.korea.phone = document.getElementById('contact-kr-phone').value;
-      FORUM_DATA.contacts.korea.email = document.getElementById('contact-kr-email').value;
-      FORUM_DATA.contacts.korea.address = document.getElementById('contact-kr-address').value;
-      FORUM_DATA.contacts.bank.feeKrw = document.getElementById('contact-fee-krw').value;
+      if (!FORUM_DATA.contacts) FORUM_DATA.contacts = { korea: {}, japan: {} };
+      FORUM_DATA.contacts.korea = {
+        orgName: document.getElementById('contact-kr-org').value,
+        contactPerson: document.getElementById('contact-kr-person').value,
+        phone: document.getElementById('contact-kr-phone').value,
+        email: document.getElementById('contact-kr-email').value,
+        address: document.getElementById('contact-kr-address').value
+      };
+      FORUM_DATA.contacts.japan = {
+        orgName: document.getElementById('contact-jp-org').value,
+        contactPerson: document.getElementById('contact-jp-person').value,
+        phone: document.getElementById('contact-jp-phone').value,
+        email: document.getElementById('contact-jp-email').value,
+        address: document.getElementById('contact-jp-address').value
+      };
     }
 
     // 8. Deployment Flow (GitHub API Direct Commits)
@@ -1442,7 +1475,7 @@
         sessions: [],
         materials: [],
         guides: [],
-        contacts: { korea: {}, bank: {} }
+        contacts: { korea: {}, japan: {} }
       };
     }
   </script>

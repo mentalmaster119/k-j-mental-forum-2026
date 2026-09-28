@@ -930,16 +930,10 @@
     },
     "japan": {
       "orgName": "Field Flow Japan",
-      "contactPerson": "타카하시 모토나리 (Motonari Takahashi)",
-      "address": "Tokyo, Japan",
-      "email": "secretariat@mentalforum2026.org"
-    },
-    "bank": {
-      "bankName": "국민은행 (KB Bank)",
-      "accountNumber": "010-4457-3850",
-      "holder": "천비키 (MCCI)",
-      "feeKrw": "500,000원 (만찬 및 공식 교재 일체 포함)",
-      "feeJpy": "50,000円"
+      "contactPerson": "",
+      "phone": "",
+      "email": "",
+      "address": ""
     }
   }
 }
