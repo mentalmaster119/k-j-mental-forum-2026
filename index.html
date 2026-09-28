@@ -870,38 +870,38 @@
       <div class="materials-grid" id="materials-card-grid">
         <div class="material-card">
           <div class="material-card-icon">📂</div>
-          <span class="material-card-badge">PDF Document</span>
-          <h3 class="material-card-title">Forum Program Guide</h3>
-          <p class="material-card-desc">Official timetable, floor layout & speaker bio summary.</p>
-          <a href="https://drive.google.com/drive/folders/03rd_Japan_Korea_Mental_Coaching_Forum_Demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
-            Download Program ↗
+          <span class="material-card-badge">PDF 문서</span>
+          <h3 class="material-card-title">공식 프로그램 가이드</h3>
+          <p class="material-card-desc">전체 24개 세션 타임테이블, 행사장 층별 안내도, 7인 연사진 프로필 요약본이 수록된 공식 안내 브로슈어입니다.</p>
+          <a href="https://drive.google.com/file/d/2026_Forum_Program_Final_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
+            프로그램 다운로드 (PDF) ↗
           </a>
         </div>
         <div class="material-card">
           <div class="material-card-icon">📂</div>
-          <span class="material-card-badge">Folder · 4 Speakers</span>
-          <h3 class="material-card-title">Korea Session Materials</h3>
-          <p class="material-card-desc">Slide decks & handouts from the 4 Korean presenters (Yeom, Yoon, Kim, Park).</p>
-          <a href="https://drive.google.com/drive/folders/03rd_Japan_Korea_Mental_Coaching_Forum_Demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
-            View Korea Slides ↗
+          <span class="material-card-badge">공유 폴더 · 발표자 4인</span>
+          <h3 class="material-card-title">한국 세션 발표자료</h3>
+          <p class="material-card-desc">염동철 교수, 김성민 대표, 윤태련 대표, 박철수 대표의 발표 슬라이드 및 세션 보충 자료 모음.</p>
+          <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
+            한국 자료 열람 ↗
           </a>
         </div>
         <div class="material-card">
           <div class="material-card-icon">📂</div>
-          <span class="material-card-badge">Folder · 3 Speakers</span>
-          <h3 class="material-card-title">Japan Session Materials</h3>
-          <p class="material-card-desc">Field cases & framework slides from Japanese presenters (Takahashi, etc.).</p>
-          <a href="https://drive.google.com/drive/folders/03rd_Japan_Korea_Mental_Coaching_Forum_Demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
-            View Japan Slides ↗
+          <span class="material-card-badge">공유 폴더 · 발표자 3인</span>
+          <h3 class="material-card-title">일본 세션 발표자료</h3>
+          <p class="material-card-desc">아오야기 교수(구모토리 카드), 타카하시 모토나리 코치, 츠게 요이치로 대표의 발표 슬라이드 및 사례 자료 모음.</p>
+          <a href="https://drive.google.com/drive/folders/03_Japan_Speakers_Demo?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
+            일본 자료 열람 ↗
           </a>
         </div>
         <div class="material-card">
           <div class="material-card-icon">📂</div>
-          <span class="material-card-badge">Comprehensive Bio</span>
-          <h3 class="material-card-title">Speaker Profiles & Abstracts</h3>
-          <p class="material-card-desc">In-depth profiles, career credentials & session abstracts for all 8 speakers.</p>
-          <a href="https://drive.google.com/drive/folders/03rd_Japan_Korea_Mental_Coaching_Forum_Demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
-            View Profiles (PDF) ↗
+          <span class="material-card-badge">통합 프로필 PDF</span>
+          <h3 class="material-card-title">발표자 상세 프로필북</h3>
+          <p class="material-card-desc">기조연설자를 포함한 7인 연사의 학문적 배경, 코칭 이력, 발표 초록이 국·영·일문으로 정리된 공식 프로필북입니다.</p>
+          <a href="https://drive.google.com/file/d/Speaker_Profiles_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
+            프로필북 열람 (PDF) ↗
           </a>
         </div>
       </div>
@@ -1602,6 +1602,82 @@
         });
       }
 
+      
+      const MATERIALS_DATA = [
+        {
+          id: "program",
+          icon: "📂",
+          badge: { ko: "PDF 문서", ja: "PDF文書", en: "PDF Document" },
+          title: { ko: "공식 프로그램 가이드", ja: "公式プログラムガイド", en: "Forum Program Guide" },
+          desc: {
+            ko: "전체 24개 세션 타임테이블, 행사장 층별 안내도, 7인 연사진 프로필 요약본이 수록된 공식 안내 브로슈어입니다.",
+            ja: "全24セッションのタイムテーブル、会場フロアマップ、登壇者プロフィールの要約を収録した公式ガイドです。",
+            en: "Official 24-session timetable, 17F floor layout, and speaker bio summary."
+          },
+          btnText: { ko: "프로그램 다운로드 (PDF) ↗", ja: "プログラム（PDF）をダウンロード ↗", en: "Download Program ↗" },
+          link: "https://drive.google.com/file/d/2026_Forum_Program_Final_Demo/view?usp=sharing"
+        },
+        {
+          id: "korea",
+          icon: "📂",
+          badge: { ko: "공유 폴더 · 발표자 4인", ja: "共有フォルダ · 登壇者4名", en: "Folder · 4 Speakers" },
+          title: { ko: "한국 세션 발표자료", ja: "韓国セッション 発表資料", en: "Korea Session Materials" },
+          desc: {
+            ko: "염동철 교수, 김성민 대표, 윤태련 대표, 박철수 대표의 발표 슬라이드 및 세션 보충 자료 모음.",
+            ja: "ヨム・ドンチョル教授、キム・ソンミン代表、ユン・テリョン代表、朴哲秀代表の発表スライド集。",
+            en: "Slide decks & handouts from the 4 Korean presenters (Yeom, Kim, Yoon, Park)."
+          },
+          btnText: { ko: "한국 자료 열람 ↗", ja: "韓国セッション資料を見る ↗", en: "View Korea Slides ↗" },
+          link: "https://drive.google.com/drive/folders/02_Korea_Speakers_Demo?usp=sharing"
+        },
+        {
+          id: "japan",
+          icon: "📂",
+          badge: { ko: "공유 폴더 · 발표자 3인", ja: "共有フォルダ · 登壇者3名", en: "Folder · 3 Speakers" },
+          title: { ko: "일본 세션 발표자료", ja: "日本セッション 発表資料", en: "Japan Session Materials" },
+          desc: {
+            ko: "아오야기 교수(구모토리 카드), 타카하시 모토나리 코치, 츠게 요이치로 대표의 발표 슬라이드 및 사례 자료 모음.",
+            ja: "青柳教授（雲取りカード）、髙橋基成コーチ、柘植陽一郎代表の実践事例発表スライド集。",
+            en: "Field cases & framework slides from Japanese presenters (Dr. Aoyagi, Takahashi, Tsuge)."
+          },
+          btnText: { ko: "일본 자료 열람 ↗", ja: "日本セッション資料を見る ↗", en: "View Japan Slides ↗" },
+          link: "https://drive.google.com/drive/folders/03_Japan_Speakers_Demo?usp=sharing"
+        },
+        {
+          id: "profiles",
+          icon: "📂",
+          badge: { ko: "통합 프로필 PDF", ja: "統合プロフィールPDF", en: "Comprehensive Bio" },
+          title: { ko: "발표자 상세 프로필북", ja: "登壇者プロフィールブック", en: "Speaker Profiles & Abstracts" },
+          desc: {
+            ko: "기조연설자를 포함한 7인 연사의 학문적 배경, 코칭 이력, 발표 초록이 국·영·일문으로 정리된 공식 프로필북입니다.",
+            ja: "基調講演を含む7名の登壇者の経歴、コーチング実績、講演要旨を日・韓・英3言語で収録した公式冊子です。",
+            en: "In-depth profiles, career credentials & session abstracts for all 7 distinguished speakers."
+          },
+          btnText: { ko: "프로필북 열람 (PDF) ↗", ja: "プロフィール（PDF）を見る ↗", en: "View Profiles (PDF) ↗" },
+          link: "https://drive.google.com/file/d/Speaker_Profiles_Demo/view?usp=sharing"
+        }
+      ];
+
+      function renderMaterials(lang) {
+        const grid = document.getElementById('materials-card-grid');
+        if (!grid || typeof MATERIALS_DATA === 'undefined') return;
+        grid.innerHTML = MATERIALS_DATA.map(m => {
+          const badge = m.badge[lang] || m.badge.en;
+          const title = m.title[lang] || m.title.en;
+          const desc = m.desc[lang] || m.desc.en;
+          const btnText = m.btnText[lang] || m.btnText.en;
+          return `<div class="material-card">
+            <div class="material-card-icon">${m.icon}</div>
+            <span class="material-card-badge">${badge}</span>
+            <h3 class="material-card-title">${title}</h3>
+            <p class="material-card-desc">${desc}</p>
+            <a href="${m.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
+              ${btnText}
+            </a>
+          </div>`;
+        }).join('');
+      }
+
       function renderSpeakers(lang) {
         const grid = document.getElementById('speakers-grid');
         if (!grid || typeof SPEAKERS_DATA === 'undefined') return;
@@ -1656,6 +1732,7 @@
 
         // Re-render speakers grid in selected language
         renderSpeakers(lang);
+        renderMaterials(lang);
 
         // Update speaker cards translations if needed
         const phaseInfo = dict.phases[currentPhase];
