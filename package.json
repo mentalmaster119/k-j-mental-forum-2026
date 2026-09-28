@@ -1,0 +1,17 @@
+{
+  "name": "japan-korea-mental-forum-2026",
+  "version": "1.0.0",
+  "description": "Official Landing Page for The 3rd Japan-Korea International Mental Coaching Forum 2026",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "mental-coaching",
+    "mcci",
+    "field-flow",
+    "japan-korea-forum"
+  ],
+  "author": "MCCI & Organizing Committee",
+  "license": "UNLICENSED"
+}

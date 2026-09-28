@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 3rd Japan–Korea International Mental Coaching Forum 2026 | Evolution Together</title>
+  <meta name="description" content="Official landing page for the 3rd Japan-Korea International Mental Coaching Forum. October 3, 2026 at Kanto Gakuin University Yokohama Kannai Campus.">
+
+  <style>
+    :root {
+      --primary-950: #0a0f1d;
+      --primary-900: #0f172a;
+      --primary-800: #1e293b;
+      --primary-700: #334155;
+      --primary-600: #475569;
+      --accent-600: #2563eb;
+      --accent-500: #3b82f6;
+      --accent-400: #60a5fa;
+      --accent-50:  #eff6ff;
+      --gold-600: #d97706;
+      --gold-500: #f59e0b;
+      --gold-100: #fef3c7;
+      --teal-600: #0d9488;
+      --teal-50:  #f0fdfa;
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --border-light: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-stack); color: var(--text-main); background-color: var(--bg-main); line-height: 1.6; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Phase Bar */
+    .phase-bar { background-color: var(--primary-950); color: #94a3b8; font-size: 0.8125rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding: 0.6rem 0; position: relative; z-index: 105; }
+    .phase-bar-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+    .phase-indicator { display: flex; align-items: center; gap: 0.5rem; color: #f1f5f9; font-weight: 500; }
+    .phase-dot { width: 8px; height: 8px; border-radius: 50%; background-color: #10b981; box-shadow: 0 0 8px #10b981; }
+    .phase-controls { display: flex; align-items: center; gap: 0.5rem; }
+    .phase-btn-group { display: inline-flex; background: rgba(255, 255, 255, 0.08); padding: 2px; border-radius: 6px; }
+    .phase-btn { padding: 0.25rem 0.65rem; font-size: 0.75rem; font-weight: 600; border-radius: 4px; color: #94a3b8; transition: all var(--transition); }
+    .phase-btn.active { background: var(--accent-600); color: #ffffff; }
+
+    /* Header */
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff; }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .site-logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-badge { background: linear-gradient(135deg, var(--accent-600), #8b5cf6); color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.3rem 0.6rem; border-radius: 6px; letter-spacing: 0.05em; }
+    .logo-title { font-size: 0.95rem; font-weight: 700; color: #ffffff; display: block; }
+    .logo-subtitle { font-size: 0.725rem; color: #94a3b8; display: block; }
+    .nav-menu { display: flex; align-items: center; list-style: none; gap: 1.5rem; }
+    .nav-link { font-size: 0.85rem; font-weight: 600; color: #cbd5e1; letter-spacing: 0.04em; transition: color var(--transition); padding: 0.5rem 0; }
+    .nav-link:hover { color: #ffffff; }
+
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .lang-selector { display: inline-flex; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 3px; }
+    .lang-btn { padding: 0.3rem 0.65rem; font-size: 0.75rem; font-weight: 700; border-radius: 6px; color: #cbd5e1; transition: all var(--transition); }
+    .lang-btn.active { background: var(--accent-600); color: #ffffff; }
+    .mobile-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
+    .mobile-toggle span { display: block; width: 22px; height: 2px; background-color: #ffffff; }
+
+    /* Hero */
+    .hero-section { position: relative; background: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.28) 0%, transparent 50%), radial-gradient(circle at 10% 80%, rgba(139, 92, 246, 0.2) 0%, transparent 45%), linear-gradient(180deg, var(--primary-900) 0%, var(--primary-950) 100%); color: #ffffff; padding: 5rem 0 4.5rem; }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 3.5rem; align-items: center; }
+    .hero-badge-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(59, 130, 246, 0.18); border: 1px solid rgba(96, 165, 250, 0.35); color: var(--accent-400); font-size: 0.8125rem; font-weight: 700; padding: 0.4rem 0.9rem; border-radius: 9999px; margin-bottom: 1.5rem; }
+    .hero-title { font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 0.85rem; background: linear-gradient(135deg, #ffffff 40%, #bfdbfe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-subtitle { font-size: clamp(1.2rem, 2vw, 1.55rem); font-weight: 700; color: var(--gold-500); letter-spacing: -0.01em; margin-bottom: 1.5rem; }
+    .hero-desc { font-size: 1.05rem; line-height: 1.7; color: #94a3b8; max-width: 600px; margin-bottom: 2rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.85rem 1.6rem; font-size: 0.95rem; font-weight: 700; border-radius: 10px; transition: all var(--transition); text-decoration: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-600), #1d4ed8); color: #ffffff; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4); }
+    .btn-primary:hover { background: linear-gradient(135deg, #1d4ed8, #1e40af); transform: translateY(-2px); }
+    .btn-secondary { background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
+
+    .hero-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px; padding: 2rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+    .hero-card-header { border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 1rem; margin-bottom: 1.25rem; }
+    .hero-card-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #38bdf8; font-weight: 700; margin-bottom: 0.25rem; }
+    .hero-card-date { font-size: 1.35rem; font-weight: 800; color: #ffffff; }
+    .hero-card-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .hero-card-item { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .hero-card-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(59, 130, 246, 0.2); color: var(--accent-400); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; }
+    .hero-card-item-title { font-size: 0.8rem; color: #94a3b8; margin-bottom: 0.15rem; }
+    .hero-card-item-val { font-size: 0.95rem; font-weight: 700; color: #f1f5f9; }
+    .hero-card-item-sub { font-size: 0.8125rem; color: #cbd5e1; }
+
+    .hero-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .stat-number { font-size: 2.25rem; font-weight: 900; color: #ffffff; line-height: 1; margin-bottom: 0.4rem; }
+    .stat-label { font-size: 0.8125rem; color: #94a3b8; font-weight: 600; }
+
+    /* Sections */
+    .section { padding: 5.5rem 0; }
+    .section-alt { background-color: #ffffff; }
+    .section-header { text-align: center; max-width: 780px; margin: 0 auto 3.5rem; }
+    .section-tag { display: inline-block; font-size: 0.8125rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-600); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(2rem, 3.2vw, 2.75rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--primary-900); margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* About */
+    .about-box { background: linear-gradient(135deg, #ffffff, #f8fafc); border: 1px solid var(--border-light); border-radius: 24px; padding: 3rem; box-shadow: var(--shadow-lg); margin-bottom: 2.5rem; }
+    .about-text-lead { font-size: 1.125rem; line-height: 1.8; color: var(--primary-800); margin-bottom: 1.25rem; }
+    .about-text-sub { font-size: 1rem; line-height: 1.7; color: var(--text-muted); }
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+    .pillar-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 18px; padding: 2.25rem 1.75rem; transition: all var(--transition); }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); border-color: #cbd5e1; }
+    .pillar-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .pillar-title { font-size: 1.2rem; font-weight: 700; color: var(--primary-900); margin-bottom: 0.75rem; }
+    .pillar-desc { font-size: 0.925rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Program Table */
+    .program-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; padding: 1rem 1.5rem; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-light); }
+    .program-updated { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
+    .program-table-wrap { background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); overflow: hidden; box-shadow: var(--shadow-md); }
+    .program-table { width: 100%; border-collapse: collapse; text-align: left; }
+    .program-table th { background: #f1f5f9; font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary-700); padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); }
+    .program-table td { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+    .program-table tr:last-child td { border-bottom: none; }
+    .program-table tr:hover { background-color: #f8fafc; }
+    .program-time-col { width: 140px; font-weight: 700; font-size: 0.95rem; color: var(--primary-900); white-space: nowrap; }
+    .program-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 6px; white-space: nowrap; }
+    .badge-general { background: #f1f5f9; color: #475569; }
+    .badge-keynote { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .badge-korea   { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+    .badge-japan   { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
+    .badge-workshop{ background: #fefce8; color: #854d0e; border: 1px solid #fef08a; }
+    .badge-reception{ background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; }
+    .program-session-title { font-size: 1.05rem; font-weight: 700; color: var(--primary-900); margin-bottom: 0.35rem; }
+    .program-session-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.5; }
+    .program-speaker-col { width: 240px; font-size: 0.9rem; font-weight: 600; color: var(--primary-800); }
+
+    /* Speakers */
+    .speaker-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem; }
+    .filter-btn { padding: 0.6rem 1.25rem; font-size: 0.875rem; font-weight: 700; border-radius: 9999px; background: #ffffff; color: var(--primary-700); border: 1px solid var(--border-light); transition: all var(--transition); }
+    .filter-btn:hover { background: #f8fafc; border-color: #cbd5e1; }
+    .filter-btn.active { background: var(--primary-900); color: #ffffff; border-color: var(--primary-900); }
+    .speakers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 2rem; }
+    .speaker-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-sm); transition: all var(--transition); display: flex; flex-direction: column; }
+    .speaker-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); }
+    .speaker-card-header { position: relative; height: 150px; display: flex; align-items: center; justify-content: center; }
+    .speaker-avatar-wrap { width: 90px; height: 90px; border-radius: 50%; border: 4px solid #ffffff; box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 800; font-size: 1.7rem; }
+    .speaker-flag-badge { position: absolute; top: 1rem; right: 1rem; background: rgba(0, 0, 0, 0.5); color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 9999px; }
+    .speaker-card-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .speaker-name { font-size: 1.2rem; font-weight: 800; color: var(--primary-900); margin-bottom: 0.25rem; }
+    .speaker-role { font-size: 0.8125rem; font-weight: 700; color: var(--accent-600); margin-bottom: 0.2rem; }
+    .speaker-org { font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .speaker-topic-box { background: #f8fafc; border-radius: 10px; padding: 0.85rem; margin-bottom: 1.25rem; border: 1px dashed var(--border-light); }
+    .speaker-topic-label { font-size: 0.6875rem; text-transform: uppercase; font-weight: 700; color: #94a3b8; margin-bottom: 0.25rem; }
+    .speaker-topic-title { font-size: 0.9rem; font-weight: 700; color: var(--primary-900); line-height: 1.4; }
+    .speaker-card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: auto; }
+    .btn-card-outline { padding: 0.55rem 0.75rem; font-size: 0.775rem; font-weight: 700; border-radius: 8px; border: 1px solid var(--border-light); color: var(--primary-700); background: #ffffff; text-align: center; transition: all var(--transition); }
+    .btn-card-outline:hover { background: #f1f5f9; }
+    .btn-card-primary { padding: 0.55rem 0.75rem; font-size: 0.775rem; font-weight: 700; border-radius: 8px; background: var(--accent-50); color: var(--accent-600); text-align: center; transition: all var(--transition); }
+    .btn-card-primary:hover { background: var(--accent-600); color: #ffffff; }
+
+    /* Materials */
+    .materials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.75rem; margin-bottom: 3.5rem; }
+    .material-card { background: #ffffff; border: 1px solid var(--border-light); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: all var(--transition); }
+    .material-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent-400); }
+    .material-card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .material-card-badge { display: inline-block; font-size: 0.725rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--teal-600); background: var(--teal-50); padding: 0.2rem 0.5rem; border-radius: 4px; margin-bottom: 0.5rem; align-self: flex-start; }
+    .material-card-title { font-size: 1.2rem; font-weight: 800; color: var(--primary-900); margin-bottom: 0.6rem; }
+    .material-card-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
+    .drive-architecture-box { background: var(--primary-900); color: #f8fafc; border-radius: 20px; padding: 2.25rem; box-shadow: var(--shadow-xl); }
+    .drive-arch-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 1rem; }
+    .drive-arch-title { font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+    .drive-arch-policy { font-size: 0.8125rem; color: #94a3b8; background: rgba(255, 255, 255, 0.08); padding: 0.4rem 0.8rem; border-radius: 6px; }
+    .drive-tree-code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.875rem; line-height: 1.8; color: #38bdf8; background: rgba(0, 0, 0, 0.35); padding: 1.5rem; border-radius: 12px; overflow-x: auto; }
+
+    /* Venue & Guide */
+    .venue-hero-banner { background: linear-gradient(135deg, #1e293b, #0f172a); color: #ffffff; border-radius: 24px; padding: 3rem; margin-bottom: 3.5rem; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem; align-items: center; box-shadow: var(--shadow-lg); }
+    .venue-tag { color: var(--accent-400); font-size: 0.8125rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .venue-name-big { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .venue-floor-badge { display: inline-block; background: var(--gold-500); color: var(--primary-950); font-weight: 800; font-size: 0.8125rem; padding: 0.3rem 0.75rem; border-radius: 6px; margin-bottom: 1.25rem; }
+    .venue-address-text { font-size: 0.95rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 1.75rem; }
+    .venue-guides-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .guide-card { background: #ffffff; border: 1px solid var(--border-light); border-radius: 18px; padding: 1.75rem; box-shadow: var(--shadow-sm); display: flex; align-items: flex-start; gap: 1.25rem; transition: all var(--transition); }
+    .guide-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .guide-icon-wrap { width: 44px; height: 44px; border-radius: 12px; background: #eff6ff; color: var(--accent-600); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .guide-title { font-size: 1.05rem; font-weight: 700; color: var(--primary-900); margin-bottom: 0.25rem; }
+    .guide-time-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; color: var(--gold-600); margin-bottom: 0.5rem; }
+    .guide-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* 10th Anniversary */
+    .anniversary-section { background: radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.12) 0%, transparent 60%), linear-gradient(180deg, #ffffff 0%, #fffbeb 100%); border-top: 1px solid #fef3c7; border-bottom: 1px solid #fef3c7; padding: 5rem 0; }
+    .anniversary-box { text-align: center; max-width: 880px; margin: 0 auto; }
+    .anniversary-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: #fef3c7; color: #b45309; font-size: 0.8125rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: 9999px; margin-bottom: 1.5rem; }
+    .anniversary-title { font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 800; color: var(--primary-900); margin-bottom: 1rem; }
+    .anniversary-desc { font-size: 1.05rem; color: #78350f; line-height: 1.7; margin-bottom: 1.5rem; }
+    .anniversary-org-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; text-align: left; }
+    .anniversary-org-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); border: 1px solid rgba(217, 119, 6, 0.25); border-radius: 18px; padding: 1.75rem; box-shadow: var(--shadow-sm); transition: all var(--transition); }
+    .anniversary-org-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(217, 119, 6, 0.45); }
+    .anniversary-org-badge { display: inline-block; font-size: 0.725rem; font-weight: 800; color: #b45309; background: #fef3c7; padding: 0.25rem 0.6rem; border-radius: 6px; margin-bottom: 0.6rem; }
+    .anniversary-org-name { font-size: 1.25rem; font-weight: 800; color: var(--primary-900); margin-bottom: 0.35rem; }
+    .anniversary-org-desc { font-size: 0.875rem; color: #78350f; line-height: 1.6; }
+    .anniversary-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+    @media (max-width: 768px) { .anniversary-org-grid { grid-template-columns: 1fr; } }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; }
+    .contact-info-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 20px; padding: 2.5rem; box-shadow: var(--shadow-sm); }
+    .contact-detail-group { margin-bottom: 2rem; }
+    .contact-detail-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 700; margin-bottom: 0.4rem; }
+    .contact-email-link { font-size: 1.25rem; font-weight: 700; color: var(--accent-600); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .contact-org-text { font-size: 1rem; font-weight: 600; color: var(--primary-900); line-height: 1.6; }
+    .contact-form { background: #ffffff; border: 1px solid var(--border-light); border-radius: 20px; padding: 2.5rem; box-shadow: var(--shadow-sm); }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label { display: block; font-size: 0.8125rem; font-weight: 600; color: var(--primary-700); margin-bottom: 0.4rem; }
+    .form-input, .form-textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-light); border-radius: 10px; font-family: inherit; font-size: 0.95rem; color: var(--text-main); background: #f8fafc; }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-privacy-note { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; margin-top: 0.75rem; }
+
+    /* Footer */
+    .site-footer { background-color: var(--primary-950); color: #94a3b8; padding: 3.5rem 0 2.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.875rem; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 2rem; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+    /* Modal & Toast */
+    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(6px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; visibility: hidden; transition: all var(--transition); }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-content { background: #ffffff; border-radius: 20px; max-width: 620px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2.25rem; box-shadow: var(--shadow-xl); position: relative; }
+    .modal-close-btn { position: absolute; top: 1.25rem; right: 1.25rem; width: 36px; height: 36px; border-radius: 50%; background: #f1f5f9; color: var(--primary-700); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .modal-speaker-name { font-size: 1.5rem; font-weight: 800; color: var(--primary-900); }
+    .modal-speaker-org { font-size: 0.9rem; color: var(--accent-600); font-weight: 600; }
+    .modal-topic-box { background: #f8fafc; border-left: 4px solid var(--accent-600); padding: 1rem 1.25rem; border-radius: 0 10px 10px 0; margin: 1.25rem 0; }
+    .modal-topic-label { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); }
+    .modal-topic-title { font-size: 1.1rem; font-weight: 700; color: var(--primary-900); }
+    .modal-abstract-text { font-size: 0.95rem; line-height: 1.8; color: var(--primary-800); margin-bottom: 1.5rem; }
+
+    .toast-msg { position: fixed; bottom: 2rem; right: 2rem; background: var(--primary-900); color: #ffffff; padding: 0.85rem 1.4rem; border-radius: 10px; box-shadow: var(--shadow-xl); font-size: 0.875rem; z-index: 10000; transform: translateY(100px); opacity: 0; transition: all var(--transition); }
+    .toast-msg.show { transform: translateY(0); opacity: 1; }
+
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .venue-hero-banner { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 4rem 0; }
+      .nav-menu { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--primary-900); flex-direction: column; padding: 1.5rem; gap: 1rem; }
+      .nav-menu.mobile-open { display: flex; }
+      .mobile-toggle { display: flex; }
+      .about-box { padding: 2rem 1.5rem; }
+      .program-table thead { display: none; }
+      .program-table, .program-table tbody, .program-table tr, .program-table td { display: block; width: 100%; }
+      .program-table tr { background: #ffffff; border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; margin-bottom: 1rem; }
+      .program-table td { padding: 0.35rem 0; border: none; }
+      .program-speaker-col { margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-light); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Demo Phase Simulator Bar -->
+  <aside class="phase-bar">
+    <div class="container phase-bar-inner">
+      <div class="phase-indicator">
+        <span class="phase-dot"></span>
+        <span id="phase-banner-text">Registration is open! The forum takes place on Saturday, October 3, 2026.</span>
+      </div>
+      <div class="phase-controls">
+        <span style="font-size: 0.75rem; text-transform: uppercase; color: #cbd5e1; font-weight: 700;">Demo Mode:</span>
+        <div class="phase-btn-group">
+          <button class="phase-btn active" data-phase="pre">Pre-Forum</button>
+          <button class="phase-btn" data-phase="day">Forum Day</button>
+          <button class="phase-btn" data-phase="post">Post-Forum</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#hero" class="site-logo">
+        <span class="logo-badge">JKMCF 2026</span>
+        <div>
+          <span class="logo-title">3rd Japan–Korea Mental Forum</span>
+          <span class="logo-subtitle">Evolution Together · Yokohama</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#about" class="nav-link" data-i18n="nav.about">ABOUT</a></li>
+          <li><a href="#program" class="nav-link" data-i18n="nav.program">PROGRAM</a></li>
+          <li><a href="#speakers" class="nav-link" data-i18n="nav.speakers">SPEAKERS</a></li>
+          <li><a href="#materials" class="nav-link" data-i18n="nav.materials">MATERIALS</a></li>
+          <li><a href="#venue" class="nav-link" data-i18n="nav.venue">VENUE & GUIDE</a></li>
+          <li><a href="#anniversary" class="nav-link" data-i18n="nav.fieldflow">MCCI & FIELD FLOW 10TH</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="nav.contact">CONTACT</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ko">한국어</button>
+          <button class="lang-btn" data-lang="ja">日本語</button>
+        </div>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-tag">
+            <span>✨</span>
+            <span data-i18n="hero.badge">3rd International Forum · Yokohama 2026</span>
+          </div>
+          <h1 class="hero-title" data-i18n="hero.mainTitle">Evolution Together</h1>
+          <p class="hero-subtitle" data-i18n="hero.subTitle">Evolve Together. Create a New Future.</p>
+          <p class="hero-desc" data-i18n="hero.description">
+            A premier international gathering bringing together pioneering mental coaches, elite sports mentors, and educational leaders from Japan and Korea to explore human-centered coaching in the evolving era of AI and technology.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#program" class="btn btn-primary" id="hero-cta-primary">
+              <span data-i18n="hero.btnProgram">View Program</span> ↓
+            </a>
+            <a href="#materials" class="btn btn-secondary" id="hero-cta-secondary">
+              <span data-i18n="hero.btnMaterials">Presentation Materials</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-header">
+            <div class="hero-card-title">Forum Date & Schedule</div>
+            <div class="hero-card-date" data-i18n="hero.date">Saturday, October 3, 2026</div>
+          </div>
+          <div class="hero-card-list">
+            <div class="hero-card-item">
+              <div class="hero-card-icon">⏰</div>
+              <div>
+                <div class="hero-card-item-title">Time</div>
+                <div class="hero-card-item-val" data-i18n="hero.time">10:00 – 18:00 (Reception 19:00 – 21:00)</div>
+                <div class="hero-card-item-sub">Check-in from 09:40 at 1F Lobby</div>
+              </div>
+            </div>
+            <div class="hero-card-item">
+              <div class="hero-card-icon">📍</div>
+              <div>
+                <div class="hero-card-item-title">Location</div>
+                <div class="hero-card-item-val" data-i18n="hero.venue">Kanto Gakuin University, Yokohama Kannai Campus 17F</div>
+                <div class="hero-card-item-sub" data-i18n="hero.transport">JR Kannai Station South Exit (2-min walk)</div>
+              </div>
+            </div>
+            <div class="hero-card-item">
+              <div class="hero-card-icon">🤝</div>
+              <div>
+                <div class="hero-card-item-title">Co-Hosts</div>
+                <div class="hero-card-item-val">MCCI & Field Flow Alliance</div>
+                <div class="hero-card-item-sub" data-i18n="hero.cohostsSub">Celebrating MCCI & Field Flow 10th Anniversary (2016–2026)</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="hero-stats-grid">
+        <div>
+          <div class="stat-number">8+</div>
+          <div class="stat-label">Keynote & Expert Speakers</div>
+        </div>
+        <div>
+          <div class="stat-number">2</div>
+          <div class="stat-label">Countries: Korea & Japan</div>
+        </div>
+        <div>
+          <div class="stat-number">1</div>
+          <div class="stat-label">Shared Vision for Evolution</div>
+        </div>
+        <div>
+          <div class="stat-number">10th</div>
+          <div class="stat-label" data-i18n="hero.stats.3.label">MCCI & Field Flow 10th Anniversary</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section section-alt" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="about.tag">Forum Philosophy</span>
+        <h2 class="section-title" data-i18n="about.title">No One Evolves Alone.</h2>
+        <p class="section-subtitle" data-i18n="about.highlight">Learn Together · Think Together · Evolve Together</p>
+      </div>
+
+      <div class="about-box">
+        <p class="about-text-lead" data-i18n="about.p1">
+          The Japan–Korea International Mental Coaching Forum is an academic and practical exchange platform where coaches, practitioners, and leaders bridge experiences, research, and cultural insights.
+        </p>
+        <p class="about-text-sub" data-i18n="about.p2">
+          As artificial intelligence and rapid technological advances reshape human society, the essence of mental coaching—listening deeply, unlocking authentic potential, and guiding self-determined action—has never been more vital. Through open dialogue and mutual respect, we lay the groundwork for the next generation of coaching.
+        </p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">📘</div>
+          <h3 class="pillar-title" data-i18n="about.pillars.0.title">Learn Together</h3>
+          <p class="pillar-desc" data-i18n="about.pillars.0.desc">Bridging elite athletic coaching methodologies with academic sports psychology and clinical insights.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">💡</div>
+          <h3 class="pillar-title" data-i18n="about.pillars.1.title">Think Together</h3>
+          <p class="pillar-desc" data-i18n="about.pillars.1.desc">Reflecting on human dignity, genuine empowerment, and the vital role of coaches alongside generative AI.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🌱</div>
+          <h3 class="pillar-title" data-i18n="about.pillars.2.title">Evolve Together</h3>
+          <p class="pillar-desc" data-i18n="about.pillars.2.desc">Cultivating an enduring bilateral partnership and professional community across borders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Section (Fully Pre-rendered HTML) -->
+  <section class="section" id="program">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="program.tag">Schedule of Events</span>
+        <h2 class="section-title" data-i18n="program.title">Forum Program</h2>
+        <p class="section-subtitle" data-i18n="program.subtitle">A day filled with transformative lectures, case studies, live artistic performance, and interactive workshops.</p>
+      </div>
+
+      <div class="program-toolbar">
+        <div class="program-updated">
+          <span>🕒</span>
+          <span data-i18n="program.updated">Updated on September 28, 2026</span>
+        </div>
+        <a href="https://drive.google.com/file/d/2026_Forum_Program_Final_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">
+          <span data-i18n="program.downloadBtn">Download Program PDF</span> ↗
+        </a>
+      </div>
+
+      <div class="program-table-wrap">
+        <table class="program-table">
+          <thead>
+            <tr>
+              <th scope="col" data-i18n="program.tableHeaders.time">Time</th>
+              <th scope="col" data-i18n="program.tableHeaders.type">Category</th>
+              <th scope="col" data-i18n="program.tableHeaders.title">Session Title & Details</th>
+              <th scope="col" data-i18n="program.tableHeaders.speaker">Speaker / Facilitator</th>
+            </tr>
+          </thead>
+          <tbody id="program-table-body">
+            <tr>
+              <td class="program-time-col">09:40 – 10:00</td>
+              <td><span class="program-badge badge-general">General</span></td>
+              <td>
+                <div class="program-session-title">Registration & Welcome Check-in</div>
+                <div class="program-session-desc">1F Campus Lobby check-in, receive badges & lunch vouchers, proceed to 17F.</div>
+              </td>
+              <td class="program-speaker-col">Forum Secretariat & Staff</td>
+            </tr>
+            <tr>
+              <td class="program-time-col">10:00 – 10:20</td>
+              <td><span class="program-badge badge-general">General</span></td>
+              <td>
+                <div class="program-session-title">Opening Ceremony & Welcome Remarks</div>
+                <div class="program-session-desc">Opening address by representatives; 'Evolution Together' keynote intro.</div>
+              </td>
+              <td class="program-speaker-col">Organizing Committee Chairs</td>
+            </tr>
+            <tr>
+              <td class="program-time-col">10:20 – 10:40</td>
+              <td><span class="program-badge badge-general">General</span></td>
+              <td>
+                <div class="program-session-title">Icebreaking & Networking Warm-up</div>
+                <div class="program-session-desc">Interactive session to build rapport across language boundaries.</div>
+              </td>
+              <td class="program-speaker-col">Forum Facilitator</td>
+            </tr>
+            <tr>
+              <td class="program-time-col">10:40 – 11:40</td>
+              <td><span class="program-badge badge-keynote">Keynote Lecture</span></td>
+              <td>
+                <div class="program-session-title">Keynote Lecture: The Horizon of Contemporary Sports & Mental Science</div>
+                <div class="program-session-desc">Systemic coaching, psychological resilience, and evidence-based mental mastery.</div>
+              </td>
+              <td class="program-speaker-col">Prof. Aoyagi (Kanto Gakuin Univ.)</td>
+            </tr>
+            <tr>
+              <td class="program-time-col">11:40 – 13:00</td>
+              <td><span class="program-badge badge-general">General</span></td>
+              <td>
+                <div class="program-session-title">Lunch & Informal Networking</div>
+                <div class="program-session-desc">Japanese Bento (Meat or Fish pre-selected) & networking lounge.</div>
+              </td>
+              <td class="program-speaker-col">All Participants</td>
+            </tr>
+            <tr>
+              <td class="program-time-col">13:00 – 14:40</td>
+              <td><span class="program-badge badge-korea">Korea Session</span></td>
+              <td>
+                <div class="program-session-title">Korea Session Presentations (4 Speakers)</div>
+                <div class="program-session-desc">1) Dong Chul Yeom · 2) Tae Ryeon Yoon · 3) Sung Min Kim · 4) Chul Soo Park</div>
+              </td>
+              <td class="program-speaker-col">Dong Chul Yeom, Tae Ryeon Yoon, Sung Min Kim, Chul Soo Park</td>
+            </tr>
+            <tr>
+              <td class="program-time-col">14:40 – 15:00</td>
+              <td><span class="program-badge badge-general">General</span></td>
+              <td>
+                <div class="program-session-title">Break & Live Celebration Performance</div>
+                <div class="program-session-desc">Refreshing tea break featuring an artistic celebration stage.</div>
+              </td>
+              <td class="program-speaker-col">Guest Artist & Performers</td>
+            </tr>
+            <tr>
+              <td class="program-time-col">15:00 – 16:30</td>
+              <td><span class="program-badge badge-japan">Japan Session</span></td>
+              <td>
+                <div class="program-session-title">Japan Session Presentations (3 Speakers)</div>
+                <div class="program-session-desc">High-performance coaching, youth development, and systemic field dynamics.</div>
+              </td>
+              <td class="program-speaker-col">Motonari Takahashi · Japan Speakers</td>
+            </tr>
+            <tr>
+              <td class="program-time-col">16:30 – 17:30</td>
+              <td><span class="program-badge badge-workshop">Workshop</span></td>
+              <td>
+                <div class="program-session-title">Interactive Group Workshop & Discussion</div>
+                <div class="program-session-desc">Cross-border breakout circles: Shared challenges & co-creating future roadmaps.</div>
+              </td>
+              <td class="program-speaker-col">Bilingual Group Facilitators</td>
+            </tr>
+            <tr>
+              <td class="program-time-col">17:30 – 18:00</td>
+              <td><span class="program-badge badge-general">General</span></td>
+              <td>
+                <div class="program-session-title">Reflections, Commemorative Photo & Closing</div>
+                <div class="program-session-desc">Closing reflections, announcement of future initiatives, group commemorative photo.</div>
+              </td>
+              <td class="program-speaker-col">All Participants</td>
+            </tr>
+            <tr>
+              <td class="program-time-col">19:00 – 21:00</td>
+              <td><span class="program-badge badge-reception">Reception Dinner</span></td>
+              <td>
+                <div class="program-session-title">Official Networking Reception & Dinner</div>
+                <div class="program-session-desc">Sumibi Yakitori Oogiya Yokohama Kannai (3-min walk). Included in registration fee.</div>
+              </td>
+              <td class="program-speaker-col">All Registered Guests</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Speakers Section (Pre-rendered 8 Speakers) -->
+  <section class="section section-alt" id="speakers">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="speakers.tag">Distinguished Speakers</span>
+        <h2 class="section-title" data-i18n="speakers.title">Speakers & Presenters</h2>
+        <p class="section-subtitle" data-i18n="speakers.subtitle">Meet the pioneering thinkers and practitioners shaping the future of mental coaching across Korea and Japan.</p>
+      </div>
+
+      <div class="speaker-filters">
+        <button class="filter-btn active" data-filter="all" data-i18n="speakers.filterAll">All Speakers</button>
+        <button class="filter-btn" data-filter="keynote" data-i18n="speakers.filterKeynote">Keynote</button>
+        <button class="filter-btn" data-filter="korea" data-i18n="speakers.filterKorea">Korea Presenters</button>
+        <button class="filter-btn" data-filter="japan" data-i18n="speakers.filterJapan">Japan Presenters</button>
+      </div>
+
+      <div class="speakers-grid" id="speakers-grid">
+        <!-- 1. Keynote Prof. Aoyagi -->
+        <div class="speaker-card">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">
+            <span class="speaker-flag-badge">Keynote</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);"><span>AO</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Prof. Aoyagi</h3>
+            <div class="speaker-role">Professor of Sports Psychology</div>
+            <div class="speaker-org">Kanto Gakuin University</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-title">The Horizon of Contemporary Sports & Mental Science</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('aoyagi')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Dong Chul Yeom -->
+        <div class="speaker-card">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #047857, #10b981);">
+            <span class="speaker-flag-badge">🇰🇷 Korea</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #047857, #10b981);"><span>DY</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Dong Chul Yeom</h3>
+            <div class="speaker-role">Professor, Weightlifting Dept.</div>
+            <div class="speaker-org">Korea National Sport University</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-title">When Leaders Change, Schools Change</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('yeom')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Tae Ryeon Yoon -->
+        <div class="speaker-card">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #b45309, #f59e0b);">
+            <span class="speaker-flag-badge">🇰🇷 Korea</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #b45309, #f59e0b);"><span>TY</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Tae Ryeon Yoon</h3>
+            <div class="speaker-role">CEO & Master Conditioning Specialist</div>
+            <div class="speaker-org">All That Conditioning</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-title">When Physical Training Meets Mental Coaching</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('yoon')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Sung Min Kim -->
+        <div class="speaker-card">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #4338ca, #6366f1);">
+            <span class="speaker-flag-badge">🇰🇷 Korea</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #4338ca, #6366f1);"><span>SK</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Sung Min Kim</h3>
+            <div class="speaker-role">CEO & Movement Performance Coach</div>
+            <div class="speaker-org">BALANCED</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-title">When the Body Is Stable, the Mind Becomes Clearer</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('kim')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Chul Soo Park -->
+        <div class="speaker-card">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #0f766e, #14b8a6);">
+            <span class="speaker-flag-badge">🇰🇷 Korea</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #0f766e, #14b8a6);"><span>CP</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Chul Soo Park</h3>
+            <div class="speaker-role">Korea Representative / Mental Coach</div>
+            <div class="speaker-org">MCCI (Mental Coaching Center Int'l / 국제멘탈코칭센터)</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-title">The Future of Mental Coaching</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('park')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Motonari Takahashi -->
+        <div class="speaker-card">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #c026d3, #e879f9);">
+            <span class="speaker-flag-badge">🇯🇵 Japan</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #c026d3, #e879f9);"><span>MT</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Motonari Takahashi</h3>
+            <div class="speaker-role">Executive Mental Coach</div>
+            <div class="speaker-org">Field Flow Japan</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-title">Coaching the Invisible: Systemic Field Dynamics</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('takahashi')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Japan Speaker 02 -->
+        <div class="speaker-card">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #be123c, #fb7185);">
+            <span class="speaker-flag-badge">🇯🇵 Japan</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #be123c, #fb7185);"><span>JS</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Japan Speaker 02</h3>
+            <div class="speaker-role">Mental Performance Specialist</div>
+            <div class="speaker-org">Japan Mental Training Association</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-title">Cultivating Inner Autonomy in Youth Athletics</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('jp02')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Japan Speaker 03 -->
+        <div class="speaker-card">
+          <div class="speaker-card-header" style="background: linear-gradient(135deg, #0369a1, #38bdf8);">
+            <span class="speaker-flag-badge">🇯🇵 Japan</span>
+            <div class="speaker-avatar-wrap" style="background: linear-gradient(135deg, #0369a1, #38bdf8);"><span>JS</span></div>
+          </div>
+          <div class="speaker-card-body">
+            <h3 class="speaker-name">Japan Speaker 03</h3>
+            <div class="speaker-role">Organizational Coach</div>
+            <div class="speaker-org">Field Flow Alliance</div>
+            <div class="speaker-topic-box">
+              <div class="speaker-topic-label">Topic</div>
+              <div class="speaker-topic-title">Bridging East Asian Perspectives in Mental Coaching</div>
+            </div>
+            <div class="speaker-card-actions">
+              <button class="btn-card-outline" onclick="openSpeakerModal('jp03')">View Abstract</button>
+              <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Slides ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Materials Section (Google Drive) -->
+  <section class="section" id="materials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="materials.tag">Digital Resources</span>
+        <h2 class="section-title" data-i18n="materials.title">Presentation Materials & Archive</h2>
+        <p class="section-subtitle" data-i18n="materials.subtitle">All forum handouts and approved presentation slides are hosted securely on Google Drive for seamless viewing and download.</p>
+      </div>
+
+      <div class="materials-grid" id="materials-card-grid">
+        <div class="material-card">
+          <div class="material-card-icon">📂</div>
+          <span class="material-card-badge">PDF Document</span>
+          <h3 class="material-card-title">Forum Program Guide</h3>
+          <p class="material-card-desc">Official timetable, floor layout & speaker bio summary.</p>
+          <a href="https://drive.google.com/drive/folders/03rd_Japan_Korea_Mental_Coaching_Forum_Demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
+            Download Program ↗
+          </a>
+        </div>
+        <div class="material-card">
+          <div class="material-card-icon">📂</div>
+          <span class="material-card-badge">Folder · 4 Speakers</span>
+          <h3 class="material-card-title">Korea Session Materials</h3>
+          <p class="material-card-desc">Slide decks & handouts from the 4 Korean presenters (Yeom, Yoon, Kim, Park).</p>
+          <a href="https://drive.google.com/drive/folders/03rd_Japan_Korea_Mental_Coaching_Forum_Demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
+            View Korea Slides ↗
+          </a>
+        </div>
+        <div class="material-card">
+          <div class="material-card-icon">📂</div>
+          <span class="material-card-badge">Folder · 3 Speakers</span>
+          <h3 class="material-card-title">Japan Session Materials</h3>
+          <p class="material-card-desc">Field cases & framework slides from Japanese presenters (Takahashi, etc.).</p>
+          <a href="https://drive.google.com/drive/folders/03rd_Japan_Korea_Mental_Coaching_Forum_Demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
+            View Japan Slides ↗
+          </a>
+        </div>
+        <div class="material-card">
+          <div class="material-card-icon">📂</div>
+          <span class="material-card-badge">Comprehensive Bio</span>
+          <h3 class="material-card-title">Speaker Profiles & Abstracts</h3>
+          <p class="material-card-desc">In-depth profiles, career credentials & session abstracts for all 8 speakers.</p>
+          <a href="https://drive.google.com/drive/folders/03rd_Japan_Korea_Mental_Coaching_Forum_Demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.65rem 1.2rem;">
+            View Profiles (PDF) ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="drive-architecture-box">
+        <div class="drive-arch-header">
+          <div class="drive-arch-title">
+            <span>☁️</span>
+            <span data-i18n="materials.folderStructureTitle">Recommended Google Drive Folder Hierarchy</span>
+          </div>
+          <div class="drive-arch-policy" id="materials-status-note" data-i18n="materials.drivePolicy">
+            Permissions: Anyone with the link (Viewer). Presentation slides are made public with each speaker's prior consent.
+          </div>
+        </div>
+        <pre class="drive-tree-code" id="drive-tree-view">
+📁 03rd_Japan_Korea_Mental_Coaching_Forum/
+├── 📁 01_Forum_Program/ (2026_Forum_Program_Final.pdf)
+├── 📁 02_Korea_Speakers/ (Dong_Chul_Yeom, Tae_Ryeon_Yoon, Sung_Min_Kim, Chul_Soo_Park)
+├── 📁 03_Japan_Speakers/ (Motonari_Takahashi, Japan_Speakers)
+├── 📁 04_Speaker_Profiles/ (Speaker_Profiles.pdf)
+└── 📁 05_Forum_Archive/ (Forum_Review.pdf, Photos)
+        </pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Venue & Guide Section (5 Guides) -->
+  <section class="section section-alt" id="venue">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="venue.tag">Location & Day-of Guide</span>
+        <h2 class="section-title" data-i18n="venue.title">Venue & Attendee Guide</h2>
+        <p class="section-subtitle" data-i18n="venue.subtitle">Key details on campus navigation, registration, dining, language support, and the networking reception.</p>
+      </div>
+
+      <div class="venue-hero-banner">
+        <div>
+          <div class="venue-tag">Official Venue</div>
+          <h3 class="venue-name-big" data-i18n="venue.venueName">Kanto Gakuin University, Yokohama Kannai Campus</h3>
+          <div class="venue-floor-badge" data-i18n="venue.venueFloor">17th Floor Main Conference Hall</div>
+          <p class="venue-address-text" data-i18n="venue.address">
+            1-1-10 Bandai-cho, Naka-ku, Yokohama, Kanagawa 231-0031 Japan
+          </p>
+          <a href="https://maps.google.com/?q=Kanto+Gakuin+University+Yokohama+Kannai+Campus" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <span data-i18n="venue.openMapsBtn">Open in Google Maps</span> ↗
+          </a>
+        </div>
+        <div style="background: rgba(255,255,255,0.06); padding: 1.75rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.12);">
+          <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: #38bdf8;">Access Highlights</div>
+          <p style="font-size: 0.875rem; line-height: 1.7; color: #cbd5e1;">
+            • <strong>JR Kannai Station:</strong> South Exit (2-min walk)<br>
+            • <strong>Nihon-odori Station:</strong> Minatomirai Line (8-min walk)<br>
+            • <strong>Check-in:</strong> 1F Campus Lobby (from 09:40)<br>
+            • <strong>Reception:</strong> Sumibi Yakitori Oogiya (3-min walk)
+          </p>
+        </div>
+      </div>
+
+      <div class="venue-guides-grid" id="venue-guides-grid">
+        <div class="guide-card">
+          <div class="guide-icon-wrap">🎫</div>
+          <div>
+            <h4 class="guide-title">Registration & Check-in</h4>
+            <span class="guide-time-badge">09:40 onwards</span>
+            <p class="guide-desc">Gather at the 1st Floor Lobby of Kanto Gakuin University for check-in before moving to 17F.</p>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-icon-wrap">🚆</div>
+          <div>
+            <h4 class="guide-title">Public Transportation</h4>
+            <span class="guide-time-badge">2-min walk</span>
+            <p class="guide-desc">2-min walk from JR Kannai Station South Exit. 8-min walk from Nihon-odori Station.</p>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-icon-wrap">🍱</div>
+          <div>
+            <h4 class="guide-title">Lunch Bento Service</h4>
+            <span class="guide-time-badge">11:40 – 13:00</span>
+            <p class="guide-desc">Japanese Bento boxes (Meat or Fish pre-selected) and tea provided for lunch vouchers.</p>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-icon-wrap">🌐</div>
+          <div>
+            <h4 class="guide-title">Language & Communication</h4>
+            <span class="guide-time-badge">Trilingual Friendly</span>
+            <p class="guide-desc">Volunteer liaisons on-site. Real-time translation apps (DeepL, Google, Papago) recommended.</p>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-icon-wrap">🥂</div>
+          <div>
+            <h4 class="guide-title">Evening Networking Reception</h4>
+            <span class="guide-time-badge">19:00 – 21:00</span>
+            <p class="guide-desc">Sumibi Yakitori Oogiya Yokohama Kannai (3-min walk). Fully included in registration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MCCI & Field Flow Dual 10th Anniversary Section -->
+  <section class="anniversary-section" id="anniversary">
+    <div class="container">
+      <div class="anniversary-box">
+        <div class="anniversary-badge">
+          <span>🎉</span>
+          <span data-i18n="fieldflow.tag">Double 10th Anniversary Milestone (2016–2026)</span>
+        </div>
+        <h2 class="anniversary-title" data-i18n="fieldflow.title">Celebrating 10 Years of MCCI & Field Flow</h2>
+        <p class="anniversary-desc" data-i18n="fieldflow.description">
+          In 2026, both Korea's MCCI (Mental Coaching Center Int'l) and Japan's Field Flow celebrate their 10th anniversaries. For a decade, both institutions have pioneered human-centered mental coaching and performance excellence across sports, education, and business in Korea and Japan.
+        </p>
+
+        <!-- Dual 10th Anniversary Institution Cards -->
+        <div class="anniversary-org-grid">
+          <div class="anniversary-org-card">
+            <span class="anniversary-org-badge">🇰🇷 Korea · Est. 2016</span>
+            <h3 class="anniversary-org-name" data-i18n="fieldflow.mcciName">MCCI (Mental Coaching Center Int'l)</h3>
+            <p class="anniversary-org-desc" data-i18n="fieldflow.mcciDesc">
+              Mental Coaching Center Int'l (MCCI) has pioneered international-standard mental coaching in Korea for 10 years, fostering authentic human agency, values-driven self-determination, and peak psychological performance for Olympic athletes, leaders, and educators.
+            </p>
+            <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px dashed rgba(217, 119, 6, 0.3); font-size: 0.8125rem; color: #78350f; line-height: 1.6;">
+              <div>📍 <span data-i18n="fieldflow.mcciAddress">3F, J-Add Bldg., 1, Yangjaecheon-ro 15-gil, Seocho-gu, Seoul</span></div>
+              <div>👤 <span data-i18n="fieldflow.mcciContact">Coach Vicky Cheon (VP) · <a href="tel:01044573850" style="color: inherit; font-weight: 700; text-decoration: underline;">010-4457-3850</a></span></div>
+            </div>
+          </div>
+          <div class="anniversary-org-card">
+            <span class="anniversary-org-badge">🇯🇵 Japan · Est. 2016</span>
+            <h3 class="anniversary-org-name" data-i18n="fieldflow.ffName">Field Flow Japan</h3>
+            <p class="anniversary-org-desc" data-i18n="fieldflow.ffDesc">
+              Pioneering the coaching of invisible field dynamics and team flow states in Japanese sports and organizational leadership. Creating environments where collective intuition and deep empathy drive peak achievements.
+            </p>
+            <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px dashed rgba(217, 119, 6, 0.3); font-size: 0.8125rem; color: #78350f; line-height: 1.6;">
+              <div>📍 <span data-i18n="fieldflow.ffAddress">Tokyo, Japan</span></div>
+              <div>👤 <span data-i18n="fieldflow.ffContact">Motonari Takahashi (Executive Coach)</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-weight: 700; color: #b45309; margin-bottom: 0.75rem; font-size: 1rem;" data-i18n="fieldflow.callout">
+          📸 Share Your 10-Year Journey & Forum Memories with Us!
+        </div>
+
+        <div class="anniversary-actions">
+          <a href="https://photos.google.com/share/field-flow-10th-anniversary-demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <span data-i18n="fieldflow.uploadBtn">Share Your Photos (Google Photos)</span> ↗
+          </a>
+          <a href="https://photos.google.com/share/field-flow-10th-anniversary-demo" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="color: var(--primary-900); border-color: #cbd5e1;">
+            <span data-i18n="fieldflow.albumBtn">Open 10th Anniversary Album</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section section-alt" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="contact.tag">Inquiries & Support</span>
+        <h2 class="section-title" data-i18n="contact.title">Contact Secretariat</h2>
+        <p class="section-subtitle" data-i18n="contact.subtitle">Have questions about the forum, materials, or upcoming initiatives? Reach out to our organizing team.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <div class="contact-detail-group">
+            <div class="contact-detail-label" data-i18n="contact.emailLabel">Official Secretariat Email</div>
+            <a href="mailto:secretariat@mentalforum2026.org" class="contact-email-link">
+              <span>✉️</span>
+              <span data-i18n="contact.email">secretariat@mentalforum2026.org</span>
+            </a>
+          </div>
+
+          <div class="contact-detail-group">
+            <div class="contact-detail-label" data-i18n="contact.orgLabel">Host & Organizing Committee</div>
+            <div class="contact-org-text" data-i18n="contact.orgName">
+              Korea-Japan Mental Coaching Forum Organizing Committee & MCCI & Field Flow
+            </div>
+          </div>
+
+          <!-- Korea MCCI Secretariat Details -->
+          <div class="contact-detail-group" style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem;">
+            <div class="contact-detail-label" style="color: var(--accent-600);" data-i18n="contact.koreaOfficeLabel">Korea Secretariat (MCCI)</div>
+            <div style="font-weight: 700; color: var(--primary-900); font-size: 1.05rem; margin-bottom: 0.5rem;" data-i18n="contact.koreaOrgName">
+              Mental Coaching Center Int'l (국제멘탈코칭센터)
+            </div>
+            <div style="font-size: 0.875rem; color: var(--text-main); line-height: 1.7; margin-bottom: 0.6rem;">
+              <div>📍 <span data-i18n="contact.koreaAddress">3F, J-Add Bldg., 1, Yangjaecheon-ro 15-gil, Seocho-gu, Seoul, Korea</span></div>
+              <div>👤 <span data-i18n="contact.koreaContactPerson">Coach Vicky Cheon (Vice President, MCCI)</span></div>
+            </div>
+            <a href="tel:01044573850" class="btn btn-secondary" style="padding: 0.4rem 0.9rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent-600); border-color: #cbd5e1; background: #ffffff;">
+              <span>📞</span> <span data-i18n="contact.koreaPhone">010-4457-3850</span>
+            </a>
+          </div>
+
+          <div class="contact-detail-group">
+            <div class="contact-detail-label" data-i18n="contact.forumSummaryLabel">Forum Schedule Summary</div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+              October 3, 2026 (Saturday) | 10:00 – 18:00 (Registration 09:40)<br>
+              Yokohama Kannai Campus 17F, Kanto Gakuin University
+            </p>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label for="contact-name" class="form-label" data-i18n="contact.formName">Your Full Name</label>
+            <input type="text" id="contact-name" class="form-input" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="contact-email" class="form-label" data-i18n="contact.formEmail">Email Address</label>
+            <input type="email" id="contact-email" class="form-input" required placeholder="you@domain.com">
+          </div>
+          <div class="form-group">
+            <label for="contact-msg" class="form-label" data-i18n="contact.formMessage">Message / Inquiry</label>
+            <textarea id="contact-msg" class="form-textarea" required placeholder="Enter your inquiry..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <span data-i18n="contact.formSubmit">Send Message</span>
+          </button>
+          <p class="form-privacy-note" data-i18n="contact.privacyNotice">
+            Your personal data will only be utilized for answering your forum inquiry in accordance with our privacy practices.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">
+          The 3rd Japan–Korea International Mental Coaching Forum 2026
+        </div>
+        <a href="#hero" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;" data-i18n="footer.backToTop">Back to top ↑</a>
+      </div>
+      <div class="footer-bottom">
+        <div data-i18n="footer.rights">© 2026 The 3rd Japan-Korea International Mental Coaching Forum. All rights reserved.</div>
+        <div style="color: #64748b; font-size: 0.8rem;" data-i18n="footer.builtWith">
+          Designed for Framer deployment with Google Drive integration.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Abstract Modal Dialog -->
+  <div class="modal-overlay" id="abstract-modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+      <div class="modal-speaker-header">
+        <h3 class="modal-speaker-name" id="modal-speaker-name">Speaker Name</h3>
+        <div class="modal-speaker-org" id="modal-speaker-org">Affiliation & Role</div>
+      </div>
+      <div class="modal-topic-box">
+        <div class="modal-topic-label">Presentation Topic</div>
+        <div class="modal-topic-title" id="modal-topic-title">Topic Title</div>
+      </div>
+      <div class="modal-abstract-text" id="modal-abstract-text">Abstract paragraph...</div>
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+        <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="modal-download-link" style="font-size: 0.85rem; padding: 0.6rem 1.25rem;">
+          View Presentation Slides ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-msg" id="toast-notification">Message Sent</div>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    (function() {
+      const DATA = {
+        i18n: {
+          en: {
+            nav: { about: "ABOUT", program: "PROGRAM", speakers: "SPEAKERS", materials: "MATERIALS", venue: "VENUE & GUIDE", fieldflow: "MCCI & FIELD FLOW 10TH", contact: "CONTACT" },
+            phases: {
+              pre: { banner: "Registration is open! The forum takes place on Saturday, October 3, 2026.", heroCtaPrimary: "View Program", heroCtaSecondary: "Presentation Materials", materialsStatus: "Materials will be accessible here as they are released." },
+              day: { banner: "Today is Forum Day! Check in at 1F from 09:40. Sessions begin on 17F at 10:00.", heroCtaPrimary: "Live Schedule", heroCtaSecondary: "Access Materials", materialsStatus: "Live session handouts & slides are now available for participants." },
+              post: { banner: "Thank you for attending! Forum archives, slides, and photo albums are now available.", heroCtaPrimary: "Browse Archive", heroCtaSecondary: "Download Slides", materialsStatus: "All approved presentation slides and event memories are archived below." }
+            },
+            hero: {
+              badge: "3rd International Forum · Yokohama 2026", mainTitle: "Evolution Together", subTitle: "Evolve Together. Create a New Future.",
+              description: "A premier international gathering bringing together pioneering mental coaches, elite sports mentors, and educational leaders from Japan and Korea to explore human-centered coaching in the evolving era of AI and technology.",
+              date: "Saturday, October 3, 2026", time: "10:00 – 18:00 (Reception 19:00 – 21:00)", venue: "Kanto Gakuin University, Yokohama Kannai Campus 17F", transport: "JR Kannai Station South Exit (2-min walk)",
+              btnProgram: "View Program", btnMaterials: "Presentation Materials"
+            },
+            about: {
+              tag: "Forum Philosophy", title: "No One Evolves Alone.", highlight: "Learn Together · Think Together · Evolve Together",
+              p1: "The Japan–Korea International Mental Coaching Forum is an academic and practical exchange platform where coaches, practitioners, and leaders bridge experiences, research, and cultural insights.",
+              p2: "As artificial intelligence and rapid technological advances reshape human society, the essence of mental coaching—listening deeply, unlocking authentic potential, and guiding self-determined action—has never been more vital. Through open dialogue and mutual respect, we lay the groundwork for the next generation of coaching.",
+              pillars: [
+                { title: "Learn Together", desc: "Bridging elite athletic coaching methodologies with academic sports psychology and clinical insights." },
+                { title: "Think Together", desc: "Reflecting on human dignity, genuine empowerment, and the vital role of coaches alongside generative AI." },
+                { title: "Evolve Together", desc: "Cultivating an enduring bilateral partnership and professional community across borders." }
+              ]
+            },
+            program: {
+              tag: "Schedule of Events", title: "Forum Program", subtitle: "A day filled with transformative lectures, case studies, live artistic performance, and interactive workshops.",
+              updated: "Updated on September 28, 2026", downloadBtn: "Download Program PDF",
+              tableHeaders: { time: "Time", type: "Category", title: "Session Title & Details", speaker: "Speaker / Facilitator" }
+            },
+            speakers: {
+              tag: "Distinguished Speakers", title: "Speakers & Presenters", subtitle: "Meet the pioneering thinkers and practitioners shaping the future of mental coaching across Korea and Japan.",
+              filterAll: "All Speakers", filterKeynote: "Keynote", filterKorea: "Korea Presenters", filterJapan: "Japan Presenters",
+              btnAbstract: "View Abstract", btnMaterials: "Presentation Slides"
+            },
+            materials: {
+              tag: "Digital Resources", title: "Presentation Materials & Archive", subtitle: "All forum handouts and approved presentation slides are hosted securely on Google Drive for seamless viewing and download.",
+              drivePolicy: "Permissions: Anyone with the link (Viewer). Presentation slides are made public with each speaker's prior consent.",
+              folderStructureTitle: "Recommended Google Drive Folder Hierarchy"
+            },
+            venue: {
+              tag: "Location & Day-of Guide", title: "Venue & Attendee Guide", subtitle: "Key details on campus navigation, registration, dining, language support, and the networking reception.",
+              venueName: "Kanto Gakuin University, Yokohama Kannai Campus", venueFloor: "17th Floor Main Conference Hall", address: "1-1-10 Bandai-cho, Naka-ku, Yokohama, Kanagawa 231-0031 Japan", openMapsBtn: "Open in Google Maps"
+            },
+            fieldflow: {
+              tag: "Double 10th Anniversary Milestone (2016–2026)",
+              title: "Celebrating 10 Years of MCCI & Field Flow",
+              description: "In 2026, both Korea's MCCI (Mental Coaching Center Int'l) and Japan's Field Flow mark their 10th anniversaries. For a decade, both organizations have pioneered human-centered mental coaching and performance excellence across sports, education, and business in Korea and Japan.",
+              mcciName: "MCCI (Mental Coaching Center Int'l)",
+              mcciDesc: "Mental Coaching Center Int'l (MCCI) has pioneered international-standard mental coaching in Korea for 10 years, fostering authentic human agency, values-driven choice, and high-performance psychological training for Olympic athletes, leaders, and educators.",
+              ffName: "Field Flow Japan",
+              ffDesc: "Pioneering the coaching of invisible field dynamics and team flow states in Japanese sports and organizational leadership. Creating environments where collective intuition and deep empathy drive peak achievements.",
+              mcciAddress: "3F, J-Add Bldg., 1, Yangjaecheon-ro 15-gil, Seocho-gu, Seoul, Korea",
+              mcciContact: "Coach Vicky Cheon (VP) · 010-4457-3850",
+              ffAddress: "Tokyo, Japan",
+              ffContact: "Motonari Takahashi (Executive Coach)",
+              callout: "📸 Share Your 10-Year Journey & Forum Memories with Us!",
+              albumBtn: "Open 10th Anniversary Album",
+              uploadBtn: "Share Your Photos (Google Photos)"
+            },
+            contact: {
+              tag: "Inquiries & Support", title: "Contact Secretariat", subtitle: "Have questions about the forum, materials, or upcoming initiatives? Reach out to our organizing team.",
+              emailLabel: "Official Secretariat Email", email: "secretariat@mentalforum2026.org", orgLabel: "Host & Organizing Committee", orgName: "Korea-Japan Mental Coaching Forum Organizing Committee & MCCI & Field Flow",
+              koreaOfficeLabel: "Korea Secretariat (MCCI)",
+              koreaOrgName: "Mental Coaching Center Int'l (국제멘탈코칭센터)",
+              koreaAddress: "3F, J-Add Bldg., 1, Yangjaecheon-ro 15-gil, Seocho-gu, Seoul, Korea",
+              koreaContactPerson: "Coach Vicky Cheon (Vice President, MCCI)",
+              koreaPhone: "010-4457-3850",
+              forumSummaryLabel: "Forum Schedule Summary",
+              formName: "Your Full Name", formEmail: "Email Address", formMessage: "Message / Inquiry", formSubmit: "Send Message",
+              privacyNotice: "Your personal data will only be utilized for answering your forum inquiry in accordance with our privacy practices."
+            },
+            footer: { rights: "© 2026 The 3rd Japan-Korea International Mental Coaching Forum. All rights reserved.", builtWith: "Designed for Framer deployment with Google Drive integration.", backToTop: "Back to top ↑" }
+          },
+          ko: {
+            nav: { about: "포럼 소개", program: "프로그램", speakers: "발표자", materials: "발표 자료", venue: "장소 및 안내", fieldflow: "MCCI & Field Flow 10주년", contact: "문의하기" },
+            phases: {
+              pre: { banner: "사전 안내 모드: 2026년 10월 3일(토) 요코하마에서 개최됩니다.", heroCtaPrimary: "프로그램 보기", heroCtaSecondary: "발표 자료", materialsStatus: "발표 자료는 사전 동의 및 공개 일정에 맞춰 순차적으로 연동됩니다." },
+              day: { banner: "행사 당일 모드: 오전 09:40부터 1층 로비에서 접수 진행! 포럼은 17층에서 10시에 시작됩니다.", heroCtaPrimary: "실시간 일정 확인", heroCtaSecondary: "현장 발표자료 열람", materialsStatus: "당일 발표 세션 핸드아웃 및 슬라이드를 구글 드라이브에서 열람하실 수 있습니다." },
+              post: { banner: "행사 후 아카이브 모드: 제3회 포럼이 성황리에 종료되었습니다. 발표 자료와 사진을 확인해보세요.", heroCtaPrimary: "아카이브 둘러보기", heroCtaSecondary: "발표자료 다운로드", materialsStatus: "전체 프로그램 및 확정 발표자료, 현장 스케치 아카이브가 공개되었습니다." }
+            },
+            hero: {
+              badge: "제3회 한·일 국제 포럼 · 요코하마 2026", mainTitle: "Evolution Together", subTitle: "Evolve Together. Create a New Future.",
+              description: "한국과 일본의 멘탈코칭 전문가, 스포츠·교육 지도자가 함께 모여 AI와 대변혁의 시대에 인간 중심 코칭의 가치와 새로운 미래를 여는 국제 학술·실천 교류의 장입니다.",
+              date: "2026년 10월 3일 (토요일)", time: "10:00 – 18:00 (네트워킹 리셉션 19:00 – 21:00)", venue: "일본 요코하마 관동학원대학 간나이 캠퍼스 17층", transport: "JR 간나이역 남쪽 출구 도보 2분 / 니혼오도리역 도보 8분",
+              btnProgram: "프로그램 확인하기", btnMaterials: "발표 자료 열람"
+            },
+            about: {
+              tag: "포럼 철학 & 메시지", title: "No One Evolves Alone.", highlight: "Learn Together · Think Together · Evolve Together",
+              p1: "제3회 한일국제멘탈포럼은 한국과 일본의 멘탈코치가 서로의 현장 경험과 학문적 깊이, 문화적 통찰을 나누며 함께 성장하는 자리입니다.",
+              p2: "인공지능(AI)과 첨단 기술이 삶의 전 영역으로 확산되는 대전환의 시대, 멘탈코칭은 기술과의 경쟁이 아닌 인간 본연의 고유한 가치와 자율적 의사결정을 밝히는 등불이 되어야 합니다. 두 나라 코치진이 머리를 맞대고 새로운 미래를 모색합니다.",
+              pillars: [
+                { title: "함께 배우다 (Learn Together)", desc: "엘리트 스포츠부터 교육 현장까지, 한·일 양국의 실전 멘탈 트레이닝 및 코칭 방법론을 심도 있게 교류합니다." },
+                { title: "함께 사유하다 (Think Together)", desc: "AI 기술 혁신 속에서 인간의 주체성과 내면적 존엄성을 지키는 멘탈코치의 본질적 소명을 깊이 성찰합니다." },
+                { title: "함께 진화하다 (Evolve Together)", desc: "일회성 행사를 넘어 지속 가능한 한·일 코치 연대 네트워크를 구축하고 함께 미래를 설계합니다." }
+              ]
+            },
+            program: {
+              tag: "행사 타임테이블", title: "포럼 상세 프로그램", subtitle: "기조강연, 한·일 7인 발표, 특별 공연, 전원 참여 그룹 워크숍, 저녁 리셉션까지 빈틈없이 구성된 일정입니다.",
+              updated: "최종 업데이트: 2026년 9월 28일", downloadBtn: "전체 프로그램 PDF 다운로드",
+              tableHeaders: { time: "시간", type: "구분", title: "세션 주제 및 세부 내용", speaker: "발표자 / 진행" }
+            },
+            speakers: {
+              tag: "초청 연사 소개", title: "기조강연 및 발표자", subtitle: "스포츠 현장, 대학 강단, 코칭 산업 최전선에서 변화를 이끌어가는 한·일 대표 연사진을 소개합니다.",
+              filterAll: "전체 보기", filterKeynote: "기조강연", filterKorea: "한국 발표자 (4명)", filterJapan: "일본 발표자 (3명)",
+              btnAbstract: "발표 개요 보기", btnMaterials: "발표 자료 (PDF)"
+            },
+            materials: {
+              tag: "자료 열람 및 다운로드", title: "발표 자료 및 공식 아카이브", subtitle: "포럼의 공식 자료는 구글 드라이브(Google Drive)와 안전하게 연동되어 참가자 누구나 편리하게 다운로드할 수 있습니다.",
+              drivePolicy: "공개 권한: 링크가 있는 모든 사용자(뷰어). 연사 사전 동의를 거친 공식 자료만 안전하게 배포됩니다.",
+              folderStructureTitle: "표준 구글 드라이브 아카이브 구조"
+            },
+            venue: {
+              tag: "오시는 길 & 당일 안내", title: "행사장 위치 및 참가자 안내", subtitle: "등록 시간, 대중교통, 점심 식사, 소통 지원 및 저녁 네트워킹 리셉션 정보를 확인하세요.",
+              venueName: "일본 관동학원대학 요코하마 간나이 캠퍼스", venueFloor: "17층 메인 콘퍼런스 홀", address: "〒231-0031 神奈川県横浜市中区万代町1-1-10", openMapsBtn: "Google 지도에서 열기"
+            },
+            fieldflow: {
+              tag: "한·일 공동 10주년 기념 (2016–2026)",
+              title: "MCCI & Field Flow 창립 10주년을 함께 축하합니다",
+              description: "대한민국의 MCCI(국제멘탈코칭센터, Mental Coaching Center Int'l)와 일본의 Field Flow가 2026년 나란히 창립 10주년을 맞이했습니다. 지난 10년 동안 양 기관은 스포츠, 교육, 비즈니스 현장에서 인간 중심의 멘탈코칭을 개척하며 수많은 선수와 리더의 잠재력을 꽃피워 왔습니다. 양국의 깊은 신뢰와 연대로 이루어낸 10년의 발자취와 이번 포럼의 순간들을 공동 기념 앨범에 함께 기록해 주세요.",
+              mcciName: "MCCI (국제멘탈코칭센터)",
+              mcciDesc: "국제멘탈코칭센터(MCCI)는 대한민국 멘탈코칭 역량 표준화의 산실로서, 10년간 국가대표 및 엘리트 선수, 기업 리더들의 내적 자율성과 가치 기반 성장을 이끌어 온 인간 중심 코칭의 선구자입니다.",
+              ffName: "Field Flow Japan",
+              ffDesc: "일본 스포츠와 비즈니스 조직에서 '장(Field)'의 흐름과 팀 시너지를 극대화해 온 멘탈코칭의 혁신자. 보이지 않는 분위기와 공감을 이끌어내는 프랙티스 개척.",
+              mcciAddress: "서울시 서초구 양재천로15길 1, 제이애드빌딩 3층",
+              mcciContact: "천비키 코치 (MCCI 부대표) · 010-4457-3850",
+              ffAddress: "일본 도쿄",
+              ffContact: "타카하시 모토나리 총괄 코치",
+              callout: "📸 MCCI & Field Flow와 함께한 10년의 추억과 포럼 사진을 공유해 주세요!",
+              albumBtn: "10주년 공동 사진 앨범 열기",
+              uploadBtn: "추억 사진 공유하기 (Google Photos)"
+            },
+            contact: {
+              tag: "문의 및 사무국", title: "포럼 사무국 문의", subtitle: "포럼 참가, 발표 자료, 후속 교류 프로그램에 대한 문의 사항을 남겨주시면 신속히 답변해 드립니다.",
+              emailLabel: "사무국 공식 이메일", email: "secretariat@mentalforum2026.org", orgLabel: "주최 및 주관", orgName: "한일국제멘탈포럼 조직위원회 · MCCI · Field Flow",
+              koreaOfficeLabel: "한국 사무국 (MCCI)",
+              koreaOrgName: "국제멘탈코칭센터 (Mental Coaching Center Int'l)",
+              koreaAddress: "서울시 서초구 양재천로15길 1, 제이애드빌딩 3층",
+              koreaContactPerson: "천비키 코치 (MCCI 부대표)",
+              koreaPhone: "010-4457-3850",
+              forumSummaryLabel: "포럼 행사 개요",
+              formName: "이름", formEmail: "이메일 주소", formMessage: "문의 내용", formSubmit: "문의 보내기",
+              privacyNotice: "남겨주신 개인정보는 포럼 문의 답변 처리 목적으로만 안전하게 활용됩니다."
+            },
+            footer: { rights: "© 2026 제3회 한일국제멘탈포럼 조직위원회. All rights reserved.", builtWith: "Framer 배포 및 Google Drive 연동 최적화 규격으로 제작되었습니다.", backToTop: "맨 위로 이동 ↑" }
+          },
+          ja: {
+            nav: { about: "フォーラムについて", program: "プログラム", speakers: "登壇者紹介", materials: "発表資料", venue: "会場・当日のご案内", fieldflow: "MCCI＆Field Flow 10周年", contact: "お問い合わせ" },
+            phases: {
+              pre: { banner: "事前案内モード：2026年10月3日（土）横浜にて開催されます。", heroCtaPrimary: "プログラムを見る", heroCtaSecondary: "発表資料", materialsStatus: "発表資料はセッション開始および公開許諾に合わせて順次公開されます。" },
+              day: { banner: "当日モード：午前9時40分より大学1階にて受付開始！フォーラムは17階にて10時スタートです。", heroCtaPrimary: "タイムテーブル確認", heroCtaSecondary: "当日の発表資料", materialsStatus: "当日のハンドアウトおよび発表スライドをGoogle Driveでご確認いただけます。" },
+              post: { banner: "終了後アーカイブモード：第3回フォーラムは盛況のうちに終了しました。記録資料と写真をご覧いただけます。", heroCtaPrimary: "アーカイブを見る", heroCtaSecondary: "資料ダウンロード", materialsStatus: "公式発表スライド、プログラム、記念写真アーカイブを公開しています。" }
+            },
+            hero: {
+              badge: "第3回 日韓国際メンタルフォーラム · 横浜 2026", mainTitle: "Evolution Together", subTitle: "Evolve Together. Create a New Future.",
+              description: "韓国と日本のメンタルコーチ、スポーツ・教育指導者が集い、AI時代における人間中心のコーチングの意義と新たな未来を共創する国際フォーラムです。",
+              date: "2026年10月3日（土曜日）", time: "10:00 – 18:00（懇親会 19:00 – 21:00）", venue: "関東学院大学 横浜・関内キャンパス 17階", transport: "JR関内駅 南口より徒歩2分 / 日本大通り駅より徒歩8分",
+              btnProgram: "プログラムを見る", btnMaterials: "発表資料を見る"
+            },
+            about: {
+              tag: "フォーラムの理念", title: "No One Evolves Alone.", highlight: "Learn Together · Think Together · Evolve Together",
+              p1: "第3回日韓国際メンタルコーチングフォーラムは、日本と韓国のメンタルコーチが現場の実践知、学術的洞察、文化的視点を持ち寄り、共に学び進化するための交流基盤です。",
+              p2: "AIや先端テクノロジーが急速に普及する現代において、クライアントの可能性を深く信じ、自律的な選択と行動を支えるメンタルコーチの本質は一層重要性を増しています。国境を越えた対話を通じて、次世代のコーチングを拓きます。",
+              pillars: [
+                { title: "共に学ぶ（Learn Together）", desc: "トップアスリートの指導現場から教育現場まで、日韓の先駆的なコーチング手法と実践知を深く学び合います。" },
+                { title: "共に思索する（Think Together）", desc: "AI時代における人間の尊厳や主体性、そしてメンタルコーチが果たすべき真の役割を深く探求します。" },
+                { title: "共に進化する（Evolve Together）", desc: "一時的なイベントにとどまらず、持続的な日韓コーチネットワークを構築し、未来の新たなスタンダードを共創します。" }
+              ]
+            },
+            program: {
+              tag: "当日のスケジュール", title: "フォーラム プログラム", subtitle: "基調講演、日韓登壇セッション、特別公演、グループワーク、懇親会まで充実したプログラムです。",
+              updated: "最終更新：2026年9月28日", downloadBtn: "プログラムPDFをダウンロード",
+              tableHeaders: { time: "時間", type: "区分", title: "セッション内容・詳細", speaker: "登壇者 / 進行" }
+            },
+            speakers: {
+              tag: "登壇者プロフィール", title: "登壇者一覧", subtitle: "スポーツ、大学教育、メンタルコーチング界の第一線で活躍する日韓の登壇陣をご紹介します。",
+              filterAll: "すべて", filterKeynote: "基調講演", filterKorea: "韓国登壇者（4名）", filterJapan: "日本登壇者（3名）",
+              btnAbstract: "講演要旨を見る", btnMaterials: "発表資料（PDF）"
+            },
+            materials: {
+              tag: "配布資料・ダウンロード", title: "発表資料＆公式アーカイブ", subtitle: "フォーラムの公式資料はGoogle Driveにて安全かつ便利に閲覧・ダウンロードいただけます。",
+              drivePolicy: "公開権限：「リンクを知っている全員（閲覧者）」。登壇者の事前同意を得た資料のみ公開されます。",
+              folderStructureTitle: "推奨 Google Drive フォルダ構造"
+            },
+            venue: {
+              tag: "アクセス＆当日案内", title: "会場アクセス・当日のご案内", subtitle: "受付時間、交通アクセス、ご昼食、言語サポート、懇親会会場についてのご案内です。",
+              venueName: "関東学院大学 横浜・関内キャンパス", venueFloor: "17階 メインカンファレンスホール", address: "〒231-0031 神奈川県横浜市中区万代町1-1-10", openMapsBtn: "Google Mapsで開く"
+            },
+            fieldflow: {
+              tag: "日韓共同 創立10周年記念（2016–2026）",
+              title: "MCCI＆Field Flow 創立10周年を共に祝う",
+              description: "韓国のMCCI（国際メンタルコーチングセンター / Mental Coaching Center Int'l）と日本のField Flowは、共に2026年に創立10周年を迎えました。過去10年間にわたり、両組織はスポーツ、教育、ビジネスの現場で人間中心のメンタルコーチングを切り拓き、多くの指導者やアスリートの成長を伴走してきました。両国の絆と10年の歩み、そして本フォーラムの想い出を共同記念アルバムにぜひ共有してください。",
+              mcciName: "MCCI（国際メンタルコーチングセンター）",
+              mcciDesc: "国際メンタルコーチングセンター（MCCI）は、韓国におけるメンタルコーチング・スタンダードの確立を牽引し、アスリートやリーダーの自律的選択と内発的動機づけを10年支え続ける人間中心コーチングのパイオニアです。",
+              ffName: "Field Flow Japan",
+              ffDesc: "日本のスポーツ・ビジネス現場において、見えない「場」のダイナミクスとフロー状態を引き出し、組織の真のポテンシャルを解放し続ける先駆的アライアンス。",
+              mcciAddress: "ソウル特別市瑞草区良才川路15キル1、J-Addビル3階",
+              mcciContact: "チョン・ビキ コーチ（MCCI副代表） · +82-10-4457-3850",
+              ffAddress: "日本 東京",
+              ffContact: "高橋 元成 エグゼクティブメンタルコーチ",
+              callout: "📸 MCCI＆Field Flowとの10年の想い出、フォーラムの写真をぜひご共有ください！",
+              albumBtn: "10周年共同記念アルバムを開く",
+              uploadBtn: "想い出の写真を共有する（Google Photos）"
+            },
+            contact: {
+              tag: "事務局お問い合わせ", title: "お問い合わせ", subtitle: "フォーラムに関するご質問、資料閲覧、今後の連携等についてお気軽にお問い合わせください。",
+              emailLabel: "事務局公式メールアドレス", email: "secretariat@mentalforum2026.org", orgLabel: "主催・運営", orgName: "日韓国際メンタルフォーラム運営委員会 · MCCI · Field Flow",
+              koreaOfficeLabel: "韓国事務局（MCCI）",
+              koreaOrgName: "国際メンタルコーチングセンター（MCCI）",
+              koreaAddress: "ソウル特別市瑞草区良才川路15キル1、J-Addビル3階",
+              koreaContactPerson: "チョン・ビキ コーチ（MCCI副代表）",
+              koreaPhone: "+82-10-4457-3850",
+              forumSummaryLabel: "フォーラム開催概要",
+              formName: "お名前", formEmail: "メールアドレス", formMessage: "お問い合わせ内容", formSubmit: "送信する",
+              privacyNotice: "ご入力いただいた個人情報は、お問い合わせへの回答目的のみに使用いたします。"
+            },
+            footer: { rights: "© 2026 第3回日韓国際メンタルフォーラム運営委員会. All rights reserved.", builtWith: "Framer公開およびGoogle Drive連携に最適化された設計です。", backToTop: "トップへ戻る ↑" }
+          }
+        },
+
+        speakersDetails: {
+          aoyagi: {
+            abstractEn: "Exploring the neurological and psychological frameworks that underpin elite athletic performance, psychological safety in high-stakes environments, and how evidence-based mental coaching transforms sports institutions.",
+            abstractKo: "엘리트 운동선수의 최적 수행 상태를 이끄는 신경심리학적 기전과 심리적 안전감의 역할을 규명하고, 실증적 멘탈코칭이 개인과 스포츠 조직의 패러다임을 어떻게 전환하는지 심층적으로 조망합니다.",
+            abstractJa: "トップアスリートのピークパフォーマンスを支える神経心理学的メカニズムと心理的安全性の意義を紐解き、エビデンスに基づくメンタルコーチングが個と組織をどのように変革するかを提示します。"
+          },
+          yeom: {
+            abstractEn: "How leadership mindsets among athletic educators create profound systemic transformations in student athletes' well-being and long-term athletic success.",
+            abstractKo: "체육 지도자와 학교 관리자의 리더십 패러다임 변화가 학생 선수들의 정서적 안정과 자율적 동기부여, 학교 체육 시스템 전체의 질적 도약을 어떻게 이끄는지를 실천 사례를 바탕으로 논증합니다.",
+            abstractJa: "指導者や学校管理職のマインドセット変革が、生徒・アスリートの主体性や自己肯定感、さらには学校全体のカルチャーをどのように好転させるかを豊富な実例から解き明かします。"
+          },
+          yoon: {
+            abstractEn: "Unveiling the symbiotic bridge between somatic conditioning and mental tenacity in elite competitive sports.",
+            abstractKo: "신체 트레이닝과 멘탈코칭의 유기적 결합 모델을 제시합니다. 부상 회복 과정과 근신경계 밸런스 회복이 선수의 불안을 극복하고 실전 집중력을 극대화하는 프로세스를 설명합니다.",
+            abstractJa: "身体のコンディショニングとメンタルトレーニングのシナジーを追求。ケガのリハビリや筋神経系の調和が、選手の不安軽減と試合での強靱な集中力にどう寄与するかを実証します。"
+          },
+          kim: {
+            abstractEn: "Exploring postural equilibrium, sensory integration, and breathing biomechanics as the primary physical foundation for clarity of thought and stress management.",
+            abstractKo: "신체의 정렬과 호흡, 고유수용성 감각의 안정이 선수의 인지적 판단력과 멘탈의 선명도에 직결되는 메커니즘을 밝히고, 일상과 경기장에서 즉각 활용 가능한 밸런스 테크닉을 공유합니다.",
+            abstractJa: "身体のアライメント、呼吸、深部感覚の安定が、いかに思考の明晰さや決断の迅速さにつながるかを解説。現場で即実践できるボディ・マインド調律法を公開します。"
+          },
+          park: {
+            abstractEn: "In an era saturated with AI and predictive algorithms, mental coaching must surpass technological utility. The coach's genuine role is to deeply understand human existence and empower individuals to make authentic, values-aligned choices.",
+            abstractKo: "AI와 첨단 알고리즘이 범람하는 시대일수록 멘탈코칭은 단순한 기능 경쟁을 뛰어넘어야 합니다. 인간에 대한 깊은 공감과 존중을 바탕으로, 내담자가 자신의 진정한 가치관에 입각해 주체적으로 선택하고 행동하도록 이끄는 멘탈코칭의 미래 사명을 제언합니다.",
+            abstractJa: "AIやテクノロジーが進化する現代だからこそ、メンタルコーチングは技術競争を超えた本質に立ち返る必要があります。人間への深い理解に基づき、クライアントが自らのコアバリューに沿って自律的に選択・行動することを支援する真の役割を提起します。"
+          },
+          takahashi: {
+            abstractEn: "Analyzing the unseen team atmosphere, emotional contagion, and communicative resonance in competitive teams, offering practical tools to shift collective team consciousness into peak performance.",
+            abstractKo: "경기 현장에서 선수 개개인을 넘어 팀 전체를 지배하는 집단적 에너지와 분위기(장, Field)를 진단하고, 팀의 응집력과 몰입을 극대화하는 일본 현장 코칭 기법을 소개합니다.",
+            abstractJa: "チーム内に漂う目に見えない「空気感」や感情伝播を捉え、個人の限界を超えてチーム全体がフロー状態に入るための場のデザイン手法と実践知を共有します。"
+          },
+          jp02: {
+            abstractEn: "A progressive pedagogy to nurture self-directed problem-solving and intrinsic motivation in young athletes through inquiry-based coaching.",
+            abstractKo: "지시와 통제 방식의 전통적 지도법을 벗어나, 유소년 선수들이 스스로 질문하고 목표를 설정하며 실패 속에서 배우도록 돕는 자율형 멘탈코칭 실천 방안을 제시합니다.",
+            abstractJa: "指示命令型から問いかけ型へ。育成期のアスリートが自らの頭で考え、失敗を学びに変える「自律型メンタリティ」を育む指導プロセスの実例を公開します。"
+          },
+          jp03: {
+            abstractEn: "Synthesizing Western psychological frameworks with Eastern relational values (harmony, empathy, intuition) to create a distinctive, culturally resonant model of coaching.",
+            abstractKo: "서구 심리학 모델에 동양적 관계성(조화, 맥락, 비언어적 공감)을 결합하여, 한·일 양국 문화적 토양에 최적화된 새로운 코칭 패러다임을 제안합니다.",
+            abstractJa: "西洋的な心理モデルに東洋的な関係性や共感、間（ま）の思想を調和させ、アジア発の新たなコーチング・スタンダードを拓くビジョンを提示します。"
+          }
+        }
+      };
+
+      let currentLang = 'en';
+      let currentPhase = 'pre';
+      let currentFilter = 'all';
+
+      const langButtons = document.querySelectorAll('.lang-btn');
+      const phaseButtons = document.querySelectorAll('.phase-btn');
+      const phaseBannerText = document.getElementById('phase-banner-text');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const modalOverlay = document.getElementById('abstract-modal');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+      const toastElement = document.getElementById('toast-notification');
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      const contactForm = document.getElementById('contact-form');
+
+      function setLanguage(lang) {
+        currentLang = lang;
+        langButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
+        const dict = DATA.i18n[lang] || DATA.i18n.en;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const keyPath = el.getAttribute('data-i18n');
+          const val = keyPath.split('.').reduce((acc, part) => (acc && acc[part] !== undefined) ? acc[part] : undefined, dict);
+          if (val !== undefined) el.textContent = val;
+        });
+
+        // Update speaker cards translations if needed
+        const phaseInfo = dict.phases[currentPhase];
+        if (phaseInfo && phaseBannerText) phaseBannerText.textContent = phaseInfo.banner;
+
+        const heroCta1 = document.getElementById('hero-cta-primary');
+        const heroCta2 = document.getElementById('hero-cta-secondary');
+        if (heroCta1 && phaseInfo) heroCta1.innerHTML = phaseInfo.heroCtaPrimary + ' ↓';
+        if (heroCta2 && phaseInfo) heroCta2.innerHTML = phaseInfo.heroCtaSecondary + ' ↗';
+      }
+
+      function setPhase(phase) {
+        currentPhase = phase;
+        phaseButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-phase') === phase));
+        const dict = DATA.i18n[currentLang] || DATA.i18n.en;
+        const phaseInfo = dict.phases[currentPhase];
+        if (!phaseInfo) return;
+
+        if (phaseBannerText) phaseBannerText.textContent = phaseInfo.banner;
+        const heroCta1 = document.getElementById('hero-cta-primary');
+        const heroCta2 = document.getElementById('hero-cta-secondary');
+        if (heroCta1) heroCta1.innerHTML = phaseInfo.heroCtaPrimary + ' ↓';
+        if (heroCta2) heroCta2.innerHTML = phaseInfo.heroCtaSecondary + ' ↗';
+
+        const materialsStatus = document.getElementById('materials-status-note');
+        if (materialsStatus) materialsStatus.textContent = phaseInfo.materialsStatus;
+      }
+
+      window.openSpeakerModal = function(speakerId) {
+        const item = DATA.speakersDetails[speakerId];
+        if (!item || !modalOverlay) return;
+
+        const titles = {
+          aoyagi: "The Horizon of Contemporary Sports & Mental Science",
+          yeom: "When Leaders Change, Schools Change",
+          yoon: "When Physical Training Meets Mental Coaching",
+          kim: "When the Body Is Stable, the Mind Becomes Clearer",
+          park: "The Future of Mental Coaching",
+          takahashi: "Coaching the Invisible: Systemic Field Dynamics",
+          jp02: "Cultivating Inner Autonomy in Youth Athletics",
+          jp03: "Bridging East Asian Perspectives in Mental Coaching"
+        };
+
+        const names = {
+          aoyagi: currentLang === 'ko' ? "아오야기 교수" : (currentLang === 'ja' ? "青柳 教授" : "Prof. Aoyagi"),
+          yeom: currentLang === 'ko' ? "염동철 교수" : (currentLang === 'ja' ? "ヨム・ドンチョル 教授" : "Dong Chul Yeom"),
+          yoon: currentLang === 'ko' ? "윤태련 대표" : (currentLang === 'ja' ? "ユン・テリョン 代表" : "Tae Ryeon Yoon"),
+          kim: currentLang === 'ko' ? "김성민 대표" : (currentLang === 'ja' ? "キム・ソンミン 代表" : "Sung Min Kim"),
+          park: currentLang === 'ko' ? "박철수 대표" : (currentLang === 'ja' ? "パク・チョルス 代表" : "Chul Soo Park"),
+          takahashi: currentLang === 'ko' ? "타카하시 모토나리 코치" : (currentLang === 'ja' ? "高橋 元成 氏" : "Motonari Takahashi"),
+          jp02: currentLang === 'ko' ? "일본 발표자 02" : (currentLang === 'ja' ? "日本側 登壇者 02" : "Japan Speaker 02"),
+          jp03: currentLang === 'ko' ? "일본 발표자 03" : (currentLang === 'ja' ? "日本側 登壇者 03" : "Japan Speaker 03")
+        };
+
+        const orgs = {
+          aoyagi: currentLang === "ko" ? "관동학원대학 스포츠심리학 교수" : (currentLang === "ja" ? "関東学院大学 スポーツ心理学教授" : "Kanto Gakuin University"),
+          yeom: currentLang === "ko" ? "한국체육대학교 역도부 교수" : (currentLang === "ja" ? "韓国体育大学 重量挙げ部教授" : "Korea National Sport University"),
+          yoon: currentLang === "ko" ? "올댓컨디셔닝 대표" : (currentLang === "ja" ? "オールザットコンディショニング代表" : "All That Conditioning"),
+          kim: currentLang === "ko" ? "바디밸런스 클리닉 & 코칭 대표" : (currentLang === "ja" ? "ボディバランス 代表" : "Body Balance Clinic & Coaching"),
+          park: currentLang === "ko" ? "MCCI (국제멘탈코칭센터) 한국대표" : (currentLang === "ja" ? "MCCI（国際メンタルコーチングセンター）韓国代表" : "MCCI (Mental Coaching Center Int'l) Korea Rep."),
+          takahashi: currentLang === "ko" ? "Field Flow Japan 총괄 코치" : (currentLang === "ja" ? "Field Flow Japan 代表 / エグゼクティブメンタルコーチ" : "Field Flow Japan"),
+          jp02: currentLang === "ko" ? "일본 멘탈트레이닝 협회" : (currentLang === "ja" ? "日本メンタルトレーニング協会" : "Japan Mental Training Association"),
+          jp03: currentLang === "ko" ? "Field Flow 얼라이언스" : (currentLang === "ja" ? "Field Flow アライアンス" : "Field Flow Alliance")
+        };
+
+        document.getElementById('modal-speaker-name').textContent = names[speakerId] || "Speaker";
+        document.getElementById('modal-speaker-org').textContent = orgs[speakerId] || "Forum Presenter";
+        document.getElementById('modal-topic-title').textContent = titles[speakerId] || "Presentation Topic";
+
+        const abstractText = currentLang === 'ko' ? item.abstractKo : (currentLang === 'ja' ? item.abstractJa : item.abstractEn);
+        document.getElementById('modal-abstract-text').textContent = abstractText;
+
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      function closeModal() {
+        if (modalOverlay) {
+          modalOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))));
+      phaseButtons.forEach(btn => btn.addEventListener('click', () => setPhase(btn.getAttribute('data-phase'))));
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          const cards = document.querySelectorAll('.speakers-grid .speaker-card');
+          cards.forEach((card, idx) => {
+            // idx 0 is keynote, 1-4 korea, 5-7 japan
+            if (filter === 'all') card.style.display = 'flex';
+            else if (filter === 'keynote') card.style.display = (idx === 0) ? 'flex' : 'none';
+            else if (filter === 'korea') card.style.display = (idx >= 1 && idx <= 4) ? 'flex' : 'none';
+            else if (filter === 'japan') card.style.display = (idx >= 5 && idx <= 7) ? 'flex' : 'none';
+          });
+        });
+      });
+
+      if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => navMenu.classList.toggle('mobile-open'));
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', () => navMenu.classList.remove('mobile-open'));
+        });
+      }
+
+      if (modalCloseBtn && modalOverlay) {
+        modalCloseBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+      }
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const msgs = { en: "Message received. Thank you!", ko: "문의가 접수되었습니다. 감사합니다.", ja: "お問い合わせを受け付けました。" };
+          if (toastElement) {
+            toastElement.textContent = msgs[currentLang] || msgs.en;
+            toastElement.classList.add('show');
+            setTimeout(() => toastElement.classList.remove('show'), 3500);
+          }
+          contactForm.reset();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
