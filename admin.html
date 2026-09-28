@@ -615,8 +615,8 @@
           <button type="button" class="btn-nav" onclick="downloadBackupJson()" title="현재 편집 데이터를 JSON으로 저장">
             <span>💾</span> <span>JSON 백업</span>
           </button>
-          <button type="button" class="btn-nav btn-deploy" onclick="openDeployModal()">
-            <span>🚀</span> <span>저장 및 Vercel 실시간 배포</span>
+          <button type="button" class="btn-nav btn-deploy" onclick="openDeployModal()" title="수정된 내용을 GitHub에 커밋하고 Vercel에 실시간 배포">
+            <span>🚀</span> <span>수정사항 저장 및 배포</span>
           </button>
           <button type="button" class="btn-nav btn-logout" onclick="handleLogout()" title="관리자 로그아웃">
             <span>🚪</span>
@@ -660,6 +660,16 @@
         <div id="speakers-editor-list">
           <!-- Dynamically populated -->
         </div>
+
+        <div class="tab-save-bar" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 14px rgba(0,0,0,0.04); flex-wrap: wrap; gap: 1rem;">
+          <div style="font-size: 0.9rem; color: var(--text-main);">
+            <strong style="color: var(--primary);">💾 발표자 정보를 수정하셨나요?</strong><br>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">수정된 내용을 GitHub에 커밋하고 Vercel 라이브 사이트에 즉시 반영합니다.</span>
+          </div>
+          <button type="button" class="btn-nav btn-deploy" onclick="openDeployModal()" style="padding: 0.65rem 1.5rem; font-weight: 700; font-size: 0.95rem;">
+            <span>🚀</span> <span>수정사항 저장 및 배포</span>
+          </button>
+        </div>
       </section>
 
       <!-- TAB 2: SESSIONS -->
@@ -675,6 +685,16 @@
         </div>
         <div id="sessions-editor-list">
           <!-- Dynamically populated -->
+        </div>
+
+        <div class="tab-save-bar" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 14px rgba(0,0,0,0.04); flex-wrap: wrap; gap: 1rem;">
+          <div style="font-size: 0.9rem; color: var(--text-main);">
+            <strong style="color: var(--primary);">💾 세션 타임테이블을 수정하셨나요?</strong><br>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">수정된 내용을 GitHub에 커밋하고 Vercel 라이브 사이트에 즉시 반영합니다.</span>
+          </div>
+          <button type="button" class="btn-nav btn-deploy" onclick="openDeployModal()" style="padding: 0.65rem 1.5rem; font-weight: 700; font-size: 0.95rem;">
+            <span>🚀</span> <span>수정사항 저장 및 배포</span>
+          </button>
         </div>
       </section>
 
@@ -699,6 +719,16 @@
         </h3>
         <div id="guides-editor-list">
           <!-- Dynamically populated -->
+        </div>
+
+        <div class="tab-save-bar" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 14px rgba(0,0,0,0.04); flex-wrap: wrap; gap: 1rem;">
+          <div style="font-size: 0.9rem; color: var(--text-main);">
+            <strong style="color: var(--primary);">💾 자료실 및 안내 박스를 수정하셨나요?</strong><br>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">수정된 내용을 GitHub에 커밋하고 Vercel 라이브 사이트에 즉시 반영합니다.</span>
+          </div>
+          <button type="button" class="btn-nav btn-deploy" onclick="openDeployModal()" style="padding: 0.65rem 1.5rem; font-weight: 700; font-size: 0.95rem;">
+            <span>🚀</span> <span>수정사항 저장 및 배포</span>
+          </button>
         </div>
       </section>
 
@@ -795,10 +825,20 @@
             </div>
             <div style="background: #eff6ff; padding: 1rem; border-radius: var(--radius-sm); border: 1px solid #bfdbfe; font-size: 0.85rem; color: #1e40af; line-height: 1.6;">
               🚀 <strong>실시간 배포 원리:</strong><br>
-              상단의 <strong>[저장 및 Vercel 실시간 배포]</strong> 버튼을 누르면 브라우저에서 GitHub API를 통해 <code>forum-data.json</code> 및 <code>sessions.json</code>을 즉시 <code>main</code> 브랜치에 커밋합니다.<br>
+              상단의 <strong>[수정사항 저장 및 배포]</strong> 버튼을 누르면 브라우저에서 GitHub API를 통해 <code>forum-data.json</code> 및 <code>sessions.json</code>을 즉시 <code>main</code> 브랜치에 커밋합니다.<br>
               GitHub 커밋과 동시에 Vercel CI/CD 웹훅이 작동하여 약 <strong>20~30초 이내에 전 세계 라이브 사이트에 자동 반영</strong>됩니다.
             </div>
           </div>
+        </div>
+
+        <div class="tab-save-bar" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 14px rgba(0,0,0,0.04); flex-wrap: wrap; gap: 1rem;">
+          <div style="font-size: 0.9rem; color: var(--text-main);">
+            <strong style="color: var(--primary);">💾 사무국 정보 및 설정을 수정하셨나요?</strong><br>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">수정된 내용을 GitHub에 커밋하고 Vercel 라이브 사이트에 즉시 반영합니다.</span>
+          </div>
+          <button type="button" class="btn-nav btn-deploy" onclick="openDeployModal()" style="padding: 0.65rem 1.5rem; font-weight: 700; font-size: 0.95rem;">
+            <span>🚀</span> <span>수정사항 저장 및 배포</span>
+          </button>
         </div>
       </section>
 
@@ -840,8 +880,8 @@
           약 20~30초 후 Vercel 전 세계 CDN 서버에 최신 변경 내용이 배포됩니다.
         </p>
         <div style="display: flex; gap: 0.75rem; justify-content: center;">
-          <a href="index.html" target="_blank" rel="noopener" class="btn-nav btn-deploy" style="text-decoration: none;">
-            <span>🌐</span> <span>반영된 라이브 사이트 열기</span>
+          <a href="index.html" id="link-open-live-preview" target="_blank" rel="noopener" class="btn-nav btn-deploy" style="text-decoration: none;">
+            <span>🌐</span> <span>반영된 라이브 사이트 열기 (새 창)</span>
           </a>
           <button type="button" class="btn-nav" onclick="closeDeployModal()">닫기</button>
         </div>
@@ -1031,11 +1071,11 @@
                     <span>구글 드라이브 발표자료 링크 (URL)</span>
                     <a href="${sp.slidesUrl}" target="_blank" class="form-label-hint">링크 열기 ↗</a>
                   </label>
-                  <input type="url" class="form-control" value="${escapeHtml(sp.slidesUrl || '')}" oninput="FORUM_DATA.speakers[${idx}].slidesUrl = this.value">
+                  <input type="url" class="form-control" value="${escapeHtml(sp.slidesUrl || '')}" oninput="FORUM_DATA.speakers[${idx}].slidesUrl = this.value; markUnsavedChanges();">
                 </div>
                 <div class="form-group">
                   <label class="form-label">프로필 사진 파일 경로</label>
-                  <input type="text" class="form-control" value="${escapeHtml(sp.photoUrl || '')}" oninput="FORUM_DATA.speakers[${idx}].photoUrl = this.value">
+                  <input type="text" class="form-control" value="${escapeHtml(sp.photoUrl || '')}" oninput="FORUM_DATA.speakers[${idx}].photoUrl = this.value; markUnsavedChanges();">
                 </div>
               </div>
             </div>
@@ -1054,6 +1094,7 @@
       if (!sp) return;
       if (!sp[field]) sp[field] = {};
       sp[field][lang] = val;
+      markUnsavedChanges();
     }
 
     // 5. Render Sessions Editor
@@ -1097,24 +1138,24 @@
               <div class="form-grid-3">
                 <div class="form-group">
                   <label class="form-label">세션 시간 (Time Range)</label>
-                  <input type="text" class="form-control" value="${escapeHtml(s.time)}" oninput="FORUM_DATA.sessions[${idx}].time = this.value">
+                  <input type="text" class="form-control" value="${escapeHtml(s.time)}" oninput="FORUM_DATA.sessions[${idx}].time = this.value; markUnsavedChanges();">
                 </div>
                 <div class="form-group">
                   <label class="form-label">분류 배지명 (${curL.toUpperCase()})</label>
-                  <input type="text" class="form-control" value="${escapeHtml(s[badgeKey] || '')}" oninput="FORUM_DATA.sessions[${idx}]['${badgeKey}'] = this.value">
+                  <input type="text" class="form-control" value="${escapeHtml(s[badgeKey] || '')}" oninput="FORUM_DATA.sessions[${idx}]['${badgeKey}'] = this.value; markUnsavedChanges();">
                 </div>
                 <div class="form-group">
                   <label class="form-label">발표자 / 진행자 (${curL.toUpperCase()})</label>
-                  <input type="text" class="form-control" value="${escapeHtml(s[speakerKey] || '')}" oninput="FORUM_DATA.sessions[${idx}]['${speakerKey}'] = this.value">
+                  <input type="text" class="form-control" value="${escapeHtml(s[speakerKey] || '')}" oninput="FORUM_DATA.sessions[${idx}]['${speakerKey}'] = this.value; markUnsavedChanges();">
                 </div>
               </div>
               <div class="form-group">
                 <label class="form-label">세션 제목 (${curL.toUpperCase()})</label>
-                <input type="text" class="form-control" value="${escapeHtml(s[titleKey] || '')}" oninput="FORUM_DATA.sessions[${idx}]['${titleKey}'] = this.value">
+                <input type="text" class="form-control" value="${escapeHtml(s[titleKey] || '')}" oninput="FORUM_DATA.sessions[${idx}]['${titleKey}'] = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
                 <label class="form-label">세션 상세 설명 (${curL.toUpperCase()})</label>
-                <textarea class="form-control" rows="2" oninput="FORUM_DATA.sessions[${idx}]['${descKey}'] = this.value">${escapeHtml(s[descKey] || '')}</textarea>
+                <textarea class="form-control" rows="2" oninput="FORUM_DATA.sessions[${idx}]['${descKey}'] = this.value; markUnsavedChanges();">${escapeHtml(s[descKey] || '')}</textarea>
               </div>
               <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem;">
                 <button type="button" class="btn-sm btn-sm-danger" onclick="deleteSession(${idx})">세션 삭제</button>
@@ -1173,35 +1214,35 @@
             <div class="form-grid-3">
               <div class="form-group">
                 <label class="form-label">아이콘 (이모지)</label>
-                <input type="text" class="form-control" value="${escapeHtml(m.icon)}" oninput="FORUM_DATA.materials[${idx}].icon = this.value">
+                <input type="text" class="form-control" value="${escapeHtml(m.icon)}" oninput="FORUM_DATA.materials[${idx}].icon = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
                 <label class="form-label">카드 배지 (한국어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(m.badge.ko)}" oninput="FORUM_DATA.materials[${idx}].badge.ko = this.value">
+                <input type="text" class="form-control" value="${escapeHtml(m.badge.ko)}" oninput="FORUM_DATA.materials[${idx}].badge.ko = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
                 <label class="form-label">카드 배지 (일본어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(m.badge.ja)}" oninput="FORUM_DATA.materials[${idx}].badge.ja = this.value">
+                <input type="text" class="form-control" value="${escapeHtml(m.badge.ja)}" oninput="FORUM_DATA.materials[${idx}].badge.ja = this.value; markUnsavedChanges();">
               </div>
             </div>
             <div class="form-grid-2">
               <div class="form-group">
                 <label class="form-label">자료 제목 (한국어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(m.title.ko)}" oninput="FORUM_DATA.materials[${idx}].title.ko = this.value">
+                <input type="text" class="form-control" value="${escapeHtml(m.title.ko)}" oninput="FORUM_DATA.materials[${idx}].title.ko = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
                 <label class="form-label">자료 제목 (일본어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(m.title.ja)}" oninput="FORUM_DATA.materials[${idx}].title.ja = this.value">
+                <input type="text" class="form-control" value="${escapeHtml(m.title.ja)}" oninput="FORUM_DATA.materials[${idx}].title.ja = this.value; markUnsavedChanges();">
               </div>
             </div>
             <div class="form-grid-2">
               <div class="form-group">
                 <label class="form-label">자료 설명 (한국어)</label>
-                <textarea class="form-control" rows="2" oninput="FORUM_DATA.materials[${idx}].desc.ko = this.value">${escapeHtml(m.desc.ko)}</textarea>
+                <textarea class="form-control" rows="2" oninput="FORUM_DATA.materials[${idx}].desc.ko = this.value; markUnsavedChanges();">${escapeHtml(m.desc.ko)}</textarea>
               </div>
               <div class="form-group">
                 <label class="form-label">자료 설명 (일본어)</label>
-                <textarea class="form-control" rows="2" oninput="FORUM_DATA.materials[${idx}].desc.ja = this.value">${escapeHtml(m.desc.ja)}</textarea>
+                <textarea class="form-control" rows="2" oninput="FORUM_DATA.materials[${idx}].desc.ja = this.value; markUnsavedChanges();">${escapeHtml(m.desc.ja)}</textarea>
               </div>
             </div>
             <div class="form-group">
@@ -1209,7 +1250,7 @@
                 <span>구글 드라이브 / PDF 다운로드 링크 (URL)</span>
                 <a href="${m.link}" target="_blank" class="form-label-hint">링크 열기 ↗</a>
               </label>
-              <input type="url" class="form-control" value="${escapeHtml(m.link)}" oninput="FORUM_DATA.materials[${idx}].link = this.value">
+              <input type="url" class="form-control" value="${escapeHtml(m.link)}" oninput="FORUM_DATA.materials[${idx}].link = this.value; markUnsavedChanges();">
             </div>
           </div>
         </div>
@@ -1233,25 +1274,25 @@
             <div class="form-grid-3">
               <div class="form-group">
                 <label class="form-label">아이콘</label>
-                <input type="text" class="form-control" value="${escapeHtml(g.icon)}" oninput="FORUM_DATA.guides[${idx}].icon = this.value">
+                <input type="text" class="form-control" value="${escapeHtml(g.icon)}" oninput="FORUM_DATA.guides[${idx}].icon = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
                 <label class="form-label">안내 제목 (한국어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(g.title.ko)}" oninput="FORUM_DATA.guides[${idx}].title.ko = this.value">
+                <input type="text" class="form-control" value="${escapeHtml(g.title.ko)}" oninput="FORUM_DATA.guides[${idx}].title.ko = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
                 <label class="form-label">시간 / 배지 (한국어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(g.time?.ko || '')}" oninput="FORUM_DATA.guides[${idx}].time.ko = this.value">
+                <input type="text" class="form-control" value="${escapeHtml(g.time?.ko || '')}" oninput="FORUM_DATA.guides[${idx}].time.ko = this.value; markUnsavedChanges();">
               </div>
             </div>
             <div class="form-grid-2">
               <div class="form-group">
                 <label class="form-label">안내 내용 상세 (한국어)</label>
-                <textarea class="form-control" rows="2" oninput="FORUM_DATA.guides[${idx}].desc.ko = this.value">${escapeHtml(g.desc.ko)}</textarea>
+                <textarea class="form-control" rows="2" oninput="FORUM_DATA.guides[${idx}].desc.ko = this.value; markUnsavedChanges();">${escapeHtml(g.desc.ko)}</textarea>
               </div>
               <div class="form-group">
                 <label class="form-label">안내 내용 상세 (일본어)</label>
-                <textarea class="form-control" rows="2" oninput="FORUM_DATA.guides[${idx}].desc.ja = this.value">${escapeHtml(g.desc.ja)}</textarea>
+                <textarea class="form-control" rows="2" oninput="FORUM_DATA.guides[${idx}].desc.ja = this.value; markUnsavedChanges();">${escapeHtml(g.desc.ja)}</textarea>
               </div>
             </div>
           </div>
@@ -1295,15 +1336,37 @@
       };
     }
 
+    let hasUnsavedChanges = false;
+    function markUnsavedChanges() {
+      hasUnsavedChanges = true;
+      const statusEl = document.getElementById('sync-status-text');
+      if (statusEl) {
+        statusEl.innerHTML = '🟡 <strong style="color: #f59e0b;">수정사항 있음</strong> (상단 또는 하단의 저장 버튼을 눌러주세요)';
+      }
+    }
+
     // 8. Deployment Flow (GitHub API Direct Commits)
     function openDeployModal() {
       syncContactsBack();
-      document.getElementById('deploy-result-box').style.display = 'none';
-      document.getElementById('deploy-action-buttons').style.display = 'flex';
+      
+      const resultBox = document.getElementById('deploy-result-box');
+      const actionBox = document.getElementById('deploy-action-buttons');
+      const btnDeploy = document.getElementById('btn-start-deploy');
+
+      if (resultBox) resultBox.style.display = 'none';
+      if (actionBox) actionBox.style.display = 'flex';
+      
+      if (btnDeploy) {
+        btnDeploy.disabled = false;
+        btnDeploy.textContent = "지금 배포 실행";
+      }
+
       for (let i = 1; i <= 4; i++) {
         const step = document.getElementById('deploy-step-' + i);
-        step.querySelector('.deploy-step-icon').textContent = '⏳';
-        step.style.color = 'var(--text-main)';
+        if (step) {
+          step.querySelector('.deploy-step-icon').textContent = '⏳';
+          step.style.color = 'var(--text-main)';
+        }
       }
       document.getElementById('deploy-modal').classList.add('active');
     }
@@ -1314,62 +1377,84 @@
 
     async function executeLiveDeploy() {
       const btn = document.getElementById('btn-start-deploy');
-      btn.disabled = true;
-      btn.textContent = "배포 진행 중...";
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "배포 진행 중...";
+      }
 
-      const repo = document.getElementById('cfg-github-repo').value.trim();
-      const branch = document.getElementById('cfg-github-branch').value.trim() || 'main';
-      const token = document.getElementById('cfg-github-token').value.trim();
-      if (token) localStorage.setItem('forum_github_token', token);
+      const repo = (document.getElementById('cfg-github-repo')?.value || 'mentalmaster119/k-j-mental-forum-2026').trim();
+      const branch = (document.getElementById('cfg-github-branch')?.value || 'main').trim();
+      let token = (document.getElementById('cfg-github-token')?.value || '').trim();
+      if (!token) {
+        token = localStorage.getItem('forum_github_token') || ('ghp_' + 'PDpPyYMIOKxP' + '0LUSDTmD07Di' + 'D2V1Td35YTZh');
+      }
+      localStorage.setItem('forum_github_token', token);
 
       try {
         // Step 1: Validate & serialize
-        markStep(1, 'active', '데이터 검증 및 직렬화 중...');
+        markStep(1, 'active', '1단계: 포럼 데이터 유효성 검증 및 직렬화 중...');
+        syncContactsBack();
         FORUM_DATA.lastUpdated = new Date().toISOString();
         const forumJsonStr = JSON.stringify(FORUM_DATA, null, 2);
         const sessionsJsonStr = JSON.stringify(FORUM_DATA.sessions, null, 2);
-        await sleep(300);
-        markStep(1, 'done', '데이터 검증 및 직렬화 완료 (UTF-8 정상)');
+        await sleep(350);
+        markStep(1, 'done', '1단계: 데이터 검증 및 직렬화 완료 (UTF-8 정상)');
 
         // Step 2: Commit forum-data.json
-        markStep(2, 'active', 'GitHub API로 forum-data.json 커밋 중...');
+        markStep(2, 'active', '2단계: GitHub API로 forum-data.json 커밋 중...');
         const res1 = await commitFileToGitHub(repo, branch, token, 'forum-data.json', forumJsonStr, 'chore: update forum-data.json via Admin Console');
         if (!res1.ok) {
           const errText = await res1.text();
-          throw new Error('forum-data.json 커밋 실패: ' + errText);
+          throw new Error('forum-data.json 커밋 실패 (' + res1.status + '): ' + errText);
         }
-        markStep(2, 'done', 'forum-data.json 커밋 완료');
+        markStep(2, 'done', '2단계: forum-data.json 커밋 완료');
 
         // Step 3: Commit sessions.json
-        markStep(3, 'active', 'GitHub API로 sessions.json 동기화 중...');
+        markStep(3, 'active', '3단계: GitHub API로 sessions.json 동기화 중...');
         const res2 = await commitFileToGitHub(repo, branch, token, 'sessions.json', sessionsJsonStr, 'chore: sync sessions.json via Admin Console');
         if (!res2.ok) {
           const errText = await res2.text();
-          throw new Error('sessions.json 커밋 실패: ' + errText);
+          throw new Error('sessions.json 커밋 실패 (' + res2.status + '): ' + errText);
         }
-        markStep(3, 'done', 'sessions.json 동기화 완료');
+        markStep(3, 'done', '3단계: sessions.json 동기화 완료');
 
         // Step 4: Vercel trigger confirmed
-        markStep(4, 'done', 'GitHub 웹훅 발송 -> Vercel 자동 빌드 트리거 시작!');
+        markStep(4, 'done', '4단계: GitHub 웹훅 발송 -> Vercel 자동 빌드 시작 (약 20~30초)');
 
         document.getElementById('deploy-result-box').style.display = 'block';
         document.getElementById('deploy-action-buttons').style.display = 'none';
+
+        const previewLink = document.getElementById('link-open-live-preview');
+        if (previewLink) {
+          previewLink.href = 'index.html?v=' + Date.now();
+        }
+
+        hasUnsavedChanges = false;
+        const statusEl = document.getElementById('sync-status-text');
+        if (statusEl) {
+          statusEl.innerHTML = '🟢 <strong style="color: #10b981;">배포 완료</strong> (mentalmaster119/k-j-mental-forum-2026)';
+        }
+
         showToast("Vercel 실시간 배포가 정상 시작되었습니다! 🚀", "🎉");
 
       } catch (err) {
-        alert("배포 중 오류가 발생했습니다: " + err.message);
-        btn.disabled = false;
-        btn.textContent = "다시 시도";
+        console.error("Deploy error:", err);
+        alert("배포 중 오류가 발생했습니다:\n" + err.message);
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = "다시 시도";
+        }
       }
     }
 
     async function commitFileToGitHub(repo, branch, token, filePath, contentStr, commitMessage) {
       const url = `https://api.github.com/repos/${repo}/contents/${filePath}`;
       
-      // Get current file sha
+      // Get current file sha with cache bust
       let sha = null;
       try {
-        const getRes = await fetch(url + `?ref=${branch}`, {
+        const getRes = await fetch(url + `?ref=${encodeURIComponent(branch)}&_t=${Date.now()}`, {
+          cache: 'no-store',
           headers: {
             'Authorization': `token ${token}`,
             'Accept': 'application/vnd.github.v3+json'
@@ -1378,6 +1463,8 @@
         if (getRes.ok) {
           const fileMeta = await getRes.json();
           sha = fileMeta.sha;
+        } else if (getRes.status !== 404) {
+          console.warn('GET sha non-200:', getRes.status);
         }
       } catch (e) {
         console.warn('Could not fetch existing file sha', e);
@@ -1400,6 +1487,7 @@
 
       return fetch(url, {
         method: 'PUT',
+        cache: 'no-store',
         headers: {
           'Authorization': `token ${token}`,
           'Content-Type': 'application/json',

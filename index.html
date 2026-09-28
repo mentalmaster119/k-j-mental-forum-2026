@@ -822,7 +822,7 @@
           <div class="speaker-card-body">
             <h3 class="speaker-name">Yoichiro Tsuge</h3>
             <div class="speaker-role">President & Executive Coach</div>
-            <div class="speaker-org">Field Flow Japan</div>
+            <div class="speaker-org">Field Flow</div>
             <div class="speaker-topic-box">
               <div class="speaker-topic-label">10th Vision Session (16:10–16:30)</div>
               <div class="speaker-topic-title">The Future of Mental Coaching</div>
@@ -1073,9 +1073,9 @@
         <div class="contact-info-card">
           <div class="contact-detail-group">
             <div class="contact-detail-label" data-i18n="contact.emailLabel">Official Secretariat Email</div>
-            <a href="mailto:secretariat@mentalforum2026.org" class="contact-email-link">
+            <a href="mailto:secretariat@mentalforum2026.org" id="contact-main-email-link" class="contact-email-link">
               <span>✉️</span>
-              <span data-i18n="contact.email">secretariat@mentalforum2026.org</span>
+              <span id="contact-main-email" data-i18n="contact.email">secretariat@mentalforum2026.org</span>
             </a>
           </div>
 
@@ -1602,9 +1602,9 @@
           initials: "YT",
           bg: "linear-gradient(135deg, #d97706, #fbbf24)",
           photoUrl: "assets/images/speaker-tsuge.jpg",
-          name: { ko: "츠게 요이치로 대표 (陽さん)", ja: "柘植 陽一郎 代表（陽さん）", en: "Yoichiro Tsuge" },
-          role: { ko: "대표 / 총괄 멘탈코치", ja: "代表 / エグゼクティブメンタルコーチ", en: "President & Executive Coach" },
-          org: { ko: "Field Flow Japan", ja: "Field Flow Japan", en: "Field Flow Japan" },
+          name: { ko: "츠게 요이치로 대표", ja: "柘植 陽一郎 代表（陽さん）", en: "Yoichiro Tsuge" },
+          role: { ko: "대표 / 멘탈 마스터", ja: "代表 / エグゼクティブメンタルコーチ", en: "President & Executive Coach" },
+          org: { ko: "Field Flow", ja: "Field Flow Japan", en: "Field Flow Japan" },
           topicLabel: { ko: "비전 특강 (16:10–16:30)", ja: "ビジョン講演（16:10–16:30）", en: "10th Vision Session (16:10–16:30)" },
           topicTitle: {
             ko: "멘탈코칭의 미래 (Field Flow의 비전)",
@@ -1920,6 +1920,8 @@
         const elKrPerson = document.getElementById('korea-person');
         const elKrPhone = document.getElementById('korea-phone');
         const elKrPhoneLink = document.getElementById('korea-phone-link');
+        const elKrEmail = document.getElementById('contact-main-email');
+        const elKrEmailLink = document.getElementById('contact-main-email-link');
 
         const krOrgVal = typeof k.orgName === 'object' ? (k.orgName[lang] || k.orgName.ko || '') : (k.orgName || '');
         const krAddrVal = typeof k.address === 'object' ? (k.address[lang] || k.address.ko || '') : (k.address || '');
@@ -1930,6 +1932,10 @@
         if (elKrPhone && k.phone) {
           elKrPhone.textContent = k.phone;
           if (elKrPhoneLink) elKrPhoneLink.href = 'tel:' + k.phone.replace(/[^0-9+]/g, '');
+        }
+        if (k.email) {
+          if (elKrEmail) elKrEmail.textContent = k.email;
+          if (elKrEmailLink) elKrEmailLink.href = 'mailto:' + k.email;
         }
 
         // Japan
@@ -2065,7 +2071,7 @@
           kim: currentLang === 'ko' ? "김성민 대표" : (currentLang === 'ja' ? "キム・ソンミン 代表" : "Sung Min Kim"),
           takahashi: currentLang === 'ko' ? "타카하시 모토나리 코치" : (currentLang === 'ja' ? "髙橋 基成 コーチ" : "Motonari Takahashi"),
           yoon: currentLang === 'ko' ? "윤태련 대표" : (currentLang === 'ja' ? "ユン・テリョン 代表" : "Tae Ryeon Yoon"),
-          tsuge: currentLang === 'ko' ? "츠게 요이치로 대표 (陽さん)" : (currentLang === 'ja' ? "柘植 陽一郎 代表（陽さん）" : "Yoichiro Tsuge"),
+          tsuge: currentLang === 'ko' ? "츠게 요이치로 대표" : (currentLang === 'ja' ? "柘植 陽一郎 代表（陽さん）" : "Yoichiro Tsuge"),
           park: currentLang === 'ko' ? "박철수 대표" : (currentLang === 'ja' ? "朴 哲秀 代表" : "Chul Soo Park")
         };
 
@@ -2075,7 +2081,7 @@
           kim: currentLang === "ko" ? "밸런스드 대표 / 피지컬 트레이너" : (currentLang === "ja" ? "Balanced 代表 / フィジカルトレーナー" : "Balanced / Physical Trainer"),
           takahashi: currentLang === "ko" ? "WINGIFT 대표 / Field Flow 스포츠 멘탈코치" : (currentLang === "ja" ? "WINGIFT 代表 / Field Flow スポーツメンタルコーチ" : "WINGIFT · Field Flow Japan"),
           yoon: currentLang === "ko" ? "올댓컨디셔닝 대표 / 피지컬 컨디셔닝 전문가" : (currentLang === "ja" ? "All That Conditioning 代表 / フィジカルコンディショニング専門家" : "All That Conditioning / Physical Conditioning Specialist"),
-          tsuge: currentLang === "ko" ? "Field Flow Japan 대표 / 총괄 멘탈코치" : (currentLang === "ja" ? "Field Flow Japan 代表 / エグゼクティブメンタルコーチ" : "Field Flow Japan President"),
+          tsuge: currentLang === "ko" ? "Field Flow 대표 / 멘탈 마스터" : (currentLang === "ja" ? "Field Flow Japan 代表 / エグゼクティブメンタルコーチ" : "Field Flow Japan President"),
           park: currentLang === "ko" ? "MCCI (국제멘탈코칭센터) 대표 / 멘탈 마스터" : (currentLang === "ja" ? "MCCI（国際メンタルコーチングセンター）代表 / メンタルマスター" : "MCCI President / Mental Master")
         };
 
@@ -2154,7 +2160,7 @@
       // Asynchronously fetch remote forum data from forum-data.json
       async function loadRemoteForumData() {
         try {
-          const res = await fetch('forum-data.json?v=' + Date.now());
+          const res = await fetch('forum-data.json?v=' + Date.now(), { cache: 'no-store' });
           if (res.ok) {
             const remote = await res.json();
             if (Array.isArray(remote.speakers) && remote.speakers.length > 0) {
