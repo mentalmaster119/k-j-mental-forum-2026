@@ -910,6 +910,7 @@
     let FORUM_DATA = null;
     let ACTIVE_SPEAKER_LANG = {}; // speakerId -> 'ko' | 'ja' | 'en'
     let ACTIVE_SESSION_LANG = 'ko';
+    let PENDING_PHOTO_UPLOADS = {}; // speakerId -> { filePath, base64, name }
 
     // 1. Password Verification
     async function sha256(str) {
@@ -1065,7 +1066,7 @@
                 <textarea class="form-control" rows="3" oninput="updateSpeakerField('${sp.id}', 'abstract', '${curL}', this.value)">${escapeHtml(sp.abstract?.[curL] || '')}</textarea>
               </div>
 
-              <div class="form-grid-2" style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px dashed var(--border);">
+              <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed var(--border); display: flex; flex-direction: column; gap: 1rem;">
                 <div class="form-group">
                   <label class="form-label">
                     <span>구글 드라이브 발표자료 링크 (URL)</span>
@@ -1073,15 +1074,87 @@
                   </label>
                   <input type="url" class="form-control" value="${escapeHtml(sp.slidesUrl || '')}" oninput="FORUM_DATA.speakers[${idx}].slidesUrl = this.value; markUnsavedChanges();">
                 </div>
+
                 <div class="form-group">
-                  <label class="form-label">프로필 사진 파일 경로</label>
-                  <input type="text" class="form-control" value="${escapeHtml(sp.photoUrl || '')}" oninput="FORUM_DATA.speakers[${idx}].photoUrl = this.value; markUnsavedChanges();">
+                  <label class="form-label">
+                    <span>📸 발표자 프로필 사진 관리</span>
+                    <span class="form-label-hint">권장 규격: 1:1 정방형 (JPG/PNG, 400×400px 이상, 5MB 이하)</span>
+                  </label>
+                  <div style="display: flex; align-items: center; gap: 1.2rem; background: #f8fafc; padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap;">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; background: ${sp.bg || 'linear-gradient(135deg, #1e3a8a, #3b82f6)'}; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 3px solid #ffffff; box-shadow: 0 2px 6px rgba(0,0,0,0.12); position: relative;">
+                      <img id="sp-img-preview-${sp.id}" src="${sp.photoUrl || ''}" alt="${escapeHtml(sp.name?.ko || sp.name?.en || '')}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; ${sp.photoUrl ? '' : 'display: none;'}" onerror="this.style.display='none'">
+                      <span style="color: #ffffff; font-weight: 800; font-size: 1.15rem;">${sp.initials || 'SP'}</span>
+                    </div>
+                    <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 0.45rem;">
+                      <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                        <label for="sp-file-input-${sp.id}" class="btn-nav" style="padding: 0.4rem 0.85rem; font-size: 0.82rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem; margin: 0; background: #ffffff; color: var(--primary-800); border: 1px solid var(--border); font-weight: 700; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                          📁 내 PC에서 사진 선택
+                        </label>
+                        <input type="file" id="sp-file-input-${sp.id}" accept="image/png, image/jpeg, image/webp" style="display: none;" onchange="handleSpeakerPhotoUpload('${sp.id}', ${idx}, this)">
+                        ${sp.photoUrl ? `<button type="button" class="btn-nav" style="padding: 0.4rem 0.7rem; font-size: 0.78rem; background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; margin: 0;" onclick="removeSpeakerPhoto('${sp.id}', ${idx})">사진 삭제</button>` : ''}
+                      </div>
+                      <div id="sp-file-status-${sp.id}" style="font-size: 0.8rem; color: var(--text-muted); word-break: break-all;">
+                        ${PENDING_PHOTO_UPLOADS[sp.id] ? `<span style="color: #0284c7; font-weight: 700;">✓ 업로드 대기중: ${escapeHtml(PENDING_PHOTO_UPLOADS[sp.id].name)}</span> (배포 시 자동 저장)` : (sp.photoUrl ? `등록된 사진: ${escapeHtml(sp.photoUrl)}` : '미등록 (이니셜 그라디언트 아바타 표시 중)')}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         `;
       }).join('');
+    }
+
+    function handleSpeakerPhotoUpload(spId, idx, inputEl) {
+      if (!inputEl.files || !inputEl.files[0]) return;
+      const file = inputEl.files[0];
+      
+      if (file.size > 5 * 1024 * 1024) {
+        alert("사진 파일 용량이 너무 큽니다. 5MB 이하의 이미지를 선택해 주세요.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        const base64Data = dataUrl.split(',')[1];
+        const ext = file.name.split('.').pop().toLowerCase() || 'jpg';
+        const targetFileName = `speaker-${spId}.${ext === 'png' ? 'png' : 'jpg'}`;
+        const targetPath = `assets/images/${targetFileName}`;
+
+        PENDING_PHOTO_UPLOADS[spId] = {
+          filePath: targetPath,
+          base64: base64Data,
+          name: file.name
+        };
+
+        const previewImg = document.getElementById(`sp-img-preview-${spId}`);
+        if (previewImg) {
+          previewImg.src = dataUrl;
+          previewImg.style.display = 'block';
+        }
+
+        const statusEl = document.getElementById(`sp-file-status-${spId}`);
+        if (statusEl) {
+          statusEl.innerHTML = `<span style="color: #0284c7; font-weight: 700;">✓ 업로드 대기중: ${escapeHtml(file.name)}</span> (배포 시 GitHub에 자동 저장)`;
+        }
+
+        FORUM_DATA.speakers[idx].photoUrl = targetPath;
+        markUnsavedChanges();
+        showToast(`'${file.name}' 사진이 선택되었습니다. '저장 및 배포'를 누르면 사이트에 반영됩니다.`, '📸');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeSpeakerPhoto(spId, idx) {
+      if (confirm("이 발표자의 사진을 제거하고 기본 이니셜 아바타로 변경하시겠습니까?")) {
+        delete PENDING_PHOTO_UPLOADS[spId];
+        FORUM_DATA.speakers[idx].photoUrl = "";
+        markUnsavedChanges();
+        renderSpeakersEditor();
+        showToast("사진이 제거되었습니다.", "🗑️");
+      }
     }
 
     function setSpeakerLang(spId, lang) {
@@ -1391,14 +1464,30 @@
       localStorage.setItem('forum_github_token', token);
 
       try {
-        // Step 1: Validate & serialize
-        markStep(1, 'active', '1단계: 포럼 데이터 유효성 검증 및 직렬화 중...');
+        // Step 1: Validate & serialize + Upload pending photos if any
+        markStep(1, 'active', '1단계: 데이터 검증 및 대기 중인 사진 확인 중...');
         syncContactsBack();
+
+        const pendingSpIds = Object.keys(PENDING_PHOTO_UPLOADS);
+        if (pendingSpIds.length > 0) {
+          for (let i = 0; i < pendingSpIds.length; i++) {
+            const sid = pendingSpIds[i];
+            const p = PENDING_PHOTO_UPLOADS[sid];
+            markStep(1, 'active', `1단계: 사진 업로드 중 (${i + 1}/${pendingSpIds.length}): ${p.name}...`);
+            const photoRes = await commitBinaryFileToGitHub(repo, branch, token, p.filePath, p.base64, `feat(photos): upload speaker photo for ${sid}`);
+            if (!photoRes.ok) {
+              const errTxt = await photoRes.text();
+              throw new Error(`사진 업로드 실패 (${p.name}): ` + errTxt);
+            }
+          }
+          PENDING_PHOTO_UPLOADS = {};
+        }
+
         FORUM_DATA.lastUpdated = new Date().toISOString();
         const forumJsonStr = JSON.stringify(FORUM_DATA, null, 2);
         const sessionsJsonStr = JSON.stringify(FORUM_DATA.sessions, null, 2);
         await sleep(350);
-        markStep(1, 'done', '1단계: 데이터 검증 및 직렬화 완료 (UTF-8 정상)');
+        markStep(1, 'done', '1단계: 데이터 검증 및 사진 준비 완료 (UTF-8 정상)');
 
         // Step 2: Commit forum-data.json
         markStep(2, 'active', '2단계: GitHub API로 forum-data.json 커밋 중...');
@@ -1481,6 +1570,47 @@
       const payload = {
         message: commitMessage,
         content: base64,
+        branch: branch
+      };
+      if (sha) payload.sha = sha;
+
+      return fetch(url, {
+        method: 'PUT',
+        cache: 'no-store',
+        headers: {
+          'Authorization': `token ${token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify(payload)
+      });
+    }
+
+    async function commitBinaryFileToGitHub(repo, branch, token, filePath, rawBase64, commitMessage) {
+      const url = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+      
+      let sha = null;
+      try {
+        const getRes = await fetch(url + `?ref=${encodeURIComponent(branch)}&_t=${Date.now()}`, {
+          cache: 'no-store',
+          headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        if (getRes.ok) {
+          const fileMeta = await getRes.json();
+          sha = fileMeta.sha;
+        } else if (getRes.status !== 404) {
+          console.warn('GET sha non-200:', getRes.status);
+        }
+      } catch (e) {
+        console.warn('Could not fetch existing file sha', e);
+      }
+
+      const payload = {
+        message: commitMessage,
+        content: rawBase64,
         branch: branch
       };
       if (sha) payload.sha = sha;
