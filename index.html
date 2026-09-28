@@ -950,12 +950,12 @@
           </a>
         </div>
         <div style="background: rgba(255,255,255,0.06); padding: 1.75rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.12);">
-          <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: #38bdf8;">Access Highlights</div>
-          <p style="font-size: 0.875rem; line-height: 1.7; color: #cbd5e1;">
-            • <strong>JR Kannai Station:</strong> South Exit (2-min walk)<br>
-            • <strong>Nihon-odori Station:</strong> Minatomirai Line (8-min walk)<br>
-            • <strong>Check-in:</strong> 1F Campus Lobby (from 09:40)<br>
-            • <strong>Reception:</strong> Sumibi Yakitori Oogiya (3-min walk)
+          <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: #38bdf8;" id="venue-access-title">교통 & 일정 핵심 요약</div>
+          <p style="font-size: 0.875rem; line-height: 1.7; color: #cbd5e1;" id="venue-access-desc">
+            • <strong>JR 간나이역(関内駅):</strong> 남쪽 출구 (도보 2분)<br>
+            • <strong>니혼오도리역(日本大通り駅):</strong> 미나토미라이선 (도보 8분)<br>
+            • <strong>현장 접수:</strong> 1층 캠퍼스 로비 (09:40부터)<br>
+            • <strong>공식 만찬:</strong> 숯불 야키토리 오오기야 (도보 3분)
           </p>
         </div>
       </div>
@@ -964,41 +964,41 @@
         <div class="guide-card">
           <div class="guide-icon-wrap">🎫</div>
           <div>
-            <h4 class="guide-title">Registration & Check-in</h4>
-            <span class="guide-time-badge">09:40 onwards</span>
-            <p class="guide-desc">Gather at the 1st Floor Lobby of Kanto Gakuin University for check-in before moving to 17F.</p>
+            <h4 class="guide-title">등록 및 접수 안내</h4>
+            <span class="guide-time-badge">오전 09:40부터</span>
+            <p class="guide-desc">관동학원대학 1층 로비 등록 데스크에서 명찰 수령 및 출입 확인 후, 엘리베이터를 이용해 17층 본행사장으로 이동합니다.</p>
           </div>
         </div>
         <div class="guide-card">
           <div class="guide-icon-wrap">🚆</div>
           <div>
-            <h4 class="guide-title">Public Transportation</h4>
-            <span class="guide-time-badge">2-min walk</span>
-            <p class="guide-desc">2-min walk from JR Kannai Station South Exit. 8-min walk from Nihon-odori Station.</p>
+            <h4 class="guide-title">대중교통 오시는 길</h4>
+            <span class="guide-time-badge">도보 2분 거리</span>
+            <p class="guide-desc">JR 간나이(関内)역 남쪽 출구(南口)에서 도보 2분. 요코하마 고속철도 미나토미라이선 니혼오도리(日本大通り)역에서 도보 약 8분.</p>
           </div>
         </div>
         <div class="guide-card">
           <div class="guide-icon-wrap">🍱</div>
           <div>
-            <h4 class="guide-title">Lunch Bento Service</h4>
-            <span class="guide-time-badge">11:40 – 13:00</span>
-            <p class="guide-desc">Japanese Bento boxes (Meat or Fish pre-selected) and tea provided for lunch vouchers.</p>
+            <h4 class="guide-title">점심 도시락 제공</h4>
+            <span class="guide-time-badge">12:40 – 13:40</span>
+            <p class="guide-desc">17층 메인홀에서 정갈한 일식 도시락(Bento)과 차가 제공됩니다. 한·일 참가자 간 자유로운 네트워킹과 함께 즐겨주세요.</p>
           </div>
         </div>
         <div class="guide-card">
           <div class="guide-icon-wrap">🌐</div>
           <div>
-            <h4 class="guide-title">Language & Communication</h4>
-            <span class="guide-time-badge">Trilingual Friendly</span>
-            <p class="guide-desc">Volunteer liaisons on-site. Real-time translation apps (DeepL, Google, Papago) recommended.</p>
+            <h4 class="guide-title">언어 지원 및 소통</h4>
+            <span class="guide-time-badge">한·일 양방향 지원</span>
+            <p class="guide-desc">현장 통역 스태프가 배치되며, 자유 대화 시 스마트폰 실시간 번역 앱(DeepL, 파파고, 구글 번역) 활용을 적극 권장합니다.</p>
           </div>
         </div>
         <div class="guide-card">
           <div class="guide-icon-wrap">🥂</div>
           <div>
-            <h4 class="guide-title">Evening Networking Reception</h4>
+            <h4 class="guide-title">공식 네트워킹 만찬 (간친회)</h4>
             <span class="guide-time-badge">19:00 – 21:00</span>
-            <p class="guide-desc">Sumibi Yakitori Oogiya Yokohama Kannai (3-min walk). Fully included in registration.</p>
+            <p class="guide-desc">숯불 야키토리 오오기야 요코하마 간나이점 (캠퍼스 도보 3분). 포럼 등록비에 일체 포함되어 있으며, 10주년을 함께 축하하는 자리입니다.</p>
           </div>
         </div>
       </div>
@@ -1658,6 +1658,138 @@
         }
       ];
 
+      
+      const GUIDES_DATA = [
+        {
+          id: "checkin",
+          icon: "🎫",
+          title: {
+            ko: "등록 및 접수 안내",
+            ja: "受付・チェックイン",
+            en: "Registration & Check-in"
+          },
+          time: {
+            ko: "오전 09:40부터",
+            ja: "09:40より開始",
+            en: "09:40 onwards"
+          },
+          desc: {
+            ko: "관동학원대학 1층 로비 등록 데스크에서 명찰 수령 및 출입 확인 후, 엘리베이터를 이용해 17층 본행사장으로 이동합니다.",
+            ja: "関東学院大学1階ロビーの受付デスクにて入館手続きとネームホルダーをお受け取りいただき、17階へお上がりください。",
+            en: "Gather at the 1st Floor Lobby of Kanto Gakuin University for check-in before moving to 17F."
+          }
+        },
+        {
+          id: "transport",
+          icon: "🚆",
+          title: {
+            ko: "대중교통 오시는 길",
+            ja: "交通アクセス",
+            en: "Public Transportation"
+          },
+          time: {
+            ko: "도보 2분 거리",
+            ja: "駅近好アクセス",
+            en: "2-min walk"
+          },
+          desc: {
+            ko: "JR 간나이(関内)역 남쪽 출구(南口)에서 도보 2분. 요코하마 고속철도 미나토미라이선 니혼오도리(日本大通り)역에서 도보 약 8분.",
+            ja: "JR「関内駅」南口より徒歩2分。横浜高速鉄道みなとみらい線「日本大通り駅」より徒歩約8分。",
+            en: "2-min walk from JR Kannai Station South Exit. 8-min walk from Nihon-odori Station."
+          }
+        },
+        {
+          id: "lunch",
+          icon: "🍱",
+          title: {
+            ko: "점심 도시락 제공",
+            ja: "昼食弁当のご提供",
+            en: "Lunch Bento Service"
+          },
+          time: {
+            ko: "12:40 – 13:40",
+            ja: "12:40 – 13:40",
+            en: "12:40 – 13:40"
+          },
+          desc: {
+            ko: "17층 메인홀에서 정갈한 일식 도시락(Bento)과 차가 제공됩니다. 한·일 참가자 간 자유로운 네트워킹과 함께 즐겨주세요.",
+            ja: "17階メイン会場にて特製和食弁当とお茶をご用意しております。日韓の参加者同士の自由な交流とともにお楽しみください。",
+            en: "Japanese Bento boxes and tea provided at the 17F venue with informal bilingual networking."
+          }
+        },
+        {
+          id: "language",
+          icon: "🌐",
+          title: {
+            ko: "언어 지원 및 소통",
+            ja: "言語・コミュニケーション",
+            en: "Language & Communication"
+          },
+          time: {
+            ko: "한·일 양방향 지원",
+            ja: "日韓バイリンガル支援",
+            en: "Trilingual Friendly"
+          },
+          desc: {
+            ko: "현장 통역 스태프가 배치되며, 자유 대화 시 스마트폰 실시간 번역 앱(DeepL, 파파고, 구글 번역) 활용을 적극 권장합니다.",
+            ja: "当日は語学ボランティアがサポートいたします。フリートーク時はスマートフォンの翻訳アプリ（DeepL、Papago、Google翻訳等）のご活用を推奨します。",
+            en: "Volunteer liaisons on-site. Real-time translation apps (DeepL, Google, Papago) recommended."
+          }
+        },
+        {
+          id: "reception",
+          icon: "🥂",
+          title: {
+            ko: "공식 네트워킹 만찬 (간친회)",
+            ja: "公式懇親レセプション（夕食）",
+            en: "Evening Networking Reception"
+          },
+          time: {
+            ko: "19:00 – 21:00",
+            ja: "19:00 – 21:00",
+            en: "19:00 – 21:00"
+          },
+          desc: {
+            ko: "숯불 야키토리 오오기야 요코하마 간나이점 (캠퍼스 도보 3분). 포럼 등록비에 일체 포함되어 있으며, 10주년을 함께 축하하는 자리입니다.",
+            ja: "炭火やきとり オオギヤ 横浜関内店（会場より徒歩3分）。参加費はフォーラム登録料に含まれます。10周年を共に祝う親睦の宴です。",
+            en: "Sumibi Yakitori OHGIYA Yokohama Kannai (3-min walk). Fully included in registration, celebrating the 10th milestone."
+          }
+        }
+      ];
+
+      function renderGuides(lang) {
+        const grid = document.getElementById('venue-guides-grid');
+        if (!grid || typeof GUIDES_DATA === 'undefined') return;
+        grid.innerHTML = GUIDES_DATA.map(g => {
+          const title = g.title[lang] || g.title.en;
+          const time = g.time[lang] || g.time.en;
+          const desc = g.desc[lang] || g.desc.en;
+          return `<div class="guide-card">
+            <div class="guide-icon-wrap">${g.icon}</div>
+            <div>
+              <h4 class="guide-title">${title}</h4>
+              <span class="guide-time-badge">${time}</span>
+              <p class="guide-desc">${desc}</p>
+            </div>
+          </div>`;
+        }).join('');
+
+        const accessTitle = document.getElementById('venue-access-title');
+        const accessDesc = document.getElementById('venue-access-desc');
+        if (accessTitle && accessDesc) {
+          if (lang === 'ko') {
+            accessTitle.textContent = "교통 & 일정 핵심 요약";
+            accessDesc.innerHTML = "• <strong>JR 간나이역(関内駅):</strong> 남쪽 출구 (도보 2분)<br>• <strong>니혼오도리역(日本大通り駅):</strong> 미나토미라이선 (도보 8분)<br>• <strong>현장 접수:</strong> 1층 캠퍼스 로비 (09:40부터)<br>• <strong>공식 만찬:</strong> 숯불 야키토리 오오기야 (도보 3분)";
+          } else if (lang === 'ja') {
+            accessTitle.textContent = "アクセス＆当日ハイライト";
+            accessDesc.innerHTML = "• <strong>JR 関内駅:</strong> 南口より徒歩2分<br>• <strong>日本大通り駅:</strong> みなとみらい線より徒歩8分<br>• <strong>受付:</strong> 1階キャンパスロビー（09:40より）<br>• <strong>懇親会:</strong> 炭火やきとり オオギヤ（徒歩3分）";
+          } else {
+            accessTitle.textContent = "Access Highlights";
+            accessDesc.innerHTML = "• <strong>JR Kannai Station:</strong> South Exit (2-min walk)<br>• <strong>Nihon-odori Station:</strong> Minatomirai Line (8-min walk)<br>• <strong>Check-in:</strong> 1F Campus Lobby (from 09:40)<br>• <strong>Reception:</strong> Sumibi Yakitori OHGIYA (3-min walk)";
+          }
+        }
+      }
+
       function renderMaterials(lang) {
         const grid = document.getElementById('materials-card-grid');
         if (!grid || typeof MATERIALS_DATA === 'undefined') return;
@@ -1733,6 +1865,7 @@
         // Re-render speakers grid in selected language
         renderSpeakers(lang);
         renderMaterials(lang);
+        renderGuides(lang);
 
         // Update speaker cards translations if needed
         const phaseInfo = dict.phases[currentPhase];
