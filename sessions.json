@@ -98,8 +98,8 @@
     "descKo": "체육 지도자와 학교 관리자의 리더십 패러다임 전환이 학생 선수의 자율성과 학교 체육 문화를 혁신하는 실천 모델.",
     "descJa": "指導者や学校管理職のマインドセット変革が、生徒の主体性と学校スポーツを好転させる実例。",
     "speakerEn": "Dong Chul Yeom (Korea National Sport Univ.)",
-    "speakerKo": "염동철 교수 (한국체육대학교)",
-    "speakerJa": "ヨム・ドンチョル 教授（韓国体育大学）"
+    "speakerKo": "염동철 교수 (한국체육대학교 역도부)",
+    "speakerJa": "ヨム・ドンチョル 教授（韓国体育大学 重量挙げ部）"
   },
   {
     "id": "s07",
@@ -148,9 +148,9 @@
     "descEn": "Postural alignment, breathing mechanics, and sensory integration as the neurological foundation for clarity of thought.",
     "descKo": "신체의 정렬과 호흡, 고유수용성 감각 안정이 선수의 인지적 판단력과 멘탈의 선명도를 높이는 원리와 실전 기법.",
     "descJa": "身体のアライメントと深部感覚の安定が、思考の明晰さや決断の迅速さにつながる身体・心理統合アプローチ。",
-    "speakerEn": "Sung Min Kim (Body Balance Coaching)",
-    "speakerKo": "김성민 대표 (바디밸런스 코칭)",
-    "speakerJa": "キム・ソンミン 代表（ボディバランス）"
+    "speakerEn": "Sung Min Kim (Balanced)",
+    "speakerKo": "김성민 대표 (밸런스드)",
+    "speakerJa": "キム・ソンミン 代表（Balanced）"
   },
   {
     "id": "s10",
@@ -201,7 +201,7 @@
     "descJa": "身体のコンディショニングとメンタルトレーニングのシナジー。ケガからの復帰と試合での強靱な集中力の実証事例。",
     "speakerEn": "Tae Ryeon Yoon (All That Conditioning)",
     "speakerKo": "윤태련 대표 (올댓컨디셔닝)",
-    "speakerJa": "ユン・テリョン 代表（オールザットコンディショニング）"
+    "speakerJa": "ユン・テリョン 代表（All That Conditioning）"
   },
   {
     "id": "s13",
@@ -260,10 +260,10 @@
     "badgeClass": "badge-korea",
     "badgeEn": "Korea Presentation",
     "badgeKo": "한국 특별발표",
-    "badgeJa": "パクさん講演",
+    "badgeJa": "朴代表 講演",
     "titleEn": "Chul Soo Park: \"The Future of Mental Coaching\"",
-    "titleKo": "박철수 대표 (パクさん): 『멘탈코칭의 향후에 대하여』 (MCCI의 사명과 인간 존엄)",
-    "titleJa": "パクさん（朴 哲秀）：『メンタルコーチングの今後について』",
+    "titleKo": "박철수 대표: 『멘탈코칭의 향후에 대하여』 (MCCI의 사명과 인간 존엄)",
+    "titleJa": "朴 哲秀 代表：『メンタルコーチングの今後について』",
     "descEn": "MCCI's 10-year standard-setting mission: Transcending technology towards human agency, dignity, and authentic self-determination.",
     "descKo": "한국 멘탈코칭 표준화를 이끌어 온 MCCI의 10년 사명과 AI 시대 기술을 넘어 인간의 존엄과 주체적 선택을 돕는 코칭의 본질.",
     "descJa": "韓国メンタルコーチング確立への10年。AI時代だからこそ際立つ人間の尊厳と主体的選択を支える真の使命。",
