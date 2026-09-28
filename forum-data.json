@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-28T23:41:18.714Z",
+  "lastUpdated": "2026-09-28T23:42:57.230Z",
   "speakers": [
     {
       "id": "aoyagi",
@@ -59,7 +59,7 @@
       "bg": "linear-gradient(135deg, #047857, #10b981)",
       "photoUrl": "assets/images/speaker-yeom.jpg",
       "name": {
-        "ko": "염 동철",
+        "ko": "Dr. 염 동철",
         "ja": "ヨム・ドンチョル 教授",
         "en": "Dong Chul Yeom"
       },
