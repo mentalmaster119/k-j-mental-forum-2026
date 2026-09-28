@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-28T23:39:50.111Z",
+  "lastUpdated": "2026-09-28T23:41:18.714Z",
   "speakers": [
     {
       "id": "aoyagi",
@@ -15,7 +15,7 @@
       "bg": "linear-gradient(135deg, #1e3a8a, #3b82f6)",
       "photoUrl": "assets/images/speaker-aoyagi.jpg",
       "name": {
-        "ko": "아오야기 토시히사 교수",
+        "ko": "아오야기 토시히사",
         "ja": "青柳 敏久 教授",
         "en": "Dr. Toshihisa Aoyagi"
       },
@@ -59,7 +59,7 @@
       "bg": "linear-gradient(135deg, #047857, #10b981)",
       "photoUrl": "assets/images/speaker-yeom.jpg",
       "name": {
-        "ko": "염동철 교수",
+        "ko": "염 동철",
         "ja": "ヨム・ドンチョル 教授",
         "en": "Dong Chul Yeom"
       },
@@ -103,7 +103,7 @@
       "bg": "linear-gradient(135deg, #4338ca, #6366f1)",
       "photoUrl": "assets/images/speaker-kim.jpg",
       "name": {
-        "ko": "김성민 대표",
+        "ko": "김 성민",
         "ja": "キム・ソンミン 代表",
         "en": "Sung Min Kim"
       },
@@ -147,7 +147,7 @@
       "bg": "linear-gradient(135deg, #c026d3, #e879f9)",
       "photoUrl": "assets/images/speaker-takahashi.jpg",
       "name": {
-        "ko": "타카하시 모토나리 코치",
+        "ko": "타카하시 모토나리",
         "ja": "髙橋 基成 コーチ",
         "en": "Motonari Takahashi"
       },
@@ -191,7 +191,7 @@
       "bg": "linear-gradient(135deg, #b45309, #f59e0b)",
       "photoUrl": "assets/images/speaker-yoon.jpg",
       "name": {
-        "ko": "윤태련 대표",
+        "ko": "윤 태련",
         "ja": "ユン・テリョン 代表",
         "en": "Tae Ryeon Yoon"
       },
@@ -235,7 +235,7 @@
       "bg": "linear-gradient(135deg, #d97706, #fbbf24)",
       "photoUrl": "assets/images/speaker-tsuge.jpg",
       "name": {
-        "ko": "츠게 요이치로 대표",
+        "ko": "츠게 요이치로",
         "ja": "柘植 陽一郎 代表（陽さん）",
         "en": "Yoichiro Tsuge"
       },
@@ -279,7 +279,7 @@
       "bg": "linear-gradient(135deg, #0f766e, #14b8a6)",
       "photoUrl": "assets/images/speaker-park.jpg",
       "name": {
-        "ko": "박철수 대표",
+        "ko": "박 철수",
         "ja": "朴 哲秀 代表",
         "en": "Chul Soo Park"
       },
