@@ -1318,12 +1318,21 @@
                 <textarea class="form-control" rows="2" oninput="FORUM_DATA.materials[${idx}].desc.ja = this.value; markUnsavedChanges();">${escapeHtml(m.desc.ja)}</textarea>
               </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">
-                <span>구글 드라이브 / PDF 다운로드 링크 (URL)</span>
-                <a href="${m.link}" target="_blank" class="form-label-hint">링크 열기 ↗</a>
-              </label>
-              <input type="url" class="form-control" value="${escapeHtml(m.link)}" oninput="FORUM_DATA.materials[${idx}].link = this.value; markUnsavedChanges();">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">
+                  <span>📄 통합본 PDF 다운로드 링크 (URL)</span>
+                  ${m.link ? `<a href="${m.link}" target="_blank" class="form-label-hint">링크 열기 ↗</a>` : ''}
+                </label>
+                <input type="url" class="form-control" value="${escapeHtml(m.link || '')}" placeholder="https://drive.google.com/file/d/..." oninput="FORUM_DATA.materials[${idx}].link = this.value; markUnsavedChanges();">
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  <span>📁 개별 파일 드라이브 폴더 링크 (선택 사항)</span>
+                  ${m.folderLink ? `<a href="${m.folderLink}" target="_blank" class="form-label-hint">폴더 열기 ↗</a>` : ''}
+                </label>
+                <input type="url" class="form-control" value="${escapeHtml(m.folderLink || '')}" placeholder="https://drive.google.com/drive/folders/..." oninput="if (!FORUM_DATA.materials[${idx}].folderText) { FORUM_DATA.materials[${idx}].folderText = { ko: '개별 발표자료 폴더 열람 ↗', ja: '個別資料フォルダを見る ↗', en: 'View Individual Files Folder ↗' }; } FORUM_DATA.materials[${idx}].folderLink = this.value; markUnsavedChanges();">
+              </div>
             </div>
           </div>
         </div>

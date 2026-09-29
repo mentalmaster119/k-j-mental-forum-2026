@@ -751,51 +751,63 @@
       "id": "korea",
       "icon": "📂",
       "badge": {
-        "ko": "공유 폴더 · 발표자 4인",
-        "ja": "共有フォルダ · 登壇者4名",
-        "en": "Folder · 4 Speakers"
+        "ko": "통합본 PDF · 4인 수록",
+        "ja": "統合PDF · 4名収録",
+        "en": "Merged PDF · 4 Speakers"
       },
       "title": {
-        "ko": "한국 세션 발표자료",
-        "ja": "韓国セッション 発表資料",
-        "en": "Korea Session Materials"
+        "ko": "한국 세션 발표자료집",
+        "ja": "韓国セッション 発表資料集",
+        "en": "Korea Session Presentation Book"
       },
       "desc": {
-        "ko": "염동철 교수, 김성민 대표, 윤태련 대표, 박철수 대표의 발표 슬라이드 및 세션 보충 자료 모음.",
-        "ja": "ヨム・ドンチョル教授、キム・ソンミン代表、ユン・テリョン代表、朴哲秀代表の発表スライド集。",
-        "en": "Slide decks & handouts from the 4 Korean presenters (Yeom, Kim, Yoon, Park)."
+        "ko": "윤태련 대표, 염동철 교수, 김성민 대표, 박철수 대표의 4인 발표 슬라이드를 하나로 묶은 단일 통합 PDF 자료집입니다.",
+        "ja": "ユン・テリョン代表、ヨム・ドンチョル教授、キム・ソンミン代表、朴哲秀代表の4名の発表スライドを1冊にまとめた統合PDF資料集です。",
+        "en": "Complete all-in-one merged PDF compilation of presentations by Yoon, Yeom, Kim, and Park."
       },
       "btnText": {
-        "ko": "한국 자료 열람 ↗",
-        "ja": "韓国セッション資料を見る ↗",
-        "en": "View Korea Slides ↗"
+        "ko": "통합 자료집 다운로드 (PDF) ⬇",
+        "ja": "統合資料集ダウンロード (PDF) ⬇",
+        "en": "Download Merged PDF (PDF) ⬇"
       },
-      "link": "https://drive.google.com/drive/folders/02_Korea_Speakers_Demo?usp=sharing"
+      "link": "https://drive.google.com/file/d/2026_Korea_Session_Combined_Demo/view?usp=sharing",
+      "folderText": {
+        "ko": "개별 발표자료 폴더 열람 ↗",
+        "ja": "個別資料フォルダを見る ↗",
+        "en": "View Individual Files Folder ↗"
+      },
+      "folderLink": "https://drive.google.com/drive/folders/02_Korea_Speakers_Demo?usp=sharing"
     },
     {
       "id": "japan",
       "icon": "📂",
       "badge": {
-        "ko": "공유 폴더 · 발표자 3인",
-        "ja": "共有フォルダ · 登壇者3名",
-        "en": "Folder · 3 Speakers"
+        "ko": "통합본 PDF · 3인 수록",
+        "ja": "統合PDF · 3名収録",
+        "en": "Merged PDF · 3 Speakers"
       },
       "title": {
-        "ko": "일본 세션 발표자료",
-        "ja": "日本セッション 発表資料",
-        "en": "Japan Session Materials"
+        "ko": "일본 세션 발표자료집",
+        "ja": "日本セッション 発表資料集",
+        "en": "Japan Session Presentation Book"
       },
       "desc": {
-        "ko": "아오야기 교수(구모토리 카드), 타카하시 모토나리 코치, 츠게 요이치로 대표의 발표 슬라이드 및 사례 자료 모음.",
-        "ja": "青柳教授（雲取りカード）、髙橋基成コーチ、柘植陽一郎代表の実践事例発表スライド集。",
-        "en": "Field cases & framework slides from Japanese presenters (Dr. Aoyagi, Takahashi, Tsuge)."
+        "ko": "아오야기 교수, 타카하시 모토나리 코치, 츠게 요이치로 대표의 3인 발표 슬라이드를 하나로 묶은 단일 통합 PDF 자료집입니다.",
+        "ja": "青柳教授、髙橋基成コーチ、柘植陽一郎代表の3名の発表スライドを1冊にまとめた統合PDF資料集です。",
+        "en": "Complete all-in-one merged PDF compilation of presentations by Dr. Aoyagi, Takahashi, and Tsuge."
       },
       "btnText": {
-        "ko": "일본 자료 열람 ↗",
-        "ja": "日本セッション資料を見る ↗",
-        "en": "View Japan Slides ↗"
+        "ko": "통합 자료집 다운로드 (PDF) ⬇",
+        "ja": "統合資料集ダウンロード (PDF) ⬇",
+        "en": "Download Merged PDF (PDF) ⬇"
       },
-      "link": "https://drive.google.com/drive/folders/03_Japan_Speakers_Demo?usp=sharing"
+      "link": "https://drive.google.com/file/d/2026_Japan_Session_Combined_Demo/view?usp=sharing",
+      "folderText": {
+        "ko": "개별 발표자료 폴더 열람 ↗",
+        "ja": "個別資料フォルダを見る ↗",
+        "en": "View Individual Files Folder ↗"
+      },
+      "folderLink": "https://drive.google.com/drive/folders/03_Japan_Speakers_Demo?usp=sharing"
     },
     {
       "id": "profiles",

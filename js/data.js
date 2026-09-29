@@ -381,19 +381,21 @@ const FORUM_DATA = {
           },
           {
             id: "korea",
-            title: "한국 세션 발표자료",
-            badge: "공유 폴더 · 발표자 4인",
-            desc: "염동철 교수, 윤태련 대표, 김성민 대표, 박철수 대표의 발표 슬라이드 및 세션 보충 자료 모음.",
-            buttonText: "한국 발표자료 열람",
-            linkKey: "koreaFolder"
+            title: "한국 세션 발표자료집",
+            badge: "통합본 PDF · 4인 수록",
+            desc: "윤태련 대표, 염동철 교수, 김성민 대표, 박철수 대표의 4인 발표 슬라이드를 하나로 묶은 단일 통합 PDF 자료집입니다.",
+            buttonText: "통합 자료집 다운로드 (PDF) ⬇",
+            linkKey: "koreaCombinedPdf",
+            folderLinkKey: "koreaFolder"
           },
           {
             id: "japan",
-            title: "일본 세션 발표자료",
-            badge: "공유 폴더 · 발표자 3인",
-            desc: "타카하시 모토나리 코치 및 일본 발표진의 최신 실천 케이스 스터디 및 프레임워크 자료 모음.",
-            buttonText: "일본 발표자료 열람",
-            linkKey: "japanFolder"
+            title: "일본 세션 발표자료집",
+            badge: "통합본 PDF · 3인 수록",
+            desc: "아오야기 교수, 타카하시 모토나리 코치, 츠게 요이치로 대표의 3인 발표 슬라이드를 하나로 묶은 단일 통합 PDF 자료집입니다.",
+            buttonText: "통합 자료집 다운로드 (PDF) ⬇",
+            linkKey: "japanCombinedPdf",
+            folderLinkKey: "japanFolder"
           },
           {
             id: "profiles",
