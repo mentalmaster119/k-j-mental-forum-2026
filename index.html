@@ -230,16 +230,65 @@
 
     /* Materials */
     .materials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.75rem; margin-bottom: 3.5rem; }
-    .material-card { background: #ffffff; border: 1px solid var(--border-light); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: all var(--transition); }
-    .material-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent-400); }
+    .material-card { background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 20px; padding: 2rem; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05); display: flex; flex-direction: column; transition: all var(--transition); }
+    .material-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12); border-color: var(--accent-500); }
+
+    /* 2nd & 3rd Featured Cards (한국 세션, 일본 세션 발표자료집 - 고대비 강조) */
+    .material-card.material-card-featured,
+    .materials-grid .material-card:nth-child(2),
+    .materials-grid .material-card:nth-child(3) {
+      background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+      border: 2px solid #2563eb;
+      box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.16), 0 2px 8px -2px rgba(15, 23, 42, 0.08);
+      position: relative;
+    }
+    .material-card.material-card-featured:hover,
+    .materials-grid .material-card:nth-child(2):hover,
+    .materials-grid .material-card:nth-child(3):hover {
+      border-color: #1d4ed8;
+      box-shadow: 0 14px 30px -4px rgba(37, 99, 235, 0.25);
+      transform: translateY(-5px);
+    }
+    .material-card.material-card-featured .material-card-badge,
+    .materials-grid .material-card:nth-child(2) .material-card-badge,
+    .materials-grid .material-card:nth-child(3) .material-card-badge {
+      background: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      font-weight: 800;
+    }
+
     .material-card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
     .material-card-badge { display: inline-block; font-size: 0.725rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--teal-600); background: var(--teal-50); padding: 0.2rem 0.5rem; border-radius: 4px; margin-bottom: 0.5rem; align-self: flex-start; }
     .material-card-title { font-size: 1.2rem; font-weight: 800; color: var(--primary-900); margin-bottom: 0.6rem; }
     .material-card-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
-    .material-card-actions { display: flex; flex-direction: column; gap: 0.55rem; margin-top: auto; }
+    .material-card-actions { display: flex; flex-direction: column; gap: 0.65rem; margin-top: auto; }
     .material-card-btn-primary { width: 100%; font-size: 0.85rem; padding: 0.65rem 1.1rem; text-align: center; justify-content: center; }
-    .material-card-btn-secondary { width: 100%; font-size: 0.8rem; padding: 0.55rem 0.9rem; text-align: center; color: var(--primary-700); background: #f8fafc; border: 1px solid var(--border-light); border-radius: 8px; font-weight: 600; text-decoration: none; transition: all var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; }
-    .material-card-btn-secondary:hover { background: #e2e8f0; color: var(--primary-900); border-color: #cbd5e1; }
+    .material-card-btn-secondary {
+      width: 100%;
+      font-size: 0.85rem;
+      padding: 0.65rem 1rem;
+      text-align: center;
+      color: #ffffff;
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+      border: 1.5px solid #0f172a;
+      border-radius: 9px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.22);
+      transition: all var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+    }
+    .material-card-btn-secondary:hover {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      border-color: #1d4ed8;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+    }
     .drive-architecture-box { background: var(--primary-900); color: #f8fafc; border-radius: 20px; padding: 2.25rem; box-shadow: var(--shadow-xl); }
     .drive-arch-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 1rem; }
     .drive-arch-title { font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
@@ -1194,31 +1243,31 @@
             </a>
           </div>
         </div>
-        <div class="material-card">
+        <div class="material-card material-card-featured">
           <div class="material-card-icon">📂</div>
           <span class="material-card-badge">통합본 PDF · 4인 수록</span>
           <h3 class="material-card-title">한국 세션 발표자료집</h3>
           <p class="material-card-desc">윤태련 대표, 염동철 교수, 김성민 대표, 박철수 대표의 4인 발표 슬라이드를 하나로 묶은 단일 통합 PDF 자료집입니다.</p>
           <div class="material-card-actions">
-            <a href="https://drive.google.com/file/d/2026_Korea_Session_Combined_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
-              통합 자료집 다운로드 (PDF) ⬇
-            </a>
             <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo?usp=sharing" target="_blank" rel="noopener noreferrer" class="material-card-btn-secondary">
               <span>📁</span> 개별 발표자료 폴더 열람 ↗
             </a>
+            <a href="https://drive.google.com/file/d/2026_Korea_Session_Combined_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
+              통합 자료집 다운로드 (PDF) ⬇
+            </a>
           </div>
         </div>
-        <div class="material-card">
+        <div class="material-card material-card-featured">
           <div class="material-card-icon">📂</div>
           <span class="material-card-badge">통합본 PDF · 3인 수록</span>
           <h3 class="material-card-title">일본 세션 발표자료집</h3>
           <p class="material-card-desc">아오야기 교수, 타카하시 모토나리 코치, 츠게 요이치로 대표의 3인 발표 슬라이드를 하나로 묶은 단일 통합 PDF 자료집입니다.</p>
           <div class="material-card-actions">
-            <a href="https://drive.google.com/file/d/2026_Japan_Session_Combined_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
-              통합 자료집 다운로드 (PDF) ⬇
-            </a>
             <a href="https://drive.google.com/drive/folders/03_Japan_Speakers_Demo?usp=sharing" target="_blank" rel="noopener noreferrer" class="material-card-btn-secondary">
               <span>📁</span> 개별 발표자료 폴더 열람 ↗
+            </a>
+            <a href="https://drive.google.com/file/d/2026_Japan_Session_Combined_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
+              통합 자료집 다운로드 (PDF) ⬇
             </a>
           </div>
         </div>
@@ -2342,28 +2391,37 @@
       function renderMaterials(lang) {
         const grid = document.getElementById('materials-card-grid');
         if (!grid || typeof MATERIALS_DATA === 'undefined') return;
-        grid.innerHTML = MATERIALS_DATA.map(m => {
+        grid.innerHTML = MATERIALS_DATA.map((m, idx) => {
           const badge = m.badge[lang] || m.badge.en;
           const title = m.title[lang] || m.title.en;
           const desc = m.desc[lang] || m.desc.en;
           const btnText = m.btnText[lang] || m.btnText.en;
           const folderText = m.folderText ? (m.folderText[lang] || m.folderText.en) : null;
+          const isFeatured = (idx === 1 || idx === 2);
           const secondaryBtnHtml = (m.folderLink && folderText) ? `
             <a href="${m.folderLink}" target="_blank" rel="noopener noreferrer" class="material-card-btn-secondary">
               <span>📁</span> ${folderText}
             </a>
           ` : '';
 
-          return `<div class="material-card">
+          const actionsHtml = secondaryBtnHtml ? `
+            ${secondaryBtnHtml}
+            <a href="${m.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
+              ${btnText}
+            </a>
+          ` : `
+            <a href="${m.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
+              ${btnText}
+            </a>
+          `;
+
+          return `<div class="material-card${isFeatured ? ' material-card-featured' : ''}">
             <div class="material-card-icon">${m.icon}</div>
             <span class="material-card-badge">${badge}</span>
             <h3 class="material-card-title">${title}</h3>
             <p class="material-card-desc">${desc}</p>
             <div class="material-card-actions">
-              <a href="${m.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
-                ${btnText}
-              </a>
-              ${secondaryBtnHtml}
+              ${actionsHtml}
             </div>
           </div>`;
         }).join('');
