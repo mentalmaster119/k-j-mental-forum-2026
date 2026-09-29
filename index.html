@@ -84,61 +84,65 @@
     .btn-secondary { background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
     .btn-secondary:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
 
-    .hero-right-col { display: flex; flex-direction: column; gap: 1.5rem; }
-    .hero-visual-frame {
+    /* Full-Width Panoramic Hero Banner */
+    .hero-panoramic-banner-wrap {
+      width: 100%;
+      margin-bottom: 3.5rem;
+      cursor: pointer;
+    }
+    .hero-panoramic-frame {
       position: relative;
-      border-radius: 20px;
+      width: 100%;
+      border-radius: 24px;
       overflow: hidden;
       border: 1px solid rgba(245, 158, 11, 0.45);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 40px rgba(37, 99, 235, 0.3);
-      background: #070d1a;
-      cursor: pointer;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 45px rgba(37, 99, 235, 0.25);
+      background: #060a14;
+      aspect-ratio: 1200 / 480;
       transition: all var(--transition);
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      min-height: 220px;
       display: block;
     }
-    .hero-visual-frame:hover {
-      transform: translateY(-4px) scale(1.015);
+    .hero-panoramic-frame:hover {
+      transform: translateY(-4px);
       border-color: rgba(251, 191, 36, 0.85);
-      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.55), 0 0 50px rgba(56, 189, 248, 0.45);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 60px rgba(56, 189, 248, 0.4);
     }
-    .hero-visual-img {
+    .hero-panoramic-img {
       width: 100%;
       height: 100%;
-      min-height: 220px;
       object-fit: cover;
       display: block;
       transition: transform 0.4s ease;
     }
-    .hero-visual-frame:hover .hero-visual-img {
-      transform: scale(1.025);
+    .hero-panoramic-frame:hover .hero-panoramic-img {
+      transform: scale(1.015);
     }
-    .hero-visual-badge {
+    .hero-panoramic-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 0.6rem 1rem;
-      background: linear-gradient(180deg, transparent 0%, rgba(7, 13, 26, 0.94) 100%);
+      padding: 0.75rem 1.25rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(6, 10, 20, 0.94) 100%);
+    }
+    .hero-panoramic-badge {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: #cbd5e1;
     }
     .hero-visual-zoom-hint {
       color: var(--gold-400);
-      font-size: 0.725rem;
+      font-size: 0.75rem;
       background: rgba(245, 158, 11, 0.15);
       border: 1px solid rgba(245, 158, 11, 0.45);
-      padding: 0.15rem 0.55rem;
+      padding: 0.2rem 0.65rem;
       border-radius: 9999px;
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.35rem;
     }
 
     .hero-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px; padding: 2rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
@@ -606,6 +610,20 @@
   <!-- Hero Section -->
   <section class="hero-section" id="hero">
     <div class="container">
+
+      <!-- Grand Full-Width Panoramic Key Visual Banner (화면 가로로 넓게 펼쳐진 공식 배너) -->
+      <div class="hero-panoramic-banner-wrap" onclick="openHeroVisualModal()" title="포럼 10주년 공식 키 비주얼 크게 보기">
+        <div class="hero-panoramic-frame">
+          <img src="assets/images/hero-key-visual.svg?v=202610_panoramic" alt="3rd Japan–Korea Mental Coaching Forum 2026 Evolution Together Key Visual" class="hero-panoramic-img" id="hero-key-visual-img">
+          <div class="hero-panoramic-overlay">
+            <div class="hero-panoramic-badge">
+              <span id="hero-visual-badge-text">✨ 3rd Japan–Korea Mental Forum · 10th Anniversary Official Key Visual</span>
+              <span class="hero-visual-zoom-hint">🔍 클릭하여 고화질 확대 / 다운로드</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="hero-grid">
         <div class="hero-content">
           <div class="hero-badge-tag">
@@ -631,17 +649,8 @@
           </div>
         </div>
 
-        <div class="hero-right-col">
-          <div class="hero-visual-frame" onclick="openHeroVisualModal()" title="포럼 공식 키 비주얼 크게 보기">
-            <img src="assets/images/hero-key-visual.svg?v=202610" alt="3rd Japan–Korea Mental Forum 2026 Key Visual" class="hero-visual-img" id="hero-key-visual-img">
-            <div class="hero-visual-badge">
-              <span id="hero-visual-badge-text">✨ 10주년 공식 키 비주얼</span>
-              <span class="hero-visual-zoom-hint">🔍 크게 보기</span>
-            </div>
-          </div>
-
-          <aside class="hero-card">
-            <div class="hero-card-header">
+        <aside class="hero-card">
+          <div class="hero-card-header">
               <div class="hero-card-title">Forum Date & Schedule</div>
               <div class="hero-card-date" data-i18n="hero.date">Saturday, October 3, 2026</div>
             </div>
@@ -672,7 +681,6 @@
               </div>
             </div>
           </aside>
-        </div>
       </div>
 
       <div class="hero-stats-grid">
