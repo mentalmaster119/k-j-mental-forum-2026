@@ -84,6 +84,60 @@
     .btn-secondary { background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
     .btn-secondary:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
 
+    .hero-right-col { display: flex; flex-direction: column; gap: 1.5rem; }
+    .hero-visual-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 40px rgba(37, 99, 235, 0.3);
+      background: #070d1a;
+      cursor: pointer;
+      transition: all var(--transition);
+      aspect-ratio: 16 / 9;
+      display: block;
+    }
+    .hero-visual-frame:hover {
+      transform: translateY(-4px) scale(1.015);
+      border-color: rgba(251, 191, 36, 0.85);
+      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.55), 0 0 50px rgba(56, 189, 248, 0.45);
+    }
+    .hero-visual-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .hero-visual-frame:hover .hero-visual-img {
+      transform: scale(1.025);
+    }
+    .hero-visual-badge {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.6rem 1rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(7, 13, 26, 0.94) 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+    .hero-visual-zoom-hint {
+      color: var(--gold-400);
+      font-size: 0.725rem;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
     .hero-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px; padding: 2rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
     .hero-card-header { border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 1rem; margin-bottom: 1.25rem; }
     .hero-card-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #38bdf8; font-weight: 700; margin-bottom: 0.25rem; }
@@ -574,38 +628,48 @@
           </div>
         </div>
 
-        <aside class="hero-card">
-          <div class="hero-card-header">
-            <div class="hero-card-title">Forum Date & Schedule</div>
-            <div class="hero-card-date" data-i18n="hero.date">Saturday, October 3, 2026</div>
-          </div>
-          <div class="hero-card-list">
-            <div class="hero-card-item">
-              <div class="hero-card-icon">⏰</div>
-              <div>
-                <div class="hero-card-item-title">Time</div>
-                <div class="hero-card-item-val" data-i18n="hero.time">10:00 – 18:00 (Reception 19:00 – 21:00)</div>
-                <div class="hero-card-item-sub">Check-in from 09:40 at 1F Lobby</div>
-              </div>
-            </div>
-            <div class="hero-card-item">
-              <div class="hero-card-icon">📍</div>
-              <div>
-                <div class="hero-card-item-title">Location</div>
-                <div class="hero-card-item-val" data-i18n="hero.venue">Kanto Gakuin University, Yokohama Kannai Campus 17F</div>
-                <div class="hero-card-item-sub" data-i18n="hero.transport">JR Kannai Station South Exit (2-min walk)</div>
-              </div>
-            </div>
-            <div class="hero-card-item">
-              <div class="hero-card-icon">🤝</div>
-              <div>
-                <div class="hero-card-item-title">Co-Hosts</div>
-                <div class="hero-card-item-val">MCCI & Field Flow Alliance</div>
-                <div class="hero-card-item-sub" data-i18n="hero.cohostsSub">Celebrating MCCI & Field Flow 10th Anniversary (2016–2026)</div>
-              </div>
+        <div class="hero-right-col">
+          <div class="hero-visual-frame" onclick="openHeroVisualModal()" title="포럼 공식 키 비주얼 크게 보기">
+            <img src="assets/images/hero-key-visual.svg" alt="3rd Japan–Korea Mental Forum 2026 Key Visual" class="hero-visual-img" id="hero-key-visual-img">
+            <div class="hero-visual-badge">
+              <span id="hero-visual-badge-text">✨ 10주년 공식 키 비주얼</span>
+              <span class="hero-visual-zoom-hint">🔍 크게 보기</span>
             </div>
           </div>
-        </aside>
+
+          <aside class="hero-card">
+            <div class="hero-card-header">
+              <div class="hero-card-title">Forum Date & Schedule</div>
+              <div class="hero-card-date" data-i18n="hero.date">Saturday, October 3, 2026</div>
+            </div>
+            <div class="hero-card-list">
+              <div class="hero-card-item">
+                <div class="hero-card-icon">⏰</div>
+                <div>
+                  <div class="hero-card-item-title">Time</div>
+                  <div class="hero-card-item-val" data-i18n="hero.time">10:00 – 18:00 (Reception 19:00 – 21:00)</div>
+                  <div class="hero-card-item-sub">Check-in from 09:40 at 1F Lobby</div>
+                </div>
+              </div>
+              <div class="hero-card-item">
+                <div class="hero-card-icon">📍</div>
+                <div>
+                  <div class="hero-card-item-title">Location</div>
+                  <div class="hero-card-item-val" data-i18n="hero.venue">Kanto Gakuin University, Yokohama Kannai Campus 17F</div>
+                  <div class="hero-card-item-sub" data-i18n="hero.transport">JR Kannai Station South Exit (2-min walk)</div>
+                </div>
+              </div>
+              <div class="hero-card-item">
+                <div class="hero-card-icon">🤝</div>
+                <div>
+                  <div class="hero-card-item-title">Co-Hosts</div>
+                  <div class="hero-card-item-val">MCCI & Field Flow Alliance</div>
+                  <div class="hero-card-item-sub" data-i18n="hero.cohostsSub">Celebrating MCCI & Field Flow 10th Anniversary (2016–2026)</div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
 
       <div class="hero-stats-grid">
@@ -1565,6 +1629,25 @@
     </div>
   </div>
 
+  <!-- Hero Key Visual Fullscreen Lightbox Modal -->
+  <div class="modal-overlay" id="hero-visual-modal" role="dialog" aria-modal="true" onclick="if(event.target===this) closeHeroVisualModal()">
+    <div class="modal-content" style="max-width: 900px; padding: 1.75rem; background: #070d1a; border: 1px solid rgba(245, 158, 11, 0.45); color: #ffffff;">
+      <button class="modal-close-btn" onclick="closeHeroVisualModal()" style="background: rgba(255,255,255,0.12); color: #ffffff;">&times;</button>
+      <div style="border-radius: 14px; overflow: hidden; margin-bottom: 1.25rem; box-shadow: 0 15px 40px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
+        <img id="modal-hero-visual-img" src="assets/images/hero-key-visual.svg" alt="3rd Japan–Korea Mental Forum 2026 Key Visual" style="width: 100%; height: auto; display: block;">
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div style="font-size: 0.75rem; color: #f59e0b; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">3rd Japan–Korea Mental Coaching Forum 2026</div>
+          <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff;" id="modal-hero-visual-title">Evolution Together · 10th Anniversary Official Key Visual</div>
+        </div>
+        <a href="assets/images/hero-key-visual.svg" target="_blank" download="Evolution_Together_2026_Key_Visual.svg" class="btn btn-secondary" style="font-size: 0.825rem; padding: 0.55rem 1.15rem; color: #fef08a; border-color: rgba(245, 158, 11, 0.45); background: rgba(245, 158, 11, 0.12);">
+          <span>⬇️</span> <span>고화질 이미지 저장</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div class="toast-msg" id="toast-notification">Message Sent</div>
 
   <!-- Interactive JavaScript -->
@@ -2419,6 +2502,15 @@
         // Re-render schedule table in selected language
         renderTimetable(lang);
 
+        const heroBadgeText = document.getElementById('hero-visual-badge-text');
+        if (heroBadgeText) {
+          heroBadgeText.textContent = lang === 'ko' ? "✨ 10주년 공식 키 비주얼" : (lang === 'ja' ? "✨ 10周年公式キービジュアル" : "✨ 10th Anniversary Key Visual");
+        }
+        const modalHeroTitle = document.getElementById('modal-hero-visual-title');
+        if (modalHeroTitle) {
+          modalHeroTitle.textContent = lang === 'ko' ? "Evolution Together · 10주년 공식 키 비주얼" : (lang === 'ja' ? "Evolution Together · 10周年公式キービジュアル" : "Evolution Together · 10th Anniversary Key Visual");
+        }
+
         if (typeof themeAudio !== 'undefined' && themeAudio.paused && themeAudio.currentTime === 0) {
           switchThemeSongLang(lang);
         }
@@ -2957,6 +3049,27 @@ Evolve together`
         }
       };
 
+      window.openHeroVisualModal = function() {
+        const modal = document.getElementById('hero-visual-modal');
+        if (modal) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+
+      window.closeHeroVisualModal = function() {
+        const modal = document.getElementById('hero-visual-modal');
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      };
+
+      const heroVisualModal = document.getElementById('hero-visual-modal');
+      if (heroVisualModal) {
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeHeroVisualModal(); });
+      }
+
       const lyricsModal = document.getElementById('lyrics-modal');
       if (lyricsModal) {
         lyricsModal.addEventListener('click', (e) => { if (e.target === lyricsModal) closeLyricsModal(); });
@@ -3038,6 +3151,12 @@ Evolve together`
                 CONTACTS_DATA.japan = remote.contacts.japan;
               }
               renderContacts(currentLang);
+            }
+            if (remote.heroVisual && remote.heroVisual.url) {
+              const heroImg = document.getElementById('hero-key-visual-img');
+              const modalHeroImg = document.getElementById('modal-hero-visual-img');
+              if (heroImg) heroImg.src = remote.heroVisual.url;
+              if (modalHeroImg) modalHeroImg.src = remote.heroVisual.url;
             }
           }
         } catch (e) {

@@ -960,5 +960,13 @@
       "ja": "assets/audio/evolution-together-ja.mp3",
       "en": "assets/audio/evolution-together-en.mp3"
     }
+  },
+  "heroVisual": {
+    "url": "assets/images/hero-key-visual.svg",
+    "caption": {
+      "ko": "제3회 한일 멘탈코칭 포럼 2026 공식 키 비주얼 (10주년)",
+      "ja": "第3回日韓国際メンタルフォーラム2026 公式キービジュアル（10周年）",
+      "en": "Official Key Visual · 3rd Japan–Korea Mental Forum 2026"
+    }
   }
 }
