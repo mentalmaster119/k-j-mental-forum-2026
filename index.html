@@ -210,6 +210,227 @@
     .anniversary-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
     @media (max-width: 768px) { .anniversary-org-grid { grid-template-columns: 1fr; } }
 
+    /* Theme Song Player */
+    .theme-song-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 24px;
+      padding: 2.25rem;
+      margin: 2.5rem 0;
+      color: #ffffff;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.25), 0 0 20px rgba(245, 158, 11, 0.12);
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+    .theme-song-card::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .theme-song-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #f59e0b;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 0.75rem;
+    }
+    .theme-song-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .theme-song-title {
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .theme-song-sub {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .theme-song-lang-pills {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 3px;
+    }
+    .theme-song-lang-btn {
+      padding: 0.4rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: #cbd5e1;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .theme-song-lang-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .theme-song-lang-btn.active {
+      background: #f59e0b;
+      color: #0f172a;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+    }
+    .theme-song-player-body {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .theme-song-progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .theme-song-time {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      color: #94a3b8;
+      min-width: 42px;
+      text-align: center;
+    }
+    .theme-song-seek {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+      cursor: pointer;
+    }
+    .theme-song-seek::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #f59e0b;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
+      transition: transform 0.15s;
+    }
+    .theme-song-seek::-webkit-slider-thumb:hover {
+      transform: scale(1.25);
+    }
+    .theme-song-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .theme-song-main-ctrls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .theme-song-play-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border: none;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.5);
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+    .theme-song-play-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.7);
+    }
+    .theme-song-vol-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+    .theme-song-vol-slider {
+      width: 75px;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+      cursor: pointer;
+    }
+    .theme-song-vol-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      cursor: pointer;
+    }
+    .theme-song-sub-btns {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+    .theme-song-action-btn {
+      padding: 0.45rem 0.95rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      color: #f1f5f9;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .theme-song-action-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(245, 158, 11, 0.5);
+      color: #f59e0b;
+    }
+
     /* Contact */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; }
     .contact-info-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 20px; padding: 2.5rem; box-shadow: var(--shadow-sm); }
@@ -342,6 +563,9 @@
             </a>
             <a href="#materials" class="btn btn-secondary" id="hero-cta-secondary">
               <span data-i18n="hero.btnMaterials">Presentation Materials</span> ↗
+            </a>
+            <a href="#theme-song-card" class="btn btn-secondary" style="background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.45); color: #b45309; font-weight: 700;">
+              <span>🎵</span> <span data-i18n="hero.btnThemeSong">10주년 테마곡 듣기</span>
             </a>
           </div>
         </div>
@@ -1056,6 +1280,75 @@
           </div>
         </div>
 
+        <!-- Dual 10th Anniversary Theme Song Player -->
+        <div class="theme-song-card" id="theme-song-card">
+          <div class="theme-song-badge">
+            <span>🎵</span>
+            <span data-i18n="themeSong.tag">10th Anniversary Official Theme Song</span>
+          </div>
+
+          <div class="theme-song-header">
+            <div>
+              <h3 class="theme-song-title">
+                Evolution Together
+                <span style="font-size: 0.82rem; font-weight: 700; color: #f59e0b; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); padding: 0.2rem 0.6rem; border-radius: 6px;">Official Anthem</span>
+              </h3>
+              <p class="theme-song-sub" data-i18n="themeSong.subtitle">
+                한일 멘탈코칭 포럼 & MCCI·Field Flow 10주년 공식 기념 테마곡 (한·일·영 3개 언어 음원 수록)
+              </p>
+            </div>
+
+            <!-- Version Switcher Pills -->
+            <div class="theme-song-lang-pills">
+              <button type="button" class="theme-song-lang-btn active" id="btn-song-ko" onclick="switchThemeSongLang('ko')">🇰🇷 한국어</button>
+              <button type="button" class="theme-song-lang-btn" id="btn-song-ja" onclick="switchThemeSongLang('ja')">🇯🇵 日本語</button>
+              <button type="button" class="theme-song-lang-btn" id="btn-song-en" onclick="switchThemeSongLang('en')">🇺🇸 English</button>
+            </div>
+          </div>
+
+          <div class="theme-song-player-body">
+            <!-- Progress & Time -->
+            <div class="theme-song-progress-wrap">
+              <span class="theme-song-time" id="song-time-cur">00:00</span>
+              <input type="range" class="theme-song-seek" id="song-seek-bar" value="0" min="0" max="100" step="0.1" oninput="handleSeekInput(this.value)">
+              <span class="theme-song-time" id="song-time-total">04:12</span>
+            </div>
+
+            <!-- Controls -->
+            <div class="theme-song-controls">
+              <div class="theme-song-main-ctrls">
+                <button type="button" class="theme-song-play-btn" id="song-play-btn" onclick="toggleThemeSongPlay()" aria-label="재생/일시정지">
+                  <span id="song-play-icon">▶</span>
+                </button>
+                <div style="display: flex; flex-direction: column;">
+                  <span style="font-weight: 700; font-size: 0.95rem; color: #ffffff;" id="song-current-playing-title">Evolution Together (한국어 버전)</span>
+                  <span style="font-size: 0.78rem; color: #94a3b8;">Korea & Japan Hand in Hand · 4:12</span>
+                </div>
+              </div>
+
+              <div class="theme-song-sub-ctrls" style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                <!-- Volume -->
+                <div class="theme-song-vol-wrap">
+                  <span id="song-vol-icon" style="cursor: pointer;" onclick="toggleMute()">🔊</span>
+                  <input type="range" class="theme-song-vol-slider" id="song-vol-slider" min="0" max="1" step="0.05" value="0.9" oninput="handleVolumeInput(this.value)">
+                </div>
+
+                <!-- Action Buttons: Lyrics & Download -->
+                <div class="theme-song-sub-btns">
+                  <button type="button" class="theme-song-action-btn" onclick="openLyricsModal()">
+                    <span>📄</span>
+                    <span data-i18n="themeSong.viewLyrics">가사 보기</span>
+                  </button>
+                  <a href="assets/audio/evolution-together-ko.mp3" download="Evolution-Together-KO.mp3" id="song-download-link" class="theme-song-action-btn">
+                    <span>📥</span>
+                    <span data-i18n="themeSong.downloadBtn">MP3 다운로드</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div style="font-weight: 700; color: #b45309; margin-bottom: 0.75rem; font-size: 1rem;" data-i18n="fieldflow.callout">
           📸 Share Your 10-Year Journey & Forum Memories with Us!
         </div>
@@ -1217,6 +1510,34 @@
     </div>
   </div>
 
+  <!-- Lyrics Modal Dialog -->
+  <div class="modal-overlay" id="lyrics-modal" role="dialog" aria-modal="true">
+    <div class="modal-content" style="max-width: 680px; max-height: 88vh;">
+      <button class="modal-close-btn" id="lyrics-modal-close-btn" onclick="closeLyricsModal()">&times;</button>
+      <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.5rem;">
+        <span style="font-size: 1.8rem;">🎵</span>
+        <div>
+          <span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 800; color: #d97706;" data-i18n="themeSong.modalTag">10th Anniversary Official Theme Song</span>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--primary-900); margin: 0.1rem 0;">Evolution Together</h3>
+        </div>
+      </div>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;" data-i18n="themeSong.modalDesc">
+        한일 멘탈코칭 포럼 & MCCI·Field Flow 창립 10주년 공식 기념 테마곡 가사
+      </p>
+
+      <!-- Language Tabs for Lyrics -->
+      <div class="lang-pill-wrap" style="margin-bottom: 1.25rem;">
+        <button type="button" class="lang-pill active" id="lyrics-tab-ko" onclick="switchLyricsTab('ko')">🇰🇷 한국어</button>
+        <button type="button" class="lang-pill" id="lyrics-tab-ja" onclick="switchLyricsTab('ja')">🇯🇵 日本語</button>
+        <button type="button" class="lang-pill" id="lyrics-tab-en" onclick="switchLyricsTab('en')">🇺🇸 English</button>
+      </div>
+
+      <!-- Lyrics Scroll Box -->
+      <div id="lyrics-content-box" style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 1.5rem; max-height: 52vh; overflow-y: auto; font-size: 0.92rem; line-height: 1.85; color: var(--primary-900); white-space: pre-wrap; font-family: inherit;">
+      </div>
+    </div>
+  </div>
+
   <div class="toast-msg" id="toast-notification">Message Sent</div>
 
   <!-- Interactive JavaScript -->
@@ -1235,7 +1556,7 @@
               badge: "3rd International Forum · Yokohama 2026", mainTitle: "Evolution Together", subTitle: "Evolve Together. Create a New Future.",
               description: "A premier international gathering bringing together pioneering mental coaches, elite sports mentors, and educational leaders from Japan and Korea to explore human-centered coaching in the evolving era of AI and technology.",
               date: "Saturday, October 3, 2026", time: "10:00 – 18:00 (Reception 19:00 – 21:00)", venue: "Kanto Gakuin University, Yokohama Kannai Campus 17F", transport: "JR Kannai Station South Exit (2-min walk)",
-              btnProgram: "View Program", btnMaterials: "Presentation Materials"
+              btnProgram: "View Program", btnMaterials: "Presentation Materials", btnThemeSong: "10th Anniversary Theme Song"
             },
             about: {
               tag: "Forum Philosophy", title: "No One Evolves Alone.", highlight: "Learn Together · Think Together · Evolve Together",
@@ -1282,6 +1603,15 @@
               albumBtn: "Open 10th Anniversary Album",
               uploadBtn: "Share Your Photos (Google Photos)"
             },
+            themeSong: {
+              tag: "10th Anniversary Official Theme Song",
+              title: "Evolution Together",
+              subtitle: "Official Theme Song of the 3rd Japan–Korea Mental Coaching Forum & 10th Anniversary (EN · JA · KO)",
+              viewLyrics: "View Full Lyrics",
+              downloadBtn: "Download MP3",
+              modalTag: "10th Anniversary Official Theme Song Lyrics",
+              modalDesc: "Official Theme Song of the Japan-Korea Mental Coaching Forum & MCCI / Field Flow 10th Anniversary"
+            },
             contact: {
               tag: "Inquiries & Support", title: "Contact Secretariat", subtitle: "Have questions about the forum, materials, or upcoming initiatives? Reach out to our organizing team.",
               emailLabel: "Official Secretariat Email", email: "secretariat@mentalforum2026.org", orgLabel: "Host & Organizing Committee", orgName: "Korea-Japan Mental Coaching Forum Organizing Committee & MCCI & Field Flow",
@@ -1312,7 +1642,7 @@
               badge: "제3회 한·일 국제 포럼 · 요코하마 2026", mainTitle: "Evolution Together", subTitle: "Evolve Together. Create a New Future.",
               description: "한국과 일본의 멘탈코칭 전문가, 스포츠·교육 지도자가 함께 모여 AI와 대변혁의 시대에 인간 중심 코칭의 가치와 새로운 미래를 여는 국제 학술·실천 교류의 장입니다.",
               date: "2026년 10월 3일 (토요일)", time: "10:00 – 18:00 (네트워킹 리셉션 19:00 – 21:00)", venue: "일본 요코하마 관동학원대학 간나이 캠퍼스 17층", transport: "JR 간나이역 남쪽 출구 도보 2분 / 니혼오도리역 도보 8분",
-              btnProgram: "프로그램 확인하기", btnMaterials: "발표 자료 열람"
+              btnProgram: "프로그램 확인하기", btnMaterials: "발표 자료 열람", btnThemeSong: "10주년 테마곡 듣기"
             },
             about: {
               tag: "포럼 철학 & 메시지", title: "No One Evolves Alone.", highlight: "Learn Together · Think Together · Evolve Together",
@@ -1359,6 +1689,15 @@
               albumBtn: "10주년 공동 사진 앨범 열기",
               uploadBtn: "추억 사진 공유하기 (Google Photos)"
             },
+            themeSong: {
+              tag: "한·일 공동 10주년 공식 기념 테마곡",
+              title: "Evolution Together",
+              subtitle: "한일 멘탈코칭 포럼 & MCCI·Field Flow 10주년 공식 기념 테마곡 (한·일·영 3개 언어 음원 수록)",
+              viewLyrics: "가사 전체 보기",
+              downloadBtn: "MP3 다운로드",
+              modalTag: "10주년 공식 기념 테마곡 가사",
+              modalDesc: "한일 멘탈코칭 포럼 & MCCI·Field Flow 창립 10주년 공식 기념 테마곡 가사"
+            },
             contact: {
               tag: "문의 및 사무국", title: "포럼 사무국 문의", subtitle: "포럼 참가, 발표 자료, 후속 교류 프로그램에 대한 문의 사항을 남겨주시면 신속히 답변해 드립니다.",
               emailLabel: "사무국 공식 이메일", email: "secretariat@mentalforum2026.org", orgLabel: "주최 및 주관", orgName: "한일국제멘탈포럼 조직위원회 · MCCI · Field Flow",
@@ -1389,7 +1728,7 @@
               badge: "第3回 日韓国際メンタルフォーラム · 横浜 2026", mainTitle: "Evolution Together", subTitle: "Evolve Together. Create a New Future.",
               description: "韓国と日本のメンタルコーチ、スポーツ・教育指導者が集い、AI時代における人間中心のコーチングの意義と新たな未来を共創する国際フォーラムです。",
               date: "2026年10月3日（土曜日）", time: "10:00 – 18:00（懇親会 19:00 – 21:00）", venue: "関東学院大学 横浜・関内キャンパス 17階", transport: "JR関内駅 南口より徒歩2分 / 日本大通り駅より徒歩8分",
-              btnProgram: "プログラムを見る", btnMaterials: "発表資料を見る"
+              btnProgram: "プログラムを見る", btnMaterials: "発表資料を見る", btnThemeSong: "10周年記念テーマ曲を聴く"
             },
             about: {
               tag: "フォーラムの理念", title: "No One Evolves Alone.", highlight: "Learn Together · Think Together · Evolve Together",
@@ -1435,6 +1774,15 @@
               callout: "📸 MCCI＆Field Flowとの10年の想い出、フォーラムの写真をぜひご共有ください！",
               albumBtn: "10周年共同記念アルバムを開く",
               uploadBtn: "想い出の写真を共有する（Google Photos）"
+            },
+            themeSong: {
+              tag: "日韓共同 10周年公式記念テーマソング",
+              title: "Evolution Together",
+              subtitle: "第3回日韓国際メンタルフォーラム＆MCCI・Field Flow 10周年公式記念テーマ曲（日・韓・英 3言語収録）",
+              viewLyrics: "歌詞をすべて見る",
+              downloadBtn: "MP3ダウンロード",
+              modalTag: "10周年公式記念テーマソング 歌詞",
+              modalDesc: "日韓国際メンタルフォーラム＆MCCI・Field Flow 創立10周年公式記念テーマソング歌詞"
             },
             contact: {
               tag: "事務局お問い合わせ", title: "お問い合わせ", subtitle: "フォーラムに関するご質問、資料閲覧、今後の連携等についてお気軽にお問い合わせください。",
@@ -2029,6 +2377,10 @@
 
         // Re-render schedule table in selected language
         renderTimetable(lang);
+
+        if (typeof themeAudio !== 'undefined' && themeAudio.paused && themeAudio.currentTime === 0) {
+          switchThemeSongLang(lang);
+        }
       }
 
       function renderTimetable(lang) {
@@ -2145,6 +2497,429 @@
           modalOverlay.classList.remove('active');
           document.body.style.overflow = '';
         }
+      }
+
+      // ----------------------------------------------------
+      // 10th Anniversary Theme Song Audio Player & Lyrics
+      // ----------------------------------------------------
+      const SONG_FILES = {
+        ko: 'assets/audio/evolution-together-ko.mp3',
+        ja: 'assets/audio/evolution-together-ja.mp3',
+        en: 'assets/audio/evolution-together-en.mp3'
+      };
+
+      const SONG_TITLES = {
+        ko: 'Evolution Together (한국어 버전)',
+        ja: 'Evolution Together (日本語バージョン)',
+        en: 'Evolution Together (English Version)'
+      };
+
+      let currentSongLang = 'ko';
+      let isSeeking = false;
+      const themeAudio = new Audio();
+      themeAudio.src = SONG_FILES.ko;
+      themeAudio.preload = 'metadata';
+
+      function formatAudioTime(sec) {
+        if (isNaN(sec) || sec < 0) return "00:00";
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+      }
+
+      window.toggleThemeSongPlay = function() {
+        const icon = document.getElementById('song-play-icon');
+        if (themeAudio.paused) {
+          themeAudio.play().then(() => {
+            if (icon) icon.textContent = '❚❚';
+          }).catch(err => {
+            console.warn('Playback prevented:', err);
+          });
+        } else {
+          themeAudio.pause();
+          if (icon) icon.textContent = '▶';
+        }
+      };
+
+      window.switchThemeSongLang = function(lang) {
+        if (!SONG_FILES[lang]) return;
+        const wasPlaying = !themeAudio.paused && themeAudio.currentTime > 0;
+        const curTime = themeAudio.currentTime;
+
+        currentSongLang = lang;
+        themeAudio.src = SONG_FILES[lang];
+        themeAudio.currentTime = curTime;
+
+        ['ko', 'ja', 'en'].forEach(l => {
+          const btn = document.getElementById('btn-song-' + l);
+          if (btn) btn.classList.toggle('active', l === lang);
+        });
+
+        const titleEl = document.getElementById('song-current-playing-title');
+        if (titleEl) titleEl.textContent = SONG_TITLES[lang];
+
+        const dlLink = document.getElementById('song-download-link');
+        if (dlLink) {
+          dlLink.href = SONG_FILES[lang];
+          dlLink.download = `Evolution-Together-${lang.toUpperCase()}.mp3`;
+        }
+
+        if (wasPlaying) {
+          themeAudio.play();
+        }
+      };
+
+      window.handleSeekInput = function(val) {
+        const dur = themeAudio.duration || 252.8;
+        themeAudio.currentTime = (val / 100) * dur;
+      };
+
+      window.handleVolumeInput = function(val) {
+        themeAudio.volume = parseFloat(val);
+        const icon = document.getElementById('song-vol-icon');
+        if (icon) icon.textContent = themeAudio.volume === 0 ? '🔇' : '🔊';
+      };
+
+      window.toggleMute = function() {
+        const slider = document.getElementById('song-vol-slider');
+        const icon = document.getElementById('song-vol-icon');
+        if (themeAudio.volume > 0) {
+          themeAudio.dataset.prevVol = themeAudio.volume;
+          themeAudio.volume = 0;
+          if (slider) slider.value = 0;
+          if (icon) icon.textContent = '🔇';
+        } else {
+          const prev = parseFloat(themeAudio.dataset.prevVol) || 0.9;
+          themeAudio.volume = prev;
+          if (slider) slider.value = prev;
+          if (icon) icon.textContent = '🔊';
+        }
+      };
+
+      themeAudio.addEventListener('timeupdate', () => {
+        const cur = themeAudio.currentTime;
+        const dur = themeAudio.duration || 252.8;
+        const curEl = document.getElementById('song-time-cur');
+        const seekEl = document.getElementById('song-seek-bar');
+        if (curEl) curEl.textContent = formatAudioTime(cur);
+        if (seekEl && !isSeeking) {
+          seekEl.value = (cur / dur) * 100;
+        }
+      });
+
+      themeAudio.addEventListener('loadedmetadata', () => {
+        const totalEl = document.getElementById('song-time-total');
+        if (totalEl && !isNaN(themeAudio.duration)) {
+          totalEl.textContent = formatAudioTime(themeAudio.duration);
+        }
+      });
+
+      themeAudio.addEventListener('ended', () => {
+        const icon = document.getElementById('song-play-icon');
+        if (icon) icon.textContent = '▶';
+        const seekEl = document.getElementById('song-seek-bar');
+        if (seekEl) seekEl.value = 0;
+      });
+
+      // ----------------------------------------------------
+      // Lyrics Modal Logic
+      // ----------------------------------------------------
+      const LYRICS_DATA = {
+        ko: `[Verse 1]
+서로 다른 길을 걸어온 우리
+다른 언어로 꿈을 말해도
+마음 깊은 곳 같은 질문 하나
+사람의 가능성을 믿어요
+
+넘어지고 흔들리던 시간 속에도
+다시 일어날 힘을 찾아
+너의 이야기를 듣는 그 순간
+나의 길도 더 선명해져
+
+[Pre-Chorus]
+혼자가 아니라는 걸
+오늘 우리는 알아
+서로의 손을 잡고
+새로운 내일로 가
+
+[Chorus]
+함께 진화해 더 멀리 나아가
+너와 나의 경험이 길이 되어
+함께 배워가 더 깊이 연결돼
+서로의 가능성을 밝혀 주며
+
+Korea and Japan, hand in hand
+서로 다른 우리가 하나 되어
+Evolution Together
+새로운 미래를 만들어 가
+
+[Verse 2]
+기술을 넘어 사람을 바라보고
+답보다 좋은 질문을 나누며
+작은 변화가 큰 용기가 되어
+누군가의 내일을 열어 가
+
+몸의 숨결 마음의 목소리
+그 안에 담긴 진심을 듣고
+더 나은 선택을 향해 가는 길
+우리는 곁에서 함께해
+
+[Pre-Chorus]
+다름은 벽이 아니라
+새로운 배움의 문
+오늘의 만남이 되어
+내일의 용기를 줘
+
+[Chorus]
+함께 진화해 더 멀리 나아가
+너와 나의 경험이 길이 되어
+함께 배워가 더 깊이 연결돼
+서로의 가능성을 밝혀 주며
+
+Korea and Japan, hand in hand
+서로 다른 우리가 하나 되어
+Evolution Together
+새로운 미래를 만들어 가
+
+[Bridge]
+나는 누구인가
+무엇을 소중히 여길까
+어떤 사람이 되어
+어떤 선택을 할까
+
+질문 속에서 우리는
+더 깊은 나를 만나
+한 사람의 변화가
+세상을 바꿔 가
+
+[Final Chorus]
+함께 진화해 더 멀리 나아가
+마음과 마음이 길을 만들며
+함께 꿈꿔가 더 크게 연결돼
+우리의 내일을 밝혀 주며
+
+Korea and Japan, hand in hand
+오늘의 만남을 기억하며
+Evolution Together
+함께 새로운 미래로 가
+
+[Outro]
+Learn together
+Think together
+Evolve together
+
+함께 배우고
+함께 생각하며
+함께 진화해`,
+
+        ja: `[Verse 1]
+違う道を歩いてきた僕ら
+違う言葉で夢を語っても
+心の奥に同じ問いがある
+人の可能性を信じてる
+
+つまずき揺らいだ日々の中でも
+もう一度立ち上がる力を探す
+君の物語に耳を傾けるたび
+僕の道も輝き始める
+
+[Pre-Chorus]
+ひとりじゃないことを
+今日僕らは知る
+手と手をつなぎながら
+新しい明日へ行こう
+
+[Chorus]
+ともに進化しよう もっと遠くへ
+君と僕の経験が道になる
+ともに学ぼう もっと深くつながろう
+互いの可能性を照らしながら
+
+Korea and Japan, hand in hand
+違う僕らがひとつになって
+Evolution Together
+新しい未来をつくっていこう
+
+[Verse 2]
+技術を超え 人を見つめながら
+答えよりも良い問いを分かち合う
+小さな変化が大きな勇気になり
+誰かの明日を開いていく
+
+身体の息づかい 心の声
+その中にある想いを聴いて
+より良い選択へ向かう道を
+僕らはそばで歩んでいく
+
+[Pre-Chorus]
+違いは壁じゃない
+新しい学びの扉
+今日の出会いがきっと
+明日の勇気になる
+
+[Chorus]
+ともに進化しよう もっと遠くへ
+君と僕の経験が道になる
+ともに学ぼう もっと深くつながろう
+互いの可能性を照らしながら
+
+Korea and Japan, hand in hand
+違う僕らがひとつになって
+Evolution Together
+新しい未来をつくっていこう
+
+[Bridge]
+私は誰なのか
+何を大切にするのか
+どんな人になり
+何を選んでいくのか
+
+問いの中で僕らは
+より深い自分に出会う
+ひとりの変化が
+世界を変えていく
+
+[Final Chorus]
+ともに進化しよう もっと遠くへ
+心と心が道をつくりながら
+ともに夢見よう もっと大きくつながろう
+僕らの明日を照らしながら
+
+Korea and Japan, hand in hand
+今日の出会いを忘れずに
+Evolution Together
+ともに新しい未来へ行こう
+
+[Outro]
+Learn together
+Think together
+Evolve together
+
+ともに学び
+ともに考え
+ともに進化しよう`,
+
+        en: `[Verse 1]
+We have walked on different roads
+We have dreamed in different words
+Yet within our hearts we share one question
+We believe in human possibility
+
+Through the days when we were falling
+We found the strength to rise again
+When I listen to the story you are sharing
+My own path becomes more clear
+
+[Pre-Chorus]
+Today we come to know
+We never walk alone
+Taking each other’s hands
+We go toward a brand-new day
+
+[Chorus]
+Evolve together, reach a little farther
+Your experience and mine become the way
+Learn together, grow in deeper connection
+Lighting up the possibilities in us
+
+Korea and Japan, hand in hand
+Different voices, one heart as we stand
+Evolution Together
+We will build a brighter future
+
+[Verse 2]
+Beyond the skills, we see the person
+More than answers, we share better questions
+Small changes can become a greater courage
+Opening tomorrow for someone else
+
+The breath within the body, the voice within the heart
+Listening to what is true inside
+On the road toward a better choice
+We will walk beside each other
+
+[Pre-Chorus]
+Differences are not a wall
+They are doors to something new
+What we share with one another
+Gives tomorrow strength and hope
+
+[Chorus]
+Evolve together, reach a little farther
+Your experience and mine become the way
+Learn together, grow in deeper connection
+Lighting up the possibilities in us
+
+Korea and Japan, hand in hand
+Different voices, one heart as we stand
+Evolution Together
+We will build a brighter future
+
+[Bridge]
+Who am I becoming?
+What matters most to me?
+Who do I want to be?
+What will I choose today?
+
+In the questions that we ask
+We discover who we are
+One person’s change can grow
+And help to change the world
+
+[Final Chorus]
+Evolve together, reach a little farther
+Heart to heart, we are making a way
+Dream together, grow in greater connection
+Lighting up the future we create
+
+Korea and Japan, hand in hand
+Holding this moment wherever we stand
+Evolution Together
+Together we move into the future
+
+[Outro]
+Learn together
+Think together
+Evolve together
+
+Learn together
+Think together
+Evolve together`
+      };
+
+      window.openLyricsModal = function(lang) {
+        const target = lang || currentSongLang || currentLang || 'ko';
+        switchLyricsTab(target);
+        const modal = document.getElementById('lyrics-modal');
+        if (modal) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+
+      window.closeLyricsModal = function() {
+        const modal = document.getElementById('lyrics-modal');
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      };
+
+      window.switchLyricsTab = function(lang) {
+        ['ko', 'ja', 'en'].forEach(l => {
+          const tab = document.getElementById('lyrics-tab-' + l);
+          if (tab) tab.classList.toggle('active', l === lang);
+        });
+        const box = document.getElementById('lyrics-content-box');
+        if (box && LYRICS_DATA[lang]) {
+          box.textContent = LYRICS_DATA[lang];
+        }
+      };
+
+      const lyricsModal = document.getElementById('lyrics-modal');
+      if (lyricsModal) {
+        lyricsModal.addEventListener('click', (e) => { if (e.target === lyricsModal) closeLyricsModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLyricsModal(); });
       }
 
       langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))));
