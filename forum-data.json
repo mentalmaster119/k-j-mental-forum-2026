@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-29T07:59:05.838Z",
+  "lastUpdated": "2026-09-29T08:08:11.630Z",
   "speakers": [
     {
       "id": "aoyagi",
@@ -233,7 +233,7 @@
       },
       "initials": "YT",
       "bg": "linear-gradient(135deg, #d97706, #fbbf24)",
-      "photoUrl": "assets/images/speaker-tsuge.jpg",
+      "photoUrl": "assets/images/speaker-tsuge.png",
       "name": {
         "ko": "츠게 요이치로",
         "ja": "柘植 陽一郎 代表（陽さん）",
