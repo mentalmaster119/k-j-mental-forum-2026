@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-29T07:55:42.162Z",
+  "lastUpdated": "2026-09-29T07:59:05.838Z",
   "speakers": [
     {
       "id": "aoyagi",
@@ -13,7 +13,7 @@
       },
       "initials": "AO",
       "bg": "linear-gradient(135deg, #1e3a8a, #3b82f6)",
-      "photoUrl": "assets/images/speaker-aoyagi.jpg",
+      "photoUrl": "assets/images/speaker-aoyagi.png",
       "name": {
         "ko": "아오야기 토시히사",
         "ja": "青柳 敏久 教授",
