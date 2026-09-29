@@ -230,44 +230,30 @@
 
     /* Materials */
     .materials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.75rem; margin-bottom: 3.5rem; }
-    .material-card { background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 20px; padding: 2rem; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05); display: flex; flex-direction: column; transition: all var(--transition); }
+    .material-card { background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 20px; padding: 2rem 1.4rem; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05); display: flex; flex-direction: column; transition: all var(--transition); }
     .material-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12); border-color: var(--accent-500); }
-
-    /* 2nd & 3rd Featured Cards (한국 세션, 일본 세션 발표자료집 - 고대비 강조) */
-    .material-card.material-card-featured,
-    .materials-grid .material-card:nth-child(2),
-    .materials-grid .material-card:nth-child(3) {
-      background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
-      border: 2px solid #2563eb;
-      box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.16), 0 2px 8px -2px rgba(15, 23, 42, 0.08);
-      position: relative;
-    }
-    .material-card.material-card-featured:hover,
-    .materials-grid .material-card:nth-child(2):hover,
-    .materials-grid .material-card:nth-child(3):hover {
-      border-color: #1d4ed8;
-      box-shadow: 0 14px 30px -4px rgba(37, 99, 235, 0.25);
-      transform: translateY(-5px);
-    }
-    .material-card.material-card-featured .material-card-badge,
-    .materials-grid .material-card:nth-child(2) .material-card-badge,
-    .materials-grid .material-card:nth-child(3) .material-card-badge {
-      background: #dbeafe;
-      color: #1e40af;
-      border: 1px solid #bfdbfe;
-      font-weight: 800;
-    }
 
     .material-card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
     .material-card-badge { display: inline-block; font-size: 0.725rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--teal-600); background: var(--teal-50); padding: 0.2rem 0.5rem; border-radius: 4px; margin-bottom: 0.5rem; align-self: flex-start; }
     .material-card-title { font-size: 1.2rem; font-weight: 800; color: var(--primary-900); margin-bottom: 0.6rem; }
     .material-card-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
-    .material-card-actions { display: flex; flex-direction: column; gap: 0.65rem; margin-top: auto; }
-    .material-card-btn-primary { width: 100%; font-size: 0.85rem; padding: 0.65rem 1.1rem; text-align: center; justify-content: center; }
+    .material-card-actions { display: flex; flex-direction: column; gap: 0.55rem; margin-top: auto; }
+    .material-card-btn-primary {
+      width: 100%;
+      height: 42px;
+      font-size: 0.8125rem;
+      padding: 0.65rem 0.65rem;
+      text-align: center;
+      justify-content: center;
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+      border-radius: 9px;
+    }
     .material-card-btn-secondary {
       width: 100%;
-      font-size: 0.85rem;
-      padding: 0.65rem 1rem;
+      height: 42px;
+      font-size: 0.8125rem;
+      padding: 0.65rem 0.65rem;
       text-align: center;
       color: #ffffff;
       background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
@@ -280,7 +266,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
+      white-space: nowrap;
+      letter-spacing: -0.02em;
     }
     .material-card-btn-secondary:hover {
       background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
@@ -1239,11 +1227,11 @@
           <p class="material-card-desc">전체 24개 세션 타임테이블, 행사장 층별 안내도, 7인 연사진 프로필 요약본이 수록된 공식 안내 브로슈어입니다.</p>
           <div class="material-card-actions">
             <a href="https://drive.google.com/file/d/2026_Forum_Program_Final_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
-              프로그램 다운로드 (PDF) ↗
+              프로그램 다운로드 (PDF) ⬇
             </a>
           </div>
         </div>
-        <div class="material-card material-card-featured">
+        <div class="material-card">
           <div class="material-card-icon">📂</div>
           <span class="material-card-badge">통합본 PDF · 4인 수록</span>
           <h3 class="material-card-title">한국 세션 발표자료집</h3>
@@ -1257,7 +1245,7 @@
             </a>
           </div>
         </div>
-        <div class="material-card material-card-featured">
+        <div class="material-card">
           <div class="material-card-icon">📂</div>
           <span class="material-card-badge">통합본 PDF · 3인 수록</span>
           <h3 class="material-card-title">일본 세션 발표자료집</h3>
@@ -1278,7 +1266,7 @@
           <p class="material-card-desc">기조연설자를 포함한 7인 연사의 학문적 배경, 코칭 이력, 발표 초록이 국·영·일문으로 정리된 공식 프로필북입니다.</p>
           <div class="material-card-actions">
             <a href="https://drive.google.com/file/d/Speaker_Profiles_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
-              프로필북 열람 (PDF) ↗
+              프로필북 다운로드 (PDF) ⬇
             </a>
           </div>
         </div>
@@ -2208,7 +2196,7 @@
             ja: "全24セッションのタイムテーブル、会場フロアマップ、登壇者プロフィールの要約を収録した公式ガイドです。",
             en: "Official 24-session timetable, 17F floor layout, and speaker bio summary."
           },
-          btnText: { ko: "프로그램 다운로드 (PDF) ↗", ja: "プログラム（PDF）をダウンロード ↗", en: "Download Program ↗" },
+          btnText: { ko: "프로그램 다운로드 (PDF) ⬇", ja: "プログラム（PDF）をダウンロード ⬇", en: "Download Program (PDF) ⬇" },
           link: "https://drive.google.com/file/d/2026_Forum_Program_Final_Demo/view?usp=sharing"
         },
         {
@@ -2251,7 +2239,7 @@
             ja: "基調講演を含む7名の登壇者の経歴、コーチング実績、講演要旨を日・韓・英3言語で収録した公式冊子です。",
             en: "In-depth profiles, career credentials & session abstracts for all 7 distinguished speakers."
           },
-          btnText: { ko: "프로필북 열람 (PDF) ↗", ja: "プロフィール（PDF）を見る ↗", en: "View Profiles (PDF) ↗" },
+          btnText: { ko: "프로필북 다운로드 (PDF) ⬇", ja: "登壇者プロフィール（PDF）ダウンロード ⬇", en: "Download Speaker Profiles (PDF) ⬇" },
           link: "https://drive.google.com/file/d/Speaker_Profiles_Demo/view?usp=sharing"
         }
       ];
@@ -2415,7 +2403,7 @@
             </a>
           `;
 
-          return `<div class="material-card${isFeatured ? ' material-card-featured' : ''}">
+          return `<div class="material-card">
             <div class="material-card-icon">${m.icon}</div>
             <span class="material-card-badge">${badge}</span>
             <h3 class="material-card-title">${title}</h3>
