@@ -587,6 +587,42 @@
       line-height: 1.4;
       margin-top: 0.2rem;
     }
+    .attendee-callname {
+      display: inline-block;
+      font-size: 0.775rem;
+      font-weight: 700;
+      color: #92400e;
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      margin-left: 0.25rem;
+      white-space: nowrap;
+    }
+    .attendee-cohort-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #0369a1;
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      margin-right: 0.35rem;
+    }
+    .attendee-hobby {
+      font-size: 0.775rem;
+      color: #334155;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.35rem 0.65rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      line-height: 1.4;
+      word-break: break-word;
+    }
     .attendee-tags-row {
       display: flex;
       flex-wrap: wrap;
@@ -3188,9 +3224,9 @@
 
         const attendeeInput = document.getElementById('attendee-search-input');
         if (attendeeInput) {
-          attendeeInput.placeholder = lang === 'ko' ? "이름(한글/漢字/English) 또는 소속으로 검색..." :
-                                      (lang === 'ja' ? "お名前（漢字/カナ/English）またはご所属で検索..." :
-                                      "Search by name (English/Korean/Japanese) or affiliation...");
+          attendeeInput.placeholder = lang === 'ko' ? "이름, 닉네임, 기수, 소속, 취미로 검색... (예: Adela, Paul, 17기, 골프, Haru)" :
+                                      (lang === 'ja' ? "お名前、ニックネーム、期、ご所属、趣味で検索...（例：Adela, Haru, 17期, ゴルフ）" :
+                                      "Search by name, nickname, cohort, or hobby (e.g. Adela, Paul, 17th, Golf)...");
         }
 
         // Update speaker cards translations if needed
@@ -3785,214 +3821,1762 @@ Evolve together`
 
       // Attendee Registration Lookup & Name Badge Verification Logic
       let PARTICIPANTS_DATA = [
-        // 1. Keynote & Core Speakers (Korea & Japan)
         {
-          id: "p-01",
-          country: "JP",
-          namePrimary: "青柳 徹",
-          nameLatin: "Toru Aoyagi",
-          nameJa: "青柳 徹 (アオヤギ トオル)",
-          org: { ko: "일본빙상연맹 코치 / 前 스피드스케이팅 국가대표", ja: "日本スケート連盟 / 元スピードスケート日本代表", en: "Japan Skating Federation / Former Olympic Speed Skater" },
-          role: "keynote",
-          roleName: { ko: "기조강연 연사", ja: "基調講演 登壇者", en: "Keynote Speaker" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-01",
+                "country": "KR",
+                "namePrimary": "권현진",
+                "nameLatin": "Hyun Jin Kweon",
+                "nickname": "Adela",
+                "cohort": "15기",
+                "job": "Sales",
+                "org": {
+                        "ko": "MCCI (15기) · Sales",
+                        "ja": "MCCI (15期) · Sales",
+                        "en": "MCCI (15th) · Sales"
+                },
+                "hobby": {
+                        "ko": "한복 만들기",
+                        "ja": "韓服作り (Making Hanbok)",
+                        "en": "Making Hanbok"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-02",
-          country: "KR",
-          namePrimary: "윤태련",
-          nameLatin: "Tae-ryeon Yoon",
-          nameJa: "ユン・テリョン",
-          org: { ko: "국제멘탈코칭센터(MCCI) 대표 / 한국 대표단장", ja: "MCCI (国際メンタルコーチングセンター) 代表 / 韓国代表団長", en: "Head of MCCI / Head of Korean Delegation" },
-          role: "speaker",
-          roleName: { ko: "한국 연사 · 대표단장", ja: "韓国登壇者 · 代表団長", en: "Korea Speaker & Delegation Head" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-02",
+                "country": "KR",
+                "namePrimary": "김루나",
+                "nameLatin": "Lu Na Kim",
+                "nickname": "Luna",
+                "cohort": "8기",
+                "job": "Admin",
+                "org": {
+                        "ko": "MCCI (8기) · Admin",
+                        "ja": "MCCI (8期) · Admin",
+                        "en": "MCCI (8th) · Admin"
+                },
+                "hobby": {
+                        "ko": "멘탈코칭",
+                        "ja": "メンタルコーチング",
+                        "en": "Mental Coaching"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-03",
-          country: "KR",
-          namePrimary: "염동철",
-          nameLatin: "Dong-chul Yeom",
-          nameJa: "ヨム・ドンチョル",
-          org: { ko: "단국대학교 스포츠심리학 외래교수 / 박사", ja: "檀国大学 スポーツ心理学 非常勤講師 / 博士", en: "Dankook Univ. Sports Psychology Lecturer / Ph.D." },
-          role: "speaker",
-          roleName: { ko: "한국 연사", ja: "韓国登壇者", en: "Korea Speaker" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-03",
+                "country": "KR",
+                "namePrimary": "김민경",
+                "nameLatin": "Min Kyoung Kim",
+                "nickname": "Nicole",
+                "cohort": "12기",
+                "job": "Academy",
+                "org": {
+                        "ko": "MCCI (12기) · Academy",
+                        "ja": "MCCI (12期) · Academy",
+                        "en": "MCCI (12th) · Academy"
+                },
+                "hobby": {
+                        "ko": "독서",
+                        "ja": "読書",
+                        "en": "Reading Book"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-04",
-          country: "JP",
-          namePrimary: "高橋 元成",
-          nameLatin: "Motonari Takahashi",
-          nameJa: "高橋 元成 (タカハシ モトナリ)",
-          org: { ko: "Field Flow 에그제큐티브 멘탈코치", ja: "Field Flow エグゼクティブメンタルコーチ", en: "Field Flow Executive Mental Coach" },
-          role: "speaker",
-          roleName: { ko: "일본 연사", ja: "日本登壇者", en: "Japan Speaker" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-04",
+                "country": "KR",
+                "namePrimary": "김성민",
+                "nameLatin": "Sung Min Kim",
+                "nickname": "Balance",
+                "cohort": "18기",
+                "job": "Trainer",
+                "org": {
+                        "ko": "MCCI 수석 멘탈코치 (18기)",
+                        "ja": "MCCI 首席メンタルコーチ (18期)",
+                        "en": "MCCI Senior Mental Coach (18th)"
+                },
+                "hobby": {
+                        "ko": "러닝",
+                        "ja": "ランニング",
+                        "en": "Running"
+                },
+                "role": "speaker",
+                "roleName": {
+                        "ko": "한국 연사",
+                        "ja": "韓国登壇者",
+                        "en": "Korea Speaker"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-05",
-          country: "KR",
-          namePrimary: "김성민",
-          nameLatin: "Seong-min Kim",
-          nameJa: "キム・ソンミン",
-          org: { ko: "MCCI 수석 멘탈코치 / 국가대표 전담", ja: "MCCI 首席メンタルコーチ / 代表チーム専任", en: "MCCI Senior Mental Coach" },
-          role: "speaker",
-          roleName: { ko: "한국 연사", ja: "韓国登壇者", en: "Korea Speaker" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-05",
+                "country": "KR",
+                "namePrimary": "박정미",
+                "nameLatin": "Jung Mee Park",
+                "nickname": "Friendly",
+                "cohort": "17기",
+                "job": "Coach",
+                "org": {
+                        "ko": "MCCI (17기) · Coach",
+                        "ja": "MCCI (17期) · Coach",
+                        "en": "MCCI (17th) · Coach"
+                },
+                "hobby": {
+                        "ko": "산책 (Walking)",
+                        "ja": "ウォーキング",
+                        "en": "Walking"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-06",
-          country: "JP",
-          namePrimary: "柘植 陽壱",
-          nameLatin: "Yoichi Tsuge",
-          nameJa: "柘植 陽壱 (ツゲ ヨウイチ)",
-          org: { ko: "Field Flow 대표 / 일본 스포츠멘탈코칭 선구자", ja: "Field Flow 代表 / 日本スポーツメンタルコーチング先駆者", en: "Head of Field Flow Japan" },
-          role: "speaker",
-          roleName: { ko: "일본 연사", ja: "日本登壇者", en: "Japan Speaker" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-06",
+                "country": "KR",
+                "namePrimary": "박정애",
+                "nameLatin": "Jung Ai Park",
+                "nickname": "IEUM",
+                "cohort": "18기",
+                "job": "Counselor",
+                "org": {
+                        "ko": "MCCI (18기) · Counselor",
+                        "ja": "MCCI (18期) · Counselor",
+                        "en": "MCCI (18th) · Counselor"
+                },
+                "hobby": {
+                        "ko": "공부 (Study)",
+                        "ja": "勉強 (Study)",
+                        "en": "Study"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-07",
-          country: "KR",
-          namePrimary: "박철수",
-          nameLatin: "Chul-soo Park",
-          nameJa: "パク・チョルス",
-          org: { ko: "스포츠 멘탈코칭 연구소 대표", ja: "スポーツメンタルコーチング研究所 代表", en: "Director, Sports Mental Coaching Institute" },
-          role: "speaker",
-          roleName: { ko: "한국 연사", ja: "韓国登壇者", en: "Korea Speaker" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-07",
+                "country": "KR",
+                "namePrimary": "박철수",
+                "nameLatin": "Chul Soo Park",
+                "nickname": "Charles",
+                "cohort": "1기",
+                "job": "MCCI",
+                "org": {
+                        "ko": "스포츠 멘탈코칭 연구소 대표 (1기)",
+                        "ja": "スポーツメンタルコーチング研究所 代表 (1期)",
+                        "en": "Sports Mental Coaching Inst. (1st)"
+                },
+                "hobby": {
+                        "ko": "영화 감상 (Movie)",
+                        "ja": "映画鑑賞",
+                        "en": "Movie"
+                },
+                "role": "speaker",
+                "roleName": {
+                        "ko": "한국 연사",
+                        "ja": "韓国登壇者",
+                        "en": "Korea Speaker"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-08",
-          country: "JP",
-          namePrimary: "両角 友佑",
-          nameLatin: "Tomonori Morozumi",
-          nameJa: "両角 友佑 (モロズミ トモユキ)",
-          org: { ko: "SC 가루이자와 클럽 컬링 감독 / 평창 올림픽 대표", ja: "SC軽井沢クラブ カーリング監督 / 平昌五輪代表", en: "Head Coach, SC Karuizawa Club Curling" },
-          role: "speaker",
-          roleName: { ko: "일본 연사", ja: "日本登壇者", en: "Japan Speaker" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-08",
+                "country": "KR",
+                "namePrimary": "박치성",
+                "nameLatin": "Chi Sung Park",
+                "nickname": "Liker",
+                "cohort": "16기",
+                "job": "Mental Coach",
+                "org": {
+                        "ko": "MCCI (16기) · Mental Coach",
+                        "ja": "MCCI (16期) · Mental Coach",
+                        "en": "MCCI (16th) · Mental Coach"
+                },
+                "hobby": {
+                        "ko": "유튜브 (Youtube)",
+                        "ja": "Youtube",
+                        "en": "Youtube"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-09",
-          country: "KR",
-          namePrimary: "천비키",
-          nameLatin: "Vicky Cheon",
-          nameJa: "チョン・ビキ",
-          org: { ko: "MCCI 부대표 / 한국 사무국 총괄", ja: "MCCI 副대표 / 韓国事務局総括", en: "Vice President, MCCI / Korea Secretariat Head" },
-          role: "delegation",
-          roleName: { ko: "한국 사무국 총괄", ja: "韓国事務局 総括", en: "Secretariat Head" },
-          reception: true,
-          badgeReady: true
-        },
-        // 2. Korean delegation coaches & participants
-        {
-          id: "p-10",
-          country: "KR",
-          namePrimary: "이정훈",
-          nameLatin: "Jung-hoon Lee",
-          nameJa: "イ・ジョンフン",
-          org: { ko: "MCCI 전문코치 / 주니어 골프 멘탈팀", ja: "MCCI 専門コーチ / ジュニアゴルフ担当", en: "MCCI Professional Coach" },
-          role: "participant",
-          roleName: { ko: "한국 대표단 코치", ja: "韓国代表団 コーチ", en: "KR Delegate Coach" },
-          reception: true,
-          badgeReady: true
-        },
-        {
-          id: "p-11",
-          country: "KR",
-          namePrimary: "강수진",
-          nameLatin: "Su-jin Kang",
-          nameJa: "カン・スジン",
-          org: { ko: "한국스포츠심리상담협회 정회원", ja: "韓国スポーツ心理相談協会 正会員", en: "Korea Sports Psychology Association" },
-          role: "participant",
-          roleName: { ko: "참가 코치", ja: "参加コーチ", en: "Participant Coach" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-09",
+                "country": "KR",
+                "namePrimary": "배호근",
+                "nameLatin": "Ho Geun Bae",
+                "nickname": "Ben",
+                "cohort": "18기",
+                "job": "Baseball Coach",
+                "org": {
+                        "ko": "MCCI (18기) · Baseball Coach",
+                        "ja": "MCCI (18期) · Baseball Coach",
+                        "en": "MCCI (18th) · Baseball Coach"
+                },
+                "hobby": {
+                        "ko": "여행 (Travel)",
+                        "ja": "旅行 (Travel)",
+                        "en": "Travel"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-12",
-          country: "KR",
-          namePrimary: "최민호",
-          nameLatin: "Min-ho Choi",
-          nameJa: "チェ・ミンホ",
-          org: { ko: "엘리트 유도 멘탈코칭센터", ja: "エリート柔道メンタルコーチングセンター", en: "Elite Judo Mental Coaching" },
-          role: "participant",
-          roleName: { ko: "참가 코치", ja: "参加コーチ", en: "Participant Coach" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-10",
+                "country": "KR",
+                "namePrimary": "염동철",
+                "nameLatin": "Dong Chul Yeom",
+                "nickname": "Yamy yamy",
+                "cohort": "13기",
+                "job": "Professor in University",
+                "org": {
+                        "ko": "단국대학교 스포츠심리학 외래교수 (13기)",
+                        "ja": "檀国大学 スポーツ心理学 非常勤講師 (13期)",
+                        "en": "Dankook Univ. Sports Psychology (13th)"
+                },
+                "hobby": {
+                        "ko": "여행 (Travel)",
+                        "ja": "旅行 (Travel)",
+                        "en": "Travel"
+                },
+                "role": "speaker",
+                "roleName": {
+                        "ko": "한국 연사",
+                        "ja": "韓国登壇者",
+                        "en": "Korea Speaker"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-13",
-          country: "KR",
-          namePrimary: "한지원",
-          nameLatin: "Ji-won Han",
-          nameJa: "ハン・ジウォン",
-          org: { ko: "청소년 스포츠 인성 코칭 연구회", ja: "青少年代スポーツメンタル研究会", en: "Youth Sports Coaching Lab" },
-          role: "participant",
-          roleName: { ko: "참가자", ja: "参加者", en: "Participant" },
-          reception: false,
-          badgeReady: true
-        },
-        // 3. Japanese delegation coaches & participants
-        {
-          id: "p-14",
-          country: "JP",
-          namePrimary: "佐藤 健一",
-          nameLatin: "Kenichi Sato",
-          nameJa: "サトウ ケンイチ",
-          org: { ko: "Field Flow 공인 스포츠멘탈코치", ja: "Field Flow 公認スポーツメンタルコーチ", en: "Field Flow Certified Mental Coach" },
-          role: "participant",
-          roleName: { ko: "일본 참가 코치", ja: "日本参加コーチ", en: "JP Delegate Coach" },
-          reception: true,
-          badgeReady: true
-        },
-        {
-          id: "p-15",
-          country: "JP",
-          namePrimary: "田中 雅代",
-          nameLatin: "Masayo Tanaka",
-          nameJa: "タナカ マサヨ",
-          org: { ko: "관동학원대학 인간공생학부", ja: "関東学院大学 人間共生学部", en: "Kanto Gakuin Univ. Human Symbiosis Dept." },
-          role: "participant",
-          roleName: { ko: "현장 운영 / 참가자", ja: "会場運営 / 参加者", en: "Local Host / Participant" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-11",
+                "country": "KR",
+                "namePrimary": "윤태련",
+                "nameLatin": "Tae Ryeon Yoon",
+                "nickname": "Paul",
+                "cohort": "17기",
+                "job": "Trainer",
+                "org": {
+                        "ko": "국제멘탈코칭센터(MCCI) 대표 (17기)",
+                        "ja": "MCCI 代表 / トレーナー (17期)",
+                        "en": "Head of MCCI / Trainer (17th)"
+                },
+                "hobby": {
+                        "ko": "브롬톤 & 베스파",
+                        "ja": "Brompton & Vespa",
+                        "en": "Brompton & Vespa"
+                },
+                "role": "speaker",
+                "roleName": {
+                        "ko": "한국 연사 · 대표단장",
+                        "ja": "韓国登壇者 · 代表団長",
+                        "en": "Korea Speaker & Delegation Head"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-16",
-          country: "JP",
-          namePrimary: "鈴木 翔太",
-          nameLatin: "Shota Suzuki",
-          nameJa: "スズキ ショウタ",
-          org: { ko: "유소년 축구 멘탈 트레이닝 아카데미", ja: "育成年代サッカーメンタルトレーニングアカデミー", en: "Youth Soccer Mental Academy" },
-          role: "participant",
-          roleName: { ko: "일본 참가 코치", ja: "日本参加コーチ", en: "JP Delegate Coach" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-12",
+                "country": "KR",
+                "namePrimary": "이미숙",
+                "nameLatin": "Mi Suk Lee",
+                "nickname": "Smile",
+                "cohort": "13기",
+                "job": "Academy",
+                "org": {
+                        "ko": "MCCI (13기) · Academy",
+                        "ja": "MCCI (13期) · Academy",
+                        "en": "MCCI (13th) · Academy"
+                },
+                "hobby": {
+                        "ko": "바레 (Barre)",
+                        "ja": "バレエフィットネス (Barre)",
+                        "en": "Barre"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
         },
         {
-          id: "p-17",
-          country: "JP",
-          namePrimary: "渡辺 真理",
-          nameLatin: "Mari Watanabe",
-          nameJa: "ワタナベ マリ",
-          org: { ko: "비즈니스 & 스포츠 멘탈 플로우 랩", ja: "ビジネス＆スポーツ メンタルフローラボ", en: "Mental Flow Lab" },
-          role: "participant",
-          roleName: { ko: "일본 참가 코치", ja: "日本参加コーチ", en: "JP Delegate Coach" },
-          reception: true,
-          badgeReady: true
+                "id": "kr-13",
+                "country": "KR",
+                "namePrimary": "이옥희",
+                "nameLatin": "Ok Hee Lee",
+                "nickname": "Linda",
+                "cohort": "3기",
+                "job": "Company CEO",
+                "org": {
+                        "ko": "MCCI (3기) · Company CEO",
+                        "ja": "MCCI (3期) · Company CEO",
+                        "en": "MCCI (3th) · Company CEO"
+                },
+                "hobby": {
+                        "ko": "골프 (Golf)",
+                        "ja": "ゴルフ (Golf)",
+                        "en": "Golf"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "kr-14",
+                "country": "KR",
+                "namePrimary": "이은영",
+                "nameLatin": "Eun Young Lee",
+                "nickname": "Grace",
+                "cohort": "12기",
+                "job": "Mental Coach",
+                "org": {
+                        "ko": "MCCI (12기) · Mental Coach",
+                        "ja": "MCCI (12期) · Mental Coach",
+                        "en": "MCCI (12th) · Mental Coach"
+                },
+                "hobby": {
+                        "ko": "영화 감상 (Movie)",
+                        "ja": "映画鑑賞",
+                        "en": "Movie"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "kr-15",
+                "country": "KR",
+                "namePrimary": "이준석",
+                "nameLatin": "Jun Seok Lee",
+                "nickname": "Dream",
+                "cohort": "13기",
+                "job": "Taegwondo Coach",
+                "org": {
+                        "ko": "MCCI (13기) · Taegwondo Coach",
+                        "ja": "MCCI (13期) · Taegwondo Coach",
+                        "en": "MCCI (13th) · Taegwondo Coach"
+                },
+                "hobby": {
+                        "ko": "운동 (Exercise)",
+                        "ja": "運動 (Exercise)",
+                        "en": "Exercise"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "kr-16",
+                "country": "KR",
+                "namePrimary": "이지혜",
+                "nameLatin": "Jee Hye Lee",
+                "nickname": "music voice",
+                "cohort": "17기",
+                "job": "Voice Coach",
+                "org": {
+                        "ko": "MCCI (17기) · Voice Coach",
+                        "ja": "MCCI (17期) · Voice Coach",
+                        "en": "MCCI (17th) · Voice Coach"
+                },
+                "hobby": {
+                        "ko": "독서 (Reading Book)",
+                        "ja": "読書",
+                        "en": "Reading Book"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "kr-17",
+                "country": "KR",
+                "namePrimary": "임득진",
+                "nameLatin": "Deuk Jin Lim",
+                "nickname": "Dodream",
+                "cohort": "11기",
+                "job": "Company CEO",
+                "org": {
+                        "ko": "MCCI (11기) · Company CEO",
+                        "ja": "MCCI (11期) · Company CEO",
+                        "en": "MCCI (11th) · Company CEO"
+                },
+                "hobby": {
+                        "ko": "세일링 (Sailing)",
+                        "ja": "セーリング (Sailing)",
+                        "en": "Sailing"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "kr-18",
+                "country": "KR",
+                "namePrimary": "임주리",
+                "nameLatin": "Ju Ri Lim",
+                "nickname": "Judy",
+                "cohort": "9기",
+                "job": "Company CEO",
+                "org": {
+                        "ko": "MCCI (9기) · Company CEO",
+                        "ja": "MCCI (9期) · Company CEO",
+                        "en": "MCCI (9th) · Company CEO"
+                },
+                "hobby": {
+                        "ko": "음악 감상 (Listening Music)",
+                        "ja": "音楽鑑賞",
+                        "en": "Listening Music"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "kr-19",
+                "country": "KR",
+                "namePrimary": "주승규",
+                "nameLatin": "Seung Kyu Joo",
+                "nickname": "Joshua",
+                "cohort": "17기",
+                "job": "Missionary",
+                "org": {
+                        "ko": "MCCI (17기) · Missionary",
+                        "ja": "MCCI (17期) · Missionary",
+                        "en": "MCCI (17th) · Missionary"
+                },
+                "hobby": {
+                        "ko": "음악 감상 (Listening Music)",
+                        "ja": "音楽鑑賞",
+                        "en": "Listening Music"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "kr-20",
+                "country": "KR",
+                "namePrimary": "천비키",
+                "nameLatin": "Vickey Cheon",
+                "nickname": "Jayeon",
+                "cohort": "1기",
+                "job": "Mental Coach",
+                "org": {
+                        "ko": "MCCI 부대표 / 한국 사무국 총괄 (1기)",
+                        "ja": "MCCI 副代表 / 韓国事務局総括 (1期)",
+                        "en": "MCCI VP / Korea Secretariat Head (1st)"
+                },
+                "hobby": {
+                        "ko": "댄스 (Dancing)",
+                        "ja": "ダンス (Dancing)",
+                        "en": "Dancing"
+                },
+                "role": "delegation",
+                "roleName": {
+                        "ko": "한국 사무국 총괄",
+                        "ja": "韓国事務局 総括",
+                        "en": "Secretariat Head"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "kr-21",
+                "country": "KR",
+                "namePrimary": "천순옥",
+                "nameLatin": "Soon Oak Cheon",
+                "nickname": "Rora",
+                "cohort": "11기",
+                "job": "Mental Coach",
+                "org": {
+                        "ko": "MCCI (11기) · Mental Coach",
+                        "ja": "MCCI (11期) · Mental Coach",
+                        "en": "MCCI (11th) · Mental Coach"
+                },
+                "hobby": {
+                        "ko": "골프 (Golf)",
+                        "ja": "ゴルフ (Golf)",
+                        "en": "Golf"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "kr-22",
+                "country": "KR",
+                "namePrimary": "최소은",
+                "nameLatin": "So Eun Choi",
+                "nickname": "Sowon",
+                "cohort": "12기",
+                "job": "Team Leader in Company",
+                "org": {
+                        "ko": "MCCI (12기) · Team Leader in Company",
+                        "ja": "MCCI (12期) · Team Leader in Company",
+                        "en": "MCCI (12th) · Team Leader in Company"
+                },
+                "hobby": {
+                        "ko": "찬양 (Singing praise)",
+                        "ja": "賛美歌 (Singing praise)",
+                        "en": "Singing praise"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "한국 참가단",
+                        "ja": "韓国参加団",
+                        "en": "KR Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-01",
+                "country": "JP",
+                "namePrimary": "青柳 徹",
+                "nameLatin": "Toru Aoyagi",
+                "nickname": "Aoyagi Sensei",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "일본빙상연맹 코치 / 前 스피드스케이팅 올림픽 대표",
+                        "ja": "日本スケート連盟 / 元スピードスケート日本代表",
+                        "en": "Japan Skating Fed. / Former Olympic Skater"
+                },
+                "hobby": {
+                        "ko": "스피드스케이팅 지도 & 연구",
+                        "ja": "スピードスケート指導＆研究",
+                        "en": "Speed Skating Coaching & Research"
+                },
+                "role": "keynote",
+                "roleName": {
+                        "ko": "기조강연 연사",
+                        "ja": "基調講演 登壇者",
+                        "en": "Keynote Speaker"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-02",
+                "country": "JP",
+                "namePrimary": "高橋 基成",
+                "nameLatin": "Motonari Takahashi",
+                "nickname": "もっちゃん (mocchan)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 에그제큐티브 멘탈코치",
+                        "ja": "Field Flow エグゼクティブメンタルコーチ",
+                        "en": "Field Flow Executive Mental Coach"
+                },
+                "hobby": {
+                        "ko": "다이빙, 골프, 육아",
+                        "ja": "ダイビング、ゴルフ、子育て",
+                        "en": "Diving, Golf, Parenting"
+                },
+                "role": "speaker",
+                "roleName": {
+                        "ko": "일본 연사",
+                        "ja": "日本登壇者",
+                        "en": "Japan Speaker"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-03",
+                "country": "JP",
+                "namePrimary": "柘植 陽一郎",
+                "nameLatin": "Yoichiro Tsuge",
+                "nickname": "YO",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 대표 / 일본 스포츠멘탈코칭 선구자",
+                        "ja": "Field Flow 代表 / 日本スポーツメンタルコーチング先駆者",
+                        "en": "Head of Field Flow Japan"
+                },
+                "hobby": {
+                        "ko": "해안가에서 석양 보기",
+                        "ja": "海岸で夕日を見ること",
+                        "en": "Watching Sunset on the Beach"
+                },
+                "role": "speaker",
+                "roleName": {
+                        "ko": "일본 연사 · Field Flow 대표",
+                        "ja": "日本登壇者 · Field Flow 代表",
+                        "en": "Japan Speaker · Head of Field Flow"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-04",
+                "country": "JP",
+                "namePrimary": "両角 友佑",
+                "nameLatin": "Tomonori Morozumi",
+                "nickname": "Morozumi Coach",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "SC 가루이자와 클럽 컬링 감독 / 평창 올림픽 대표",
+                        "ja": "SC軽井沢クラブ カーリング監督 / 平昌五輪代表",
+                        "en": "Head Coach, SC Karuizawa Club Curling"
+                },
+                "hobby": {
+                        "ko": "컬링 지도 및 팀 빌딩 전략",
+                        "ja": "カーリング指導＆チームビルディング",
+                        "en": "Curling Coaching & Team Building"
+                },
+                "role": "speaker",
+                "roleName": {
+                        "ko": "일본 연사",
+                        "ja": "日本登壇者",
+                        "en": "Japan Speaker"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-05",
+                "country": "JP",
+                "namePrimary": "柘植 晴永",
+                "nameLatin": "Harunaga Tsuge",
+                "nickname": "Haru",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "자연 속에서 시간 보내기 · 캠핑",
+                        "ja": "自然の中で過ごすこと・キャンプ",
+                        "en": "Nature & Camping"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-06",
+                "country": "JP",
+                "namePrimary": "森村 ゆき",
+                "nameLatin": "Yuki Morimura",
+                "nickname": "ゆき (YUKI)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "러닝, 등산, 계곡 물놀이",
+                        "ja": "ランニング、山登り、川遊び",
+                        "en": "Running, Mountain Climbing, River Play"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-07",
+                "country": "JP",
+                "namePrimary": "尾崎 晃大",
+                "nameLatin": "Akihiro Ozaki",
+                "nickname": "オザ (OZA)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "축구, 서핑",
+                        "ja": "サッカー、サーフィン",
+                        "en": "Soccer, Surfing"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-08",
+                "country": "JP",
+                "namePrimary": "松浦 備",
+                "nameLatin": "Sonau Matsuura",
+                "nickname": "そなう (SONAU)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "검도, 테니스, 노래방",
+                        "ja": "剣道、テニス、カラオケ",
+                        "en": "Kendo, Tennis, Karaoke"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-09",
+                "country": "JP",
+                "namePrimary": "阿部 亮介",
+                "nameLatin": "Ryosuke Abe",
+                "nickname": "ちゃんあべ (CHAN ABE)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "소프트테니스, 캠핑",
+                        "ja": "ソフトテニス、キャンプ",
+                        "en": "Soft Tennis, Camping"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-10",
+                "country": "JP",
+                "namePrimary": "和田 翔",
+                "nameLatin": "Sho Wada",
+                "nickname": "わだしょー (SHO)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "사우나, 패션, 축구·농구 관전, 일",
+                        "ja": "サウナ、ファッション、サッカー・バスケ観戦、仕事",
+                        "en": "Sauna, Fashion, Sports Watching, Work"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-11",
+                "country": "JP",
+                "namePrimary": "久保田 美里",
+                "nameLatin": "Misato Kubota",
+                "nickname": "みーちゃん (Mii)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "배구, 카페 투어",
+                        "ja": "バレーボール、カフェ巡り",
+                        "en": "Volleyball, Cafe Hopping"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-12",
+                "country": "JP",
+                "namePrimary": "石垣 祐一",
+                "nameLatin": "Yuichi Ishigaki",
+                "nickname": "YUさん (YU)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "스포츠 관전 (현장 직관)",
+                        "ja": "スポーツ観戦（現地観戦）",
+                        "en": "Live Sports Spectating"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-13",
+                "country": "JP",
+                "namePrimary": "大竹 哲郎",
+                "nameLatin": "Tetsuro Otake",
+                "nickname": "たけさん (TA-KE)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "해외여행, 러닝 (마라톤), 스포츠 관전",
+                        "ja": "海外旅行、ランニング（マラソン）、スポーツ観戦",
+                        "en": "Overseas Travel, Marathon, Sports Watching"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-14",
+                "country": "JP",
+                "namePrimary": "朝日 崇晴",
+                "nameLatin": "Takaharu Asahi",
+                "nickname": "タカ (TAKA)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "야구·미식축구 관전, 마라톤, 한국 드라마·미식",
+                        "ja": "野球・アメフト観戦、マラソン、韓国ドラマ・グルメ好き",
+                        "en": "Baseball, American Football, Marathon, K-Drama"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-15",
+                "country": "JP",
+                "namePrimary": "日野 美奈子",
+                "nameLatin": "Minako Hino",
+                "nickname": "ひこ (HIKO)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "한국 드라마, 한신 타이거스 야구 관전",
+                        "ja": "韓国ドラマ、阪神タイガース野球観戦",
+                        "en": "K-Drama, Hanshin Tigers Baseball"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-16",
+                "country": "JP",
+                "namePrimary": "老久保 剛毅",
+                "nameLatin": "Goki Oikubo",
+                "nickname": "ごーき (GOKI)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "댄스, 요리",
+                        "ja": "ダンス、料理",
+                        "en": "Dancing, Cooking"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-17",
+                "country": "JP",
+                "namePrimary": "杉澤 熙人",
+                "nameLatin": "Hiroto Sugisawa",
+                "nickname": "すぎ (SUGI)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "야구, 스포츠 관전, 독서, 여행",
+                        "ja": "野球、スポーツ観戦、読書、旅行",
+                        "en": "Baseball, Sports Watching, Reading, Travel"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-18",
+                "country": "JP",
+                "namePrimary": "深谷 浩道",
+                "nameLatin": "Hiromichi Fukaya",
+                "nickname": "ヒロさん (HIRO)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "야구, 스포츠 관전",
+                        "ja": "野球、スポーツ観戦",
+                        "en": "Baseball, Sports Watching"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-19",
+                "country": "JP",
+                "namePrimary": "岡田 安弘",
+                "nameLatin": "Yasuhiro Okada",
+                "nickname": "おかちゃん (OKACHAN)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "자기 관찰, 워킹, 독서, 성찰, 경청",
+                        "ja": "自分観察、ウォーキング、読書、振り返り、傾聴",
+                        "en": "Self-Reflection, Walking, Reading, Listening"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-20",
+                "country": "JP",
+                "namePrimary": "村田 智太郎",
+                "nameLatin": "Tomotaro Murata",
+                "nickname": "むらっち (Muracchi)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "마라톤",
+                        "ja": "マラソン",
+                        "en": "Marathon"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-21",
+                "country": "JP",
+                "namePrimary": "レモンさん",
+                "nameLatin": "Lemon-san",
+                "nickname": "レモンさん",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "도움 주기 (Mr. May I Help You?)",
+                        "ja": "お節介（Mr. May I Help You？）",
+                        "en": "Helping People (Mr. May I Help You?)"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-22",
+                "country": "JP",
+                "namePrimary": "川部 とし恵",
+                "nameLatin": "Toshie Kawabe",
+                "nickname": "TOSHIE",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "피클볼 (Pickleball)",
+                        "ja": "ピックルボール／pickleball",
+                        "en": "Pickleball"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-23",
+                "country": "JP",
+                "namePrimary": "藤嶺 典優",
+                "nameLatin": "Norimasa Tomine",
+                "nickname": "ミネ (MINE)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "야구 관전",
+                        "ja": "野球観戦",
+                        "en": "Baseball Watching"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-24",
+                "country": "JP",
+                "namePrimary": "塚田 彰",
+                "nameLatin": "Akira Tsukada",
+                "nickname": "あっきー (AKKY)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "농구 관전",
+                        "ja": "バスケット観戦",
+                        "en": "Basketball Watching"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-25",
+                "country": "JP",
+                "namePrimary": "台本 尊之",
+                "nameLatin": "Takayuki Daimoto",
+                "nickname": "だいちゃん (DAI)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "아들과 농구팀 응원, 아침 산책, Sports for Social",
+                        "ja": "息子とバスケチーム応援、朝散歩、Sports for Social",
+                        "en": "Basketball with Son, Morning Walk, Sports for Social"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-26",
+                "country": "JP",
+                "namePrimary": "矢ヶ部 俊之",
+                "nameLatin": "Toshiyuki Yakabe",
+                "nickname": "やかべっち (Yakabecchi)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "소림사 권법, 헬스, 건강, 신사·사찰",
+                        "ja": "少林寺拳法・筋トレ・健康・神社仏閣",
+                        "en": "Shorinji Kempo, Workout, Health, Shrines/Temples"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-27",
+                "country": "JP",
+                "namePrimary": "武田 裕迪",
+                "nameLatin": "Hiromichi Takeda",
+                "nickname": "ひろみち (Hiromichi)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "코칭 (축구, e스포츠 등), 패들보드(SUP)",
+                        "ja": "コーチング（サッカー、eスポーツなど）、SUP",
+                        "en": "Coaching (Soccer, Esports), SUP"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-28",
+                "country": "JP",
+                "namePrimary": "黒澤 周平",
+                "nameLatin": "Shuhei Kurosawa",
+                "nickname": "しゅうへい (shuhei)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "축구 관전, 러닝, 사우나, 마작",
+                        "ja": "サッカー観戦、ランニング、サウナ、麻雀",
+                        "en": "Soccer Watching, Running, Sauna, Mahjong"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-29",
+                "country": "JP",
+                "namePrimary": "島田 裕",
+                "nameLatin": "Yuta Shimada",
+                "nickname": "ユタ (YUTA)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "카바디, 자전거, 사교댄스",
+                        "ja": "カバディ、自転車、社交ダンス",
+                        "en": "Kabaddi, Cycling, Ballroom Dance"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-30",
+                "country": "JP",
+                "namePrimary": "江口 征利",
+                "nameLatin": "Masatoshi Eguchi",
+                "nickname": "えぐさん (egusan)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "기타 연주, 드라이브",
+                        "ja": "ギターを弾く、ドライブ",
+                        "en": "Playing Guitar, Driving"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-31",
+                "country": "JP",
+                "namePrimary": "大嶋 洋一",
+                "nameLatin": "Yoichi Ohsan",
+                "nickname": "おーさん (Ohsan)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "여행 (서울·제주도 방문 경험 있음)",
+                        "ja": "旅行（ソウル・済州に行ったことあり）",
+                        "en": "Travel (Visited Seoul & Jeju)"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-32",
+                "country": "JP",
+                "namePrimary": "樋口 歩香",
+                "nameLatin": "Ayuka Higuchi",
+                "nickname": "あゆか (Ayuka)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "등산, 음악",
+                        "ja": "山登り、音楽",
+                        "en": "Mountain Climbing, Music"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-33",
+                "country": "JP",
+                "namePrimary": "大工原 久美",
+                "nameLatin": "Kumi Daikuhara",
+                "nickname": "くみりん (KUMIRIN)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "반려견과 놀기, 스포츠 관전",
+                        "ja": "愛犬と遊ぶこと、スポーツ観戦",
+                        "en": "Playing with Pet Dog, Sports Watching"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-34",
+                "country": "JP",
+                "namePrimary": "遠藤 真広",
+                "nameLatin": "Masahiro Endo",
+                "nickname": "まさ (Masa)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "서핑, 미식축구, 창던지기",
+                        "ja": "サーフィン、アメフト、やり投げ",
+                        "en": "Surfing, American Football, Javelin"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-35",
+                "country": "JP",
+                "namePrimary": "中嶋 進",
+                "nameLatin": "Susumu Nakajima",
+                "nickname": "ナカジ (nakaji)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "비치테니스, 트레일러닝",
+                        "ja": "ビーチテニス、トレイルランニング",
+                        "en": "Beach Tennis, Trail Running"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-36",
+                "country": "JP",
+                "namePrimary": "田代 シマ",
+                "nameLatin": "Shima Tashiro",
+                "nickname": "シマさん (SHIMA)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "스포츠 관전",
+                        "ja": "スポーツ観戦",
+                        "en": "Sports Watching"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-37",
+                "country": "JP",
+                "namePrimary": "山野 明美",
+                "nameLatin": "Akemi Yamano",
+                "nickname": "あけさん (AKE)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "거합도 (居合道, Iai-do)",
+                        "ja": "居合道",
+                        "en": "Iaido (Japanese Martial Arts)"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-38",
+                "country": "JP",
+                "namePrimary": "山本 秀樹",
+                "nameLatin": "Hideki Yamamoto",
+                "nickname": "わく (WAKU)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "드라마 시청",
+                        "ja": "ドラマ",
+                        "en": "TV Dramas"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-39",
+                "country": "JP",
+                "namePrimary": "落合 弘行",
+                "nameLatin": "Hiroyuki Ochiai",
+                "nickname": "おちあい (OCHIAI)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "독서 · 만난 사람과 함께 일하기",
+                        "ja": "読書・出会った人と一緒に仕事をすること",
+                        "en": "Reading & Collaborating with People Met"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-40",
+                "country": "JP",
+                "namePrimary": "飯嶋 英樹",
+                "nameLatin": "Hideki Iijima",
+                "nickname": "イージー (Easy)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "고양이와 함께하는 휴일",
+                        "ja": "猫と一緒の休日",
+                        "en": "Holidays with Cats"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-41",
+                "country": "JP",
+                "namePrimary": "河合 佑実",
+                "nameLatin": "Yumi Kawai",
+                "nickname": "ゆみ (Yumi)",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "야구 관전",
+                        "ja": "野球観戦",
+                        "en": "Baseball Watching"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-42",
+                "country": "JP",
+                "namePrimary": "橋本 幸恵",
+                "nameLatin": "Yukie Hashimoto",
+                "nickname": "hassiy",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "스포츠 관전",
+                        "ja": "スポーツ観戦",
+                        "en": "Sports Watching"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
+        },
+        {
+                "id": "jp-43",
+                "country": "JP",
+                "namePrimary": "一万田 陽子",
+                "nameLatin": "Yoko Ichimanda",
+                "nickname": "YOKO",
+                "cohort": "",
+                "job": "",
+                "org": {
+                        "ko": "Field Flow 일본 참가단",
+                        "ja": "Field Flow 日本参加団",
+                        "en": "Field Flow Japan Delegate"
+                },
+                "hobby": {
+                        "ko": "미식 탐방 (Yummy food hunting)",
+                        "ja": "Yammy food haunting (グルメ巡り)",
+                        "en": "Yummy food hunting"
+                },
+                "role": "participant",
+                "roleName": {
+                        "ko": "일본 참가단",
+                        "ja": "日本参加団",
+                        "en": "JP Delegate"
+                },
+                "reception": true,
+                "badgeReady": true
         }
-      ];
+];
 
       let currentAttendeeCountryFilter = 'all';
 
@@ -4037,12 +5621,16 @@ Evolve together`
             return false;
           }
           if (query) {
-            const matchPrimary = p.namePrimary.toLowerCase().includes(query);
+            const matchPrimary = (p.namePrimary || '').toLowerCase().includes(query);
             const matchLatin = (p.nameLatin || '').toLowerCase().includes(query);
-            const matchJa = (p.nameJa || '').toLowerCase().includes(query);
-            const orgStr = (typeof p.org === 'object' ? (p.org[lang] || p.org.ko || p.org.en || '') : p.org).toLowerCase();
+            const matchNick = (p.nickname || '').toLowerCase().includes(query);
+            const matchCohort = (p.cohort || '').toLowerCase().includes(query);
+            const matchJob = (p.job || '').toLowerCase().includes(query);
+            const orgStr = (typeof p.org === 'object' ? (p.org[lang] || p.org.ko || p.org.ja || p.org.en || '') : (p.org || '')).toLowerCase();
             const matchOrg = orgStr.includes(query);
-            return matchPrimary || matchLatin || matchJa || matchOrg;
+            const hobbyStr = (typeof p.hobby === 'object' ? (p.hobby[lang] || p.hobby.ko || p.hobby.ja || p.hobby.en || '') : (p.hobby || '')).toLowerCase();
+            const matchHobby = hobbyStr.includes(query);
+            return matchPrimary || matchLatin || matchNick || matchCohort || matchJob || matchOrg || matchHobby;
           }
           return true;
         });
@@ -4065,6 +5653,7 @@ Evolve together`
 
         listContainer.innerHTML = filtered.map(p => {
           const org = typeof p.org === 'object' ? (p.org[lang] || p.org.ko || p.org.en) : p.org;
+          const hobby = typeof p.hobby === 'object' ? (p.hobby[lang] || p.hobby.ko || p.hobby.ja || p.hobby.en) : (p.hobby || '');
           const roleName = typeof p.roleName === 'object' ? (p.roleName[lang] || p.roleName.ko || p.roleName.en) : p.roleName;
           const isKr = p.country === 'KR';
           const countryLabel = isKr ? (lang === 'ja' ? '韓国' : (lang === 'en' ? 'Korea' : '한국')) : (lang === 'ja' ? '日本' : (lang === 'en' ? 'Japan' : '일본'));
@@ -4082,6 +5671,7 @@ Evolve together`
           const receptionIcon = p.reception ? '🍽️' : '—';
 
           const badgeStatus = lang === 'ko' ? '네임택 인쇄 확정' : (lang === 'ja' ? '名札印刷 確定' : 'Badge Ready');
+          const hobbyLabel = lang === 'ko' ? '취미' : (lang === 'ja' ? '趣味' : 'Hobby');
 
           return `
             <div class="attendee-card">
@@ -4090,11 +5680,21 @@ Evolve together`
                   <div class="attendee-name-primary">
                     <span>${p.namePrimary}</span>
                     ${p.nameLatin ? `<span class="attendee-name-latin">(${p.nameLatin})</span>` : ''}
+                    ${p.nickname ? `<span class="attendee-callname">「${p.nickname}」</span>` : ''}
                   </div>
-                  <div class="attendee-org">${org}</div>
+                  <div class="attendee-org">
+                    ${p.cohort ? `<span class="attendee-cohort-badge">${p.cohort}</span>` : ''}
+                    <span>${org}</span>
+                  </div>
                 </div>
                 <span class="attendee-country-badge ${countryBadgeClass}">${flag} ${countryLabel}</span>
               </div>
+              ${hobby ? `
+              <div class="attendee-hobby">
+                <span>🎯</span>
+                <span><strong>${hobbyLabel}:</strong> ${hobby}</span>
+              </div>
+              ` : ''}
               <div class="attendee-tags-row">
                 <span class="attendee-role-badge ${roleClass}">${roleName}</span>
                 <span class="attendee-reception-badge ${receptionClass}">${receptionIcon} ${receptionText}</span>
