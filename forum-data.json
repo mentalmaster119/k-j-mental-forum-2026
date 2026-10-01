@@ -941,11 +941,19 @@
       "address": "서울시 서초구 양재천로15길 1, 제이애드빌딩 3층"
     },
     "japan": {
-      "orgName": "Field Flow",
-      "contactPerson": "",
+      "orgName": "Field Flow Japan",
+      "contactPerson": {
+        "ko": "쯔게 요이치로 공동대표",
+        "ja": "柘植 陽一郎 共同代表",
+        "en": "Yoichiro Tsuge (Co-Representative)"
+      },
       "phone": "",
       "email": "",
-      "address": ""
+      "address": {
+        "ko": "일본 도쿄",
+        "ja": "日本 東京",
+        "en": "Tokyo, Japan"
+      }
     }
   },
   "themeSong": {
