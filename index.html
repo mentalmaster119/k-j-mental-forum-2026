@@ -567,6 +567,11 @@
     .toast-msg { position: fixed; bottom: 2rem; right: 2rem; background: var(--primary-900); color: #ffffff; padding: 0.85rem 1.4rem; border-radius: 10px; box-shadow: var(--shadow-xl); font-size: 0.875rem; z-index: 10000; transform: translateY(100px); opacity: 0; transition: all var(--transition); }
     .toast-msg.show { transform: translateY(0); opacity: 1; }
 
+    /* Responsive Helpers */
+    .lang-short { display: none; }
+    .logo-compact { display: none; }
+    .hero-panoramic-mobile-hint { display: none; }
+
     @media (max-width: 992px) {
       .hero-grid { grid-template-columns: 1fr; }
       .pillars-grid { grid-template-columns: 1fr; }
@@ -575,10 +580,143 @@
       .hero-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
     }
     @media (max-width: 768px) {
-      .section { padding: 4rem 0; }
-      .nav-menu { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--primary-900); flex-direction: column; padding: 1.5rem; gap: 1rem; }
-      .nav-menu.mobile-open { display: flex; }
-      .mobile-toggle { display: flex; }
+      /* 1. Hide Dev Demo Phase Bar on Mobile for Clean, Official Appearance */
+      .phase-bar { display: none; }
+
+      /* 2. Sleek, Non-Overflowing Mobile Header */
+      .nav-container {
+        height: 60px;
+        min-height: 60px;
+        padding: 0 1rem;
+      }
+      .site-logo {
+        gap: 0.45rem;
+        max-width: calc(100% - 135px);
+        overflow: hidden;
+      }
+      .logo-badge {
+        font-size: 0.68rem;
+        font-weight: 800;
+        padding: 0.22rem 0.45rem;
+        border-radius: 5px;
+        flex-shrink: 0;
+      }
+      .logo-title {
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .logo-full { display: none; }
+      .logo-compact { display: inline; }
+      .logo-subtitle { display: none; } /* Hide redundant subtitle on mobile to prevent 4-line wrapping */
+
+      .nav-actions {
+        gap: 0.45rem;
+      }
+      .lang-selector {
+        padding: 2px;
+        border-radius: 6px;
+      }
+      .lang-btn {
+        padding: 0.22rem 0.45rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        border-radius: 4px;
+      }
+      .lang-long { display: none; }
+      .lang-short { display: inline; }
+      .mobile-toggle {
+        padding: 0.4rem;
+      }
+      .nav-menu {
+        top: 60px;
+      }
+
+      /* 3. Clean Panoramic Banner on Mobile (No overlapping text badges) */
+      .hero-panoramic-banner-wrap {
+        margin-bottom: 1.5rem;
+      }
+      .hero-panoramic-frame {
+        border-radius: 14px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(37, 99, 235, 0.15);
+      }
+      /* Hide heavy text overlay on mobile to keep artwork clean and unobstructed */
+      .hero-panoramic-overlay {
+        display: none;
+      }
+      /* Floating subtle glass chip in corner */
+      .hero-panoramic-mobile-hint {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #f1f5f9;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 0.2rem 0.5rem;
+        border-radius: 9999px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        pointer-events: none;
+      }
+
+      /* 4. Balanced Hero Typography & Compact Spacing */
+      .hero-section {
+        padding: 1.25rem 0 3rem;
+      }
+      .hero-badge-tag {
+        font-size: 0.75rem;
+        padding: 0.32rem 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+      .hero-title {
+        font-size: 2.15rem;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1.05rem;
+        line-height: 1.4;
+        margin-bottom: 0.75rem;
+      }
+      .hero-desc {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+      }
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        margin-bottom: 1.75rem;
+      }
+      .hero-actions .btn {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.825rem;
+        white-space: nowrap;
+        justify-content: center;
+      }
+      .hero-card {
+        padding: 1.5rem;
+        border-radius: 16px;
+      }
+      .hero-stats-grid {
+        margin-top: 2rem;
+        padding-top: 1.75rem;
+        gap: 1.25rem;
+      }
+
+      /* 5. Sections and Responsive Tables */
+      .section { padding: 3.5rem 0; }
       .about-box { padding: 2rem 1.5rem; }
       .program-table thead { display: none; }
       .program-table, .program-table tbody, .program-table tr, .program-table td { display: block; width: 100%; }
@@ -614,7 +752,7 @@
       <a href="#hero" class="site-logo">
         <span class="logo-badge">JKMCF 2026</span>
         <div>
-          <span class="logo-title">3rd Japan–Korea Mental Forum</span>
+          <span class="logo-title"><span class="logo-full">3rd Japan–Korea Mental Forum</span><span class="logo-compact">3rd Japan–Korea Forum</span></span>
           <span class="logo-subtitle">Evolution Together · Yokohama</span>
         </div>
       </a>
@@ -634,8 +772,8 @@
       <div class="nav-actions">
         <div class="lang-selector">
           <button class="lang-btn" data-lang="en">EN</button>
-          <button class="lang-btn active" data-lang="ko">한국어</button>
-          <button class="lang-btn" data-lang="ja">日本語</button>
+          <button class="lang-btn active" data-lang="ko"><span class="lang-long">한국어</span><span class="lang-short">KO</span></button>
+          <button class="lang-btn" data-lang="ja"><span class="lang-long">日本語</span><span class="lang-short">JA</span></button>
         </div>
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
           <span></span><span></span><span></span>
@@ -657,6 +795,9 @@
               <span id="hero-visual-badge-text">✨ 3rd Japan–Korea Mental Forum · 10th Anniversary Official Key Visual</span>
               <span class="hero-visual-zoom-hint">🔍 클릭하여 고화질 확대 / 다운로드</span>
             </div>
+          </div>
+          <div class="hero-panoramic-mobile-hint">
+            <span id="hero-visual-mobile-hint-text">🔍 탭하여 확대</span>
           </div>
         </div>
       </div>
@@ -2562,6 +2703,10 @@
         const heroBadgeText = document.getElementById('hero-visual-badge-text');
         if (heroBadgeText) {
           heroBadgeText.textContent = lang === 'ko' ? "✨ 10주년 공식 키 비주얼" : (lang === 'ja' ? "✨ 10周年公式キービジュアル" : "✨ 10th Anniversary Key Visual");
+        }
+        const mobileHintText = document.getElementById('hero-visual-mobile-hint-text');
+        if (mobileHintText) {
+          mobileHintText.textContent = lang === 'ko' ? "🔍 탭하여 확대" : (lang === 'ja' ? "🔍 タップで拡大" : "🔍 Tap to view");
         }
         const modalHeroTitle = document.getElementById('modal-hero-visual-title');
         if (modalHeroTitle) {
