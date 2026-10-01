@@ -14,7 +14,7 @@ const FORUM_DATA = {
     japanFolder: "https://drive.google.com/drive/folders/03_Japan_Speakers_Demo?usp=sharing",
     speakerProfilesPdf: "https://drive.google.com/file/d/Speaker_Profiles_Demo/view?usp=sharing",
     archiveFolder: "https://drive.google.com/drive/folders/05_Forum_Archive_Demo?usp=sharing",
-    googlePhotos: "https://photos.google.com/share/field-flow-10th-anniversary-demo",
+    googlePhotos: "https://photos.app.goo.gl/ph2P5efzRA3KRYiM8",
     googleMaps: "https://maps.google.com/?q=Kanto+Gakuin+University+Yokohama+Kannai+Campus"
   },
 
