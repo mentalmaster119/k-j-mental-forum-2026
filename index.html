@@ -1992,8 +1992,8 @@
           </div>
           <div class="welcome-body">
             <!-- Park Chul-soo Welcome Video Box -->
-            <div class="welcome-video-box" id="park-welcome-video-box" style="display: none;">
-              <iframe id="park-welcome-video-iframe" src="" allow="autoplay; fullscreen" allowfullscreen loading="lazy" title="박철수 대표 개회 환영사 영상"></iframe>
+            <div class="welcome-video-box" id="park-welcome-video-box">
+              <video id="park-welcome-video-player" src="assets/video/welcome-mcci.mp4" controls playsinline preload="metadata" style="position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: contain; background: #000; border-radius: 12px;"></video>
             </div>
             <h4 class="welcome-speech-headline" data-i18n="welcome.parkTitle">“함께 배우고, 함께 생각하며, 함께 진화해 갑시다”</h4>
             <p class="welcome-p" data-i18n="welcome.parkP1">여러분, 안녕하십니까.
@@ -4094,15 +4094,19 @@
 
           // Video Embed
           const parkVideoBox = document.getElementById('park-welcome-video-box');
-          const parkVideoIframe = document.getElementById('park-welcome-video-iframe');
-          if (parkVideoBox && parkVideoIframe) {
-            const vUrl = p.videoUrl ? formatEmbedVideoUrl(p.videoUrl) : '';
+          if (parkVideoBox) {
+            const vUrl = (p.videoUrl || '').trim();
             if (vUrl) {
-              if (parkVideoIframe.src !== vUrl) parkVideoIframe.src = vUrl;
+              if (vUrl.endsWith('.mp4') || vUrl.endsWith('.mov') || vUrl.startsWith('assets/')) {
+                parkVideoBox.innerHTML = `<video controls playsinline preload="metadata" src="${vUrl}" style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; background:#000; border-radius:12px;"></video>`;
+              } else {
+                const embedUrl = formatEmbedVideoUrl(vUrl);
+                parkVideoBox.innerHTML = `<iframe src="${embedUrl}" allow="autoplay; fullscreen" allowfullscreen loading="lazy" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0; border-radius:12px;"></iframe>`;
+              }
               parkVideoBox.style.display = 'block';
             } else {
               parkVideoBox.style.display = 'none';
-              parkVideoIframe.src = '';
+              parkVideoBox.innerHTML = '';
             }
           }
 
@@ -4144,15 +4148,19 @@
 
           // Video Embed
           const tsugeVideoBox = document.getElementById('tsuge-welcome-video-box');
-          const tsugeVideoIframe = document.getElementById('tsuge-welcome-video-iframe');
-          if (tsugeVideoBox && tsugeVideoIframe) {
-            const vUrl = t.videoUrl ? formatEmbedVideoUrl(t.videoUrl) : '';
+          if (tsugeVideoBox) {
+            const vUrl = (t.videoUrl || '').trim();
             if (vUrl) {
-              if (tsugeVideoIframe.src !== vUrl) tsugeVideoIframe.src = vUrl;
+              if (vUrl.endsWith('.mp4') || vUrl.endsWith('.mov') || vUrl.startsWith('assets/')) {
+                tsugeVideoBox.innerHTML = `<video controls playsinline preload="metadata" src="${vUrl}" style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; background:#000; border-radius:12px;"></video>`;
+              } else {
+                const embedUrl = formatEmbedVideoUrl(vUrl);
+                tsugeVideoBox.innerHTML = `<iframe src="${embedUrl}" allow="autoplay; fullscreen" allowfullscreen loading="lazy" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0; border-radius:12px;"></iframe>`;
+              }
               tsugeVideoBox.style.display = 'block';
             } else {
               tsugeVideoBox.style.display = 'none';
-              tsugeVideoIframe.src = '';
+              tsugeVideoBox.innerHTML = '';
             }
           }
 
