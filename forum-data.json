@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-29T08:08:11.630Z",
+  "lastUpdated": "2026-10-02T20:44:59.479Z",
   "speakers": [
     {
       "id": "aoyagi",
@@ -255,13 +255,13 @@
         "en": "10th Vision Session (16:10–16:30)"
       },
       "topicTitle": {
-        "ko": "멘탈코칭의 미래 (Field Flow의 비전)",
+        "ko": "스포츠 멘탈코칭의 미래 (Field Flow의 비전)",
         "ja": "メンタルコーチングの今後について",
         "en": "The Future of Mental Coaching"
       },
       "slidesUrl": "https://drive.google.com/drive/folders/03_Japan_Speakers_Demo",
       "abstract": {
-        "ko": "지난 10년간 스포츠 및 비즈니스 조직에서 \"장(Field)\"의 흐름과 팀 시너지를 극대화해 온 Field Flow의 발자취와 향후 미래 멘탈코칭의 새로운 패러다임을 제언합니다.",
+        "ko": "지난 20년간 스포츠 및 비즈니스 조직에서 \"장(Field)\"의 흐름과 팀 시너지를 극대화해 온 Field Flow의 발자취와 향후 미래 스포츠 멘탈코칭의 새로운 패러다임을 제언합니다.",
         "ja": "過去10年にわたりスポーツとビジネスの現場で「場」のダイナミクスとチームフローを切り拓いてきたField Flowの軌跡と、次世代メンタルコーチングの未来展望を提示します。",
         "en": "Field Flow's 10-year journey coaching systemic field dynamics, collective resonance, and the next-generation coaching paradigm for the AI era."
       }
@@ -942,18 +942,10 @@
     },
     "japan": {
       "orgName": "Field Flow Japan",
-      "contactPerson": {
-        "ko": "쯔게 요이치로 공동대표",
-        "ja": "柘植 陽一郎 共同代表",
-        "en": "Yoichiro Tsuge (Co-Representative)"
-      },
+      "contactPerson": "[object Object]",
       "phone": "",
       "email": "",
-      "address": {
-        "ko": "일본 도쿄",
-        "ja": "日本 東京",
-        "en": "Tokyo, Japan"
-      }
+      "address": "[object Object]"
     }
   },
   "themeSong": {
