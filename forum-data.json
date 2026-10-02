@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-10-02T21:39:05.041Z",
-  "googleSheetWebhookUrl": "",
+  "lastUpdated": "2026-10-02T21:59:34.806Z",
+  "googleSheetWebhookUrl": "https://script.google.com/macros/s/AKfycbz8cwaw2wY3or3CuUz9i1p4kRdpM4-BJd4AaQtjyRTW-mKj3YkmBnwyq6bYdlnWZ7fboQ/exec",
   "speakers": [
     {
       "id": "aoyagi",
