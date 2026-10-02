@@ -640,6 +640,9 @@
         <button class="tab-item" onclick="switchTab('contacts')">
           <span>🏢</span> 사무국 & 연동 설정
         </button>
+        <button class="tab-item" onclick="switchTab('inquiries')">
+          <span>📬</span> 접수된 문의 내역 <span class="tab-badge" id="badge-inquiry-count">0</span>
+        </button>
       </div>
     </div>
 
@@ -872,6 +875,166 @@
         </div>
       </section>
 
+      <!-- TAB 5: INQUIRIES & GOOGLE SHEETS -->
+      <section id="tab-inquiries" class="tab-content" style="display: none;">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">📬 접수된 실시간 문의 내역 &amp; 구글 시트 연동</h2>
+            <p class="section-desc">웹사이트 메인에서 방문자가 보낸 문의가 실시간으로 구글 스프레드시트에 자동 기록되고, 브라우저에도 안전하게 백업됩니다.</p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button type="button" class="btn-sm" onclick="exportInquiriesCSV()" style="background: #10b981; color: #ffffff; border: none; font-weight: 700; cursor: pointer; padding: 0.45rem 0.9rem; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 0.35rem;">
+              <span>📥</span> <span>CSV 엑셀 다운로드</span>
+            </button>
+            <button type="button" class="btn-sm" onclick="renderInquiriesEditor()" style="cursor: pointer; padding: 0.45rem 0.9rem;">
+              <span>🔄</span> <span>새로고침</span>
+            </button>
+            <button type="button" class="btn-sm" onclick="clearAllInquiries()" style="background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; cursor: pointer; padding: 0.45rem 0.9rem;">
+              <span>🗑️</span> <span>목록 비우기</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Google Sheets Webhook Configuration Card -->
+        <div class="card" style="margin-bottom: 1.5rem; border-left: 4px solid #10b981;">
+          <div class="card-header" style="background: #f0fdf4;">
+            <span class="card-header-title" style="color: #065f46;">
+              <span>📊</span> 구글 스프레드시트 Webhook 연동 상태
+            </span>
+            <span id="sheet-status-badge" class="badge-preview" style="background: #dcfce7; color: #166534; font-weight: 700;">
+              연동 대기
+            </span>
+          </div>
+          <div class="card-body">
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label class="form-label">
+                <span>Google Apps Script 웹 앱 URL (Webhook Endpoint)</span>
+                <span class="form-label-hint">배포된 웹 앱 URL (https://script.google.com/macros/s/.../exec)</span>
+              </label>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <input type="url" id="cfg-sheet-webhook-url" class="form-control" style="flex: 1; min-width: 280px;" placeholder="https://script.google.com/macros/s/AKfycb.../exec" oninput="updateSheetWebhookUrl(this.value)">
+                <button type="button" class="btn-nav" onclick="saveSheetWebhookUrl()" style="background: #2563eb; color: #ffffff; border: none; font-weight: 700; cursor: pointer; padding: 0.5rem 1rem;">
+                  💾 URL 저장
+                </button>
+                <button type="button" class="btn-nav" onclick="testGoogleSheetWebhook()" style="background: #0f172a; color: #ffffff; border: none; font-weight: 700; cursor: pointer; padding: 0.5rem 1rem;">
+                  🧪 테스트 전송
+                </button>
+              </div>
+            </div>
+
+            <!-- 1-Minute Setup Guide Collapsible -->
+            <details style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-top: 1rem;">
+              <summary style="font-weight: 700; color: #1e3a8a; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                <span>📖 1분 구글 스프레드시트 연동 가이드 (여기를 클릭하여 펼치기)</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">▼</span>
+              </summary>
+              <div style="margin-top: 0.85rem; font-size: 0.85rem; color: var(--text-main); line-height: 1.65;">
+                <ol style="padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                  <li><strong>구글 스프레드시트 새 문서 만들기</strong>: <a href="https://sheets.new" target="_blank" style="color: #2563eb; font-weight: 600;">sheets.new</a>에 접속하여 빈 스프레드시트를 생성합니다 (시트명: 예: <code>2026 멘탈포럼 문의 접수</code>).</li>
+                  <li><strong>Apps Script 열기</strong>: 상단 메뉴에서 <code>확장 프로그램 (Extensions)</code> ➔ <code>Apps Script</code>를 클릭합니다.</li>
+                  <li><strong>스크립트 코드 붙여넣기</strong>: 편집기에 있는 기본 내용을 지우고, 아래의 <strong>[코드 복사]</strong> 버튼을 눌러 복사한 스크립트를 붙여넣은 뒤 저장(Ctrl+S)합니다.</li>
+                  <li><strong>웹 앱으로 배포하기</strong>: 우측 상단 <code>배포 (Deploy)</code> ➔ <code>새 배포 (New deployment)</code> 클릭:
+                    <ul style="list-style-type: disc; padding-left: 1.25rem; margin-top: 0.25rem;">
+                      <li>유형: <strong>웹 앱 (Web app)</strong> 선택 (톱니바퀴 아이콘)</li>
+                      <li>다음 사용자 권한으로 실행 (Execute as): <strong>나 (Me)</strong></li>
+                      <li>액세스 권한이 있는 사용자 (Who has access): <strong style="color: #dc2626;">모든 사용자 (Anyone)</strong> (매우 중요!)</li>
+                    </ul>
+                  </li>
+                  <li><strong>웹 앱 URL 복사 &amp; 상단에 붙여넣기</strong>: 생성된 <code>https://script.google.com/macros/s/.../exec</code> URL을 복사하여 위의 입력창에 넣고 [URL 저장]을 누르면 즉시 연동 완료됩니다!</li>
+                </ol>
+
+                <div style="margin-top: 1rem; position: relative;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                    <span style="font-weight: 700; font-size: 0.8rem; color: #475569;">📋 Google Apps Script 코드</span>
+                    <button type="button" class="btn-sm" onclick="copyGasScriptCode()" style="font-size: 0.75rem; padding: 0.25rem 0.6rem; background: #2563eb; color: #ffffff; border: none; cursor: pointer; border-radius: 4px;">
+                      📄 코드 복사하기
+                    </button>
+                  </div>
+                  <pre id="gas-script-box" style="background: #1e293b; color: #f8fafc; padding: 0.85rem; border-radius: 6px; font-size: 0.75rem; overflow-x: auto; max-height: 220px; line-height: 1.45; font-family: monospace;">function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(["접수일시 (Timestamp)", "성명 (Name)", "이메일 (Email)", "문의내용 (Message)", "언어 (Language)", "상태 (Status)"]);
+      var header = sheet.getRange(1, 1, 1, 6);
+      header.setBackground("#1e3a8a").setFontColor("#ffffff").setFontWeight("bold").setHorizontalAlignment("center");
+      sheet.setFrozenRows(1);
+    }
+    var data = {};
+    if (e &amp;&amp; e.postData &amp;&amp; e.postData.contents) {
+      try { data = JSON.parse(e.postData.contents); } catch(pErr) { data = e.parameter || {}; }
+    } else if (e &amp;&amp; e.parameter) {
+      data = e.parameter;
+    }
+    var timestamp = data.timestamp || Utilities.formatDate(new Date(), "Asia/Seoul", "yyyy-MM-dd HH:mm:ss");
+    var name = data.name || "미입력";
+    var email = data.email || "미입력";
+    var message = data.message || "내용 없음";
+    var lang = data.lang || "ko";
+    sheet.appendRow([timestamp, name, email, message, lang, "접수 완료"]);
+    return ContentService.createTextOutput(JSON.stringify({ status: "success" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ status: "error", error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+function doGet(e) {
+  return ContentService.createTextOutput(" 한·일 스포츠 멘탈포럼 2026 Webhook 정상 작동 중");
+}</pre>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- Inquiries Table Card -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-header-title">
+              <span>📋</span> 접수된 문의 목록 (<span id="inquiry-table-count">0</span>건)
+            </span>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">
+              💡 방문자가 홈페이지 문의 양식을 전송하면 이곳에 실시간으로 즉시 나타납니다.
+            </div>
+          </div>
+          <div class="card-body" style="padding: 0;">
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem; text-align: left;">
+                <thead>
+                  <tr style="background: #f1f5f9; border-bottom: 2px solid var(--border); color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase;">
+                    <th style="padding: 0.85rem 1rem;">No.</th>
+                    <th style="padding: 0.85rem 1rem; white-space: nowrap;">접수 일시</th>
+                    <th style="padding: 0.85rem 1rem;">언어</th>
+                    <th style="padding: 0.85rem 1rem;">성명</th>
+                    <th style="padding: 0.85rem 1rem;">이메일</th>
+                    <th style="padding: 0.85rem 1rem; min-width: 250px;">문의 내용</th>
+                    <th style="padding: 0.85rem 1rem; text-align: center;">관리</th>
+                  </tr>
+                </thead>
+                <tbody id="inquiries-table-body">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+            <div id="inquiries-empty-state" style="padding: 3.5rem 1.5rem; text-align: center; color: var(--text-muted); display: none;">
+              <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📭</div>
+              <div style="font-weight: 700; font-size: 1rem; color: var(--text-main);">접수된 문의 내역이 없습니다.</div>
+              <div style="font-size: 0.85rem; margin-top: 0.25rem;">홈페이지 하단 문의 양식을 통해 방문자가 문의를 남기면 이곳에 자동으로 실시간 표시됩니다.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-save-bar" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 14px rgba(0,0,0,0.04); flex-wrap: wrap; gap: 1rem;">
+          <div style="font-size: 0.9rem; color: var(--text-main);">
+            <strong style="color: var(--primary);">💾 구글 시트 웹훅 설정을 라이브 사이트에 배포하시겠습니까?</strong><br>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">설정된 웹훅 URL을 forum-data.json에 저장하고 GitHub / Vercel에 즉시 배포합니다.</span>
+          </div>
+          <button type="button" class="btn-nav btn-deploy" onclick="openDeployModal()" style="padding: 0.65rem 1.5rem; font-weight: 700; font-size: 0.95rem;">
+            <span>🚀</span> <span>수정사항 저장 및 배포</span>
+          </button>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -1004,6 +1167,7 @@
       renderMaterialsEditor();
       renderGuidesEditor();
       renderContactsEditor();
+      renderInquiriesEditor();
 
       // Safely initialize GitHub PAT input
       const tokenInput = document.getElementById('cfg-github-token');
@@ -1781,9 +1945,220 @@
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+    // 11. Inquiries & Google Sheets Integration
+    function renderInquiriesEditor() {
+      const tbody = document.getElementById('inquiries-table-body');
+      const emptyState = document.getElementById('inquiries-empty-state');
+      const badgeCount = document.getElementById('badge-inquiry-count');
+      const tableCount = document.getElementById('inquiry-table-count');
+      const urlInput = document.getElementById('cfg-sheet-webhook-url');
+      const statusBadge = document.getElementById('sheet-status-badge');
+
+      // Initialize webhook URL from FORUM_DATA or localStorage
+      const activeUrl = (FORUM_DATA && FORUM_DATA.googleSheetWebhookUrl) || localStorage.getItem('forum_google_sheet_url') || '';
+      if (urlInput) urlInput.value = activeUrl;
+      if (statusBadge) {
+        if (activeUrl) {
+          statusBadge.textContent = '🟢 연동 활성화 (Webhook Configured)';
+          statusBadge.style.background = '#dcfce7';
+          statusBadge.style.color = '#166534';
+        } else {
+          statusBadge.textContent = '⚪ 연동 대기 (미설정)';
+          statusBadge.style.background = '#f1f5f9';
+          statusBadge.style.color = '#64748b';
+        }
+      }
+
+      let inquiries = [];
+      try {
+        inquiries = JSON.parse(localStorage.getItem('forum_inquiries') || '[]');
+      } catch (e) {
+        inquiries = [];
+      }
+
+      if (badgeCount) badgeCount.textContent = inquiries.length;
+      if (tableCount) tableCount.textContent = inquiries.length;
+
+      if (!tbody) return;
+
+      if (inquiries.length === 0) {
+        tbody.innerHTML = '';
+        if (emptyState) emptyState.style.display = 'block';
+        return;
+      }
+
+      if (emptyState) emptyState.style.display = 'none';
+
+      const langBadges = {
+        ko: '<span style="background: #eff6ff; color: #1d4ed8; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">🇰🇷 한국어</span>',
+        ja: '<span style="background: #fdf2f8; color: #be185d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">🇯🇵 日本語</span>',
+        en: '<span style="background: #f0fdf4; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">🇺🇸 EN</span>'
+      };
+
+      tbody.innerHTML = inquiries.map((inq, idx) => {
+        const mailSubject = encodeURIComponent(`[2026 한·일 스포츠 멘탈포럼] 문의 회신 (${inq.name || '참가자'} 님)`);
+        const mailBody = encodeURIComponent(`안녕하세요, ${inq.name || ''} 님.\n2026 한·일 스포츠 멘탈포럼 사무국입니다.\n\n남겨주신 문의사항:\n"${inq.message || ''}"\n\n에 대해 안내드립니다.\n\n감사합니다.\n사무국 드림`);
+        const mailHref = `mailto:${encodeURIComponent(inq.email || '')}?subject=${mailSubject}&body=${mailBody}`;
+
+        return `
+          <tr style="border-bottom: 1px solid var(--border); transition: background 0.15s ease;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+            <td style="padding: 0.85rem 1rem; color: var(--text-muted); font-weight: 600;">#${idx + 1}</td>
+            <td style="padding: 0.85rem 1rem; white-space: nowrap; font-size: 0.82rem; color: var(--text-muted);">${escapeHtml(inq.timestamp || inq.isoTime || '-')}</td>
+            <td style="padding: 0.85rem 1rem;">${langBadges[inq.lang] || langBadges.ko}</td>
+            <td style="padding: 0.85rem 1rem; font-weight: 700; color: var(--primary);">${escapeHtml(inq.name || '-')}</td>
+            <td style="padding: 0.85rem 1rem;">
+              <a href="${mailHref}" style="color: #2563eb; text-decoration: underline; word-break: break-all;">${escapeHtml(inq.email || '-')}</a>
+            </td>
+            <td style="padding: 0.85rem 1rem; line-height: 1.5; color: var(--text-main); word-break: break-word;">${escapeHtml(inq.message || '')}</td>
+            <td style="padding: 0.85rem 1rem; text-align: center; white-space: nowrap;">
+              <div style="display: inline-flex; gap: 0.35rem;">
+                <a href="${mailHref}" class="btn-sm" style="text-decoration: none; padding: 0.3rem 0.6rem; font-size: 0.78rem; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;" title="이메일 답장 쓰기">
+                  ✉️ 답장
+                </a>
+                <button type="button" class="btn-sm" onclick="deleteInquiry(${idx})" style="padding: 0.3rem 0.6rem; font-size: 0.78rem; background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; cursor: pointer;" title="삭제">
+                  🗑️
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function updateSheetWebhookUrl(url) {
+      const cleanUrl = (url || '').trim();
+      if (!FORUM_DATA) FORUM_DATA = {};
+      FORUM_DATA.googleSheetWebhookUrl = cleanUrl;
+      localStorage.setItem('forum_google_sheet_url', cleanUrl);
+      const statusBadge = document.getElementById('sheet-status-badge');
+      if (statusBadge) {
+        if (cleanUrl) {
+          statusBadge.textContent = '🟢 연동 활성화 (Webhook Configured)';
+          statusBadge.style.background = '#dcfce7';
+          statusBadge.style.color = '#166534';
+        } else {
+          statusBadge.textContent = '⚪ 연동 대기 (미설정)';
+          statusBadge.style.background = '#f1f5f9';
+          statusBadge.style.color = '#64748b';
+        }
+      }
+      markUnsavedChanges();
+    }
+
+    function saveSheetWebhookUrl() {
+      const urlInput = document.getElementById('cfg-sheet-webhook-url');
+      const val = (urlInput ? urlInput.value : '').trim();
+      updateSheetWebhookUrl(val);
+      showToast("구글 시트 Webhook URL이 설정되었습니다.", "💾");
+    }
+
+    async function testGoogleSheetWebhook() {
+      const url = (document.getElementById('cfg-sheet-webhook-url')?.value || (FORUM_DATA && FORUM_DATA.googleSheetWebhookUrl) || localStorage.getItem('forum_google_sheet_url') || '').trim();
+      if (!url) {
+        alert("구글 스프레드시트 Apps Script 웹 앱 URL을 먼저 입력해 주세요.");
+        return;
+      }
+
+      showToast("구글 시트로 테스트 데이터를 전송하는 중... ⏳", "⏳");
+      const testPayload = {
+        id: 'test_' + Date.now(),
+        timestamp: new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
+        name: "관리자 테스트 (Admin Test)",
+        email: "admin@mentalforum2026.org",
+        message: "2026 한·일 스포츠 멘탈포럼 구글 시트 실시간 자동 기록 연동 테스트입니다.",
+        lang: "ko"
+      };
+
+      try {
+        await fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(testPayload)
+        });
+
+        // Also add to local inquiries so it appears in the table
+        const inquiries = JSON.parse(localStorage.getItem('forum_inquiries') || '[]');
+        inquiries.unshift(testPayload);
+        localStorage.setItem('forum_inquiries', JSON.stringify(inquiries));
+        renderInquiriesEditor();
+
+        showToast("구글 스프레드시트로 테스트 전송이 완료되었습니다! 시트 확인 권장 📊", "🎉");
+      } catch (err) {
+        console.error('Webhook test error:', err);
+        showToast("전송 중 네트워크 오류가 발생했습니다.", "⚠️");
+      }
+    }
+
+    function copyGasScriptCode() {
+      const box = document.getElementById('gas-script-box');
+      if (!box) return;
+      const text = box.innerText || box.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Apps Script 코드가 클립보드에 복사되었습니다! 📋", "✅");
+      }).catch(() => {
+        showToast("코드 복사에 실패했습니다. 직접 드래그하여 복사해 주세요.", "⚠️");
+      });
+    }
+
+    function exportInquiriesCSV() {
+      const inquiries = JSON.parse(localStorage.getItem('forum_inquiries') || '[]');
+      if (inquiries.length === 0) {
+        alert("내보낼 문의 내역이 없습니다.");
+        return;
+      }
+
+      // Prepend UTF-8 BOM so Excel opens Korean characters correctly
+      let csvContent = '\uFEFF';
+      csvContent += '"No","접수일시","언어","성명","이메일","문의내용"\n';
+
+      inquiries.forEach((inq, idx) => {
+        const no = idx + 1;
+        const time = `"${(inq.timestamp || inq.isoTime || '').replace(/"/g, '""')}"`;
+        const lang = `"${(inq.lang || 'ko').toUpperCase()}"`;
+        const name = `"${(inq.name || '').replace(/"/g, '""')}"`;
+        const email = `"${(inq.email || '').replace(/"/g, '""')}"`;
+        const message = `"${(inq.message || '').replace(/"/g, '""')}"`;
+        csvContent += `${no},${time},${lang},${name},${email},${message}\n`;
+      });
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `forum-inquiries-${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showToast("문의 내역 CSV 파일이 다운로드되었습니다. 📥", "💾");
+    }
+
+    function deleteInquiry(idx) {
+      if (!confirm("해당 문의 내역을 목록에서 삭제하시겠습니까?")) return;
+      const inquiries = JSON.parse(localStorage.getItem('forum_inquiries') || '[]');
+      inquiries.splice(idx, 1);
+      localStorage.setItem('forum_inquiries', JSON.stringify(inquiries));
+      renderInquiriesEditor();
+      showToast("문의 내역이 삭제되었습니다.", "🗑️");
+    }
+
+    function clearAllInquiries() {
+      const inquiries = JSON.parse(localStorage.getItem('forum_inquiries') || '[]');
+      if (inquiries.length === 0) {
+        alert("삭제할 문의 내역이 없습니다.");
+        return;
+      }
+      if (!confirm("정말로 모든 문의 내역을 비우시겠습니까? 이 작업은 취소할 수 없습니다.")) return;
+      localStorage.removeItem('forum_inquiries');
+      renderInquiriesEditor();
+      showToast("모든 문의 내역이 비워졌습니다.", "🗑️");
+    }
+
     function getFallbackData() {
       return {
         version: "1.0.0",
+        googleSheetWebhookUrl: "",
         speakers: [],
         sessions: [],
         materials: [],

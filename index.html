@@ -2171,17 +2171,17 @@
         <form class="contact-form" id="contact-form">
           <div class="form-group">
             <label for="contact-name" class="form-label" data-i18n="contact.formName">Your Full Name</label>
-            <input type="text" id="contact-name" class="form-input" required placeholder="John Doe">
+            <input type="text" id="contact-name" name="name" class="form-input" required placeholder="홍길동 (Hong Gil-dong)">
           </div>
           <div class="form-group">
             <label for="contact-email" class="form-label" data-i18n="contact.formEmail">Email Address</label>
-            <input type="email" id="contact-email" class="form-input" required placeholder="you@domain.com">
+            <input type="email" id="contact-email" name="email" class="form-input" required placeholder="you@domain.com">
           </div>
           <div class="form-group">
             <label for="contact-msg" class="form-label" data-i18n="contact.formMessage">Message / Inquiry</label>
-            <textarea id="contact-msg" class="form-textarea" required placeholder="Enter your inquiry..."></textarea>
+            <textarea id="contact-msg" name="message" class="form-textarea" required placeholder="문의하실 내용을 입력해 주세요 (Enter your inquiry)..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">
+          <button type="submit" id="contact-submit-btn" class="btn btn-primary" style="width: 100%;">
             <span data-i18n="contact.formSubmit">Send Message</span>
           </button>
           <p class="form-privacy-note" data-i18n="contact.privacyNotice">
@@ -2846,6 +2846,7 @@
       const mobileToggle = document.getElementById('mobile-toggle');
       const navMenu = document.getElementById('nav-menu');
       const contactForm = document.getElementById('contact-form');
+      let GOOGLE_SHEET_WEBHOOK_URL = '';
 
       function applySpeakerFilter(filter) {
         currentFilter = filter;
@@ -5754,15 +5755,86 @@ Evolve together`
       }
 
       if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
           e.preventDefault();
-          const msgs = { en: "Message received. Thank you!", ko: "문의가 접수되었습니다. 감사합니다.", ja: "お問い合わせを受け付けました。" };
-          if (toastElement) {
-            toastElement.textContent = msgs[currentLang] || msgs.en;
-            toastElement.classList.add('show');
-            setTimeout(() => toastElement.classList.remove('show'), 3500);
+          const submitBtn = document.getElementById('contact-submit-btn') || contactForm.querySelector('button[type="submit"]');
+          const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+
+          const nameInput = document.getElementById('contact-name');
+          const emailInput = document.getElementById('contact-email');
+          const msgInput = document.getElementById('contact-msg');
+
+          const nameVal = (nameInput?.value || '').trim();
+          const emailVal = (emailInput?.value || '').trim();
+          const msgVal = (msgInput?.value || '').trim();
+
+          const now = new Date();
+          const localTime = now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+          const inquiryObj = {
+            id: 'inq_' + Date.now(),
+            timestamp: localTime,
+            isoTime: now.toISOString(),
+            name: nameVal,
+            email: emailVal,
+            message: msgVal,
+            lang: currentLang
+          };
+
+          // 1. Persistent Local Storage Backup (100% data loss prevention)
+          try {
+            const stored = JSON.parse(localStorage.getItem('forum_inquiries') || '[]');
+            stored.unshift(inquiryObj);
+            localStorage.setItem('forum_inquiries', JSON.stringify(stored));
+          } catch (storageErr) {
+            console.warn('Local storage backup warning:', storageErr);
           }
+
+          // 2. Button Loading State
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            const sendingLabels = {
+              ko: "전송 중... ⏳",
+              ja: "送信中... ⏳",
+              en: "Sending... ⏳"
+            };
+            submitBtn.innerHTML = `<span>${sendingLabels[currentLang] || sendingLabels.en}</span>`;
+          }
+
+          // 3. Post to Google Sheets Web App Endpoint
+          const targetUrl = GOOGLE_SHEET_WEBHOOK_URL || localStorage.getItem('forum_google_sheet_url') || '';
+          if (targetUrl) {
+            try {
+              await fetch(targetUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                  'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: JSON.stringify(inquiryObj)
+              });
+            } catch (netErr) {
+              console.warn('Google Sheet webhook post notice:', netErr);
+            }
+          }
+
+          // 4. Toast Notification
+          const successMsgs = {
+            ko: "문의가 안전하게 접수되었습니다. 빠른 시일 내에 답변드리겠습니다.",
+            ja: "お問い合わせを受け付けました。内容を確認のうえ、ご連絡差し上げます。",
+            en: "Your message has been received. We will get back to you shortly."
+          };
+          if (toastElement) {
+            toastElement.textContent = successMsgs[currentLang] || successMsgs.en;
+            toastElement.classList.add('show');
+            setTimeout(() => toastElement.classList.remove('show'), 4000);
+          }
+
+          // 5. Reset Form & Button
           contactForm.reset();
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+          }
         });
       }
 
@@ -5780,6 +5852,9 @@ Evolve together`
           const res = await fetch('forum-data.json?v=' + Date.now(), { cache: 'no-store' });
           if (res.ok) {
             const remote = await res.json();
+            if (remote.googleSheetWebhookUrl) {
+              GOOGLE_SHEET_WEBHOOK_URL = remote.googleSheetWebhookUrl;
+            }
             if (Array.isArray(remote.speakers) && remote.speakers.length > 0) {
               SPEAKERS_DATA = remote.speakers;
               renderSpeakers(currentLang);

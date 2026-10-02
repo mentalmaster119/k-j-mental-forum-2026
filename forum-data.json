@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "lastUpdated": "2026-10-02T21:39:05.041Z",
+  "googleSheetWebhookUrl": "",
   "speakers": [
     {
       "id": "aoyagi",
