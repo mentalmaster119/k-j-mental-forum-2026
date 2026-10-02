@@ -66,8 +66,280 @@
     .lang-selector { display: inline-flex; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 3px; }
     .lang-btn { padding: 0.3rem 0.65rem; font-size: 0.75rem; font-weight: 700; border-radius: 6px; color: #cbd5e1; transition: all var(--transition); }
     .lang-btn.active { background: var(--accent-600); color: #ffffff; }
-    .mobile-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
-    .mobile-toggle span { display: block; width: 22px; height: 2px; background-color: #ffffff; }
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      padding: 0.4rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      cursor: pointer;
+      width: 38px;
+      height: 38px;
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+    .mobile-toggle:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .mobile-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: #ffffff;
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .mobile-toggle.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .mobile-toggle.active span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(6px);
+    }
+    .mobile-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile Side Navigation Drawer & Backdrop */
+    .mobile-nav-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+    .mobile-nav-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-side-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(340px, 86vw);
+      height: 100%;
+      height: 100dvh;
+      background: #0f172a;
+      background: linear-gradient(180deg, #0b1324 0%, #0f172a 100%);
+      border-left: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: -12px 0 40px rgba(0, 0, 0, 0.65);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+    .mobile-side-drawer.active {
+      transform: translateX(0);
+    }
+
+    .side-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.15rem 1.25rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(15, 23, 42, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .side-drawer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .side-drawer-title {
+      font-size: 0.925rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+    .side-drawer-subtitle {
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+    .side-drawer-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .side-drawer-close:hover {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #ef4444;
+    }
+
+    .side-drawer-lang-wrap {
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .side-drawer-lang-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .side-drawer-lang-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.4rem;
+    }
+    .side-lang-btn {
+      padding: 0.45rem 0.3rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+    .side-lang-btn.active {
+      background: #2563eb;
+      border-color: #3b82f6;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+    }
+
+    .side-drawer-nav {
+      flex: 1;
+      padding: 0.75rem;
+    }
+    .side-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .side-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 12px;
+      color: #f1f5f9;
+      text-decoration: none;
+      transition: all 0.18s ease;
+      background: transparent;
+    }
+    .side-nav-link:hover, .side-nav-link:active {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(3px);
+    }
+    .side-nav-icon {
+      font-size: 1.25rem;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .side-nav-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .side-nav-main {
+      font-size: 0.925rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+    .side-nav-desc {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      margin-top: 0.15rem;
+    }
+    .side-nav-arrow {
+      color: #64748b;
+      font-size: 0.85rem;
+      transition: transform 0.18s;
+    }
+    .side-nav-link:hover .side-nav-arrow {
+      color: #60a5fa;
+      transform: translateX(2px);
+    }
+
+    .side-drawer-footer {
+      padding: 1.15rem 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(11, 19, 36, 0.9);
+      margin-top: auto;
+    }
+    .side-drawer-cta-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+    .side-drawer-cta-btn {
+      padding: 0.65rem 0.5rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      text-align: center;
+    }
+    .side-drawer-cta-btn.primary {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+    .side-drawer-cta-btn.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+    }
+    .side-drawer-admin-link {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .side-drawer-admin-link:hover {
+      color: #60a5fa;
+    }
 
     /* Hero */
     .hero-section { position: relative; background: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.28) 0%, transparent 50%), radial-gradient(circle at 10% 80%, rgba(139, 92, 246, 0.2) 0%, transparent 45%), linear-gradient(180deg, var(--primary-900) 0%, var(--primary-950) 100%); color: #ffffff; padding: 5rem 0 4.5rem; }
@@ -1183,6 +1455,8 @@
     .hero-panoramic-mobile-hint { display: none; }
 
     @media (max-width: 992px) {
+      .site-header nav { display: none !important; }
+      .mobile-toggle { display: flex !important; }
       .hero-grid { grid-template-columns: 1fr; }
       .pillars-grid { grid-template-columns: 1fr; }
       .venue-hero-banner { grid-template-columns: 1fr; }
@@ -1194,6 +1468,8 @@
       .phase-bar { display: none; }
 
       /* 2. Sleek, Non-Overflowing Mobile Header */
+      .site-header nav { display: none !important; }
+      .mobile-toggle { display: flex !important; }
       .nav-container {
         height: 60px;
         min-height: 60px;
@@ -1201,7 +1477,7 @@
       }
       .site-logo {
         gap: 0.45rem;
-        max-width: calc(100% - 135px);
+        max-width: calc(100% - 140px);
         overflow: hidden;
       }
       .logo-badge {
@@ -1239,10 +1515,7 @@
       .lang-long { display: none; }
       .lang-short { display: inline; }
       .mobile-toggle {
-        padding: 0.4rem;
-      }
-      .nav-menu {
-        top: 60px;
+        padding: 0.35rem;
       }
 
       /* 3. Clean Panoramic Banner on Mobile (No overlapping text badges) */
@@ -1351,6 +1624,148 @@
           <button class="phase-btn active" data-phase="pre">Pre-Forum</button>
           <button class="phase-btn" data-phase="day">Forum Day</button>
           <button class="phase-btn" data-phase="post">Post-Forum</button>
+        </div>
+      </div>
+    </div>
+  <!-- Mobile Side Navigation Drawer & Backdrop (모바일 전용 사이드 드로어 메뉴) -->
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" onclick="closeMobileSideMenu()"></div>
+  <aside class="mobile-side-drawer" id="mobile-side-drawer" aria-label="Mobile Navigation">
+    <div class="side-drawer-header">
+      <div class="side-drawer-brand">
+        <span class="logo-badge" style="font-size: 0.72rem; padding: 0.25rem 0.5rem;">JKMCF 2026</span>
+        <div>
+          <div class="side-drawer-title">한·일 멘탈포럼 2026</div>
+          <div class="side-drawer-subtitle">Evolution Together · Yokohama</div>
+        </div>
+      </div>
+      <button class="side-drawer-close" id="side-drawer-close-btn" onclick="closeMobileSideMenu()" aria-label="메뉴 닫기">
+        ✕
+      </button>
+    </div>
+
+    <!-- Language Selector inside Drawer -->
+    <div class="side-drawer-lang-wrap">
+      <div class="side-drawer-lang-label">
+        <span>🌐</span> <span id="side-drawer-lang-title" data-i18n="sideNav.langLabel">언어 변경 (Language)</span>
+      </div>
+      <div class="side-drawer-lang-grid">
+        <button class="side-lang-btn active" data-lang="ko" onclick="handleSideLangClick('ko')">
+          <span class="flag">🇰🇷</span> <span>한국어</span>
+        </button>
+        <button class="side-lang-btn" data-lang="ja" onclick="handleSideLangClick('ja')">
+          <span class="flag">🇯🇵</span> <span>日本語</span>
+        </button>
+        <button class="side-lang-btn" data-lang="en" onclick="handleSideLangClick('en')">
+          <span class="flag">🇺🇸</span> <span>English</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Menu List -->
+    <nav class="side-drawer-nav">
+      <ul class="side-nav-list">
+        <li>
+          <a href="#about" class="side-nav-link" onclick="handleSideNavLinkClick()">
+            <span class="side-nav-icon">🏛️</span>
+            <div class="side-nav-text">
+              <span class="side-nav-main" data-i18n="nav.about">ABOUT</span>
+              <span class="side-nav-desc" data-i18n="sideNav.aboutDesc">포럼 소개 및 3대 핵심 가치</span>
+            </div>
+            <span class="side-nav-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#welcome" class="side-nav-link" onclick="handleSideNavLinkClick()">
+            <span class="side-nav-icon">🎙️</span>
+            <div class="side-nav-text">
+              <span class="side-nav-main" data-i18n="nav.welcome">GREETINGS</span>
+              <span class="side-nav-desc" data-i18n="sideNav.welcomeDesc">한·일 공동대표 개회 환영사</span>
+            </div>
+            <span class="side-nav-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#program" class="side-nav-link" onclick="handleSideNavLinkClick()">
+            <span class="side-nav-icon">⏱️</span>
+            <div class="side-nav-text">
+              <span class="side-nav-main" data-i18n="nav.program">PROGRAM</span>
+              <span class="side-nav-desc" data-i18n="sideNav.programDesc">24개 세션 상세 타임테이블</span>
+            </div>
+            <span class="side-nav-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#speakers" class="side-nav-link" onclick="handleSideNavLinkClick()">
+            <span class="side-nav-icon">👥</span>
+            <div class="side-nav-text">
+              <span class="side-nav-main" data-i18n="nav.speakers">SPEAKERS</span>
+              <span class="side-nav-desc" data-i18n="sideNav.speakersDesc">한·일 7인 대표 연사진</span>
+            </div>
+            <span class="side-nav-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#materials" class="side-nav-link" onclick="handleSideNavLinkClick()">
+            <span class="side-nav-icon">📂</span>
+            <div class="side-nav-text">
+              <span class="side-nav-main" data-i18n="nav.materials">MATERIALS</span>
+              <span class="side-nav-desc" data-i18n="sideNav.materialsDesc">발표 자료집 & 공식 아카이브</span>
+            </div>
+            <span class="side-nav-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#venue" class="side-nav-link" onclick="handleSideNavLinkClick()">
+            <span class="side-nav-icon">📍</span>
+            <div class="side-nav-text">
+              <span class="side-nav-main" data-i18n="nav.venue">VENUE & GUIDE</span>
+              <span class="side-nav-desc" data-i18n="sideNav.venueDesc">관동학원대 오시는 길 & 명찰 확인</span>
+            </div>
+            <span class="side-nav-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#anniversary" class="side-nav-link" onclick="handleSideNavLinkClick()">
+            <span class="side-nav-icon">🎉</span>
+            <div class="side-nav-text">
+              <span class="side-nav-main" data-i18n="nav.fieldflow">MCCI & FIELD FLOW 10TH</span>
+              <span class="side-nav-desc" data-i18n="sideNav.fieldflowDesc">창립 10주년 기념 & 추억 앨범</span>
+            </div>
+            <span class="side-nav-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="side-nav-link" onclick="handleSideNavLinkClick()">
+            <span class="side-nav-icon">📬</span>
+            <div class="side-nav-text">
+              <span class="side-nav-main" data-i18n="nav.contact">CONTACT</span>
+              <span class="side-nav-desc" data-i18n="sideNav.contactDesc">사무국 연락처 & 온라인 문의</span>
+            </div>
+            <span class="side-nav-arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Side Drawer Quick Actions & Footer -->
+    <div class="side-drawer-footer">
+      <div class="side-drawer-cta-group">
+        <a href="#program" class="side-drawer-cta-btn primary" onclick="handleSideNavLinkClick()">
+          <span>⏱️</span> <span data-i18n="sideNav.btnSchedule">타임테이블</span>
+        </a>
+        <a href="#materials" class="side-drawer-cta-btn secondary" onclick="handleSideNavLinkClick()">
+          <span>📂</span> <span data-i18n="sideNav.btnMaterials">발표자료</span>
+        </a>
+      </div>
+
+      <div class="side-drawer-info">
+        <div style="font-size: 0.73rem; color: #94a3b8; line-height: 1.5; margin-bottom: 0.65rem;">
+          🇰🇷 <span data-i18n="sideNav.koreaOffice">한국: MCCI (010-4457-3850)</span><br>
+          🇯🇵 <span data-i18n="sideNav.japanOffice">일본: Field Flow (Tokyo)</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.65rem;">
+          <span style="font-size: 0.7rem; color: #64748b;">© 2026 JKMCF Forum</span>
+          <a href="admin.html" class="side-drawer-admin-link">⚙️ 관리자 모드</a>
         </div>
       </div>
     </div>
@@ -2624,6 +3039,21 @@
         i18n: {
           en: {
             nav: { about: "ABOUT", welcome: "GREETINGS", program: "PROGRAM", speakers: "SPEAKERS", materials: "MATERIALS", venue: "VENUE & GUIDE", fieldflow: "MCCI & FIELD FLOW 10TH", contact: "CONTACT" },
+            sideNav: {
+              langLabel: "Language",
+              aboutDesc: "Forum Philosophy & Core Values",
+              welcomeDesc: "Opening Welcoming Remarks",
+              programDesc: "Detailed 24-Session Timetable",
+              speakersDesc: "Distinguished Japan & Korea Speakers",
+              materialsDesc: "Presentation Handouts & Drive Archive",
+              venueDesc: "Venue Access, Map & Badge Check",
+              fieldflowDesc: "10th Anniversary & Photo Album",
+              contactDesc: "Secretariat Contacts & Inquiries",
+              btnSchedule: "Timetable",
+              btnMaterials: "Slides",
+              koreaOffice: "Korea: MCCI (+82-10-4457-3850)",
+              japanOffice: "Japan: Field Flow (Tokyo)"
+            },
             phases: {
               pre: { banner: "Registration is open! The forum takes place on Saturday, October 3, 2026.", heroCtaPrimary: "View Program", heroCtaSecondary: "Presentation Materials", materialsStatus: "Materials will be accessible here as they are released." },
               day: { banner: "Today is Forum Day! Check in at 1F from 09:40. Sessions begin on 17F at 10:00.", heroCtaPrimary: "Live Schedule", heroCtaSecondary: "Access Materials", materialsStatus: "Live session handouts & slides are now available for participants." },
@@ -2748,6 +3178,21 @@
           },
           ko: {
             nav: { about: "포럼 소개", welcome: "환영사", program: "프로그램", speakers: "발표자", materials: "발표 자료", venue: "장소 및 안내", fieldflow: "MCCI & Field Flow 10주년", contact: "문의하기" },
+            sideNav: {
+              langLabel: "언어 변경 (Language)",
+              aboutDesc: "포럼 소개 및 3대 핵심 가치",
+              welcomeDesc: "한·일 공동대표 개회 환영사",
+              programDesc: "24개 세션 상세 타임테이블",
+              speakersDesc: "한·일 7인 대표 연사진",
+              materialsDesc: "발표 자료집 & 공식 아카이브",
+              venueDesc: "관동학원대 오시는 길 & 명찰 확인",
+              fieldflowDesc: "창립 10주년 기념 & 추억 앨범",
+              contactDesc: "사무국 연락처 & 온라인 문의",
+              btnSchedule: "타임테이블",
+              btnMaterials: "발표자료",
+              koreaOffice: "한국: MCCI (010-4457-3850)",
+              japanOffice: "일본: Field Flow (Tokyo)"
+            },
             phases: {
               pre: { banner: "사전 안내 모드: 2026년 10월 3일(토) 요코하마에서 개최됩니다.", heroCtaPrimary: "프로그램 보기", heroCtaSecondary: "발표 자료", materialsStatus: "발표 자료는 사전 동의 및 공개 일정에 맞춰 순차적으로 연동됩니다." },
               day: { banner: "행사 당일 모드: 오전 09:40부터 1층 로비에서 접수 진행! 포럼은 17층에서 10시에 시작됩니다.", heroCtaPrimary: "실시간 일정 확인", heroCtaSecondary: "현장 발표자료 열람", materialsStatus: "당일 발표 세션 핸드아웃 및 슬라이드를 구글 드라이브에서 열람하실 수 있습니다." },
@@ -2872,6 +3317,21 @@
           },
           ja: {
             nav: { about: "フォーラムについて", welcome: "ご挨拶", program: "プログラム", speakers: "登壇者紹介", materials: "発表資料", venue: "会場・当日のご案内", fieldflow: "MCCI＆Field Flow 10周年", contact: "お問い合わせ" },
+            sideNav: {
+              langLabel: "言語の切り替え (Language)",
+              aboutDesc: "フォーラム理念と3つの柱",
+              welcomeDesc: "日韓共同代表 開会のご挨拶",
+              programDesc: "全24セッション タイムテーブル",
+              speakersDesc: "日韓7名の登壇者プロフィール",
+              materialsDesc: "発表スライド＆公式アーカイブ",
+              venueDesc: "関東学院大 アクセス・名札確認",
+              fieldflowDesc: "10周年記念＆思い出アルバム",
+              contactDesc: "事務局連絡先・お問い合わせ",
+              btnSchedule: "タイムテーブル",
+              btnMaterials: "発表資料",
+              koreaOffice: "韓国：MCCI (+82-10-4457-3850)",
+              japanOffice: "日本：Field Flow（東京）"
+            },
             phases: {
               pre: { banner: "事前案内モード：2026年10月3日（土）横浜にて開催されます。", heroCtaPrimary: "プログラムを見る", heroCtaSecondary: "発表資料", materialsStatus: "発表資料はセッション開始および公開許諾に合わせて順次公開されます。" },
               day: { banner: "当日モード：午前9時40分より大学1階にて受付開始！フォーラムは17階にて10時スタートです。", heroCtaPrimary: "タイムテーブル確認", heroCtaSecondary: "当日の発表資料", materialsStatus: "当日のハンドアウトおよび発表スライドをGoogle Driveでご確認いただけます。" },
@@ -3662,6 +4122,7 @@
       function setLanguage(lang) {
         currentLang = lang;
         langButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
+        document.querySelectorAll('.side-lang-btn').forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
         const dict = DATA.i18n[lang] || DATA.i18n.en;
 
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -6198,8 +6659,77 @@ Evolve together`
         });
       });
 
-      if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', () => navMenu.classList.toggle('mobile-open'));
+      // Mobile Side Navigation Drawer Controls
+      const mobileSideDrawer = document.getElementById('mobile-side-drawer');
+      const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+      const sideDrawerCloseBtn = document.getElementById('side-drawer-close-btn');
+
+      window.openMobileSideMenu = function() {
+        if (mobileSideDrawer) mobileSideDrawer.classList.add('active');
+        if (mobileNavBackdrop) mobileNavBackdrop.classList.add('active');
+        if (mobileToggle) mobileToggle.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeMobileSideMenu = function() {
+        if (mobileSideDrawer) mobileSideDrawer.classList.remove('active');
+        if (mobileNavBackdrop) mobileNavBackdrop.classList.remove('active');
+        if (mobileToggle) mobileToggle.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      window.toggleMobileSideMenu = function() {
+        if (mobileSideDrawer && mobileSideDrawer.classList.contains('active')) {
+          window.closeMobileSideMenu();
+        } else {
+          window.openMobileSideMenu();
+        }
+      };
+
+      window.handleSideNavLinkClick = function() {
+        window.closeMobileSideMenu();
+      };
+
+      window.handleSideLangClick = function(lang) {
+        setLanguage(lang);
+      };
+
+      if (mobileToggle) {
+        mobileToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.toggleMobileSideMenu();
+        });
+      }
+
+      if (mobileNavBackdrop) {
+        mobileNavBackdrop.addEventListener('click', window.closeMobileSideMenu);
+      }
+
+      if (sideDrawerCloseBtn) {
+        sideDrawerCloseBtn.addEventListener('click', window.closeMobileSideMenu);
+      }
+
+      document.querySelectorAll('.side-nav-link, .side-drawer-cta-btn').forEach(link => {
+        link.addEventListener('click', () => {
+          window.closeMobileSideMenu();
+        });
+      });
+
+      document.querySelectorAll('.side-lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const l = btn.getAttribute('data-lang');
+          if (l) setLanguage(l);
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileSideDrawer && mobileSideDrawer.classList.contains('active')) {
+          window.closeMobileSideMenu();
+        }
+      });
+
+      // Also support legacy desktop nav-menu closing if ever toggled
+      if (navMenu) {
         document.querySelectorAll('.nav-link').forEach(link => {
           link.addEventListener('click', () => navMenu.classList.remove('mobile-open'));
         });
