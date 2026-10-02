@@ -723,6 +723,18 @@
             </div>
 
             <div class="card-body">
+              <!-- Video URL Input for Park Chul-soo -->
+              <div style="background: #f0f7ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem; flex-wrap: wrap; gap: 0.35rem;">
+                  <label class="form-label" style="margin: 0; font-weight: 700; color: #1e3a8a;">🎬 환영사 동영상 링크 (Google Drive / YouTube / MP4)</label>
+                  <span style="font-size: 0.72rem; color: #2563eb; background: #dbeafe; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 600;">구글 드라이브 자동 변환 지원</span>
+                </div>
+                <input type="url" id="admin-park-video-url" class="form-control" placeholder="예: https://drive.google.com/file/d/1ABC.../view?usp=sharing" oninput="handleWelcomeVideoInput('park', this.value)">
+                <div style="font-size: 0.73rem; color: #475569; margin-top: 0.35rem; line-height: 1.4;">
+                  💡 <strong>구글 드라이브 링크 안내</strong>: 파일 공유 설정이 <u>[링크가 있는 모든 사용자(뷰어)]</u>로 되어 있는지 확인해 주세요. 링크를 넣으시면 랜딩페이지 환영사 카드 내부에 16:9 반응형 플레이어로 자동 게재됩니다.
+                </div>
+              </div>
+
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
                 <label class="form-label" style="margin: 0; font-weight: 700;">편집 언어 선택:</label>
                 <div class="lang-pill-wrap" style="margin: 0;">
@@ -817,6 +829,18 @@
               <div style="background: #fffbeb; border: 1px solid #fef3c7; border-radius: 6px; padding: 0.65rem 0.85rem; font-size: 0.8rem; color: #92400e; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
                 <span>📋</span>
                 <span><strong>환영사 도착 시 안내</strong>: 아래 일본어(원문) 또는 한국어 탭에 환영사를 붙여넣고 상단 게재 상태를 [🟢 환영사 등록 완료]로 변경하세요.</span>
+              </div>
+
+              <!-- Video URL Input for Tsuge Yoichiro -->
+              <div style="background: #f0fdf4; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem; flex-wrap: wrap; gap: 0.35rem;">
+                  <label class="form-label" style="margin: 0; font-weight: 700; color: #065f46;">🎬 환영사 동영상 링크 (Google Drive / YouTube / MP4)</label>
+                  <span style="font-size: 0.72rem; color: #0d9488; background: #ccfbf1; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 600;">구글 드라이브 자동 변환 지원</span>
+                </div>
+                <input type="url" id="admin-tsuge-video-url" class="form-control" placeholder="예: https://drive.google.com/file/d/1ABC.../view?usp=sharing" oninput="handleWelcomeVideoInput('tsuge', this.value)">
+                <div style="font-size: 0.73rem; color: #475569; margin-top: 0.35rem; line-height: 1.4;">
+                  💡 <strong>구글 드라이브 링크 안내</strong>: 파일 공유 설정이 <u>[링크가 있는 모든 사용자(뷰어)]</u>로 되어 있는지 확인해 주세요.
+                </div>
               </div>
 
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
@@ -2004,6 +2028,39 @@ function doGet(e) {
         statusSelect.value = tsuge.status || 'coming_soon';
       }
 
+      // Video URLs
+      const parkVideoInput = document.getElementById('admin-park-video-url');
+      if (parkVideoInput) parkVideoInput.value = park.videoUrl || '';
+      const tsugeVideoInput = document.getElementById('admin-tsuge-video-url');
+      if (tsugeVideoInput) tsugeVideoInput.value = tsuge.videoUrl || '';
+
+      updateWelcomeLivePreview(WELCOME_PREVIEW_LANG);
+    }
+
+    function formatEmbedVideoUrl(url) {
+      if (!url || typeof url !== 'string') return '';
+      url = url.trim();
+      if (!url) return '';
+      const gDriveMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (gDriveMatch && gDriveMatch[1]) {
+        return `https://drive.google.com/file/d/${gDriveMatch[1]}/preview`;
+      }
+      const gDriveIdMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (gDriveIdMatch && gDriveIdMatch[1] && url.includes('drive.google.com')) {
+        return `https://drive.google.com/file/d/${gDriveIdMatch[1]}/preview`;
+      }
+      const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+      if (ytMatch && ytMatch[1]) {
+        return `https://www.youtube.com/embed/${ytMatch[1]}`;
+      }
+      return url;
+    }
+
+    function handleWelcomeVideoInput(speaker, val) {
+      if (!FORUM_DATA.welcomeRemarks) FORUM_DATA.welcomeRemarks = { park: {}, tsuge: {} };
+      if (!FORUM_DATA.welcomeRemarks[speaker]) FORUM_DATA.welcomeRemarks[speaker] = {};
+      FORUM_DATA.welcomeRemarks[speaker].videoUrl = val.trim();
+      markUnsavedChanges();
       updateWelcomeLivePreview(WELCOME_PREVIEW_LANG);
     }
 
@@ -2121,6 +2178,9 @@ function doGet(e) {
       const parkParagraphs = parkSpeech.split(/\n\n+/).filter(Boolean);
       const tsugeParagraphs = tsugeSpeech.split(/\n\n+/).filter(Boolean);
 
+      const parkVideoUrl = formatEmbedVideoUrl(park.videoUrl || '');
+      const tsugeVideoUrl = formatEmbedVideoUrl(tsuge.videoUrl || '');
+
       container.innerHTML = `
         <!-- Card 1: Park Preview -->
         <article style="background: #ffffff; border-radius: 16px; border: 1px solid #bfdbfe; box-shadow: 0 4px 16px rgba(37,99,235,0.08); overflow: hidden; display: flex; flex-direction: column;">
@@ -2133,6 +2193,11 @@ function doGet(e) {
             </div>
           </div>
           <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.885rem; line-height: 1.7; color: #334155;">
+            ${parkVideoUrl ? `
+              <div style="position: relative; width: 100%; padding-top: 56.25%; background: #000000; border-radius: 8px; overflow: hidden; margin-bottom: 0.85rem;">
+                <iframe src="${escapeHtml(parkVideoUrl)}" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen></iframe>
+              </div>
+            ` : ''}
             <h4 style="font-size: 1.05rem; font-weight: 800; color: #1e3a8a; margin: 0 0 0.5rem; border-left: 3px solid #2563eb; padding-left: 0.65rem;">
               ${escapeHtml(parkHeadline)}
             </h4>
@@ -2167,6 +2232,11 @@ function doGet(e) {
             </div>
           </div>
           <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.885rem; line-height: 1.7; color: #334155;">
+            ${tsugeVideoUrl ? `
+              <div style="position: relative; width: 100%; padding-top: 56.25%; background: #000000; border-radius: 8px; overflow: hidden; margin-bottom: 0.85rem;">
+                <iframe src="${escapeHtml(tsugeVideoUrl)}" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen></iframe>
+              </div>
+            ` : ''}
             <h4 style="font-size: 1.05rem; font-weight: 800; color: #0f766e; margin: 0 0 0.5rem; border-left: 3px solid #0d9488; padding-left: 0.65rem;">
               ${escapeHtml(tsugeHeadline)}
             </h4>

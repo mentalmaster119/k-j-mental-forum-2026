@@ -626,6 +626,28 @@
       color: var(--primary-900);
     }
 
+    /* Welcome Video Player Embed */
+    .welcome-video-box {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: #0f172a;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      box-shadow: 0 10px 24px -4px rgba(15, 23, 42, 0.18);
+      margin-bottom: 1.35rem;
+    }
+    .welcome-video-box iframe,
+    .welcome-video-box video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* Program Table */
     .program-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; padding: 1rem 1.5rem; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-light); }
     .program-updated { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
@@ -1969,6 +1991,10 @@
             </div>
           </div>
           <div class="welcome-body">
+            <!-- Park Chul-soo Welcome Video Box -->
+            <div class="welcome-video-box" id="park-welcome-video-box" style="display: none;">
+              <iframe id="park-welcome-video-iframe" src="" allow="autoplay; fullscreen" allowfullscreen loading="lazy" title="박철수 대표 개회 환영사 영상"></iframe>
+            </div>
             <h4 class="welcome-speech-headline" data-i18n="welcome.parkTitle">“함께 배우고, 함께 생각하며, 함께 진화해 갑시다”</h4>
             <p class="welcome-p" data-i18n="welcome.parkP1">여러분, 안녕하십니까.
 제3회 한일 국제 멘탈코칭 포럼에 함께해 주셔서 진심으로 감사드립니다.
@@ -2015,6 +2041,10 @@
             </div>
           </div>
           <div class="welcome-body">
+            <!-- Tsuge Yoichiro Welcome Video Box -->
+            <div class="welcome-video-box" id="tsuge-welcome-video-box" style="display: none;">
+              <iframe id="tsuge-welcome-video-iframe" src="" allow="autoplay; fullscreen" allowfullscreen loading="lazy" title="쯔게 요이치로 공동대표 개회 환영사 영상"></iframe>
+            </div>
             <h4 class="welcome-speech-headline" data-i18n="welcome.tsugeTitle">“‘장(Field)’의 흐름과 한·일 10년의 공명”</h4>
             <div class="welcome-placeholder-box">
               <p class="welcome-p" style="font-weight: 700; color: var(--primary-900);" data-i18n="welcome.tsugeP1">
@@ -4035,6 +4065,25 @@
           return '';
         }
 
+        function formatEmbedVideoUrl(url) {
+          if (!url || typeof url !== 'string') return '';
+          url = url.trim();
+          if (!url) return '';
+          const gDriveMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+          if (gDriveMatch && gDriveMatch[1]) {
+            return `https://drive.google.com/file/d/${gDriveMatch[1]}/preview`;
+          }
+          const gDriveIdMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+          if (gDriveIdMatch && gDriveIdMatch[1] && url.includes('drive.google.com')) {
+            return `https://drive.google.com/file/d/${gDriveIdMatch[1]}/preview`;
+          }
+          const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+          if (ytMatch && ytMatch[1]) {
+            return `https://www.youtube.com/embed/${ytMatch[1]}`;
+          }
+          return url;
+        }
+
         // 1. Park Chul-soo Card
         if (data.park) {
           const p = data.park;
@@ -4042,6 +4091,20 @@
           const speech = getLangStr(p.speech);
           const quote = getLangStr(p.quote);
           const closing = getLangStr(p.closing);
+
+          // Video Embed
+          const parkVideoBox = document.getElementById('park-welcome-video-box');
+          const parkVideoIframe = document.getElementById('park-welcome-video-iframe');
+          if (parkVideoBox && parkVideoIframe) {
+            const vUrl = p.videoUrl ? formatEmbedVideoUrl(p.videoUrl) : '';
+            if (vUrl) {
+              if (parkVideoIframe.src !== vUrl) parkVideoIframe.src = vUrl;
+              parkVideoBox.style.display = 'block';
+            } else {
+              parkVideoBox.style.display = 'none';
+              parkVideoIframe.src = '';
+            }
+          }
 
           const hTitle = document.querySelector('[data-i18n="welcome.parkTitle"]');
           if (hTitle && headline) hTitle.textContent = headline;
@@ -4078,6 +4141,20 @@
           const quote = getLangStr(t.quote);
           const closing = getLangStr(t.closing);
           const isReady = t.status === 'ready' || (speech && speech.trim().length > 20);
+
+          // Video Embed
+          const tsugeVideoBox = document.getElementById('tsuge-welcome-video-box');
+          const tsugeVideoIframe = document.getElementById('tsuge-welcome-video-iframe');
+          if (tsugeVideoBox && tsugeVideoIframe) {
+            const vUrl = t.videoUrl ? formatEmbedVideoUrl(t.videoUrl) : '';
+            if (vUrl) {
+              if (tsugeVideoIframe.src !== vUrl) tsugeVideoIframe.src = vUrl;
+              tsugeVideoBox.style.display = 'block';
+            } else {
+              tsugeVideoBox.style.display = 'none';
+              tsugeVideoIframe.src = '';
+            }
+          }
 
           const hTitle = document.querySelector('[data-i18n="welcome.tsugeTitle"]');
           if (hTitle && headline) hTitle.textContent = headline;
