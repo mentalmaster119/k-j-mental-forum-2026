@@ -631,6 +631,9 @@
         <button class="tab-item active" onclick="switchTab('speakers')">
           <span>👥</span> 발표자 관리 (7인) <span class="tab-badge" id="badge-speaker-count">7</span>
         </button>
+        <button class="tab-item" onclick="switchTab('welcome')">
+          <span>🎙️</span> 환영사 관리 <span class="tab-badge" id="badge-welcome-status" style="background: #eff6ff; color: #1e40af;">2인</span>
+        </button>
         <button class="tab-item" onclick="switchTab('sessions')">
           <span>⏱️</span> 24개 세션 타임테이블 <span class="tab-badge" id="badge-session-count">24</span>
         </button>
@@ -667,6 +670,253 @@
         <div class="tab-save-bar" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 14px rgba(0,0,0,0.04); flex-wrap: wrap; gap: 1rem;">
           <div style="font-size: 0.9rem; color: var(--text-main);">
             <strong style="color: var(--primary);">💾 발표자 정보를 수정하셨나요?</strong><br>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">수정된 내용을 GitHub에 커밋하고 Vercel 라이브 사이트에 즉시 반영합니다.</span>
+          </div>
+          <button type="button" class="btn-nav btn-deploy" onclick="openDeployModal()" style="padding: 0.65rem 1.5rem; font-weight: 700; font-size: 0.95rem;">
+            <span>🚀</span> <span>수정사항 저장 및 배포</span>
+          </button>
+        </div>
+      <!-- TAB: WELCOME REMARKS (양국 공동대표 개회 환영사 관리) -->
+      <section id="tab-welcome" class="tab-content" style="display: none;">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">🎙️ 양국 공동대표 개회 환영사 관리</h2>
+            <p class="section-desc">
+              포럼 메인 페이지(#welcome)에 게재되는 박철수 대표(MCCI)와 쯔게 요이치로 공동대표(Field Flow)의 개회 환영사 본문, 슬로건, 다국어(한국어·일본어·영어) 및 게재 상태를 실시간 편집합니다.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <button type="button" class="btn-sm" onclick="toggleWelcomePreview()" id="btn-toggle-welcome-preview" style="padding: 0.5rem 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <span>👁️</span> <span id="toggle-preview-text">미리보기 접기</span>
+            </button>
+            <button type="button" class="btn-nav btn-deploy" onclick="openDeployModal()" style="padding: 0.5rem 1.1rem; font-size: 0.875rem;">
+              <span>🚀</span> <span>수정사항 저장 및 배포</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Guide Callout -->
+        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+          <span style="font-size: 1.25rem; line-height: 1;">💡</span>
+          <div style="font-size: 0.85rem; color: #166534; line-height: 1.6;">
+            <strong>개회 환영사 실시간 편집 및 배포 가이드:</strong><br>
+            • <strong>🇰🇷 박철수 대표님 환영사</strong>: 현재 문장이 등록되어 공개 중입니다. 수정 즉시 아래 실시간 미리보기에 반영됩니다.<br>
+            • <strong>🇯🇵 쯔게 요이치로 공동대표님 환영사</strong>: 현재 "환영사 준비 중 (Coming Soon)" 상태입니다. 문장이 전달되면 본문 입력창에 붙여넣으신 후 게재 상태를 <strong>[🟢 환영사 등록 완료]</strong>로 변경하세요.<br>
+            • <strong>다국어 편집</strong>: 각 대표별 언어 탭(🇰🇷 한국어 / 🇯🇵 日本語 / 🇺🇸 English)을 클릭하여 해당 언어의 맞춤 문구를 세밀하게 조정할 수 있습니다.<br>
+            • 모든 수정이 완료되면 상단 또는 하단의 <strong>[🚀 수정사항 저장 및 배포]</strong> 버튼을 누르시면 GitHub에 커밋되고 Vercel을 통해 전 세계 웹사이트에 즉시 배포됩니다.
+          </div>
+        </div>
+
+        <!-- 2-Column Editor Grid -->
+        <div class="form-grid-2" style="margin-bottom: 2rem;">
+          <!-- Card 1: Park Chul-soo -->
+          <div class="card" style="border-left: 4px solid #2563eb;">
+            <div class="card-header" style="background: #eff6ff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="assets/images/speaker-park.jpg" alt="박철수 대표" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #2563eb;">
+                <div>
+                  <div style="font-weight: 800; color: #1e40af; font-size: 1rem;">🇰🇷 박철수 대표 (MCCI)</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">국제멘탈코칭센터 대표 · 한국코치협회 수석부회장</div>
+                </div>
+              </div>
+              <span class="badge-preview" style="background: #dcfce7; color: #166534; font-weight: 700;">🟢 등록 완료 (공개 중)</span>
+            </div>
+
+            <div class="card-body">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+                <label class="form-label" style="margin: 0; font-weight: 700;">편집 언어 선택:</label>
+                <div class="lang-pill-wrap" style="margin: 0;">
+                  <button type="button" class="lang-pill active" id="pill-park-ko" onclick="switchWelcomeTab('park', 'ko')">🇰🇷 한국어 (기본)</button>
+                  <button type="button" class="lang-pill" id="pill-park-ja" onclick="switchWelcomeTab('park', 'ja')">🇯🇵 日本語 번역</button>
+                  <button type="button" class="lang-pill" id="pill-park-en" onclick="switchWelcomeTab('park', 'en')">🇺🇸 English 번역</button>
+                </div>
+              </div>
+
+              <!-- Park KO Pane -->
+              <div id="pane-park-ko">
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 헤드라인 (한국어)</label>
+                  <input type="text" id="admin-park-headline-ko" class="form-control" oninput="handleWelcomeInput()">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 본문 전문 (한국어, 문단 구분은 엔터 2번)</label>
+                  <textarea id="admin-park-speech-ko" class="form-control" rows="11" style="line-height: 1.6; font-size: 0.875rem;" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">✨ 슬로건 / 핵심 인용구 (한국어)</label>
+                  <textarea id="admin-park-quote-ko" class="form-control" rows="3" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">개회 선언 / 맺음말 (한국어)</label>
+                  <textarea id="admin-park-closing-ko" class="form-control" rows="2" oninput="handleWelcomeInput()"></textarea>
+                </div>
+              </div>
+
+              <!-- Park JA Pane -->
+              <div id="pane-park-ja" style="display: none;">
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 헤드라인 (日本語)</label>
+                  <input type="text" id="admin-park-headline-ja" class="form-control" oninput="handleWelcomeInput()">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 본문 번역 (日本語)</label>
+                  <textarea id="admin-park-speech-ja" class="form-control" rows="11" style="line-height: 1.6; font-size: 0.875rem;" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">✨ 슬로건 / 핵심 인용구 (日本語)</label>
+                  <textarea id="admin-park-quote-ja" class="form-control" rows="3" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">개회 선언 / 맺음말 (日本語)</label>
+                  <textarea id="admin-park-closing-ja" class="form-control" rows="2" oninput="handleWelcomeInput()"></textarea>
+                </div>
+              </div>
+
+              <!-- Park EN Pane -->
+              <div id="pane-park-en" style="display: none;">
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 헤드라인 (English)</label>
+                  <input type="text" id="admin-park-headline-en" class="form-control" oninput="handleWelcomeInput()">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 본문 번역 (English)</label>
+                  <textarea id="admin-park-speech-en" class="form-control" rows="11" style="line-height: 1.6; font-size: 0.875rem;" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">✨ 슬로건 / 핵심 인용구 (English)</label>
+                  <textarea id="admin-park-quote-en" class="form-control" rows="3" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">개회 선언 / 맺음말 (English)</label>
+                  <textarea id="admin-park-closing-en" class="form-control" rows="2" oninput="handleWelcomeInput()"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Tsuge Yoichiro -->
+          <div class="card" style="border-left: 4px solid #0d9488;">
+            <div class="card-header" style="background: #f0fdfa; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="assets/images/speaker-tsuge.png" alt="쯔게 요이치로 공동대표" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #0d9488;">
+                <div>
+                  <div style="font-weight: 800; color: #0f766e; font-size: 1rem;">🇯🇵 쯔게 요이치로 공동대표 (Field Flow)</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Field Flow 공동대표 · 스포츠 멘탈코칭 선구자</div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <label style="font-size: 0.78rem; font-weight: 700; color: #0f766e;">게재 상태:</label>
+                <select id="admin-tsuge-status" class="form-control" style="width: auto; padding: 0.3rem 0.6rem; font-size: 0.8rem; font-weight: 700; border-color: #99f6e4;" onchange="handleTsugeStatusChange(this.value)">
+                  <option value="coming_soon">⏳ 환영사 준비 중 (Coming Soon)</option>
+                  <option value="ready">🟢 환영사 등록 완료 (공식 환영사 노출)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div style="background: #fffbeb; border: 1px solid #fef3c7; border-radius: 6px; padding: 0.65rem 0.85rem; font-size: 0.8rem; color: #92400e; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span>📋</span>
+                <span><strong>환영사 도착 시 안내</strong>: 아래 일본어(원문) 또는 한국어 탭에 환영사를 붙여넣고 상단 게재 상태를 [🟢 환영사 등록 완료]로 변경하세요.</span>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+                <label class="form-label" style="margin: 0; font-weight: 700;">편집 언어 선택:</label>
+                <div class="lang-pill-wrap" style="margin: 0;">
+                  <button type="button" class="lang-pill active" id="pill-tsuge-ja" onclick="switchWelcomeTab('tsuge', 'ja')">🇯🇵 日本語 (원문)</button>
+                  <button type="button" class="lang-pill" id="pill-tsuge-ko" onclick="switchWelcomeTab('tsuge', 'ko')">🇰🇷 한국어 번역</button>
+                  <button type="button" class="lang-pill" id="pill-tsuge-en" onclick="switchWelcomeTab('tsuge', 'en')">🇺🇸 English 번역</button>
+                </div>
+              </div>
+
+              <!-- Tsuge JA Pane -->
+              <div id="pane-tsuge-ja">
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 헤드라인 (日本語)</label>
+                  <input type="text" id="admin-tsuge-headline-ja" class="form-control" oninput="handleWelcomeInput()">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 본문 (日本語 원문 입력창)</label>
+                  <textarea id="admin-tsuge-speech-ja" class="form-control" rows="11" placeholder="쯔게 코치님의 일본어 환영사 본문을 이곳에 붙여넣으세요..." style="line-height: 1.6; font-size: 0.875rem;" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">🌱 슬로건 / 핵심 인용구 (日本語)</label>
+                  <textarea id="admin-tsuge-quote-ja" class="form-control" rows="3" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">맺음말 (日本語)</label>
+                  <textarea id="admin-tsuge-closing-ja" class="form-control" rows="2" oninput="handleWelcomeInput()"></textarea>
+                </div>
+              </div>
+
+              <!-- Tsuge KO Pane -->
+              <div id="pane-tsuge-ko" style="display: none;">
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 헤드라인 (한국어)</label>
+                  <input type="text" id="admin-tsuge-headline-ko" class="form-control" oninput="handleWelcomeInput()">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 본문 번역 (한국어)</label>
+                  <textarea id="admin-tsuge-speech-ko" class="form-control" rows="11" placeholder="쯔게 코치님의 환영사 한국어 번역문을 입력하세요..." style="line-height: 1.6; font-size: 0.875rem;" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">🌱 슬로건 / 핵심 인용구 (한국어)</label>
+                  <textarea id="admin-tsuge-quote-ko" class="form-control" rows="3" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">맺음말 (한국어)</label>
+                  <textarea id="admin-tsuge-closing-ko" class="form-control" rows="2" oninput="handleWelcomeInput()"></textarea>
+                </div>
+              </div>
+
+              <!-- Tsuge EN Pane -->
+              <div id="pane-tsuge-en" style="display: none;">
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 헤드라인 (English)</label>
+                  <input type="text" id="admin-tsuge-headline-en" class="form-control" oninput="handleWelcomeInput()">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 본문 번역 (English)</label>
+                  <textarea id="admin-tsuge-speech-en" class="form-control" rows="11" placeholder="English translation..." style="line-height: 1.6; font-size: 0.875rem;" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">🌱 슬로건 / 핵심 인용구 (English)</label>
+                  <textarea id="admin-tsuge-quote-en" class="form-control" rows="3" oninput="handleWelcomeInput()"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">맺음말 (English)</label>
+                  <textarea id="admin-tsuge-closing-en" class="form-control" rows="2" oninput="handleWelcomeInput()"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Live Preview Box -->
+        <div id="welcome-live-preview-box" class="card" style="margin-bottom: 2rem; border-top: 4px solid var(--primary-accent);">
+          <div class="card-header" style="background: #f8fafc; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <span class="card-header-title">
+              <span>👁️</span> 실제 홈페이지 노출 실시간 미리보기 (Live Preview)
+            </span>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">언어별 미리보기:</span>
+              <div class="lang-pill-wrap" style="margin: 0;">
+                <button type="button" class="lang-pill active" id="preview-lang-ko" onclick="setWelcomePreviewLang('ko')">🇰🇷 한국어</button>
+                <button type="button" class="lang-pill" id="preview-lang-ja" onclick="setWelcomePreviewLang('ja')">🇯🇵 日本語</button>
+                <button type="button" class="lang-pill" id="preview-lang-en" onclick="setWelcomePreviewLang('en')">🇺🇸 English</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" style="background: #f1f5f9; padding: 1.5rem;">
+            <div id="welcome-preview-cards-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+              <!-- Dynamically populated by updateWelcomeLivePreview() -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Save Bar -->
+        <div class="tab-save-bar" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 14px rgba(0,0,0,0.04); flex-wrap: wrap; gap: 1rem;">
+          <div style="font-size: 0.9rem; color: var(--text-main);">
+            <strong style="color: var(--primary);">💾 환영사를 수정하셨나요?</strong><br>
             <span style="font-size: 0.8rem; color: var(--text-muted);">수정된 내용을 GitHub에 커밋하고 Vercel 라이브 사이트에 즉시 반영합니다.</span>
           </div>
           <button type="button" class="btn-nav btn-deploy" onclick="openDeployModal()" style="padding: 0.65rem 1.5rem; font-weight: 700; font-size: 0.95rem;">
@@ -804,82 +1054,20 @@
           </div>
         </div>
 
-        <!-- Welcome Remarks Management Card -->
-        <div class="card" style="margin-bottom: 1.5rem; border-left: 4px solid #2563eb;">
-          <div class="card-header" style="background: #eff6ff;">
-            <span class="card-header-title" style="color: #1e40af;">
-              <span>🎙️</span> 양국 공동대표 개회 환영사 관리 (박철수 대표 / 쯔게 요이치로 공동대표)
-            </span>
-          </div>
-          <div class="card-body">
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-              홈페이지 메인 포럼 소개 직후에 노출되는 박철수 대표(MCCI)와 쯔게 요이치로 공동대표(Field Flow)의 환영인사를 관리합니다. 쯔게 대표님의 환영사가 준비되면 이곳에 입력 후 저장하시면 됩니다.
-            </p>
-            <div class="form-grid-2">
-              <!-- Park Chul-soo -->
-              <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem;">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-                  <img src="assets/images/speaker-park.jpg" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
-                  <div>
-                    <strong style="color: var(--primary);">🇰🇷 박철수 대표 (MCCI)</strong>
-                    <div style="font-size: 0.75rem; color: var(--success); font-weight: 700;">✓ 환영사 등록 완료</div>
-                  </div>
-                </div>
-                <div class="form-group" style="margin-bottom: 0.75rem;">
-                  <label class="form-label">환영사 헤드라인</label>
-                  <input type="text" id="admin-welcome-park-title" class="form-control" value="“함께 배우고, 함께 생각하며, 함께 진화해 갑시다”" oninput="markUnsavedChanges()">
-                </div>
-                <div class="form-group" style="margin-bottom: 0;">
-                  <label class="form-label">환영사 본문 (한국어)</label>
-                  <textarea id="admin-welcome-park-body" class="form-control" rows="8" oninput="markUnsavedChanges()">여러분, 안녕하십니까.
-
-제3회 한일 국제 멘탈코칭 포럼에 함께해 주셔서 진심으로 감사드립니다.
-
-멘탈코칭의 미래를 함께 고민하는 한국과 일본의 코치, 전문가, 그리고 참가자 여러분을 이곳 요코하마에서 뵙게 되어 정말 기쁩니다.
-
-우리는 저마다 다른 경험과 문화, 그리고 다른 코칭 방식을 가지고 있습니다.
-하지만 한 사람이 더 자기답게 살아가고, 더 나은 선택을 하며, 자신의 가능성을 마음껏 펼치도록 돕고 싶은 마음만큼은 같을 것입니다.
-
-오늘 이 자리는 누군가 정답을 알려 주는 자리가 아닙니다.
-서로의 경험에 귀 기울이고, 차이를 존중하며, 함께 묻고, 함께 배우고, 함께 성장하는 자리입니다.
-
-AI의 발전으로 사회도, 코칭의 모습도 빠르게 바뀌고 있습니다.
-그래서 지금 우리는 다시 물어야 합니다.
-사람을 깊이 이해한다는 것은 무엇인지,
-사람과 사람 사이의 연결은 왜 소중한지,
-그리고 한 사람이 더 나은 선택을 하도록 돕는다는 것은 어떤 의미인지.
-
-오늘의 만남과 대화가 한국과 일본 코칭의 내일을 잇는 다리가 되고, 여러분 한 분 한 분에게 새로운 통찰과 실천으로 이어지기를 바랍니다.
-
-함께 배우고,
-함께 생각하며,
-함께 진화해 갑시다.
-
-오늘 하루, 잘 부탁드립니다.
-
-이것으로 제3회 한일 국제 멘탈코칭 포럼의 개회를 선언합니다.</textarea>
-                </div>
+        <!-- Welcome Remarks Shortcut Banner -->
+        <div class="card" style="margin-bottom: 1.5rem; background: #eff6ff; border: 1px solid #bfdbfe; border-left: 4px solid #2563eb;">
+          <div class="card-body" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1.25rem 1.5rem;">
+            <div>
+              <div style="font-weight: 700; color: #1e40af; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                <span>🎙️</span> <span>양국 공동대표 개회 환영사 전용 관리 탭</span>
               </div>
-
-              <!-- Tsuge Yoichiro -->
-              <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem;">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-                  <img src="assets/images/speaker-tsuge.png" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
-                  <div>
-                    <strong style="color: var(--primary);">🇯🇵 쯔게 요이치로 공동대표 (Field Flow)</strong>
-                    <div style="font-size: 0.75rem; color: #d97706; font-weight: 700;" id="admin-tsuge-status-label">⏳ 환영사 준비 중 (텍스트 입력 대기)</div>
-                  </div>
-                </div>
-                <div class="form-group" style="margin-bottom: 0.75rem;">
-                  <label class="form-label">환영사 헤드라인</label>
-                  <input type="text" id="admin-welcome-tsuge-title" class="form-control" value="“‘장(Field)’의 흐름과 한·일 10년의 공명”" placeholder="헤드라인 입력" oninput="markUnsavedChanges()">
-                </div>
-                <div class="form-group" style="margin-bottom: 0;">
-                  <label class="form-label">환영사 본문 (도착 시 여기에 붙여넣기)</label>
-                  <textarea id="admin-welcome-tsuge-body" class="form-control" rows="8" placeholder="쯔게 코치님의 환영사가 도착하면 이곳에 붙여넣고 [수정사항 저장 및 배포]를 누르시면 됩니다." oninput="markUnsavedChanges()"></textarea>
-                </div>
-              </div>
+              <p style="font-size: 0.85rem; color: #1e40af; margin: 0;">
+                박철수 대표 및 쯔게 요이치로 공동대표의 환영사, 다국어(한국어·일본어·영어) 번역, 실시간 미리보기는 상단 전용 탭에서 관리하실 수 있습니다.
+              </p>
             </div>
+            <button type="button" class="btn-sm" onclick="switchTab('welcome')" style="background: #2563eb; color: #ffffff; border: none; font-weight: 700; padding: 0.55rem 1.15rem; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <span>🎙️</span> <span>환영사 관리 탭으로 이동 →</span>
+            </button>
           </div>
         </div>
 
@@ -1242,6 +1430,7 @@ function doGet(e) {
       }
 
       renderSpeakersEditor();
+      renderWelcomeEditor();
       renderSessionsEditor();
       renderMaterialsEditor();
       renderGuidesEditor();
@@ -1759,24 +1948,249 @@ function doGet(e) {
         address: document.getElementById('contact-jp-address').value
       };
 
+      syncWelcomeBack();
+    }
+
+    // -------------------------------------------------------------
+    // WELCOME REMARKS DEDICATED EDITOR & LIVE PREVIEW
+    // -------------------------------------------------------------
+    let ACTIVE_WELCOME_LANG = { park: 'ko', tsuge: 'ja' };
+    let WELCOME_PREVIEW_LANG = 'ko';
+
+    function getFieldLang(field, lang) {
+      if (!field) return '';
+      if (typeof field === 'string') return field;
+      if (typeof field === 'object') return field[lang] || field.ko || field.ja || field.en || '';
+      return '';
+    }
+
+    function renderWelcomeEditor() {
+      if (!FORUM_DATA.welcomeRemarks) {
+        FORUM_DATA.welcomeRemarks = { park: {}, tsuge: {} };
+      }
+      const w = FORUM_DATA.welcomeRemarks;
+      const park = w.park || {};
+      const tsuge = w.tsuge || {};
+
+      // Park Chul-soo fields
+      ['ko', 'ja', 'en'].forEach(lang => {
+        const headlineEl = document.getElementById(`admin-park-headline-${lang}`);
+        const speechEl = document.getElementById(`admin-park-speech-${lang}`);
+        const quoteEl = document.getElementById(`admin-park-quote-${lang}`);
+        const closingEl = document.getElementById(`admin-park-closing-${lang}`);
+
+        if (headlineEl) headlineEl.value = getFieldLang(park.headline, lang);
+        if (speechEl) speechEl.value = getFieldLang(park.speech, lang);
+        if (quoteEl) quoteEl.value = getFieldLang(park.quote, lang);
+        if (closingEl) closingEl.value = getFieldLang(park.closing, lang);
+      });
+
+      // Tsuge Yoichiro fields
+      ['ja', 'ko', 'en'].forEach(lang => {
+        const headlineEl = document.getElementById(`admin-tsuge-headline-${lang}`);
+        const speechEl = document.getElementById(`admin-tsuge-speech-${lang}`);
+        const quoteEl = document.getElementById(`admin-tsuge-quote-${lang}`);
+        const closingEl = document.getElementById(`admin-tsuge-closing-${lang}`);
+
+        if (headlineEl) headlineEl.value = getFieldLang(tsuge.headline, lang);
+        if (speechEl) speechEl.value = getFieldLang(tsuge.speech, lang);
+        if (quoteEl) quoteEl.value = getFieldLang(tsuge.quote, lang);
+        if (closingEl) closingEl.value = getFieldLang(tsuge.closing, lang);
+      });
+
+      // Tsuge status selector
+      const statusSelect = document.getElementById('admin-tsuge-status');
+      if (statusSelect) {
+        statusSelect.value = tsuge.status || 'coming_soon';
+      }
+
+      updateWelcomeLivePreview(WELCOME_PREVIEW_LANG);
+    }
+
+    function switchWelcomeTab(speaker, lang) {
+      ACTIVE_WELCOME_LANG[speaker] = lang;
+      ['ko', 'ja', 'en'].forEach(l => {
+        const pill = document.getElementById(`pill-${speaker}-${l}`);
+        if (pill) pill.classList.toggle('active', l === lang);
+        const pane = document.getElementById(`pane-${speaker}-${l}`);
+        if (pane) pane.style.display = (l === lang) ? 'block' : 'none';
+      });
+    }
+
+    function handleTsugeStatusChange(status) {
       if (!FORUM_DATA.welcomeRemarks) FORUM_DATA.welcomeRemarks = { park: {}, tsuge: {} };
-      const parkTitleEl = document.getElementById('admin-welcome-park-title');
-      const parkBodyEl = document.getElementById('admin-welcome-park-body');
-      const tsugeTitleEl = document.getElementById('admin-welcome-tsuge-title');
-      const tsugeBodyEl = document.getElementById('admin-welcome-tsuge-body');
-      if (parkTitleEl && parkBodyEl) {
-        if (!FORUM_DATA.welcomeRemarks.park) FORUM_DATA.welcomeRemarks.park = {};
-        FORUM_DATA.welcomeRemarks.park.headline = parkTitleEl.value;
-        FORUM_DATA.welcomeRemarks.park.speech = parkBodyEl.value;
+      if (!FORUM_DATA.welcomeRemarks.tsuge) FORUM_DATA.welcomeRemarks.tsuge = {};
+      FORUM_DATA.welcomeRemarks.tsuge.status = status;
+      syncWelcomeBack();
+      markUnsavedChanges();
+      updateWelcomeLivePreview(WELCOME_PREVIEW_LANG);
+      showToast(status === 'ready' ? '쯔게 코치 환영사가 [등록 완료] 상태로 변경되었습니다.' : '쯔게 코치 환영사가 [준비 중] 상태로 변경되었습니다.', 'ℹ️');
+    }
+
+    function handleWelcomeInput() {
+      syncWelcomeBack();
+      markUnsavedChanges();
+      updateWelcomeLivePreview(WELCOME_PREVIEW_LANG);
+    }
+
+    function syncWelcomeBack() {
+      if (!FORUM_DATA.welcomeRemarks) FORUM_DATA.welcomeRemarks = { park: {}, tsuge: {} };
+      const w = FORUM_DATA.welcomeRemarks;
+      if (!w.park) w.park = {};
+      if (!w.tsuge) w.tsuge = {};
+
+      if (!w.park.headline || typeof w.park.headline !== 'object') w.park.headline = {};
+      if (!w.park.speech || typeof w.park.speech !== 'object') w.park.speech = {};
+      if (!w.park.quote || typeof w.park.quote !== 'object') w.park.quote = {};
+      if (!w.park.closing || typeof w.park.closing !== 'object') w.park.closing = {};
+
+      ['ko', 'ja', 'en'].forEach(l => {
+        const h = document.getElementById(`admin-park-headline-${l}`);
+        const s = document.getElementById(`admin-park-speech-${l}`);
+        const q = document.getElementById(`admin-park-quote-${l}`);
+        const c = document.getElementById(`admin-park-closing-${l}`);
+        if (h) w.park.headline[l] = h.value;
+        if (s) w.park.speech[l] = s.value;
+        if (q) w.park.quote[l] = q.value;
+        if (c) w.park.closing[l] = c.value;
+      });
+
+      if (!w.tsuge.headline || typeof w.tsuge.headline !== 'object') w.tsuge.headline = {};
+      if (!w.tsuge.speech || typeof w.tsuge.speech !== 'object') w.tsuge.speech = {};
+      if (!w.tsuge.quote || typeof w.tsuge.quote !== 'object') w.tsuge.quote = {};
+      if (!w.tsuge.closing || typeof w.tsuge.closing !== 'object') w.tsuge.closing = {};
+
+      ['ja', 'ko', 'en'].forEach(l => {
+        const h = document.getElementById(`admin-tsuge-headline-${l}`);
+        const s = document.getElementById(`admin-tsuge-speech-${l}`);
+        const q = document.getElementById(`admin-tsuge-quote-${l}`);
+        const c = document.getElementById(`admin-tsuge-closing-${l}`);
+        if (h) w.tsuge.headline[l] = h.value;
+        if (s) w.tsuge.speech[l] = s.value;
+        if (q) w.tsuge.quote[l] = q.value;
+        if (c) w.tsuge.closing[l] = c.value;
+      });
+
+      const statusSelect = document.getElementById('admin-tsuge-status');
+      if (statusSelect) {
+        w.tsuge.status = statusSelect.value;
       }
-      if (tsugeTitleEl && tsugeBodyEl) {
-        if (!FORUM_DATA.welcomeRemarks.tsuge) FORUM_DATA.welcomeRemarks.tsuge = {};
-        FORUM_DATA.welcomeRemarks.tsuge.headline = tsugeTitleEl.value;
-        FORUM_DATA.welcomeRemarks.tsuge.speech = tsugeBodyEl.value;
-        if (tsugeBodyEl.value.trim()) {
-          FORUM_DATA.welcomeRemarks.tsuge.status = 'ready';
-        }
+    }
+
+    function setWelcomePreviewLang(lang) {
+      WELCOME_PREVIEW_LANG = lang;
+      ['ko', 'ja', 'en'].forEach(l => {
+        const btn = document.getElementById(`preview-lang-${l}`);
+        if (btn) btn.classList.toggle('active', l === lang);
+      });
+      updateWelcomeLivePreview(lang);
+    }
+
+    function toggleWelcomePreview() {
+      const box = document.getElementById('welcome-live-preview-box');
+      const text = document.getElementById('toggle-preview-text');
+      if (!box) return;
+      if (box.style.display === 'none') {
+        box.style.display = 'block';
+        if (text) text.textContent = '미리보기 접기';
+      } else {
+        box.style.display = 'none';
+        if (text) text.textContent = '실시간 미리보기';
       }
+    }
+
+    function updateWelcomeLivePreview(lang) {
+      const container = document.getElementById('welcome-preview-cards-container');
+      if (!container) return;
+
+      const w = FORUM_DATA.welcomeRemarks || {};
+      const park = w.park || {};
+      const tsuge = w.tsuge || {};
+
+      const parkHeadline = getFieldLang(park.headline, lang) || '“함께 배우고, 함께 생각하며, 함께 진화해 갑시다”';
+      const parkSpeech = getFieldLang(park.speech, lang) || '';
+      const parkQuote = getFieldLang(park.quote, lang) || '함께 배우고,\n함께 생각하며,\n함께 진화해 갑시다.';
+      const parkClosing = getFieldLang(park.closing, lang) || '오늘 하루, 잘 부탁드립니다.\n\n이것으로 제3회 한일 국제 멘탈코칭 포럼의 개회를 선언합니다.';
+
+      const tsugeHeadline = getFieldLang(tsuge.headline, lang) || '“‘장(Field)’의 흐름과 한·일 10년의 공명”';
+      const tsugeSpeech = getFieldLang(tsuge.speech, lang) || '';
+      const tsugeQuote = getFieldLang(tsuge.quote, lang) || '보이지 않는 공기와 흐름을 읽고,\n서로를 깊이 신뢰하며 새로운 장을 엽니다.';
+      const tsugeClosing = getFieldLang(tsuge.closing, lang) || 'Field Flow 일본 참가단과 함께 여러분을 환영합니다.';
+      const isTsugeReady = tsuge.status === 'ready' || (tsugeSpeech && tsugeSpeech.trim().length > 20);
+
+      const parkParagraphs = parkSpeech.split(/\n\n+/).filter(Boolean);
+      const tsugeParagraphs = tsugeSpeech.split(/\n\n+/).filter(Boolean);
+
+      container.innerHTML = `
+        <!-- Card 1: Park Preview -->
+        <article style="background: #ffffff; border-radius: 16px; border: 1px solid #bfdbfe; box-shadow: 0 4px 16px rgba(37,99,235,0.08); overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 1.25rem 1.5rem; background: #eff6ff; border-bottom: 1px solid #dbeafe; display: flex; align-items: center; gap: 1rem;">
+            <img src="assets/images/speaker-park.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #2563eb;">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.2rem 0.5rem; border-radius: 12px;">🇰🇷 대한민국 대표</span>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0 0.1rem;">박 철 수</h3>
+              <p style="font-size: 0.78rem; color: #64748b; margin: 0;">국제멘탈코칭센터 (MCCI) 대표 · 한국코치협회 수석부회장</p>
+            </div>
+          </div>
+          <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.885rem; line-height: 1.7; color: #334155;">
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: #1e3a8a; margin: 0 0 0.5rem; border-left: 3px solid #2563eb; padding-left: 0.65rem;">
+              ${escapeHtml(parkHeadline)}
+            </h4>
+            ${parkParagraphs.map(p => `<p style="margin: 0; white-space: pre-line;">${escapeHtml(p)}</p>`).join('')}
+            <div style="border-left: 3px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 6px; font-weight: 700; color: #92400e; white-space: pre-line; margin: 0.5rem 0;">
+              <span style="font-size: 1.1rem; display: block; margin-bottom: 0.25rem;">✨</span>
+              ${escapeHtml(parkQuote)}
+            </div>
+            <div style="background: #f8fafc; border: 1px dashed #cbd5e1; padding: 0.85rem 1rem; border-radius: 6px; font-weight: 600; color: #1e293b; white-space: pre-line;">
+              ${escapeHtml(parkClosing)}
+            </div>
+          </div>
+          <div style="padding: 0.85rem 1.5rem; background: #f8fafc; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; font-size: 0.78rem; color: #64748b;">
+            <span>MCCI</span>
+            <span>국제멘탈코칭센터 (MCCI) 대표 박철수</span>
+          </div>
+        </article>
+
+        <!-- Card 2: Tsuge Preview -->
+        <article style="background: #ffffff; border-radius: 16px; border: 1px solid ${isTsugeReady ? '#a7f3d0' : '#fed7aa'}; box-shadow: 0 4px 16px rgba(13,148,136,0.08); overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 1.25rem 1.5rem; background: ${isTsugeReady ? '#f0fdf4' : '#fff7ed'}; border-bottom: 1px solid ${isTsugeReady ? '#bbf7d0' : '#ffedd5'}; display: flex; align-items: center; gap: 1rem;">
+            <img src="assets/images/speaker-tsuge.png" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #0d9488;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
+                <span style="font-size: 0.72rem; font-weight: 700; color: #065f46; background: #ccfbf1; padding: 0.2rem 0.5rem; border-radius: 12px;">🇯🇵 일본 공동대표</span>
+                <span style="font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 12px; background: ${isTsugeReady ? '#dcfce7' : '#fee2e2'}; color: ${isTsugeReady ? '#166534' : '#b91c1c'};">
+                  ${isTsugeReady ? '🟢 공식 환영사 공개 중' : '⏳ 환영사 준비 중 (Coming Soon)'}
+                </span>
+              </div>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0 0.1rem;">쯔게 요이치로 (柘植 陽一郎)</h3>
+              <p style="font-size: 0.78rem; color: #64748b; margin: 0;">Field Flow 공동대표 · 스포츠 멘탈코칭 선구자</p>
+            </div>
+          </div>
+          <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.885rem; line-height: 1.7; color: #334155;">
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: #0f766e; margin: 0 0 0.5rem; border-left: 3px solid #0d9488; padding-left: 0.65rem;">
+              ${escapeHtml(tsugeHeadline)}
+            </h4>
+            ${!isTsugeReady ? `
+              <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 1.15rem; color: #475569;">
+                <p style="font-weight: 700; color: #0f172a; margin: 0 0 0.4rem;">Field Flow 쯔게 요이치로 공동대표의 공식 환영사가 곧 공개될 예정입니다.</p>
+                <p style="margin: 0 0 0.4rem; font-size: 0.85rem;">지난 10년간 대한민국 MCCI와 일본 Field Flow가 현장에서 함께 일궈온 '장(Field)'의 흐름과 상호 신뢰의 여정, 그리고 앞으로 펼쳐질 한·일 멘탈코칭의 새로운 비전을 담은 메시지가 준비되고 있습니다.</p>
+                <p style="margin: 0; font-size: 0.8rem; color: #64748b;">양국 코치들의 따뜻한 연대와 요코하마 개최 축하 메시지가 도착하는 즉시 이곳에 공개됩니다.</p>
+              </div>
+            ` : tsugeParagraphs.map(p => `<p style="margin: 0; white-space: pre-line;">${escapeHtml(p)}</p>`).join('')}
+            <div style="border-left: 3px solid #0d9488; background: #f0fdfa; padding: 0.85rem 1rem; border-radius: 6px; font-weight: 700; color: #0f766e; white-space: pre-line; margin: 0.5rem 0;">
+              <span style="font-size: 1.1rem; display: block; margin-bottom: 0.25rem;">🌱</span>
+              ${escapeHtml(tsugeQuote)}
+            </div>
+            <div style="font-weight: 500; color: #64748b; white-space: pre-line;">
+              ${escapeHtml(tsugeClosing)}
+            </div>
+          </div>
+          <div style="padding: 0.85rem 1.5rem; background: #f8fafc; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; font-size: 0.78rem; color: #64748b;">
+            <span>Field Flow Japan</span>
+            <span>Field Flow 공동대표 쯔게 요이치로</span>
+          </div>
+        </article>
+      `;
     }
 
     let hasUnsavedChanges = false;
@@ -1791,6 +2205,7 @@ function doGet(e) {
     // 8. Deployment Flow (GitHub API Direct Commits)
     function openDeployModal() {
       syncContactsBack();
+      syncWelcomeBack();
       
       const resultBox = document.getElementById('deploy-result-box');
       const actionBox = document.getElementById('deploy-action-buttons');
@@ -2285,7 +2700,8 @@ function doGet(e) {
         sessions: [],
         materials: [],
         guides: [],
-        contacts: { korea: {}, japan: {} }
+        contacts: { korea: {}, japan: {} },
+        welcomeRemarks: { park: {}, tsuge: {} }
       };
     }
   </script>

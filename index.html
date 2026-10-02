@@ -3564,6 +3564,101 @@
         }
       }
 
+      function renderWelcomeRemarks(data, lang) {
+        if (!data) return;
+        lang = lang || currentLang || 'ko';
+
+        function getLangStr(f) {
+          if (!f) return '';
+          if (typeof f === 'string') return f;
+          if (typeof f === 'object') return f[lang] || f.ko || f.ja || f.en || '';
+          return '';
+        }
+
+        // 1. Park Chul-soo Card
+        if (data.park) {
+          const p = data.park;
+          const headline = getLangStr(p.headline);
+          const speech = getLangStr(p.speech);
+          const quote = getLangStr(p.quote);
+          const closing = getLangStr(p.closing);
+
+          const hTitle = document.querySelector('[data-i18n="welcome.parkTitle"]');
+          if (hTitle && headline) hTitle.textContent = headline;
+
+          const qEl = document.querySelector('[data-i18n="welcome.parkQuote"]');
+          if (qEl && quote) qEl.textContent = quote;
+
+          const cEl = document.querySelector('[data-i18n="welcome.parkClosing"]');
+          if (cEl && closing) cEl.textContent = closing;
+
+          if (speech) {
+            const paragraphs = speech.split(/\n\n+/).filter(Boolean);
+            const cardBody = document.querySelector('.welcome-card-kr .welcome-body');
+            if (cardBody && paragraphs.length > 0) {
+              const existingPs = cardBody.querySelectorAll(':scope > p.welcome-p');
+              existingPs.forEach(el => el.remove());
+              const quoteBox = cardBody.querySelector('.welcome-quote-highlight');
+              paragraphs.forEach(pText => {
+                const pEl = document.createElement('p');
+                pEl.className = 'welcome-p';
+                pEl.style.whiteSpace = 'pre-line';
+                pEl.textContent = pText.trim();
+                cardBody.insertBefore(pEl, quoteBox);
+              });
+            }
+          }
+        }
+
+        // 2. Tsuge Yoichiro Card
+        if (data.tsuge) {
+          const t = data.tsuge;
+          const headline = getLangStr(t.headline);
+          const speech = getLangStr(t.speech);
+          const quote = getLangStr(t.quote);
+          const closing = getLangStr(t.closing);
+          const isReady = t.status === 'ready' || (speech && speech.trim().length > 20);
+
+          const hTitle = document.querySelector('[data-i18n="welcome.tsugeTitle"]');
+          if (hTitle && headline) hTitle.textContent = headline;
+
+          const qEl = document.querySelector('[data-i18n="welcome.tsugeQuote"]');
+          if (qEl && quote) qEl.textContent = quote;
+
+          const cEl = document.querySelector('.welcome-card-jp [data-i18n="welcome.tsugeClosing"]');
+          if (cEl && closing) cEl.textContent = closing;
+
+          const badgeEl = document.querySelector('[data-i18n="welcome.tsugeComingSoonBadge"]');
+          const tsugeBody = document.querySelector('.welcome-card-jp .welcome-body');
+
+          if (isReady && tsugeBody) {
+            if (badgeEl) {
+              badgeEl.className = 'welcome-status-badge';
+              badgeEl.style.background = '#dcfce7';
+              badgeEl.style.color = '#166534';
+              badgeEl.style.borderColor = '#bbf7d0';
+              badgeEl.textContent = lang === 'ja' ? '公式ご挨拶' : (lang === 'en' ? 'Official Welcome Remarks' : '공식 환영사');
+            }
+            const placeholder = tsugeBody.querySelector('.welcome-placeholder-box');
+            if (placeholder) placeholder.remove();
+
+            tsugeBody.querySelectorAll(':scope > p.welcome-p').forEach(el => el.remove());
+
+            if (speech) {
+              const paragraphs = speech.split(/\n\n+/).filter(Boolean);
+              const quoteBox = tsugeBody.querySelector('.welcome-quote-highlight');
+              paragraphs.forEach(pText => {
+                const pEl = document.createElement('p');
+                pEl.className = 'welcome-p';
+                pEl.style.whiteSpace = 'pre-line';
+                pEl.textContent = pText.trim();
+                tsugeBody.insertBefore(pEl, quoteBox);
+              });
+            }
+          }
+        }
+      }
+
       function setLanguage(lang) {
         currentLang = lang;
         langButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
@@ -3580,6 +3675,9 @@
         renderMaterials(lang);
         renderGuides(lang);
         renderContacts(lang);
+        if (typeof renderWelcomeRemarks === 'function' && window.REMOTE_WELCOME_DATA) {
+          renderWelcomeRemarks(window.REMOTE_WELCOME_DATA, lang);
+        }
         if (typeof renderAttendees === 'function') renderAttendees(lang);
 
         const attendeeInput = document.getElementById('attendee-search-input');
@@ -6238,6 +6336,10 @@ Evolve together`
                 CONTACTS_DATA.japan = remote.contacts.japan;
               }
               renderContacts(currentLang);
+            }
+            if (remote.welcomeRemarks) {
+              window.REMOTE_WELCOME_DATA = remote.welcomeRemarks;
+              renderWelcomeRemarks(window.REMOTE_WELCOME_DATA, currentLang);
             }
             if (remote.heroVisual && remote.heroVisual.url) {
               const heroImg = document.getElementById('hero-key-visual-img');
