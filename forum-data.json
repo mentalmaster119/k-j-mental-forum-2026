@@ -1,7 +1,36 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-10-02T22:23:31.628Z",
+  "lastUpdated": "2026-10-02T22:30:00.000Z",
   "googleSheetWebhookUrl": "https://script.google.com/macros/s/AKfycbz8cwaw2wY3or3CuUz9i1p4kRdpM4-BJd4AaQtjyRTW-mKj3YkmBnwyq6bYdlnWZ7fboQ/exec",
+  "welcomeRemarks": {
+    "park": {
+      "photoUrl": "assets/images/speaker-park.jpg",
+      "name": {
+        "ko": "박 철 수",
+        "ja": "朴 哲 秀",
+        "en": "Chul Soo Park"
+      },
+      "role": {
+        "ko": "국제멘탈코칭센터 (MCCI) 대표 · 한국코치협회 수석부회장",
+        "ja": "国際メンタルコーチングセンター（MCCI）代表 · 韓国コーチ協会 首席副会長",
+        "en": "Representative, Mental Coaching Center Int'l (MCCI) · Senior VP, Korea Coach Association"
+      }
+    },
+    "tsuge": {
+      "photoUrl": "assets/images/speaker-tsuge.png",
+      "name": {
+        "ko": "쯔게 요이치로",
+        "ja": "柘植 陽一郎",
+        "en": "Yoichiro Tsuge"
+      },
+      "role": {
+        "ko": "Field Flow 공동대표 · 스포츠 멘탈코칭 선구자",
+        "ja": "Field Flow 共同代表 · スポーツメンタルコーチングの先駆者",
+        "en": "Co-Representative, Field Flow · Pioneer of Sports Mental Coaching"
+      },
+      "status": "coming_soon"
+    }
+  },
   "speakers": [
     {
       "id": "aoyagi",

@@ -179,6 +179,181 @@
     .pillar-title { font-size: 1.2rem; font-weight: 700; color: var(--primary-900); margin-bottom: 0.75rem; }
     .pillar-desc { font-size: 0.925rem; color: var(--text-muted); line-height: 1.6; }
 
+    /* Welcome Remarks Section */
+    .welcome-section {
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      align-items: stretch;
+    }
+    @media (max-width: 960px) {
+      .welcome-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+    }
+    .welcome-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .welcome-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.09);
+    }
+    .welcome-card-kr {
+      border-top: 4px solid #2563eb;
+    }
+    .welcome-card-jp {
+      border-top: 4px solid #0d9488;
+    }
+    .welcome-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding-bottom: 1.35rem;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 1.5rem;
+    }
+    .welcome-avatar-wrap {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    }
+    .welcome-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .welcome-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .welcome-country-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 9999px;
+      margin-bottom: 0.35rem;
+    }
+    .welcome-country-badge.kr {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+    .welcome-country-badge.jp {
+      background: #f0fdf4;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+    .welcome-status-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: #fef3c7;
+      color: #92400e;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      border: 1px solid #fde68a;
+      margin-left: 0.35rem;
+      margin-bottom: 0.35rem;
+    }
+    .welcome-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary-900);
+      margin-bottom: 0.2rem;
+      line-height: 1.3;
+    }
+    .welcome-role {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .welcome-speech-headline {
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--primary-900);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+    .welcome-body {
+      flex: 1;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #334155;
+    }
+    .welcome-p {
+      margin-bottom: 1rem;
+      white-space: pre-line;
+    }
+    .welcome-quote-highlight {
+      background: #f8fafc;
+      border-left: 4px solid #2563eb;
+      padding: 1rem 1.25rem;
+      border-radius: 0 12px 12px 0;
+      font-weight: 700;
+      color: var(--primary-900);
+      margin: 1.35rem 0;
+      font-size: 1.025rem;
+      line-height: 1.65;
+    }
+    .welcome-closing-declare {
+      font-weight: 700;
+      color: var(--primary-900);
+      background: #eff6ff;
+      padding: 0.85rem 1.15rem;
+      border-radius: 10px;
+      margin-top: 1.25rem;
+      line-height: 1.6;
+      white-space: pre-line;
+      border: 1px solid #bfdbfe;
+    }
+    .welcome-placeholder-box {
+      background: #f8fafc;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .welcome-footer {
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .welcome-sign {
+      font-weight: 700;
+      color: var(--primary-900);
+    }
+
     /* Program Table */
     .program-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; padding: 1rem 1.5rem; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-light); }
     .program-updated { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
@@ -1195,6 +1370,7 @@
       <nav>
         <ul class="nav-menu" id="nav-menu">
           <li><a href="#about" class="nav-link" data-i18n="nav.about">ABOUT</a></li>
+          <li><a href="#welcome" class="nav-link" data-i18n="nav.welcome">GREETINGS</a></li>
           <li><a href="#program" class="nav-link" data-i18n="nav.program">PROGRAM</a></li>
           <li><a href="#speakers" class="nav-link" data-i18n="nav.speakers">SPEAKERS</a></li>
           <li><a href="#materials" class="nav-link" data-i18n="nav.materials">MATERIALS</a></li>
@@ -1351,6 +1527,99 @@
           <h3 class="pillar-title" data-i18n="about.pillars.2.title">Evolve Together</h3>
           <p class="pillar-desc" data-i18n="about.pillars.2.desc">Cultivating an enduring bilateral partnership and professional community across borders.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Welcome Remarks Section (Co-Organizers' Opening Greetings) -->
+  <section class="section welcome-section" id="welcome">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="welcome.tag">Co-Organizers' Greetings</span>
+        <h2 class="section-title" data-i18n="welcome.title">한·일 공동대표 개회 환영사</h2>
+        <p class="section-subtitle" data-i18n="welcome.subtitle">함께 배우고, 함께 생각하며, 함께 진화하는 멘탈코칭의 새로운 미래</p>
+      </div>
+
+      <div class="welcome-grid">
+        <!-- Card 1: Park Chul-soo (MCCI) -->
+        <article class="welcome-card welcome-card-kr">
+          <div class="welcome-card-header">
+            <div class="welcome-avatar-wrap">
+              <img src="assets/images/speaker-park.jpg" alt="박철수 대표" class="welcome-avatar-img">
+            </div>
+            <div class="welcome-info">
+              <span class="welcome-country-badge kr" data-i18n="welcome.parkBadge">🇰🇷 대한민국 대표</span>
+              <h3 class="welcome-name" data-i18n="welcome.parkName">박 철 수</h3>
+              <p class="welcome-role" data-i18n="welcome.parkRole">국제멘탈코칭센터 (MCCI) 대표 · 한국코치협회 수석부회장</p>
+            </div>
+          </div>
+          <div class="welcome-body">
+            <h4 class="welcome-speech-headline" data-i18n="welcome.parkTitle">“함께 배우고, 함께 생각하며, 함께 진화합시다”</h4>
+            <p class="welcome-p" data-i18n="welcome.parkP1">여러분, 안녕하십니까.
+제3회 한일 국제 멘탈코칭 포럼에 참석해 주셔서 진심으로 감사드립니다.
+한국과 일본에서 멘탈코칭의 미래를 함께 생각하는 많은 코치, 전문가, 그리고 참가자 여러분을 이 요코하마에서 모시게 되어 매우 기쁩니다.</p>
+            <p class="welcome-p" data-i18n="welcome.parkP2">우리는 서로 다른 경험과 문화, 그리고 코칭 실천의 방식을 가지고 있습니다. 그러나 사람들이 더 자신답게 살아가고, 더 나은 선택을 하며, 자신의 가능성을 발휘하도록 돕고자 하는 마음은 공통적일 것입니다.</p>
+            <p class="welcome-p" data-i18n="welcome.parkP3">오늘 포럼은 누군가가 일방적으로 답을 가르치는 자리가 아닙니다. 서로의 경험에 귀 기울이고, 차이를 존중하며, 함께 질문하고 배우고 성장하는 자리입니다.</p>
+            <p class="welcome-p" data-i18n="welcome.parkP4">AI의 발전으로 사회와 코칭의 방식은 크게 변화하고 있습니다. 그렇기 때문에 지금 우리는 인간을 깊이 이해하는 것, 사람과 사람의 연결을 소중히 여기는 것, 그리고 한 사람 한 사람이 더 나은 선택을 하도록 돕는 일의 의미를 다시 생각해야 합니다.</p>
+            <p class="welcome-p" data-i18n="welcome.parkP5">오늘의 만남과 대화가 한국과 일본의 코칭 미래를 잇고, 여러분 각자의 새로운 통찰과 실천으로 이어지기를 바랍니다.</p>
+            <div class="welcome-quote-highlight">
+              <span style="font-size: 1.15rem; display: block; margin-bottom: 0.35rem;">✨</span>
+              <span data-i18n="welcome.parkQuote" style="white-space: pre-line;">함께 배우고,
+함께 생각하며,
+함께 진화합시다.</span>
+            </div>
+            <div class="welcome-closing-declare" data-i18n="welcome.parkClosing">
+              이로써 제3회 한일 국제 멘탈코칭 포럼의 개회를 선언합니다. 오늘 잘 부탁드립니다.
+            </div>
+          </div>
+          <div class="welcome-footer">
+            <span class="welcome-affil">MCCI (Mental Coaching Center Int'l)</span>
+            <span class="welcome-sign" data-i18n="welcome.parkSign">국제멘탈코칭센터 (MCCI) 대표 박철수</span>
+          </div>
+        </article>
+
+        <!-- Card 2: Tsuge Yoichiro (Field Flow) -->
+        <article class="welcome-card welcome-card-jp">
+          <div class="welcome-card-header">
+            <div class="welcome-avatar-wrap" style="background: linear-gradient(135deg, #0f766e, #0d9488);">
+              <img src="assets/images/speaker-tsuge.png" alt="쯔게 요이치로 공동대표" class="welcome-avatar-img">
+            </div>
+            <div class="welcome-info">
+              <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
+                <span class="welcome-country-badge jp" data-i18n="welcome.tsugeBadge">🇯🇵 일본 공동대표</span>
+                <span class="welcome-status-badge" data-i18n="welcome.tsugeComingSoonBadge">환영사 준비 중 (Coming Soon)</span>
+              </div>
+              <h3 class="welcome-name" data-i18n="welcome.tsugeName">쯔게 요이치로 (柘植 陽一郎)</h3>
+              <p class="welcome-role" data-i18n="welcome.tsugeRole">Field Flow 공동대표 · 스포츠 멘탈코칭 선구자</p>
+            </div>
+          </div>
+          <div class="welcome-body">
+            <h4 class="welcome-speech-headline" data-i18n="welcome.tsugeTitle">“‘장(Field)’의 흐름과 한·일 10년의 공명”</h4>
+            <div class="welcome-placeholder-box">
+              <p class="welcome-p" style="font-weight: 700; color: var(--primary-900);" data-i18n="welcome.tsugeP1">
+                Field Flow 쯔게 요이치로 공동대표의 공식 환영사가 곧 공개될 예정입니다.
+              </p>
+              <p class="welcome-p" data-i18n="welcome.tsugeP2">
+                지난 10년간 대한민국 MCCI와 일본 Field Flow가 현장에서 함께 일궈온 '장(Field)'의 흐름과 상호 신뢰의 여정, 그리고 앞으로 펼쳐질 한·일 멘탈코칭의 새로운 비전을 담은 환영 메시지가 준비되고 있습니다.
+              </p>
+              <p class="welcome-p" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="welcome.tsugeP3">
+                양국 코치들의 따뜻한 연대와 이번 제3회 포럼 요코하마 개최를 축하하는 메시지가 도착하는 즉시 이곳에 업데이트됩니다.
+              </p>
+            </div>
+            <div class="welcome-quote-highlight" style="border-left-color: #0d9488; background: #f0fdfa;">
+              <span style="font-size: 1.15rem; display: block; margin-bottom: 0.35rem;">🌱</span>
+              <span data-i18n="welcome.tsugeQuote" style="white-space: pre-line;">보이지 않는 공기와 흐름을 읽고,
+서로를 깊이 신뢰하며 새로운 장을 엽니다.</span>
+            </div>
+            <div class="welcome-p" style="color: var(--text-muted); font-weight: 500;" data-i18n="welcome.tsugeClosing">
+              Field Flow 일본 참가단과 함께 여러분을 환영합니다.
+            </div>
+          </div>
+          <div class="welcome-footer">
+            <span class="welcome-affil">Field Flow Japan</span>
+            <span class="welcome-sign" data-i18n="welcome.tsugeSign">Field Flow 공동대표 쯔게 요이치로</span>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -2348,7 +2617,7 @@
       const DATA = {
         i18n: {
           en: {
-            nav: { about: "ABOUT", program: "PROGRAM", speakers: "SPEAKERS", materials: "MATERIALS", venue: "VENUE & GUIDE", fieldflow: "MCCI & FIELD FLOW 10TH", contact: "CONTACT" },
+            nav: { about: "ABOUT", welcome: "GREETINGS", program: "PROGRAM", speakers: "SPEAKERS", materials: "MATERIALS", venue: "VENUE & GUIDE", fieldflow: "MCCI & FIELD FLOW 10TH", contact: "CONTACT" },
             phases: {
               pre: { banner: "Registration is open! The forum takes place on Saturday, October 3, 2026.", heroCtaPrimary: "View Program", heroCtaSecondary: "Presentation Materials", materialsStatus: "Materials will be accessible here as they are released." },
               day: { banner: "Today is Forum Day! Check in at 1F from 09:40. Sessions begin on 17F at 10:00.", heroCtaPrimary: "Live Schedule", heroCtaSecondary: "Access Materials", materialsStatus: "Live session handouts & slides are now available for participants." },
@@ -2369,6 +2638,34 @@
                 { title: "Think Together", desc: "Reflecting on human dignity, genuine empowerment, and the vital role of coaches alongside generative AI." },
                 { title: "Evolve Together", desc: "Cultivating an enduring bilateral partnership and professional community across borders." }
               ]
+            },
+            welcome: {
+              tag: "Co-Organizers' Greetings",
+              title: "Opening Welcoming Remarks",
+              subtitle: "Learn Together · Think Together · Evolve Together into the Future of Mental Coaching",
+              parkBadge: "🇰🇷 Korea Representative",
+              parkName: "Chul Soo Park",
+              parkRole: "Representative, Mental Coaching Center Int'l (MCCI) · Senior VP, Korea Coach Association",
+              parkTitle: "\"Let Us Learn Together, Think Together, and Evolve Together\"",
+              parkP1: "Distinguished guests, coaches, and colleagues,\nThank you very much for attending the 3rd Korea-Japan International Mental Coaching Forum.\nIt is our profound pleasure to welcome so many coaches, practitioners, and participants from Korea and Japan here in Yokohama, united by a shared dedication to the future of mental coaching.",
+              parkP2: "Each of us brings distinct experiences, cultures, and approaches to coaching practice. Yet we are bound by a universal commitment: to empower individuals to live authentically, make better choices, and unlock their fullest potential.",
+              parkP3: "Today's forum is not about one-directional instruction or fixed answers. It is a collaborative space to listen attentively to each other's journeys, celebrate our differences, raise meaningful questions, and grow together.",
+              parkP4: "In this era of rapid technological advancement and generative AI, coaching and society are shifting profoundly. Now more than ever, we must deeply understand the human heart, cherish genuine connections, and reaffirm our purpose in helping each person navigate toward wiser, more fulfilling choices.",
+              parkP5: "May the encounters and dialogues today bridge the coaching futures of Korea and Japan, sparking new insights and transformative actions for everyone.",
+              parkQuote: "Let us learn together,\nthink together,\nand evolve together.",
+              parkClosing: "With this, I proudly declare the opening of the 3rd Korea-Japan International Mental Coaching Forum. Thank you very much.",
+              parkSign: "Chul Soo Park, Representative of MCCI",
+              tsugeBadge: "🇯🇵 Japan Co-Representative",
+              tsugeName: "Yoichiro Tsuge",
+              tsugeRole: "Co-Representative, Field Flow · Pioneer of Sports Mental Coaching",
+              tsugeTitle: "\"The Flow of the Field and 10 Years of Bilateral Resonance\"",
+              tsugeComingSoonBadge: "Welcome Remarks Coming Soon",
+              tsugeP1: "Official welcoming remarks from Yoichiro Tsuge, Co-Representative of Field Flow, will be updated shortly.",
+              tsugeP2: "A warm message reflecting on a decade of collaboration between Korea's MCCI and Japan's Field Flow, exploring systemic field dynamics and our joint vision for the future of mental coaching, is currently being prepared.",
+              tsugeP3: "His welcome message celebrating our growing partnership and the gathering in Yokohama will be published here upon finalization.",
+              tsugeQuote: "Sensing invisible currents and atmosphere,\ntrusting deeply in one another to open a new field.",
+              tsugeClosing: "Welcoming all participants together with the Field Flow delegation.",
+              tsugeSign: "Yoichiro Tsuge, Co-Representative of Field Flow"
             },
             program: {
               tag: "Schedule of Events", title: "Forum Program", subtitle: "A day filled with transformative lectures, case studies, live artistic performance, and interactive workshops.",
@@ -2444,7 +2741,7 @@
             footer: { rights: "© 2026 The 3rd Japan-Korea International Mental Coaching Forum. All rights reserved.", builtWith: "Designed for Framer deployment with Google Drive integration.", backToTop: "Back to top ↑" }
           },
           ko: {
-            nav: { about: "포럼 소개", program: "프로그램", speakers: "발표자", materials: "발표 자료", venue: "장소 및 안내", fieldflow: "MCCI & Field Flow 10주년", contact: "문의하기" },
+            nav: { about: "포럼 소개", welcome: "환영사", program: "프로그램", speakers: "발표자", materials: "발표 자료", venue: "장소 및 안내", fieldflow: "MCCI & Field Flow 10주년", contact: "문의하기" },
             phases: {
               pre: { banner: "사전 안내 모드: 2026년 10월 3일(토) 요코하마에서 개최됩니다.", heroCtaPrimary: "프로그램 보기", heroCtaSecondary: "발표 자료", materialsStatus: "발표 자료는 사전 동의 및 공개 일정에 맞춰 순차적으로 연동됩니다." },
               day: { banner: "행사 당일 모드: 오전 09:40부터 1층 로비에서 접수 진행! 포럼은 17층에서 10시에 시작됩니다.", heroCtaPrimary: "실시간 일정 확인", heroCtaSecondary: "현장 발표자료 열람", materialsStatus: "당일 발표 세션 핸드아웃 및 슬라이드를 구글 드라이브에서 열람하실 수 있습니다." },
@@ -2465,6 +2762,34 @@
                 { title: "함께 사유하다 (Think Together)", desc: "AI 기술 혁신 속에서 인간의 주체성과 내면적 존엄성을 지키는 멘탈코치의 본질적 소명을 깊이 성찰합니다." },
                 { title: "함께 진화하다 (Evolve Together)", desc: "일회성 행사를 넘어 지속 가능한 한·일 코치 연대 네트워크를 구축하고 함께 미래를 설계합니다." }
               ]
+            },
+            welcome: {
+              tag: "공동대표 환영사",
+              title: "한·일 공동대표 개회 환영사",
+              subtitle: "함께 배우고, 함께 생각하며, 함께 진화하는 멘탈코칭의 새로운 미래",
+              parkBadge: "🇰🇷 대한민국 대표",
+              parkName: "박 철 수",
+              parkRole: "국제멘탈코칭센터 (MCCI) 대표 · 한국코치협회 수석부회장",
+              parkTitle: "“함께 배우고, 함께 생각하며, 함께 진화합시다”",
+              parkP1: "여러분, 안녕하십니까.\n제3회 한일 국제 멘탈코칭 포럼에 참석해 주셔서 진심으로 감사드립니다.\n한국과 일본에서 멘탈코칭의 미래를 함께 생각하는 많은 코치, 전문가, 그리고 참가자 여러분을 이 요코하마에서 모시게 되어 매우 기쁩니다.",
+              parkP2: "우리는 서로 다른 경험과 문화, 그리고 코칭 실천의 방식을 가지고 있습니다. 그러나 사람들이 더 자신답게 살아가고, 더 나은 선택을 하며, 자신의 가능성을 발휘하도록 돕고자 하는 마음은 공통적일 것입니다.",
+              parkP3: "오늘 포럼은 누군가가 일방적으로 답을 가르치는 자리가 아닙니다. 서로의 경험에 귀 기울이고, 차이를 존중하며, 함께 질문하고 배우고 성장하는 자리입니다.",
+              parkP4: "AI의 발전으로 사회와 코칭의 방식은 크게 변화하고 있습니다. 그렇기 때문에 지금 우리는 인간을 깊이 이해하는 것, 사람과 사람의 연결을 소중히 여기는 것, 그리고 한 사람 한 사람이 더 나은 선택을 하도록 돕는 일의 의미를 다시 생각해야 합니다.",
+              parkP5: "오늘의 만남과 대화가 한국과 일본의 코칭 미래를 잇고, 여러분 각자의 새로운 통찰과 실천으로 이어지기를 바랍니다.",
+              parkQuote: "함께 배우고,\n함께 생각하며,\n함께 진화합시다.",
+              parkClosing: "이로써 제3회 한일 국제 멘탈코칭 포럼의 개회를 선언합니다. 오늘 잘 부탁드립니다.",
+              parkSign: "국제멘탈코칭센터 (MCCI) 대표 박철수",
+              tsugeBadge: "🇯🇵 일본 공동대표",
+              tsugeName: "쯔게 요이치로 (柘植 陽一郎)",
+              tsugeRole: "Field Flow 공동대표 · 스포츠 멘탈코칭 선구자",
+              tsugeTitle: "“‘장(Field)’의 흐름과 한·일 10년의 공명”",
+              tsugeComingSoonBadge: "환영사 준비 중 (Coming Soon)",
+              tsugeP1: "Field Flow 쯔게 요이치로 공동대표의 공식 환영사가 곧 공개될 예정입니다.",
+              tsugeP2: "지난 10년간 대한민국 MCCI와 일본 Field Flow가 현장에서 함께 일궈온 '장(Field)'의 흐름과 상호 신뢰의 여정, 그리고 앞으로 펼쳐질 한·일 멘탈코칭의 새로운 비전을 담은 환영 메시지가 준비되고 있습니다.",
+              tsugeP3: "양국 코치들의 따뜻한 연대와 이번 제3회 포럼 요코하마 개최를 축하하는 메시지가 도착하는 즉시 이곳에 업데이트됩니다.",
+              tsugeQuote: "보이지 않는 공기와 흐름을 읽고,\n서로를 깊이 신뢰하며 새로운 장을 엽니다.",
+              tsugeClosing: "Field Flow 일본 참가단과 함께 여러분을 환영합니다.",
+              tsugeSign: "Field Flow 공동대표 쯔게 요이치로"
             },
             program: {
               tag: "행사 타임테이블", title: "포럼 상세 프로그램", subtitle: "기조강연, 한·일 7인 발표, 특별 공연, 전원 참여 그룹 워크숍, 저녁 리셉션까지 빈틈없이 구성된 일정입니다.",
@@ -2540,7 +2865,7 @@
             footer: { rights: "© 2026 제3회 한일국제멘탈포럼 조직위원회. All rights reserved.", builtWith: "Framer 배포 및 Google Drive 연동 최적화 규격으로 제작되었습니다.", backToTop: "맨 위로 이동 ↑" }
           },
           ja: {
-            nav: { about: "フォーラムについて", program: "プログラム", speakers: "登壇者紹介", materials: "発表資料", venue: "会場・当日のご案内", fieldflow: "MCCI＆Field Flow 10周年", contact: "お問い合わせ" },
+            nav: { about: "フォーラムについて", welcome: "ご挨拶", program: "プログラム", speakers: "登壇者紹介", materials: "発表資料", venue: "会場・当日のご案内", fieldflow: "MCCI＆Field Flow 10周年", contact: "お問い合わせ" },
             phases: {
               pre: { banner: "事前案内モード：2026年10月3日（土）横浜にて開催されます。", heroCtaPrimary: "プログラムを見る", heroCtaSecondary: "発表資料", materialsStatus: "発表資料はセッション開始および公開許諾に合わせて順次公開されます。" },
               day: { banner: "当日モード：午前9時40分より大学1階にて受付開始！フォーラムは17階にて10時スタートです。", heroCtaPrimary: "タイムテーブル確認", heroCtaSecondary: "当日の発表資料", materialsStatus: "当日のハンドアウトおよび発表スライドをGoogle Driveでご確認いただけます。" },
@@ -2561,6 +2886,34 @@
                 { title: "共に思索する（Think Together）", desc: "AI時代における人間の尊厳や主体性、そしてメンタルコーチが果たすべき真の役割を深く探求します。" },
                 { title: "共に進化する（Evolve Together）", desc: "一時的なイベントにとどまらず、持続的な日韓コーチネットワークを構築し、未来の新たなスタンダードを共創します。" }
               ]
+            },
+            welcome: {
+              tag: "共同代表ご挨拶",
+              title: "日韓共同代表 開会のご挨拶",
+              subtitle: "共に学び、共に考え、共に進化するメンタルコーチングの未来へ",
+              parkBadge: "🇰🇷 韓国代表",
+              parkName: "朴 哲 秀（パク・チョルス）",
+              parkRole: "国際メンタルコーチングセンター（MCCI）代表 · 韓国コーチ協会 首席副会長",
+              parkTitle: "「共に学び、共に考え、共に進化してまいりましょう」",
+              parkP1: "皆様、こんにちは。\n第3回 日韓国際メンタルコーチングフォーラムにご参加いただき、心より感謝申し上げます。\n韓国と日本でメンタルコーチングの未来を共に考える多くのコーチ、専門家、そして参加者の皆様を、ここ横浜の地にお迎えできることを大変嬉しく存じます。",
+              parkP2: "私たちは互いに異なる経験や文化、そしてコーチング実践のアプローチを持っています。しかし、人々がより自分らしく生き、より良い選択をし、自らの可能性を存分に発揮できるよう支援したいという願いは、共通のものであるはずです。",
+              parkP3: "本日のフォーラムは、誰かが一方的に答えを教える場ではありません。互いの経験に耳を傾け、違いを尊重し、共に問いかけ、学び、成長し合うための場です。",
+              parkP4: "AIの進化に伴い、社会やコーチングのあり方も大きく変容しています。だからこそ今、私たちは人間を深く理解すること、人と人とのつながりを大切にすること、そして一人ひとりがより良い選択を重ねていけるよう伴走することの意義を、改めて見つめ直す必要があります。",
+              parkP5: "本日の出会いと対話が、日韓のコーチングの未来をつなぎ、皆様それぞれの新たな洞察と実践へと結実することを心より願っております。",
+              parkQuote: "共に学び、\n共に考え、\n共に進化してまいりましょう。",
+              parkClosing: "ここに、第3回 日韓国際メンタルコーチングフォーラムの開会を宣言いたします。本日はどうぞよろしくお願い申し上げます。",
+              parkSign: "国際メンタルコーチングセンター（MCCI）代表　朴 哲秀",
+              tsugeBadge: "🇯🇵 日本共同代表",
+              tsugeName: "柘植 陽一郎（つげ よういちろう）",
+              tsugeRole: "Field Flow 共同代表 · スポーツメンタルコーチングの先駆者",
+              tsugeTitle: "「『場』のダイナミクスと日韓10年の共鳴」",
+              tsugeComingSoonBadge: "メッセージ準備中（Coming Soon）",
+              tsugeP1: "Field Flow 柘植 陽一郎 共同代表からの公式歓迎メッセージは現在準備中です。",
+              tsugeP2: "過去10年にわたり韓国MCCIと日本Field Flowが共に築き上げてきた「場」のダイナミクスと信頼の軌跡、そして次代に向けた日韓メンタルコーチングの新たなビジョンを込めたメッセージをまもなく公開いたします。",
+              tsugeP3: "両国コーチ陣の温かな連携と、横浜での第3回フォーラム開催を祝うメッセージが届き次第、こちらに更新されます。",
+              tsugeQuote: "見えない空気と流れを捉え、\n互いを深く信じ合い、新たな場を拓く。",
+              tsugeClosing: "Field Flow日本参加団とともに、皆様を心より歓迎いたします。",
+              tsugeSign: "Field Flow 共同代表　柘植 陽一郎"
             },
             program: {
               tag: "当日のスケジュール", title: "フォーラム プログラム", subtitle: "基調講演、日韓登壇セッション、特別公演、グループワーク、懇親会まで充実したプログラムです。",

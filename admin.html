@@ -804,6 +804,79 @@
           </div>
         </div>
 
+        <!-- Welcome Remarks Management Card -->
+        <div class="card" style="margin-bottom: 1.5rem; border-left: 4px solid #2563eb;">
+          <div class="card-header" style="background: #eff6ff;">
+            <span class="card-header-title" style="color: #1e40af;">
+              <span>🎙️</span> 양국 공동대표 개회 환영사 관리 (박철수 대표 / 쯔게 요이치로 공동대표)
+            </span>
+          </div>
+          <div class="card-body">
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+              홈페이지 메인 포럼 소개 직후에 노출되는 박철수 대표(MCCI)와 쯔게 요이치로 공동대표(Field Flow)의 환영인사를 관리합니다. 쯔게 대표님의 환영사가 준비되면 이곳에 입력 후 저장하시면 됩니다.
+            </p>
+            <div class="form-grid-2">
+              <!-- Park Chul-soo -->
+              <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem;">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                  <img src="assets/images/speaker-park.jpg" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <strong style="color: var(--primary);">🇰🇷 박철수 대표 (MCCI)</strong>
+                    <div style="font-size: 0.75rem; color: var(--success); font-weight: 700;">✓ 환영사 등록 완료</div>
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 헤드라인</label>
+                  <input type="text" id="admin-welcome-park-title" class="form-control" value="“함께 배우고, 함께 생각하며, 함께 진화합시다”" oninput="markUnsavedChanges()">
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">환영사 본문 (한국어)</label>
+                  <textarea id="admin-welcome-park-body" class="form-control" rows="8" oninput="markUnsavedChanges()">여러분, 안녕하십니까.
+
+제3회 한일 국제 멘탈코칭 포럼에 참석해 주셔서 진심으로 감사드립니다.
+
+한국과 일본에서 멘탈코칭의 미래를 함께 생각하는 많은 코치, 전문가, 그리고 참가자 여러분을 이 요코하마에서 모시게 되어 매우 기쁩니다.
+
+우리는 서로 다른 경험과 문화, 그리고 코칭 실천의 방식을 가지고 있습니다. 그러나 사람들이 더 자신답게 살아가고, 더 나은 선택을 하며, 자신의 가능성을 발휘하도록 돕고자 하는 마음은 공통적일 것입니다.
+
+오늘 포럼은 누군가가 일방적으로 답을 가르치는 자리가 아닙니다. 서로의 경험에 귀 기울이고, 차이를 존중하며, 함께 질문하고 배우고 성장하는 자리입니다.
+
+AI의 발전으로 사회와 코칭의 방식은 크게 변화하고 있습니다. 그렇기 때문에 지금 우리는 인간을 깊이 이해하는 것, 사람과 사람의 연결을 소중히 여기는 것, 그리고 한 사람 한 사람이 더 나은 선택을 하도록 돕는 일의 의미를 다시 생각해야 합니다.
+
+오늘의 만남과 대화가 한국과 일본의 코칭 미래를 잇고, 여러분 각자의 새로운 통찰과 실천으로 이어지기를 바랍니다.
+
+함께 배우고,
+함께 생각하며,
+함께 진화합시다.
+
+이로써 제3회 한일 국제 멘탈코칭 포럼의 개회를 선언합니다.
+
+오늘 잘 부탁드립니다.</textarea>
+                </div>
+              </div>
+
+              <!-- Tsuge Yoichiro -->
+              <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem;">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                  <img src="assets/images/speaker-tsuge.png" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <strong style="color: var(--primary);">🇯🇵 쯔게 요이치로 공동대표 (Field Flow)</strong>
+                    <div style="font-size: 0.75rem; color: #d97706; font-weight: 700;" id="admin-tsuge-status-label">⏳ 환영사 준비 중 (텍스트 입력 대기)</div>
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label class="form-label">환영사 헤드라인</label>
+                  <input type="text" id="admin-welcome-tsuge-title" class="form-control" value="“‘장(Field)’의 흐름과 한·일 10년의 공명”" placeholder="헤드라인 입력" oninput="markUnsavedChanges()">
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">환영사 본문 (도착 시 여기에 붙여넣기)</label>
+                  <textarea id="admin-welcome-tsuge-body" class="form-control" rows="8" placeholder="쯔게 코치님의 환영사가 도착하면 이곳에 붙여넣고 [수정사항 저장 및 배포]를 누르시면 됩니다." oninput="markUnsavedChanges()"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Hero Key Visual Management Card -->
         <div class="card" style="margin-bottom: 1.5rem;">
           <div class="card-header">
@@ -1601,6 +1674,30 @@ function doGet(e) {
       if (elHeroUrl) elHeroUrl.value = heroUrl;
       if (elHeroPreview) elHeroPreview.src = heroUrl;
       if (elHeroLink) elHeroLink.href = heroUrl;
+
+      // Welcome Remarks
+      if (FORUM_DATA.welcomeRemarks) {
+        const w = FORUM_DATA.welcomeRemarks;
+        if (w.park) {
+          const pt = document.getElementById('admin-welcome-park-title');
+          const pb = document.getElementById('admin-welcome-park-body');
+          if (pt && w.park.headline) pt.value = w.park.headline;
+          if (pb && w.park.speech) pb.value = w.park.speech;
+        }
+        if (w.tsuge) {
+          const tt = document.getElementById('admin-welcome-tsuge-title');
+          const tb = document.getElementById('admin-welcome-tsuge-body');
+          const tStatus = document.getElementById('admin-tsuge-status-label');
+          if (tt && w.tsuge.headline) tt.value = w.tsuge.headline;
+          if (tb && w.tsuge.speech) {
+            tb.value = w.tsuge.speech;
+            if (tStatus && w.tsuge.speech.trim()) {
+              tStatus.textContent = '✓ 환영사 등록 완료';
+              tStatus.style.color = 'var(--success)';
+            }
+          }
+        }
+      }
     }
 
     let PENDING_HERO_VISUAL_UPLOAD = null;
@@ -1655,6 +1752,25 @@ function doGet(e) {
         email: document.getElementById('contact-jp-email').value,
         address: document.getElementById('contact-jp-address').value
       };
+
+      if (!FORUM_DATA.welcomeRemarks) FORUM_DATA.welcomeRemarks = { park: {}, tsuge: {} };
+      const parkTitleEl = document.getElementById('admin-welcome-park-title');
+      const parkBodyEl = document.getElementById('admin-welcome-park-body');
+      const tsugeTitleEl = document.getElementById('admin-welcome-tsuge-title');
+      const tsugeBodyEl = document.getElementById('admin-welcome-tsuge-body');
+      if (parkTitleEl && parkBodyEl) {
+        if (!FORUM_DATA.welcomeRemarks.park) FORUM_DATA.welcomeRemarks.park = {};
+        FORUM_DATA.welcomeRemarks.park.headline = parkTitleEl.value;
+        FORUM_DATA.welcomeRemarks.park.speech = parkBodyEl.value;
+      }
+      if (tsugeTitleEl && tsugeBodyEl) {
+        if (!FORUM_DATA.welcomeRemarks.tsuge) FORUM_DATA.welcomeRemarks.tsuge = {};
+        FORUM_DATA.welcomeRemarks.tsuge.headline = tsugeTitleEl.value;
+        FORUM_DATA.welcomeRemarks.tsuge.speech = tsugeBodyEl.value;
+        if (tsugeBodyEl.value.trim()) {
+          FORUM_DATA.welcomeRemarks.tsuge.status = 'ready';
+        }
+      }
     }
 
     let hasUnsavedChanges = false;
