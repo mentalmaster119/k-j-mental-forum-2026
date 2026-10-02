@@ -676,6 +676,8 @@
             <span>🚀</span> <span>수정사항 저장 및 배포</span>
           </button>
         </div>
+      </section>
+
       <!-- TAB: WELCOME REMARKS (양국 공동대표 개회 환영사 관리) -->
       <section id="tab-welcome" class="tab-content" style="display: none;">
         <div class="section-header">
@@ -1488,6 +1490,13 @@ function doGet(e) {
 
       const clickedBtn = Array.from(document.querySelectorAll('.tab-item')).find(b => b.getAttribute('onclick')?.includes(tabId));
       if (clickedBtn) clickedBtn.classList.add('active');
+
+      if (tabId === 'welcome' && typeof updateWelcomeLivePreview === 'function') {
+        updateWelcomeLivePreview(WELCOME_PREVIEW_LANG);
+      }
+      if (tabId === 'inquiries' && typeof renderInquiriesEditor === 'function') {
+        renderInquiriesEditor();
+      }
     }
 
     // 4. Render Speakers Editor
