@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-10-03T04:31:18.298Z",
+  "lastUpdated": "2026-10-03T04:34:19.593Z",
   "googleSheetWebhookUrl": "https://script.google.com/macros/s/AKfycbz8cwaw2wY3or3CuUz9i1p4kRdpM4-BJd4AaQtjyRTW-mKj3YkmBnwyq6bYdlnWZ7fboQ/exec",
   "speakers": [
     {
@@ -771,13 +771,13 @@
         "ja": "統合資料集ダウンロード (PDF) ⬇",
         "en": "Download Merged PDF (PDF) ⬇"
       },
-      "link": "https://drive.google.com/file/d/2026_Korea_Session_Combined_Demo/view?usp=sharing",
+      "link": "https://drive.google.com/drive/folders/1Z_-qNwRhHZUiCHfQQiO3USVjqz7cDOp6?usp=drive_link",
       "folderText": {
         "ko": "개별 발표자료 폴더 열람 ↗",
         "ja": "個別資料フォルダを見る ↗",
         "en": "View Individual Files Folder ↗"
       },
-      "folderLink": "https://drive.google.com/drive/folders/02_Korea_Speakers_Demo?usp=sharing"
+      "folderLink": "https://drive.google.com/drive/folders/1Z_-qNwRhHZUiCHfQQiO3USVjqz7cDOp6?usp=drive_link"
     },
     {
       "id": "japan",
