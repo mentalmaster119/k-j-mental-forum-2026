@@ -58,27 +58,46 @@
     .logo-badge { background: linear-gradient(135deg, var(--accent-600), #8b5cf6); color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.3rem 0.6rem; border-radius: 6px; letter-spacing: 0.05em; }
     .logo-title { font-size: 0.95rem; font-weight: 700; color: #ffffff; display: block; }
     .logo-subtitle { font-size: 0.725rem; color: #94a3b8; display: block; }
-    .nav-menu { display: flex; align-items: center; list-style: none; gap: 1.5rem; }
-    .nav-link { font-size: 0.85rem; font-weight: 600; color: #cbd5e1; letter-spacing: 0.04em; transition: color var(--transition); padding: 0.5rem 0; }
-    .nav-link:hover { color: #ffffff; }
-
-    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .site-header nav { display: none !important; }
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
     .lang-selector { display: inline-flex; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 3px; }
     .lang-btn { padding: 0.3rem 0.65rem; font-size: 0.75rem; font-weight: 700; border-radius: 6px; color: #cbd5e1; transition: all var(--transition); }
     .lang-btn.active { background: var(--accent-600); color: #ffffff; }
-    .mobile-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
+
+    .header-quick-btn {
+      display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 0.4rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 8px;
+      gap: 0.35rem;
+      padding: 0.42rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      border: 1px solid rgba(147, 197, 253, 0.4);
+      border-radius: 9999px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .header-quick-btn:hover {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
+      transform: translateY(-1px);
+      color: #ffffff;
+    }
+
+    /* Universal Side Navigation Menu Toggle (PC & Mobile Unified) */
+    .mobile-toggle {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 9999px;
       cursor: pointer;
-      width: 38px;
-      height: 38px;
+      height: 40px;
       transition: all var(--transition);
       flex-shrink: 0;
       touch-action: manipulation;
@@ -87,27 +106,48 @@
       z-index: 1001;
     }
     .mobile-toggle:hover {
-      background: rgba(255, 255, 255, 0.16);
-      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      transform: translateY(-1px);
     }
-    .mobile-toggle span {
+    .toggle-bars {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      pointer-events: none;
+    }
+    .toggle-bars span {
       display: block;
-      width: 20px;
+      width: 18px;
       height: 2px;
       background-color: #ffffff;
       border-radius: 2px;
       transition: transform 0.25s ease, opacity 0.25s ease;
       pointer-events: none;
     }
-    .mobile-toggle.active span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
+    .mobile-toggle.active .toggle-bars span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
     }
-    .mobile-toggle.active span:nth-child(2) {
+    .mobile-toggle.active .toggle-bars span:nth-child(2) {
       opacity: 0;
-      transform: translateX(6px);
+      transform: translateX(4px);
     }
-    .mobile-toggle.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
+    .mobile-toggle.active .toggle-bars span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+    .toggle-text {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      pointer-events: none;
+    }
+    @media (max-width: 640px) {
+      .header-quick-btn { display: none; }
+      .toggle-text { display: none; }
+      .mobile-toggle { padding: 0.4rem; border-radius: 8px; width: 38px; height: 38px; justify-content: center; }
     }
 
     /* Mobile Side Navigation Drawer & Backdrop */
@@ -137,7 +177,7 @@
       position: fixed;
       top: 0;
       right: 0;
-      width: min(340px, 86vw);
+      width: min(390px, 88vw);
       height: 100%;
       height: 100dvh;
       background: #0f172a;
@@ -1923,13 +1963,17 @@
       </nav>
 
       <div class="nav-actions">
+        <a href="#program" class="header-quick-btn" data-i18n="nav.quickProgram">⏱️ 타임테이블</a>
         <div class="lang-selector">
           <button class="lang-btn" data-lang="en">EN</button>
           <button class="lang-btn active" data-lang="ko"><span class="lang-long">한국어</span><span class="lang-short">KO</span></button>
           <button class="lang-btn" data-lang="ja"><span class="lang-long">日本語</span><span class="lang-short">JA</span></button>
         </div>
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu" onclick="window.toggleMobileSideMenu && window.toggleMobileSideMenu(event)">
-          <span></span><span></span><span></span>
+        <button class="mobile-toggle side-menu-toggle" id="mobile-toggle" aria-label="Toggle Menu" onclick="window.toggleMobileSideMenu && window.toggleMobileSideMenu(event)">
+          <div class="toggle-bars">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="toggle-text" data-i18n="nav.menu">메뉴</span>
         </button>
       </div>
     </div>
@@ -3341,7 +3385,7 @@
       const DATA = {
         i18n: {
           en: {
-            nav: { about: "ABOUT", welcome: "GREETINGS", program: "PROGRAM", speakers: "SPEAKERS", materials: "MATERIALS", venue: "VENUE & GUIDE", fieldflow: "MCCI & FIELD FLOW 10TH", contact: "CONTACT" },
+            nav: { about: "ABOUT", welcome: "GREETINGS", program: "PROGRAM", speakers: "SPEAKERS", materials: "MATERIALS", venue: "VENUE & GUIDE", fieldflow: "MCCI & FIELD FLOW 10TH", contact: "CONTACT", menu: "MENU", quickProgram: "⏱️ Timetable" },
             sideNav: {
               langLabel: "Language",
               aboutDesc: "Forum Philosophy & Core Values",
@@ -3480,7 +3524,7 @@
             footer: { rights: "© 2026 The 3rd Japan-Korea International Mental Coaching Forum. All rights reserved.", builtWith: "Designed for Framer deployment with Google Drive integration.", backToTop: "Back to top ↑" }
           },
           ko: {
-            nav: { about: "포럼 소개", welcome: "환영사", program: "프로그램", speakers: "발표자", materials: "발표 자료", venue: "장소 및 안내", fieldflow: "MCCI & Field Flow 10주년", contact: "문의하기" },
+            nav: { about: "포럼 소개", welcome: "환영사", program: "프로그램", speakers: "발표자", materials: "발표 자료", venue: "장소 및 안내", fieldflow: "MCCI & Field Flow 10주년", contact: "문의하기", menu: "메뉴", quickProgram: "⏱️ 타임테이블" },
             sideNav: {
               langLabel: "언어 변경 (Language)",
               aboutDesc: "포럼 소개 및 3대 핵심 가치",
@@ -3619,7 +3663,7 @@
             footer: { rights: "© 2026 제3회 한일국제멘탈포럼 조직위원회. All rights reserved.", builtWith: "Framer 배포 및 Google Drive 연동 최적화 규격으로 제작되었습니다.", backToTop: "맨 위로 이동 ↑" }
           },
           ja: {
-            nav: { about: "フォーラムについて", welcome: "ご挨拶", program: "プログラム", speakers: "登壇者紹介", materials: "発表資料", venue: "会場・当日のご案内", fieldflow: "MCCI＆Field Flow 10周年", contact: "お問い合わせ" },
+            nav: { about: "フォーラムについて", welcome: "ご挨拶", program: "プログラム", speakers: "登壇者紹介", materials: "発表資料", venue: "会場・当日のご案内", fieldflow: "MCCI＆Field Flow 10周年", contact: "お問い合わせ", menu: "メニュー", quickProgram: "⏱️ タイムテーブル" },
             sideNav: {
               langLabel: "言語の切り替え (Language)",
               aboutDesc: "フォーラム理念と3つの柱",
