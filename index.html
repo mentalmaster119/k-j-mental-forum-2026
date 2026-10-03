@@ -81,6 +81,10 @@
       height: 38px;
       transition: all var(--transition);
       flex-shrink: 0;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      z-index: 1001;
     }
     .mobile-toggle:hover {
       background: rgba(255, 255, 255, 0.16);
@@ -93,6 +97,7 @@
       background-color: #ffffff;
       border-radius: 2px;
       transition: transform 0.25s ease, opacity 0.25s ease;
+      pointer-events: none;
     }
     .mobile-toggle.active span:nth-child(1) {
       transform: translateY(7px) rotate(45deg);
@@ -112,17 +117,20 @@
       left: 0;
       width: 100%;
       height: 100%;
+      height: 100dvh;
       background: rgba(15, 23, 42, 0.72);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      z-index: 9998;
+      z-index: 99998;
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
       transition: opacity 0.28s ease, visibility 0.28s ease;
     }
     .mobile-nav-backdrop.active {
       opacity: 1;
       visibility: visible;
+      pointer-events: auto;
     }
 
     .mobile-side-drawer {
@@ -136,13 +144,14 @@
       background: linear-gradient(180deg, #0b1324 0%, #0f172a 100%);
       border-left: 1px solid rgba(255, 255, 255, 0.12);
       box-shadow: -12px 0 40px rgba(0, 0, 0, 0.65);
-      z-index: 9999;
+      z-index: 99999;
       display: flex;
       flex-direction: column;
       transform: translateX(100%);
       transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
       overflow-y: auto;
       overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
     }
     .mobile-side-drawer.active {
       transform: translateX(0);
@@ -627,6 +636,52 @@
     }
 
     /* Welcome Video Player Embed */
+    .welcome-video-card-wrap {
+      margin-bottom: 1.35rem;
+    }
+    .video-mode-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.55rem;
+      flex-wrap: wrap;
+    }
+    .video-mode-btn {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #334155;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .video-mode-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .video-mode-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+    }
+    .video-mode-btn.link {
+      margin-left: auto;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-color: #bfdbfe;
+    }
+    .video-mode-btn.link:hover {
+      background: #dbeafe;
+    }
     .welcome-video-box {
       position: relative;
       width: 100%;
@@ -636,7 +691,7 @@
       overflow: hidden;
       border: 1px solid rgba(15, 23, 42, 0.12);
       box-shadow: 0 10px 24px -4px rgba(15, 23, 42, 0.18);
-      margin-bottom: 1.35rem;
+      margin-bottom: 0;
     }
     .welcome-video-box iframe,
     .welcome-video-box video {
@@ -1649,8 +1704,10 @@
         </div>
       </div>
     </div>
+  </aside>
+
   <!-- Mobile Side Navigation Drawer & Backdrop (모바일 전용 사이드 드로어 메뉴) -->
-  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" onclick="closeMobileSideMenu()"></div>
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" onclick="window.closeMobileSideMenu && window.closeMobileSideMenu(event)"></div>
   <aside class="mobile-side-drawer" id="mobile-side-drawer" aria-label="Mobile Navigation">
     <div class="side-drawer-header">
       <div class="side-drawer-brand">
@@ -1823,7 +1880,7 @@
           <button class="lang-btn active" data-lang="ko"><span class="lang-long">한국어</span><span class="lang-short">KO</span></button>
           <button class="lang-btn" data-lang="ja"><span class="lang-long">日本語</span><span class="lang-short">JA</span></button>
         </div>
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu" onclick="window.toggleMobileSideMenu && window.toggleMobileSideMenu(event)">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -1991,9 +2048,38 @@
             </div>
           </div>
           <div class="welcome-body">
-            <!-- Park Chul-soo Welcome Video Box -->
-            <div class="welcome-video-box" id="park-welcome-video-box">
-              <video id="park-welcome-video-player" src="assets/video/welcome-mcci.mp4" controls playsinline preload="metadata" style="position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: contain; background: #000; border-radius: 12px;"></video>
+            <!-- Park Chul-soo Welcome Video Box (Dual-Mode: Direct MP4 + Google Drive Stream) -->
+            <div class="welcome-video-card-wrap">
+              <div class="video-mode-switcher">
+                <button type="button" class="video-mode-btn active" id="btn-video-direct" onclick="window.switchParkVideoMode && window.switchParkVideoMode('direct')">
+                  <span>▶ 웹 직접 재생</span>
+                </button>
+                <button type="button" class="video-mode-btn" id="btn-video-gdrive" onclick="window.switchParkVideoMode && window.switchParkVideoMode('gdrive')">
+                  <span>🌐 구글 드라이브</span>
+                </button>
+                <a href="https://drive.google.com/file/d/12CfBuIz0ttnglE8HIcwcfZmHRALrPpjj/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="video-mode-btn link" title="구글 드라이브 원본 새 창에서 열기">
+                  <span>새 창 열기 ↗</span>
+                </a>
+              </div>
+              <div class="welcome-video-box" id="park-welcome-video-box">
+                <video id="park-welcome-video-player"
+                       poster="assets/images/speaker-park.jpg"
+                       controls
+                       playsinline
+                       webkit-playsinline
+                       preload="metadata"
+                       style="position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: contain; background: #000; border-radius: 12px;">
+                  <source src="assets/video/welcome-mcci.mp4" type="video/mp4">
+                  브라우저가 비디오 재생을 지원하지 않습니다.
+                </video>
+                <iframe id="park-welcome-gdrive-iframe"
+                        data-src="https://drive.google.com/file/d/12CfBuIz0ttnglE8HIcwcfZmHRALrPpjj/preview"
+                        src=""
+                        allow="autoplay; fullscreen"
+                        allowfullscreen
+                        loading="lazy"
+                        style="position: absolute; top:0; left:0; width: 100%; height: 100%; border: 0; border-radius: 12px; display: none;"></iframe>
+              </div>
             </div>
             <h4 class="welcome-speech-headline" data-i18n="welcome.parkTitle">“함께 배우고, 함께 생각하며, 함께 진화해 갑시다”</h4>
             <p class="welcome-p" data-i18n="welcome.parkP1">여러분, 안녕하십니까.
@@ -3065,6 +3151,58 @@
   <!-- Interactive JavaScript -->
   <script>
     (function() {
+      // Early instant handlers for mobile menu & video switching
+      window.openMobileSideMenu = window.openMobileSideMenu || function(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        const d = document.getElementById('mobile-side-drawer');
+        const b = document.getElementById('mobile-nav-backdrop');
+        const t = document.getElementById('mobile-toggle');
+        if (d) d.classList.add('active');
+        if (b) b.classList.add('active');
+        if (t) t.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+      window.closeMobileSideMenu = window.closeMobileSideMenu || function(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        const d = document.getElementById('mobile-side-drawer');
+        const b = document.getElementById('mobile-nav-backdrop');
+        const t = document.getElementById('mobile-toggle');
+        if (d) d.classList.remove('active');
+        if (b) b.classList.remove('active');
+        if (t) t.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+      window.toggleMobileSideMenu = window.toggleMobileSideMenu || function(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        const d = document.getElementById('mobile-side-drawer');
+        if (d && d.classList.contains('active')) {
+          window.closeMobileSideMenu(e);
+        } else {
+          window.openMobileSideMenu(e);
+        }
+      };
+      window.switchParkVideoMode = window.switchParkVideoMode || function(mode) {
+        const v = document.getElementById('park-welcome-video-player');
+        const g = document.getElementById('park-welcome-gdrive-iframe');
+        const bd = document.getElementById('btn-video-direct');
+        const bg = document.getElementById('btn-video-gdrive');
+        if (mode === 'gdrive') {
+          if (v) { try { v.pause(); } catch(err) {} v.style.display = 'none'; }
+          if (g) {
+            const dataSrc = g.getAttribute('data-src') || 'https://drive.google.com/file/d/12CfBuIz0ttnglE8HIcwcfZmHRALrPpjj/preview';
+            if (!g.src || g.src === '' || g.src === window.location.href) g.src = dataSrc;
+            g.style.display = 'block';
+          }
+          if (bd) bd.classList.remove('active');
+          if (bg) bg.classList.add('active');
+        } else {
+          if (g) g.style.display = 'none';
+          if (v) v.style.display = 'block';
+          if (bd) bd.classList.add('active');
+          if (bg) bg.classList.remove('active');
+        }
+      };
+
       const DATA = {
         i18n: {
           en: {
@@ -4094,19 +4232,25 @@
 
           // Video Embed
           const parkVideoBox = document.getElementById('park-welcome-video-box');
+          const parkVideoWrap = parkVideoBox ? parkVideoBox.closest('.welcome-video-card-wrap') : null;
           if (parkVideoBox) {
             const vUrl = (p.videoUrl || '').trim();
             if (vUrl) {
-              if (vUrl.endsWith('.mp4') || vUrl.endsWith('.mov') || vUrl.startsWith('assets/')) {
-                parkVideoBox.innerHTML = `<video controls playsinline preload="metadata" src="${vUrl}" style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; background:#000; border-radius:12px;"></video>`;
-              } else {
-                const embedUrl = formatEmbedVideoUrl(vUrl);
-                parkVideoBox.innerHTML = `<iframe src="${embedUrl}" allow="autoplay; fullscreen" allowfullscreen loading="lazy" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0; border-radius:12px;"></iframe>`;
-              }
+              if (parkVideoWrap) parkVideoWrap.style.display = 'block';
               parkVideoBox.style.display = 'block';
+              const player = document.getElementById('park-welcome-video-player');
+              if (player) {
+                const srcEl = player.querySelector('source');
+                if (srcEl && srcEl.getAttribute('src') !== vUrl) {
+                  srcEl.src = vUrl;
+                  player.load();
+                } else if (!srcEl && player.getAttribute('src') !== vUrl) {
+                  player.src = vUrl;
+                }
+              }
             } else {
+              if (parkVideoWrap) parkVideoWrap.style.display = 'none';
               parkVideoBox.style.display = 'none';
-              parkVideoBox.innerHTML = '';
             }
           }
 
@@ -6749,25 +6893,35 @@ Evolve together`
       const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
       const sideDrawerCloseBtn = document.getElementById('side-drawer-close-btn');
 
-      window.openMobileSideMenu = function() {
-        if (mobileSideDrawer) mobileSideDrawer.classList.add('active');
-        if (mobileNavBackdrop) mobileNavBackdrop.classList.add('active');
-        if (mobileToggle) mobileToggle.classList.add('active');
+      window.openMobileSideMenu = function(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        const drawer = document.getElementById('mobile-side-drawer');
+        const backdrop = document.getElementById('mobile-nav-backdrop');
+        const toggle = document.getElementById('mobile-toggle');
+        if (drawer) drawer.classList.add('active');
+        if (backdrop) backdrop.classList.add('active');
+        if (toggle) toggle.classList.add('active');
         document.body.style.overflow = 'hidden';
       };
 
-      window.closeMobileSideMenu = function() {
-        if (mobileSideDrawer) mobileSideDrawer.classList.remove('active');
-        if (mobileNavBackdrop) mobileNavBackdrop.classList.remove('active');
-        if (mobileToggle) mobileToggle.classList.remove('active');
+      window.closeMobileSideMenu = function(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        const drawer = document.getElementById('mobile-side-drawer');
+        const backdrop = document.getElementById('mobile-nav-backdrop');
+        const toggle = document.getElementById('mobile-toggle');
+        if (drawer) drawer.classList.remove('active');
+        if (backdrop) backdrop.classList.remove('active');
+        if (toggle) toggle.classList.remove('active');
         document.body.style.overflow = '';
       };
 
-      window.toggleMobileSideMenu = function() {
-        if (mobileSideDrawer && mobileSideDrawer.classList.contains('active')) {
-          window.closeMobileSideMenu();
+      window.toggleMobileSideMenu = function(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        const drawer = document.getElementById('mobile-side-drawer');
+        if (drawer && drawer.classList.contains('active')) {
+          window.closeMobileSideMenu(e);
         } else {
-          window.openMobileSideMenu();
+          window.openMobileSideMenu(e);
         }
       };
 
@@ -6779,11 +6933,48 @@ Evolve together`
         setLanguage(lang);
       };
 
+      // Video Mode Switcher
+      window.switchParkVideoMode = function(mode) {
+        const videoPlayer = document.getElementById('park-welcome-video-player');
+        const gdriveIframe = document.getElementById('park-welcome-gdrive-iframe');
+        const btnDirect = document.getElementById('btn-video-direct');
+        const btnGdrive = document.getElementById('btn-video-gdrive');
+
+        if (mode === 'gdrive') {
+          if (videoPlayer) {
+            try { videoPlayer.pause(); } catch(e) {}
+            videoPlayer.style.display = 'none';
+          }
+          if (gdriveIframe) {
+            const dataSrc = gdriveIframe.getAttribute('data-src') || 'https://drive.google.com/file/d/12CfBuIz0ttnglE8HIcwcfZmHRALrPpjj/preview';
+            if (!gdriveIframe.src || gdriveIframe.src === '' || gdriveIframe.src === window.location.href) {
+              gdriveIframe.src = dataSrc;
+            }
+            gdriveIframe.style.display = 'block';
+          }
+          if (btnDirect) btnDirect.classList.remove('active');
+          if (btnGdrive) btnGdrive.classList.add('active');
+        } else {
+          if (gdriveIframe) {
+            gdriveIframe.style.display = 'none';
+          }
+          if (videoPlayer) {
+            videoPlayer.style.display = 'block';
+          }
+          if (btnDirect) btnDirect.classList.add('active');
+          if (btnGdrive) btnGdrive.classList.remove('active');
+        }
+      };
+
       if (mobileToggle) {
         mobileToggle.addEventListener('click', (e) => {
           e.preventDefault();
-          window.toggleMobileSideMenu();
+          window.toggleMobileSideMenu(e);
         });
+        mobileToggle.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          window.toggleMobileSideMenu(e);
+        }, { passive: false });
       }
 
       if (mobileNavBackdrop) {
