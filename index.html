@@ -639,6 +639,54 @@
     .welcome-video-card-wrap {
       margin-bottom: 1.35rem;
     }
+    .video-lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 0.5rem;
+      padding: 0.25rem 0.35rem;
+      background: #f1f5f9;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+    .video-lang-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #64748b;
+      padding: 0 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      white-space: nowrap;
+    }
+    .video-lang-btn {
+      flex: 1;
+      padding: 0.35rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      transition: all 0.2s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .video-lang-btn:hover {
+      background: rgba(255, 255, 255, 0.65);
+      color: #0f172a;
+    }
+    .video-lang-btn.active {
+      background: #ffffff;
+      color: #1e40af;
+      border-color: #cbd5e1;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
     .video-mode-switcher {
       display: flex;
       align-items: center;
@@ -2050,6 +2098,21 @@
           <div class="welcome-body">
             <!-- Park Chul-soo Welcome Video Box (Dual-Mode: Direct MP4 + Google Drive Stream) -->
             <div class="welcome-video-card-wrap">
+              <!-- Video Language Selector (한국어 / 日本語 / English) -->
+              <div class="video-lang-switcher" id="park-video-lang-switcher">
+                <span class="video-lang-label"><span>🌐</span> <span>영상 언어:</span></span>
+                <button type="button" class="video-lang-btn active" data-vlang="ko" onclick="window.setWelcomeVideoLang && window.setWelcomeVideoLang('ko')">
+                  <span>🇰🇷 한국어</span>
+                </button>
+                <button type="button" class="video-lang-btn" data-vlang="ja" onclick="window.setWelcomeVideoLang && window.setWelcomeVideoLang('ja')">
+                  <span>🇯🇵 日本語</span>
+                </button>
+                <button type="button" class="video-lang-btn" data-vlang="en" onclick="window.setWelcomeVideoLang && window.setWelcomeVideoLang('en')">
+                  <span>🇺🇸 English</span>
+                </button>
+              </div>
+
+              <!-- Video Mode Switcher (웹 직접 재생 / 구글 드라이브 / 새 창) -->
               <div class="video-mode-switcher">
                 <button type="button" class="video-mode-btn active" id="btn-video-direct" onclick="window.switchParkVideoMode && window.switchParkVideoMode('direct')">
                   <span>▶ 웹 직접 재생</span>
@@ -2057,7 +2120,7 @@
                 <button type="button" class="video-mode-btn" id="btn-video-gdrive" onclick="window.switchParkVideoMode && window.switchParkVideoMode('gdrive')">
                   <span>🌐 구글 드라이브</span>
                 </button>
-                <a href="https://drive.google.com/file/d/12CfBuIz0ttnglE8HIcwcfZmHRALrPpjj/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="video-mode-btn link" title="구글 드라이브 원본 새 창에서 열기">
+                <a id="btn-video-open-external" href="https://drive.google.com/file/d/12CfBuIz0ttnglE8HIcwcfZmHRALrPpjj/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="video-mode-btn link" title="구글 드라이브 원본 새 창에서 열기">
                   <span>새 창 열기 ↗</span>
                 </a>
               </div>
@@ -2069,7 +2132,7 @@
                        webkit-playsinline
                        preload="metadata"
                        style="position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: contain; background: #000; border-radius: 12px;">
-                  <source src="assets/video/welcome-mcci.mp4" type="video/mp4">
+                  <source src="assets/video/welcome-mcci-ko.mp4" type="video/mp4">
                   브라우저가 비디오 재생을 지원하지 않습니다.
                 </video>
                 <iframe id="park-welcome-gdrive-iframe"
@@ -3181,16 +3244,88 @@
           window.openMobileSideMenu(e);
         }
       };
-      window.switchParkVideoMode = window.switchParkVideoMode || function(mode) {
+      const WELCOME_VIDEOS = {
+        ko: {
+          mp4: "assets/video/welcome-mcci-ko.mp4",
+          gdriveId: "12CfBuIz0ttnglE8HIcwcfZmHRALrPpjj",
+          previewUrl: "https://drive.google.com/file/d/12CfBuIz0ttnglE8HIcwcfZmHRALrPpjj/preview",
+          shareUrl: "https://drive.google.com/file/d/12CfBuIz0ttnglE8HIcwcfZmHRALrPpjj/view?usp=sharing",
+          label: "한국어 영상"
+        },
+        ja: {
+          mp4: "assets/video/welcome-mcci-ja.mp4",
+          gdriveId: "16H_BlRJZ0YSj5lgbGZ3ur1CegGFjOyTC",
+          previewUrl: "https://drive.google.com/file/d/16H_BlRJZ0YSj5lgbGZ3ur1CegGFjOyTC/preview",
+          shareUrl: "https://drive.google.com/file/d/16H_BlRJZ0YSj5lgbGZ3ur1CegGFjOyTC/view?usp=sharing",
+          label: "日本語動画"
+        },
+        en: {
+          mp4: "assets/video/welcome-mcci-en.mp4",
+          gdriveId: "1dROW4fXSAY2SSBCagKyWJ3QO9tAjaTvn",
+          previewUrl: "https://drive.google.com/file/d/1dROW4fXSAY2SSBCagKyWJ3QO9tAjaTvn/preview",
+          shareUrl: "https://drive.google.com/file/d/1dROW4fXSAY2SSBCagKyWJ3QO9tAjaTvn/view?usp=sharing",
+          label: "English Video"
+        }
+      };
+
+      let currentWelcomeVideoLang = 'ko';
+      let currentWelcomeVideoMode = 'direct';
+
+      window.setWelcomeVideoLang = function(lang, autoPlay) {
+        if (!WELCOME_VIDEOS[lang]) lang = 'ko';
+        currentWelcomeVideoLang = lang;
+
+        // 1. Update Video Language Switcher Buttons
+        document.querySelectorAll('.video-lang-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-vlang') === lang);
+        });
+
+        const vInfo = WELCOME_VIDEOS[lang];
+        const vPlayer = document.getElementById('park-welcome-video-player');
+        const gIframe = document.getElementById('park-welcome-gdrive-iframe');
+        const extLink = document.getElementById('btn-video-open-external');
+
+        if (extLink) extLink.href = vInfo.shareUrl;
+
+        // 2. Direct MP4 Player update
+        if (vPlayer) {
+          const srcEl = vPlayer.querySelector('source');
+          if (srcEl) {
+            if (srcEl.getAttribute('src') !== vInfo.mp4) {
+              srcEl.src = vInfo.mp4;
+              vPlayer.load();
+              if (autoPlay) { try { vPlayer.play(); } catch(err) {} }
+            }
+          } else {
+            if (vPlayer.getAttribute('src') !== vInfo.mp4) {
+              vPlayer.src = vInfo.mp4;
+              vPlayer.load();
+              if (autoPlay) { try { vPlayer.play(); } catch(err) {} }
+            }
+          }
+        }
+
+        // 3. Google Drive Iframe update
+        if (gIframe) {
+          gIframe.setAttribute('data-src', vInfo.previewUrl);
+          if (currentWelcomeVideoMode === 'gdrive') {
+            gIframe.src = vInfo.previewUrl;
+          }
+        }
+      };
+
+      window.switchParkVideoMode = function(mode) {
+        currentWelcomeVideoMode = mode;
         const v = document.getElementById('park-welcome-video-player');
         const g = document.getElementById('park-welcome-gdrive-iframe');
         const bd = document.getElementById('btn-video-direct');
         const bg = document.getElementById('btn-video-gdrive');
+        const vInfo = WELCOME_VIDEOS[currentWelcomeVideoLang] || WELCOME_VIDEOS.ko;
+
         if (mode === 'gdrive') {
           if (v) { try { v.pause(); } catch(err) {} v.style.display = 'none'; }
           if (g) {
-            const dataSrc = g.getAttribute('data-src') || 'https://drive.google.com/file/d/12CfBuIz0ttnglE8HIcwcfZmHRALrPpjj/preview';
-            if (!g.src || g.src === '' || g.src === window.location.href) g.src = dataSrc;
+            g.src = vInfo.previewUrl;
             g.style.display = 'block';
           }
           if (bd) bd.classList.remove('active');
@@ -4230,28 +4365,39 @@
           const quote = getLangStr(p.quote);
           const closing = getLangStr(p.closing);
 
-          // Video Embed
+          // Video Embed & Multilingual Sync
           const parkVideoBox = document.getElementById('park-welcome-video-box');
           const parkVideoWrap = parkVideoBox ? parkVideoBox.closest('.welcome-video-card-wrap') : null;
-          if (parkVideoBox) {
-            const vUrl = (p.videoUrl || '').trim();
-            if (vUrl) {
-              if (parkVideoWrap) parkVideoWrap.style.display = 'block';
-              parkVideoBox.style.display = 'block';
-              const player = document.getElementById('park-welcome-video-player');
-              if (player) {
-                const srcEl = player.querySelector('source');
-                if (srcEl && srcEl.getAttribute('src') !== vUrl) {
-                  srcEl.src = vUrl;
-                  player.load();
-                } else if (!srcEl && player.getAttribute('src') !== vUrl) {
-                  player.src = vUrl;
-                }
-              }
-            } else {
-              if (parkVideoWrap) parkVideoWrap.style.display = 'none';
-              parkVideoBox.style.display = 'none';
+          if (p.videoUrl) {
+            if (typeof p.videoUrl === 'object') {
+              if (p.videoUrl.ko) WELCOME_VIDEOS.ko.mp4 = p.videoUrl.ko;
+              if (p.videoUrl.ja) WELCOME_VIDEOS.ja.mp4 = p.videoUrl.ja;
+              if (p.videoUrl.en) WELCOME_VIDEOS.en.mp4 = p.videoUrl.en;
+            } else if (typeof p.videoUrl === 'string') {
+              WELCOME_VIDEOS.ko.mp4 = p.videoUrl;
             }
+          }
+          if (p.videoGdriveId && typeof p.videoGdriveId === 'object') {
+            if (p.videoGdriveId.ko) {
+              WELCOME_VIDEOS.ko.gdriveId = p.videoGdriveId.ko;
+              WELCOME_VIDEOS.ko.previewUrl = `https://drive.google.com/file/d/${p.videoGdriveId.ko}/preview`;
+              WELCOME_VIDEOS.ko.shareUrl = `https://drive.google.com/file/d/${p.videoGdriveId.ko}/view?usp=sharing`;
+            }
+            if (p.videoGdriveId.ja) {
+              WELCOME_VIDEOS.ja.gdriveId = p.videoGdriveId.ja;
+              WELCOME_VIDEOS.ja.previewUrl = `https://drive.google.com/file/d/${p.videoGdriveId.ja}/preview`;
+              WELCOME_VIDEOS.ja.shareUrl = `https://drive.google.com/file/d/${p.videoGdriveId.ja}/view?usp=sharing`;
+            }
+            if (p.videoGdriveId.en) {
+              WELCOME_VIDEOS.en.gdriveId = p.videoGdriveId.en;
+              WELCOME_VIDEOS.en.previewUrl = `https://drive.google.com/file/d/${p.videoGdriveId.en}/preview`;
+              WELCOME_VIDEOS.en.shareUrl = `https://drive.google.com/file/d/${p.videoGdriveId.en}/view?usp=sharing`;
+            }
+          }
+          if (parkVideoWrap) parkVideoWrap.style.display = 'block';
+          if (parkVideoBox) parkVideoBox.style.display = 'block';
+          if (typeof window.setWelcomeVideoLang === 'function') {
+            window.setWelcomeVideoLang(lang, false);
           }
 
           const hTitle = document.querySelector('[data-i18n="welcome.parkTitle"]');
@@ -4367,6 +4513,9 @@
         renderContacts(lang);
         if (typeof renderWelcomeRemarks === 'function' && window.REMOTE_WELCOME_DATA) {
           renderWelcomeRemarks(window.REMOTE_WELCOME_DATA, lang);
+        }
+        if (typeof window.setWelcomeVideoLang === 'function') {
+          window.setWelcomeVideoLang(lang, false);
         }
         if (typeof renderAttendees === 'function') renderAttendees(lang);
 
