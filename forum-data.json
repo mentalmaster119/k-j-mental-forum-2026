@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-10-03T04:34:19.593Z",
+  "lastUpdated": "2026-10-03T08:46:37.783Z",
   "googleSheetWebhookUrl": "https://script.google.com/macros/s/AKfycbz8cwaw2wY3or3CuUz9i1p4kRdpM4-BJd4AaQtjyRTW-mKj3YkmBnwyq6bYdlnWZ7fboQ/exec",
   "speakers": [
     {
@@ -963,7 +963,7 @@
     }
   },
   "heroVisual": {
-    "url": "assets/images/hero-key-visual.svg?v=202610_panoramic",
+    "url": "assets/images/hero-key-visual.jpeg",
     "caption": {
       "ko": "제3회 한일 멘탈코칭 포럼 2026 공식 키 비주얼 (10주년)",
       "ja": "第3回日韓国際メンタルフォーラム2026 公式キービジュアル（10周年）",
@@ -2726,5 +2726,52 @@
       "reception": true,
       "badgeReady": true
     }
-  ]
+  ],
+  "welcomeRemarks": {
+    "park": {
+      "headline": {
+        "ko": "",
+        "ja": "",
+        "en": ""
+      },
+      "speech": {
+        "ko": "",
+        "ja": "",
+        "en": ""
+      },
+      "quote": {
+        "ko": "",
+        "ja": "",
+        "en": ""
+      },
+      "closing": {
+        "ko": "",
+        "ja": "",
+        "en": ""
+      }
+    },
+    "tsuge": {
+      "headline": {
+        "ja": "",
+        "ko": "",
+        "en": ""
+      },
+      "speech": {
+        "ja": "",
+        "ko": "",
+        "en": ""
+      },
+      "quote": {
+        "ja": "",
+        "ko": "",
+        "en": ""
+      },
+      "closing": {
+        "ja": "",
+        "ko": "",
+        "en": ""
+      },
+      "status": "coming_soon"
+    }
+  }
 }
