@@ -173,28 +173,91 @@
       pointer-events: auto;
     }
 
+    /* Side Navigation Container (Desktop Persistent Sidebar & Mobile Drawer) */
     .mobile-side-drawer {
       position: fixed;
       top: 0;
-      right: 0;
-      width: min(390px, 88vw);
       height: 100%;
       height: 100dvh;
-      background: #0f172a;
-      background: linear-gradient(180deg, #0b1324 0%, #0f172a 100%);
-      border-left: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: -12px 0 40px rgba(0, 0, 0, 0.65);
-      z-index: 99999;
+      background: #0b1324;
+      background: linear-gradient(180deg, #070e1e 0%, #0f172a 100%);
       display: flex;
       flex-direction: column;
-      transform: translateX(100%);
-      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
       overflow-y: auto;
       overscroll-behavior: contain;
       -webkit-overflow-scrolling: touch;
     }
-    .mobile-side-drawer.active {
-      transform: translateX(0);
+
+    /* Custom sleek scrollbar for sidebar */
+    .mobile-side-drawer::-webkit-scrollbar {
+      width: 5px;
+    }
+    .mobile-side-drawer::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .mobile-side-drawer::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+    }
+    .mobile-side-drawer::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Desktop & Laptop Mode: Left Persistent Sidebar (>= 993px) */
+    @media (min-width: 993px) {
+      body {
+        padding-left: 280px !important;
+      }
+      .site-header {
+        display: none !important;
+      }
+      .mobile-nav-backdrop {
+        display: none !important;
+      }
+      .mobile-side-drawer {
+        left: 0 !important;
+        right: auto !important;
+        width: 280px !important;
+        transform: translateX(0) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-left: none !important;
+        box-shadow: 4px 0 25px rgba(0, 0, 0, 0.35) !important;
+        z-index: 1000 !important;
+        transition: none !important;
+      }
+      .side-drawer-close {
+        display: none !important;
+      }
+      .side-drawer-header {
+        padding: 1.4rem 1.25rem 1.2rem !important;
+      }
+    }
+
+    /* Mobile & Tablet Mode: Slide-in Drawer from Right (<= 992px) */
+    @media (max-width: 992px) {
+      body {
+        padding-left: 0 !important;
+      }
+      .site-header {
+        display: block !important;
+      }
+      .mobile-side-drawer {
+        right: 0 !important;
+        left: auto !important;
+        width: min(390px, 88vw) !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-right: none !important;
+        box-shadow: -12px 0 40px rgba(0, 0, 0, 0.65) !important;
+        z-index: 99999 !important;
+        transform: translateX(100%);
+        transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      .mobile-side-drawer.active {
+        transform: translateX(0) !important;
+      }
+      .side-drawer-close {
+        display: flex !important;
+      }
     }
 
     .side-drawer-header {
@@ -306,9 +369,26 @@
       text-decoration: none;
       transition: all 0.18s ease;
       background: transparent;
+      border: 1px solid transparent;
     }
-    .side-nav-link:hover, .side-nav-link:active {
+    .side-nav-link:hover {
       background: rgba(255, 255, 255, 0.08);
+      transform: translateX(3px);
+    }
+    .side-nav-link.active {
+      background: rgba(37, 99, 235, 0.22);
+      border-color: rgba(96, 165, 250, 0.45);
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
+    }
+    .side-nav-link.active .side-nav-main {
+      color: #60a5fa;
+      font-weight: 800;
+    }
+    .side-nav-link.active .side-nav-desc {
+      color: #cbd5e1;
+    }
+    .side-nav-link.active .side-nav-arrow {
+      color: #60a5fa;
       transform: translateX(3px);
     }
     .side-nav-icon {
@@ -483,6 +563,14 @@
 
     /* Sections */
     .section { padding: 5.5rem 0; }
+    section[id], .section {
+      scroll-margin-top: 1.5rem;
+    }
+    @media (max-width: 992px) {
+      section[id], .section {
+        scroll-margin-top: 4.8rem;
+      }
+    }
     .section-alt { background-color: #ffffff; }
     .section-header { text-align: center; max-width: 780px; margin: 0 auto 3.5rem; }
     .section-tag { display: inline-block; font-size: 0.8125rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-600); margin-bottom: 0.75rem; }
@@ -1798,14 +1886,14 @@
   <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" onclick="window.closeMobileSideMenu && window.closeMobileSideMenu(event)"></div>
   <aside class="mobile-side-drawer" id="mobile-side-drawer" aria-label="Mobile Navigation">
     <div class="side-drawer-header">
-      <div class="side-drawer-brand">
+      <a href="#hero" class="side-drawer-brand" onclick="handleSideNavLinkClick(event)" style="text-decoration: none; cursor: pointer;">
         <span class="logo-badge" style="font-size: 0.72rem; padding: 0.25rem 0.5rem;">JKMCF 2026</span>
         <div>
-          <div class="side-drawer-title">한·일 멘탈포럼 2026</div>
+          <div class="side-drawer-title" data-i18n="sideNav.brandTitle">한·일 멘탈포럼 2026</div>
           <div class="side-drawer-subtitle">Evolution Together · Yokohama</div>
         </div>
-      </div>
-      <button class="side-drawer-close" id="side-drawer-close-btn" onclick="closeMobileSideMenu()" aria-label="메뉴 닫기">
+      </a>
+      <button class="side-drawer-close" id="side-drawer-close-btn" onclick="closeMobileSideMenu(event)" aria-label="메뉴 닫기">
         ✕
       </button>
     </div>
@@ -3387,6 +3475,7 @@
           en: {
             nav: { about: "ABOUT", welcome: "GREETINGS", program: "PROGRAM", speakers: "SPEAKERS", materials: "MATERIALS", venue: "VENUE & GUIDE", fieldflow: "MCCI & FIELD FLOW 10TH", contact: "CONTACT", menu: "MENU", quickProgram: "⏱️ Timetable" },
             sideNav: {
+              brandTitle: "3rd Japan–Korea Forum",
               langLabel: "Language",
               aboutDesc: "Forum Philosophy & Core Values",
               welcomeDesc: "Opening Welcoming Remarks",
@@ -3526,6 +3615,7 @@
           ko: {
             nav: { about: "포럼 소개", welcome: "환영사", program: "프로그램", speakers: "발표자", materials: "발표 자료", venue: "장소 및 안내", fieldflow: "MCCI & Field Flow 10주년", contact: "문의하기", menu: "메뉴", quickProgram: "⏱️ 타임테이블" },
             sideNav: {
+              brandTitle: "한·일 멘탈포럼 2026",
               langLabel: "언어 변경 (Language)",
               aboutDesc: "포럼 소개 및 3대 핵심 가치",
               welcomeDesc: "한·일 공동대표 개회 환영사",
@@ -3665,6 +3755,7 @@
           ja: {
             nav: { about: "フォーラムについて", welcome: "ご挨拶", program: "プログラム", speakers: "登壇者紹介", materials: "発表資料", venue: "会場・当日のご案内", fieldflow: "MCCI＆Field Flow 10周年", contact: "お問い合わせ", menu: "メニュー", quickProgram: "⏱️ タイムテーブル" },
             sideNav: {
+              brandTitle: "日韓メンタルフォーラム 2026",
               langLabel: "言語の切り替え (Language)",
               aboutDesc: "フォーラム理念と3つの柱",
               welcomeDesc: "日韓共同代表 開会のご挨拶",
@@ -7094,7 +7185,9 @@ Evolve together`
         if (drawer) drawer.classList.add('active');
         if (backdrop) backdrop.classList.add('active');
         if (toggle) toggle.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        if (window.innerWidth <= 992) {
+          document.body.style.overflow = 'hidden';
+        }
       };
 
       window.closeMobileSideMenu = function(e) {
@@ -7118,13 +7211,68 @@ Evolve together`
         }
       };
 
-      window.handleSideNavLinkClick = function() {
-        window.closeMobileSideMenu();
+      window.handleSideNavLinkClick = function(e) {
+        if (window.innerWidth <= 992) {
+          window.closeMobileSideMenu(e);
+        }
       };
 
       window.handleSideLangClick = function(lang) {
         setLanguage(lang);
       };
+
+      // Reset mobile scroll lock and drawer active states on resize above 992px
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 992) {
+          const drawer = document.getElementById('mobile-side-drawer');
+          const backdrop = document.getElementById('mobile-nav-backdrop');
+          const toggle = document.getElementById('mobile-toggle');
+          if (drawer) drawer.classList.remove('active');
+          if (backdrop) backdrop.classList.remove('active');
+          if (toggle) toggle.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }, { passive: true });
+
+      // Real-time Active Scroll-Spy for Persistent Sidebar Navigation
+      function initSidebarScrollSpy() {
+        const sideNavLinks = document.querySelectorAll('.side-nav-link');
+        if (!sideNavLinks.length) return;
+
+        const navTargets = [];
+        sideNavLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            const el = document.querySelector(href);
+            if (el) {
+              navTargets.push({ link: link, element: el });
+            }
+          }
+        });
+
+        function updateActiveSection() {
+          const viewportThreshold = window.innerHeight * 0.35;
+          let currentTarget = null;
+
+          for (let i = 0; i < navTargets.length; i++) {
+            const item = navTargets[i];
+            const rect = item.element.getBoundingClientRect();
+            if (rect.top <= viewportThreshold && rect.bottom > 80) {
+              currentTarget = item;
+            }
+          }
+
+          sideNavLinks.forEach(l => l.classList.remove('active'));
+          if (currentTarget) {
+            currentTarget.link.classList.add('active');
+          }
+        }
+
+        window.addEventListener('scroll', updateActiveSection, { passive: true });
+        window.addEventListener('resize', updateActiveSection, { passive: true });
+        setTimeout(updateActiveSection, 300);
+      }
+      initSidebarScrollSpy();
 
       // Video Mode Switcher
       window.switchParkVideoMode = function(mode) {
