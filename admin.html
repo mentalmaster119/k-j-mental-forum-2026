@@ -2115,10 +2115,10 @@ function doGet(e) {
         const s = document.getElementById(`admin-park-speech-${l}`);
         const q = document.getElementById(`admin-park-quote-${l}`);
         const c = document.getElementById(`admin-park-closing-${l}`);
-        if (h) w.park.headline[l] = h.value;
-        if (s) w.park.speech[l] = s.value;
-        if (q) w.park.quote[l] = q.value;
-        if (c) w.park.closing[l] = c.value;
+        if (h && (h.value.trim() !== '' || !w.park.headline[l])) w.park.headline[l] = h.value;
+        if (s && (s.value.trim() !== '' || !w.park.speech[l])) w.park.speech[l] = s.value;
+        if (q && (q.value.trim() !== '' || !w.park.quote[l])) w.park.quote[l] = q.value;
+        if (c && (c.value.trim() !== '' || !w.park.closing[l])) w.park.closing[l] = c.value;
       });
 
       if (!w.tsuge.headline || typeof w.tsuge.headline !== 'object') w.tsuge.headline = {};
@@ -2131,10 +2131,10 @@ function doGet(e) {
         const s = document.getElementById(`admin-tsuge-speech-${l}`);
         const q = document.getElementById(`admin-tsuge-quote-${l}`);
         const c = document.getElementById(`admin-tsuge-closing-${l}`);
-        if (h) w.tsuge.headline[l] = h.value;
-        if (s) w.tsuge.speech[l] = s.value;
-        if (q) w.tsuge.quote[l] = q.value;
-        if (c) w.tsuge.closing[l] = c.value;
+        if (h && (h.value.trim() !== '' || !w.tsuge.headline[l])) w.tsuge.headline[l] = h.value;
+        if (s && (s.value.trim() !== '' || !w.tsuge.speech[l])) w.tsuge.speech[l] = s.value;
+        if (q && (q.value.trim() !== '' || !w.tsuge.quote[l])) w.tsuge.quote[l] = q.value;
+        if (c && (c.value.trim() !== '' || !w.tsuge.closing[l])) w.tsuge.closing[l] = c.value;
       });
 
       const statusSelect = document.getElementById('admin-tsuge-status');

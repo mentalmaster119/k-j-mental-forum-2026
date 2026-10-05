@@ -494,37 +494,38 @@
     .hero-panoramic-frame {
       position: relative;
       width: 100%;
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(245, 158, 11, 0.45);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 45px rgba(37, 99, 235, 0.25);
       background: #060a14;
-      aspect-ratio: 1200 / 480;
+      aspect-ratio: 2048 / 683;
       transition: all var(--transition);
       display: block;
     }
     .hero-panoramic-frame:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       border-color: rgba(251, 191, 36, 0.85);
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 60px rgba(56, 189, 248, 0.4);
     }
     .hero-panoramic-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
       transition: transform 0.4s ease;
     }
     .hero-panoramic-frame:hover .hero-panoramic-img {
-      transform: scale(1.015);
+      transform: none;
     }
     .hero-panoramic-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 0.75rem 1.25rem;
-      background: linear-gradient(180deg, transparent 0%, rgba(6, 10, 20, 0.94) 100%);
+      padding: 0.5rem 1.25rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(6, 10, 20, 0.5) 100%);
+      pointer-events: none;
     }
     .hero-panoramic-badge {
       display: flex;
@@ -2074,7 +2075,7 @@
       <!-- Grand Full-Width Panoramic Key Visual Banner (화면 가로로 넓게 펼쳐진 공식 배너) -->
       <div class="hero-panoramic-banner-wrap" onclick="openHeroVisualModal()" title="포럼 10주년 공식 키 비주얼 크게 보기">
         <div class="hero-panoramic-frame">
-          <img src="assets/images/hero-key-visual.svg?v=202610_panoramic" alt="3rd Japan–Korea Mental Coaching Forum 2026 Evolution Together Key Visual" class="hero-panoramic-img" id="hero-key-visual-img">
+          <img src="assets/images/hero-key-visual.jpeg?v=202610_banner" alt="3rd Japan–Korea Mental Coaching Forum 2026 Evolution Together Key Visual" class="hero-panoramic-img" id="hero-key-visual-img">
           <div class="hero-panoramic-overlay">
             <div class="hero-panoramic-badge">
               <span id="hero-visual-badge-text">✨ 3rd Japan–Korea Mental Forum · 10th Anniversary Official Key Visual</span>
@@ -3276,14 +3277,14 @@
     <div class="modal-content" style="max-width: 900px; padding: 1.75rem; background: #070d1a; border: 1px solid rgba(245, 158, 11, 0.45); color: #ffffff;">
       <button class="modal-close-btn" onclick="closeHeroVisualModal()" style="background: rgba(255,255,255,0.12); color: #ffffff;">&times;</button>
       <div style="border-radius: 14px; overflow: hidden; margin-bottom: 1.25rem; box-shadow: 0 15px 40px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
-        <img id="modal-hero-visual-img" src="assets/images/hero-key-visual.svg?v=202610" alt="3rd Japan–Korea Mental Forum 2026 Key Visual" style="width: 100%; height: auto; display: block;">
+        <img id="modal-hero-visual-img" src="assets/images/hero-key-visual.jpeg?v=202610" alt="3rd Japan–Korea Mental Forum 2026 Key Visual" style="width: 100%; height: auto; display: block;">
       </div>
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
         <div>
           <div style="font-size: 0.75rem; color: #f59e0b; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">3rd Japan–Korea Mental Coaching Forum 2026</div>
           <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff;" id="modal-hero-visual-title">Evolution Together · 10th Anniversary Official Key Visual</div>
         </div>
-        <a href="assets/images/hero-key-visual.svg" target="_blank" download="Evolution_Together_2026_Key_Visual.svg" class="btn btn-secondary" style="font-size: 0.825rem; padding: 0.55rem 1.15rem; color: #fef08a; border-color: rgba(245, 158, 11, 0.45); background: rgba(245, 158, 11, 0.12);">
+        <a href="assets/images/hero-key-visual.jpeg" id="modal-hero-visual-download" target="_blank" download="Evolution_Together_2026_Key_Visual.jpeg" class="btn btn-secondary" style="font-size: 0.825rem; padding: 0.55rem 1.15rem; color: #fef08a; border-color: rgba(245, 158, 11, 0.45); background: rgba(245, 158, 11, 0.12);">
           <span>⬇️</span> <span>고화질 이미지 저장</span>
         </a>
       </div>
@@ -7491,8 +7492,10 @@ Evolve together`
             if (remote.heroVisual && remote.heroVisual.url) {
               const heroImg = document.getElementById('hero-key-visual-img');
               const modalHeroImg = document.getElementById('modal-hero-visual-img');
+              const downloadBtn = document.getElementById('modal-hero-visual-download');
               if (heroImg) heroImg.src = remote.heroVisual.url;
               if (modalHeroImg) modalHeroImg.src = remote.heroVisual.url;
+              if (downloadBtn) downloadBtn.href = remote.heroVisual.url;
             }
             if (Array.isArray(remote.participants) && remote.participants.length > 0) {
               PARTICIPANTS_DATA = remote.participants;
