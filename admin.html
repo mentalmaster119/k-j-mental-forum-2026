@@ -982,7 +982,11 @@
         <div class="section-header">
           <div>
             <h2 class="section-title">📂 공식 자료실 (4개) & 참가자 안내 (5개) 관리</h2>
-            <p class="section-desc">자료실 카드(PDF 브로슈어, 한국/일본 발표슬라이드 드라이브 폴더) 및 참가자 안내 박스를 수정합니다.</p>
+            <p class="section-desc">자료실 카드(PDF 브로슈어, 통합 발표자료집, 프로필북 링크) 및 참가자 안내 박스를 직접 수정합니다.</p>
+          </div>
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-sm); padding: 0.65rem 1.1rem; font-size: 0.85rem; color: #166534; display: flex; align-items: center; gap: 0.5rem; max-width: 650px;">
+            <span style="font-size: 1.1rem;">✏️</span>
+            <span><strong>직접 수정 가능 안내:</strong> 아래 각 카드의 입력창(제목, 배지, 설명문, 구글 드라이브 링크, 다운로드 버튼 문구)을 직접 타이핑하여 수정하신 후, 하단 <strong>[🚀 수정사항 저장 및 배포]</strong>를 누르시면 라이브 웹사이트에 즉시 반영됩니다.</span>
           </div>
         </div>
 
@@ -1491,8 +1495,21 @@ function doGet(e) {
       const clickedBtn = Array.from(document.querySelectorAll('.tab-item')).find(b => b.getAttribute('onclick')?.includes(tabId));
       if (clickedBtn) clickedBtn.classList.add('active');
 
+      if (tabId === 'materials') {
+        if (typeof renderMaterialsEditor === 'function') renderMaterialsEditor();
+        if (typeof renderGuidesEditor === 'function') renderGuidesEditor();
+      }
       if (tabId === 'welcome' && typeof updateWelcomeLivePreview === 'function') {
         updateWelcomeLivePreview(WELCOME_PREVIEW_LANG);
+      }
+      if (tabId === 'sessions' && typeof renderSessionsEditor === 'function') {
+        renderSessionsEditor();
+      }
+      if (tabId === 'speakers' && typeof renderSpeakersEditor === 'function') {
+        renderSpeakersEditor();
+      }
+      if (tabId === 'contacts' && typeof renderContactsEditor === 'function') {
+        renderContactsEditor();
       }
       if (tabId === 'inquiries' && typeof renderInquiriesEditor === 'function') {
         renderInquiriesEditor();
@@ -1769,103 +1786,156 @@ function doGet(e) {
       const container = document.getElementById('materials-editor-list');
       if (!container || !FORUM_DATA.materials) return;
 
-      container.innerHTML = FORUM_DATA.materials.map((m, idx) => `
+      container.innerHTML = FORUM_DATA.materials.map((m, idx) => {
+        if (!m.badge) m.badge = {};
+        if (!m.title) m.title = {};
+        if (!m.desc) m.desc = {};
+        if (!m.btnText) m.btnText = {};
+
+        return `
         <div class="card">
-          <div class="card-header" onclick="toggleCardBody('mat-body-${m.id}')">
-            <span class="card-header-title">
-              <span>${m.icon}</span> <span>${m.title.ko}</span>
-              <span class="card-badge">${m.badge.ko}</span>
+          <div class="card-header" onclick="toggleCardBody('mat-body-${m.id}')" style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="card-header-title" style="display: flex; align-items: center; gap: 0.65rem;">
+              <span style="font-size: 1.25rem;">${m.icon || '📂'}</span>
+              <strong style="color: var(--primary); font-size: 1rem;">${escapeHtml(m.title.ko || m.id)}</strong>
+              <span class="card-badge" style="background: #e0f2fe; color: #0369a1; font-weight: 600;">${escapeHtml(m.badge.ko || '')}</span>
             </span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">▼</span>
+            <span style="font-size: 0.85rem; color: var(--primary-accent); font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <span>✏️ 내용 수정 / 접기</span> <span style="font-size: 0.75rem;">▼</span>
+            </span>
           </div>
           <div class="card-body" id="mat-body-${m.id}">
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; background: #f8fafc; padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px dashed #cbd5e1;">
+              💡 <strong>직접 수정 안내:</strong> 아래 입력창에 원하는 내용을 타이핑하시면 실시간 반영됩니다. 편집 완료 후 상단 또는 하단의 <strong>[🚀 수정사항 저장 및 배포]</strong> 버튼을 누르시면 웹사이트에 즉시 적용됩니다.
+            </div>
+
             <div class="form-grid-3">
               <div class="form-group">
                 <label class="form-label">아이콘 (이모지)</label>
-                <input type="text" class="form-control" value="${escapeHtml(m.icon)}" oninput="FORUM_DATA.materials[${idx}].icon = this.value; markUnsavedChanges();">
+                <input type="text" class="form-control" value="${escapeHtml(m.icon || '')}" oninput="FORUM_DATA.materials[${idx}].icon = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
                 <label class="form-label">카드 배지 (한국어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(m.badge.ko)}" oninput="FORUM_DATA.materials[${idx}].badge.ko = this.value; markUnsavedChanges();">
+                <input type="text" class="form-control" value="${escapeHtml(m.badge.ko || '')}" oninput="if (!FORUM_DATA.materials[${idx}].badge) FORUM_DATA.materials[${idx}].badge = {}; FORUM_DATA.materials[${idx}].badge.ko = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
                 <label class="form-label">카드 배지 (일본어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(m.badge.ja)}" oninput="FORUM_DATA.materials[${idx}].badge.ja = this.value; markUnsavedChanges();">
+                <input type="text" class="form-control" value="${escapeHtml(m.badge.ja || '')}" oninput="if (!FORUM_DATA.materials[${idx}].badge) FORUM_DATA.materials[${idx}].badge = {}; FORUM_DATA.materials[${idx}].badge.ja = this.value; markUnsavedChanges();">
               </div>
             </div>
+
             <div class="form-grid-2">
               <div class="form-group">
                 <label class="form-label">자료 제목 (한국어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(m.title.ko)}" oninput="FORUM_DATA.materials[${idx}].title.ko = this.value; markUnsavedChanges();">
+                <input type="text" class="form-control" value="${escapeHtml(m.title.ko || '')}" oninput="if (!FORUM_DATA.materials[${idx}].title) FORUM_DATA.materials[${idx}].title = {}; FORUM_DATA.materials[${idx}].title.ko = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
                 <label class="form-label">자료 제목 (일본어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(m.title.ja)}" oninput="FORUM_DATA.materials[${idx}].title.ja = this.value; markUnsavedChanges();">
+                <input type="text" class="form-control" value="${escapeHtml(m.title.ja || '')}" oninput="if (!FORUM_DATA.materials[${idx}].title) FORUM_DATA.materials[${idx}].title = {}; FORUM_DATA.materials[${idx}].title.ja = this.value; markUnsavedChanges();">
               </div>
             </div>
+
             <div class="form-grid-2">
               <div class="form-group">
                 <label class="form-label">자료 설명 (한국어)</label>
-                <textarea class="form-control" rows="2" oninput="FORUM_DATA.materials[${idx}].desc.ko = this.value; markUnsavedChanges();">${escapeHtml(m.desc.ko)}</textarea>
+                <textarea class="form-control" rows="2" oninput="if (!FORUM_DATA.materials[${idx}].desc) FORUM_DATA.materials[${idx}].desc = {}; FORUM_DATA.materials[${idx}].desc.ko = this.value; markUnsavedChanges();">${escapeHtml(m.desc.ko || '')}</textarea>
               </div>
               <div class="form-group">
                 <label class="form-label">자료 설명 (일본어)</label>
-                <textarea class="form-control" rows="2" oninput="FORUM_DATA.materials[${idx}].desc.ja = this.value; markUnsavedChanges();">${escapeHtml(m.desc.ja)}</textarea>
+                <textarea class="form-control" rows="2" oninput="if (!FORUM_DATA.materials[${idx}].desc) FORUM_DATA.materials[${idx}].desc = {}; FORUM_DATA.materials[${idx}].desc.ja = this.value; markUnsavedChanges();">${escapeHtml(m.desc.ja || '')}</textarea>
               </div>
             </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">다운로드 버튼 문구 (한국어)</label>
+                <input type="text" class="form-control" value="${escapeHtml(m.btnText.ko || '')}" placeholder="예: 통합 자료집 다운로드 (PDF) ⬇" oninput="if (!FORUM_DATA.materials[${idx}].btnText) FORUM_DATA.materials[${idx}].btnText = {}; FORUM_DATA.materials[${idx}].btnText.ko = this.value; markUnsavedChanges();">
+              </div>
+              <div class="form-group">
+                <label class="form-label">다운로드 버튼 문구 (일본어)</label>
+                <input type="text" class="form-control" value="${escapeHtml(m.btnText.ja || '')}" placeholder="예: 統合資料集ダウンロード (PDF) ⬇" oninput="if (!FORUM_DATA.materials[${idx}].btnText) FORUM_DATA.materials[${idx}].btnText = {}; FORUM_DATA.materials[${idx}].btnText.ja = this.value; markUnsavedChanges();">
+              </div>
+            </div>
+
             <div class="form-group">
               <label class="form-label">
                 <span>📄 자료집 다운로드 / 구글 드라이브 링크 (URL)</span>
-                ${m.link ? `<a href="${m.link}" target="_blank" class="form-label-hint">링크 열기 ↗</a>` : ''}
+                ${m.link ? `<a href="${m.link}" target="_blank" rel="noopener noreferrer" class="form-label-hint">새 탭에서 링크 열기 ↗</a>` : ''}
               </label>
               <input type="url" class="form-control" value="${escapeHtml(m.link || '')}" placeholder="https://drive.google.com/..." oninput="FORUM_DATA.materials[${idx}].link = this.value; markUnsavedChanges();">
             </div>
           </div>
         </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     function renderGuidesEditor() {
       const container = document.getElementById('guides-editor-list');
       if (!container || !FORUM_DATA.guides) return;
 
-      container.innerHTML = FORUM_DATA.guides.map((g, idx) => `
+      container.innerHTML = FORUM_DATA.guides.map((g, idx) => {
+        if (!g.title) g.title = {};
+        if (!g.time) g.time = {};
+        if (!g.desc) g.desc = {};
+
+        return `
         <div class="card">
-          <div class="card-header" onclick="toggleCardBody('guide-body-${g.id}')">
-            <span class="card-header-title">
-              <span>${g.icon}</span> <span>${g.title.ko}</span>
-              <span class="card-badge" style="background: #fef3c7; color: #92400e;">${g.time?.ko || ''}</span>
+          <div class="card-header" onclick="toggleCardBody('guide-body-${g.id}')" style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="card-header-title" style="display: flex; align-items: center; gap: 0.65rem;">
+              <span style="font-size: 1.25rem;">${g.icon || '📌'}</span>
+              <strong style="color: var(--primary); font-size: 1rem;">${escapeHtml(g.title.ko || g.id)}</strong>
+              <span class="card-badge" style="background: #fef3c7; color: #92400e; font-weight: 600;">${escapeHtml(g.time.ko || '')}</span>
             </span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">▼</span>
+            <span style="font-size: 0.85rem; color: var(--primary-accent); font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <span>✏️ 내용 수정 / 접기</span> <span style="font-size: 0.75rem;">▼</span>
+            </span>
           </div>
           <div class="card-body" id="guide-body-${g.id}">
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; background: #f8fafc; padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px dashed #cbd5e1;">
+              💡 <strong>직접 수정 안내:</strong> 안내 제목, 시간, 세부 안내문을 한국어 및 일본어로 자유롭게 수정하실 수 있습니다.
+            </div>
+
             <div class="form-grid-3">
               <div class="form-group">
-                <label class="form-label">아이콘</label>
-                <input type="text" class="form-control" value="${escapeHtml(g.icon)}" oninput="FORUM_DATA.guides[${idx}].icon = this.value; markUnsavedChanges();">
+                <label class="form-label">아이콘 (이모지)</label>
+                <input type="text" class="form-control" value="${escapeHtml(g.icon || '')}" oninput="FORUM_DATA.guides[${idx}].icon = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
                 <label class="form-label">안내 제목 (한국어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(g.title.ko)}" oninput="FORUM_DATA.guides[${idx}].title.ko = this.value; markUnsavedChanges();">
+                <input type="text" class="form-control" value="${escapeHtml(g.title.ko || '')}" oninput="if (!FORUM_DATA.guides[${idx}].title) FORUM_DATA.guides[${idx}].title = {}; FORUM_DATA.guides[${idx}].title.ko = this.value; markUnsavedChanges();">
               </div>
               <div class="form-group">
-                <label class="form-label">시간 / 배지 (한국어)</label>
-                <input type="text" class="form-control" value="${escapeHtml(g.time?.ko || '')}" oninput="FORUM_DATA.guides[${idx}].time.ko = this.value; markUnsavedChanges();">
+                <label class="form-label">안내 제목 (일본어)</label>
+                <input type="text" class="form-control" value="${escapeHtml(g.title.ja || '')}" oninput="if (!FORUM_DATA.guides[${idx}].title) FORUM_DATA.guides[${idx}].title = {}; FORUM_DATA.guides[${idx}].title.ja = this.value; markUnsavedChanges();">
               </div>
             </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">시간 / 배지 (한국어)</label>
+                <input type="text" class="form-control" value="${escapeHtml(g.time.ko || '')}" oninput="if (!FORUM_DATA.guides[${idx}].time) FORUM_DATA.guides[${idx}].time = {}; FORUM_DATA.guides[${idx}].time.ko = this.value; markUnsavedChanges();">
+              </div>
+              <div class="form-group">
+                <label class="form-label">시간 / 배지 (일본어)</label>
+                <input type="text" class="form-control" value="${escapeHtml(g.time.ja || '')}" oninput="if (!FORUM_DATA.guides[${idx}].time) FORUM_DATA.guides[${idx}].time = {}; FORUM_DATA.guides[${idx}].time.ja = this.value; markUnsavedChanges();">
+              </div>
+            </div>
+
             <div class="form-grid-2">
               <div class="form-group">
                 <label class="form-label">안내 내용 상세 (한국어)</label>
-                <textarea class="form-control" rows="2" oninput="FORUM_DATA.guides[${idx}].desc.ko = this.value; markUnsavedChanges();">${escapeHtml(g.desc.ko)}</textarea>
+                <textarea class="form-control" rows="2" oninput="if (!FORUM_DATA.guides[${idx}].desc) FORUM_DATA.guides[${idx}].desc = {}; FORUM_DATA.guides[${idx}].desc.ko = this.value; markUnsavedChanges();">${escapeHtml(g.desc.ko || '')}</textarea>
               </div>
               <div class="form-group">
                 <label class="form-label">안내 내용 상세 (일본어)</label>
-                <textarea class="form-control" rows="2" oninput="FORUM_DATA.guides[${idx}].desc.ja = this.value; markUnsavedChanges();">${escapeHtml(g.desc.ja)}</textarea>
+                <textarea class="form-control" rows="2" oninput="if (!FORUM_DATA.guides[${idx}].desc) FORUM_DATA.guides[${idx}].desc = {}; FORUM_DATA.guides[${idx}].desc.ja = this.value; markUnsavedChanges();">${escapeHtml(g.desc.ja || '')}</textarea>
               </div>
             </div>
           </div>
         </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     // 7. Render Contacts Editor
