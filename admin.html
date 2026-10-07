@@ -1141,6 +1141,36 @@
           </div>
         </div>
 
+        <!-- 10th Anniversary Celebratory Visual Management Card -->
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <div class="card-header">
+            <span class="card-header-title">🎉 MCCI & Field Flow 창립 10주년 기념 비주얼 (Anniversary Banner)</span>
+          </div>
+          <div class="card-body">
+            <div style="display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+              <div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 14px rgba(0,0,0,0.12); background: #070d1a; aspect-ratio: 16/9; position: relative;">
+                <img id="admin-anniv-visual-preview" src="assets/images/anniversary-10th-celebration.jpg" alt="Anniversary Visual Preview" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              </div>
+              <div>
+                <div class="form-group" style="margin-bottom: 0.85rem;">
+                  <label class="form-label">
+                    <span>10주년 축하 이미지 경로 또는 URL</span>
+                    <a href="assets/images/anniversary-10th-celebration.jpg" id="admin-anniv-visual-link" target="_blank" class="form-label-hint">새 창으로 보기 ↗</a>
+                  </label>
+                  <input type="text" id="admin-anniv-visual-url" class="form-control" value="assets/images/anniversary-10th-celebration.jpg" oninput="updateAnnivVisualPreview(this.value)">
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">10주년 축하 이미지 파일 교체 (직접 업로드)</label>
+                  <input type="file" id="admin-anniv-visual-file" class="form-control" accept="image/*" onchange="handleAnnivVisualFileUpload(this)">
+                  <span id="anniv-visual-upload-status" style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem; display: block;">
+                    PNG, JPG 파일을 선택하시면 배포 시 자동으로 GitHub에 업로드되어 10주년 기념 섹션에 반영됩니다.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="card">
           <div class="card-header">
             <span class="card-header-title">⚙️ GitHub & Vercel 실시간 배포 설정</span>
@@ -2132,6 +2162,15 @@ function doGet(e) {
       if (elHeroPreview) elHeroPreview.src = heroUrl;
       if (elHeroLink) elHeroLink.href = heroUrl;
 
+      // 10th Anniversary Visual
+      const annivUrl = FORUM_DATA.anniversaryVisual?.url || 'assets/images/anniversary-10th-celebration.jpg';
+      const elAnnivUrl = document.getElementById('admin-anniv-visual-url');
+      const elAnnivPreview = document.getElementById('admin-anniv-visual-preview');
+      const elAnnivLink = document.getElementById('admin-anniv-visual-link');
+      if (elAnnivUrl) elAnnivUrl.value = annivUrl;
+      if (elAnnivPreview) elAnnivPreview.src = annivUrl;
+      if (elAnnivLink) elAnnivLink.href = annivUrl;
+
       // Welcome Remarks
       if (FORUM_DATA.welcomeRemarks) {
         const w = FORUM_DATA.welcomeRemarks;
@@ -2188,6 +2227,42 @@ function doGet(e) {
         
         if (!FORUM_DATA.heroVisual) FORUM_DATA.heroVisual = { url: '', caption: {} };
         FORUM_DATA.heroVisual.url = targetPath;
+        markUnsavedChanges();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    let PENDING_ANNIV_VISUAL_UPLOAD = null;
+
+    function updateAnnivVisualPreview(url) {
+      if (!FORUM_DATA.anniversaryVisual) FORUM_DATA.anniversaryVisual = { url: '', caption: {} };
+      FORUM_DATA.anniversaryVisual.url = url;
+      const img = document.getElementById('admin-anniv-visual-preview');
+      const link = document.getElementById('admin-anniv-visual-link');
+      if (img) img.src = url;
+      if (link) link.href = url;
+      markUnsavedChanges();
+    }
+
+    function handleAnnivVisualFileUpload(input) {
+      const file = input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64 = e.target.result.split(',')[1];
+        const ext = file.name.split('.').pop().toLowerCase();
+        const targetPath = `assets/images/anniversary-10th-celebration.${ext}`;
+        PENDING_ANNIV_VISUAL_UPLOAD = { file, base64, targetPath, name: file.name };
+        
+        const img = document.getElementById('admin-anniv-visual-preview');
+        if (img) img.src = e.target.result;
+        const urlInput = document.getElementById('admin-anniv-visual-url');
+        if (urlInput) urlInput.value = targetPath;
+        const status = document.getElementById('anniv-visual-upload-status');
+        if (status) status.innerHTML = `<span style="color: #0284c7; font-weight: 700;">✓ 업로드 대기중: ${escapeHtml(file.name)}</span> (배포 시 자동 저장)`;
+        
+        if (!FORUM_DATA.anniversaryVisual) FORUM_DATA.anniversaryVisual = { url: '', caption: {} };
+        FORUM_DATA.anniversaryVisual.url = targetPath;
         markUnsavedChanges();
       };
       reader.readAsDataURL(file);
@@ -2594,6 +2669,17 @@ function doGet(e) {
             throw new Error(`메인 키 비주얼 업로드 실패 (${h.name}): ` + errTxt);
           }
           PENDING_HERO_VISUAL_UPLOAD = null;
+        }
+
+        if (PENDING_ANNIV_VISUAL_UPLOAD) {
+          const a = PENDING_ANNIV_VISUAL_UPLOAD;
+          markStep(1, 'active', `1단계: 10주년 기념 비주얼 업로드 중 (${a.name})...`);
+          const annivRes = await commitBinaryFileToGitHub(repo, branch, token, a.targetPath, a.base64, `feat(banner): upload 10th anniversary celebration visual ${a.name}`);
+          if (!annivRes.ok) {
+            const errTxt = await annivRes.text();
+            throw new Error(`10주년 기념 비주얼 업로드 실패 (${a.name}): ` + errTxt);
+          }
+          PENDING_ANNIV_VISUAL_UPLOAD = null;
         }
 
         FORUM_DATA.lastUpdated = new Date().toISOString();

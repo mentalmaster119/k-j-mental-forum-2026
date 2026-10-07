@@ -958,6 +958,14 @@
       "en": "Official Key Visual · 3rd Japan–Korea Mental Forum 2026"
     }
   },
+  "anniversaryVisual": {
+    "url": "assets/images/anniversary-10th-celebration.jpg",
+    "caption": {
+      "ko": "MCCI & Field Flow 창립 10주년 공식 기념 비주얼 (2016–2026)",
+      "ja": "MCCI＆Field Flow 創立10周年 公式記念ビジュアル (2016–2026)",
+      "en": "Official Commemorative Visual · MCCI & Field Flow 10th Anniversary (2016–2026)"
+    }
+  },
   "participants": [
     {
       "id": "kr-01",
