@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-10-07T02:23:45.897170+00:00",
+  "lastUpdated": "2026-10-07T02:44:17.038Z",
   "googleSheetWebhookUrl": "https://script.google.com/macros/s/AKfycbz8cwaw2wY3or3CuUz9i1p4kRdpM4-BJd4AaQtjyRTW-mKj3YkmBnwyq6bYdlnWZ7fboQ/exec",
   "speakers": [
     {
@@ -737,7 +737,7 @@
         "en": "Forum Program Guide"
       },
       "desc": {
-        "ko": "전체 24개 세션 타임테이블, 행사장 층별 안내도, 7인 연사진 프로필 요약본이 수록된 공식 안내 브로슈어입니다.",
+        "ko": "전체 24개 세션 타임테이블, 행사장 층별 안내도, 7인 연사진 프로필 요약본이 수록된 공식 안내 브로슈어입니다. 우선 일정표만 제공됩니다. ",
         "ja": "全24セッションのタイムテーブル、会場フロアマップ、登壇者プロフィールの要約を収録した公式ガイドです。",
         "en": "Official 24-session timetable, 17F floor layout, and speaker bio summary."
       },
@@ -746,7 +746,7 @@
         "ja": "プログラム（PDF）をダウンロード ↗",
         "en": "Download Program ↗"
       },
-      "link": "https://drive.google.com/file/d/2026_Forum_Program_Final_Demo/view?usp=sharing"
+      "link": "https://drive.google.com/file/d/14Sjs7kcPZO8ENS8eI8gJk-cbg6ampiu6/view?usp=sharing"
     },
     {
       "id": "korea",
@@ -877,7 +877,7 @@
         "en": "12:40 – 13:40"
       },
       "desc": {
-        "ko": "17층 메인홀에서 정갈한 일식 도시락(Bento)과 차가 제공됩니다. 한·일 참가자 간 자유로운 네트워킹과 함께 즐겨주세요.",
+        "ko": "17층 메인홀에서 정갈한 일식 도시락(Bento)과 차가 제공됩니다. 한·일 참가자 간 자유로운 네트워킹과 함께 즐겨주세요. 메뉴는 고기와 생선으로 미리 신청한 대로 명찰에 점심식사 교환권이 있습니다.",
         "ja": "17階メイン会場にて特製和食弁当とお茶をご用意しております。日韓の参加者同士の自由な交流とともにお楽しみください。",
         "en": "Japanese Bento boxes and tea provided at the 17F venue with informal bilingual networking."
       }
