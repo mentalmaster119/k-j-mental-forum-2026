@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-10-03T08:46:37.783Z",
+  "lastUpdated": "2026-10-07T00:42:08.327Z",
   "googleSheetWebhookUrl": "https://script.google.com/macros/s/AKfycbz8cwaw2wY3or3CuUz9i1p4kRdpM4-BJd4AaQtjyRTW-mKj3YkmBnwyq6bYdlnWZ7fboQ/exec",
   "speakers": [
     {
@@ -40,7 +40,7 @@
         "ja": "「アスリートへのパーソナルコーチングの作用」 雲取りカードワークショップ",
         "en": "\"The Impact of Personal Coaching on Athletes\" — Kumotori Card Workshop"
       },
-      "slidesUrl": "https://drive.google.com/drive/folders/03_Japan_Speakers_Demo",
+      "slidesUrl": "https://drive.google.com/file/d/1QTTCP0FfG_C9Cvaz5OCP1KKBsl26yjuy/view?usp=drive_link",
       "abstract": {
         "ko": "선수에 대한 퍼스널 코칭이 미치는 심리·신체적 작용 메커니즘을 규명하고, 실전 \"쿠모토리 카드\" 워크숍을 통해 현장 적용법을 함께 나눕니다.",
         "ja": "アスリートへのパーソナルコーチングがもたらす科学的作用を紐解き、現場で即活用できる「雲取りカード」ワークショップを実施します。",
@@ -172,7 +172,7 @@
         "ja": "『違いを越えて、ひとつのチームへ』 デフサッカー日本代表から学ぶコミュニケーションとメンタルサポート",
         "en": "Transcending Differences to Become One Team — Lessons from Japan National Deaf Soccer Team"
       },
-      "slidesUrl": "https://drive.google.com/drive/folders/03_Japan_Speakers_Demo",
+      "slidesUrl": "https://drive.google.com/file/d/13WO8DTEDNzlCYQwQ6BW0SDbzLay5tSXV/view?usp=sharing",
       "abstract": {
         "ko": "청각장애인 축구 일본대표팀 현장에서 구축한 언어를 뛰어넘는 공감과 심리적 안전감, 원팀(One Team) 멘탈 서포트 실천기를 공유합니다.",
         "ja": "デフサッカー日本代表の現場で実践された、言葉や感覚の違いを超えてチームが一つになるコミュニケーションとメンタル支援の知見を公開します。",
@@ -935,14 +935,14 @@
   ],
   "contacts": {
     "korea": {
-      "orgName": "국제멘탈코칭센터 (MCCI)",
-      "contactPerson": "천비키 코치 (MCCI 부대표)",
-      "phone": "+82-010-4457-3850",
-      "email": "mentalcoach119@naver.com",
-      "address": "서울시 서초구 양재천로15길 1, 제이애드빌딩 3층"
+      "orgName": "",
+      "contactPerson": "",
+      "phone": "",
+      "email": "",
+      "address": ""
     },
     "japan": {
-      "orgName": "Field Flow",
+      "orgName": "",
       "contactPerson": "",
       "phone": "",
       "email": "",
