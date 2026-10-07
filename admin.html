@@ -1957,20 +1957,26 @@ function doGet(e) {
 
     function syncContactsBack() {
       if (!FORUM_DATA.contacts) FORUM_DATA.contacts = { korea: {}, japan: {} };
-      FORUM_DATA.contacts.korea = {
-        orgName: document.getElementById('contact-kr-org').value,
-        contactPerson: document.getElementById('contact-kr-person').value,
-        phone: document.getElementById('contact-kr-phone').value,
-        email: document.getElementById('contact-kr-email').value,
-        address: document.getElementById('contact-kr-address').value
-      };
-      FORUM_DATA.contacts.japan = {
-        orgName: document.getElementById('contact-jp-org').value,
-        contactPerson: document.getElementById('contact-jp-person').value,
-        phone: document.getElementById('contact-jp-phone').value,
-        email: document.getElementById('contact-jp-email').value,
-        address: document.getElementById('contact-jp-address').value
-      };
+      const elKrOrg = document.getElementById('contact-kr-org');
+      if (elKrOrg && (elKrOrg.value.trim() !== '' || !FORUM_DATA.contacts.korea?.orgName)) {
+        FORUM_DATA.contacts.korea = {
+          orgName: document.getElementById('contact-kr-org').value,
+          contactPerson: document.getElementById('contact-kr-person').value,
+          phone: document.getElementById('contact-kr-phone').value,
+          email: document.getElementById('contact-kr-email').value,
+          address: document.getElementById('contact-kr-address').value
+        };
+      }
+      const elJpOrg = document.getElementById('contact-jp-org');
+      if (elJpOrg && (elJpOrg.value.trim() !== '' || !FORUM_DATA.contacts.japan?.orgName)) {
+        FORUM_DATA.contacts.japan = {
+          orgName: document.getElementById('contact-jp-org').value,
+          contactPerson: document.getElementById('contact-jp-person').value,
+          phone: document.getElementById('contact-jp-phone').value,
+          email: document.getElementById('contact-jp-email').value,
+          address: document.getElementById('contact-jp-address').value
+        };
+      }
 
       syncWelcomeBack();
     }

@@ -923,18 +923,18 @@
   ],
   "contacts": {
     "korea": {
-      "orgName": "",
-      "contactPerson": "",
-      "phone": "",
-      "email": "",
-      "address": ""
+      "orgName": "국제멘탈코칭센터 (MCCI)",
+      "contactPerson": "천비키 코치 (MCCI 부대표)",
+      "phone": "+82-010-4457-3850",
+      "email": "mentalcoach119@naver.com",
+      "address": "서울시 서초구 양재천로15길 1, 제이애드빌딩 3층"
     },
     "japan": {
-      "orgName": "",
-      "contactPerson": "",
-      "phone": "",
-      "email": "",
-      "address": ""
+      "orgName": "Field Flow",
+      "contactPerson": "사무국 담당자 (Tokyo)",
+      "phone": "+81-3-XXXX-XXXX",
+      "email": "info@fieldflow.jp",
+      "address": "도쿄도 시부야구 / 요코하마시"
     }
   },
   "themeSong": {
