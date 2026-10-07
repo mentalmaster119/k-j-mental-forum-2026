@@ -4307,18 +4307,18 @@
         const grid = document.getElementById('materials-card-grid');
         if (!grid || typeof MATERIALS_DATA === 'undefined') return;
         grid.innerHTML = MATERIALS_DATA.map(m => {
-          const badge = m.badge[lang] || m.badge.en;
-          const title = m.title[lang] || m.title.en;
-          const desc = m.desc[lang] || m.desc.en;
-          const btnText = m.btnText[lang] || m.btnText.en;
+          const badge = m.badge?.[lang] || m.badge?.en || m.badge?.ko || '';
+          const title = m.title?.[lang] || m.title?.en || m.title?.ko || '';
+          const desc = m.desc?.[lang] || m.desc?.en || m.desc?.ko || '';
+          const btnText = m.btnText?.[lang] || m.btnText?.en || m.btnText?.ko || (lang === 'ko' ? '자료 다운로드 (PDF) ⬇' : lang === 'ja' ? '資料ダウンロード (PDF) ⬇' : 'Download Material (PDF) ⬇');
 
           return `<div class="material-card">
-            <div class="material-card-icon">${m.icon}</div>
+            <div class="material-card-icon">${m.icon || '📂'}</div>
             <span class="material-card-badge">${badge}</span>
             <h3 class="material-card-title">${title}</h3>
             <p class="material-card-desc">${desc}</p>
             <div class="material-card-actions">
-              <a href="${m.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
+              <a href="${m.link || '#'}" ${m.link ? 'target="_blank" rel="noopener noreferrer"' : ''} class="btn btn-primary material-card-btn-primary">
                 ${btnText}
               </a>
             </div>

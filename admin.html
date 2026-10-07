@@ -638,7 +638,7 @@
           <span>⏱️</span> 24개 세션 타임테이블 <span class="tab-badge" id="badge-session-count">24</span>
         </button>
         <button class="tab-item" onclick="switchTab('materials')">
-          <span>📂</span> 자료실 및 안내 박스
+          <span>📂</span> 자료실 및 안내 박스 <span class="tab-badge" id="badge-materials-count">4</span>
         </button>
         <button class="tab-item" onclick="switchTab('contacts')">
           <span>🏢</span> 사무국 & 연동 설정
@@ -990,16 +990,26 @@
           </div>
         </div>
 
-        <h3 style="font-size: 1.05rem; font-weight: 700; margin: 1.5rem 0 0.75rem; color: var(--primary);">
-          1. 공식 아카이브 및 자료실 다운로드 링크 (4개)
-        </h3>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin: 1.75rem 0 0.75rem; flex-wrap: wrap; gap: 0.75rem;">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--primary); margin: 0;">
+            1. 공식 아카이브 및 자료실 다운로드 링크 (<span id="materials-count-text">4</span>개)
+          </h3>
+          <button type="button" class="btn btn-outline" onclick="addNewMaterial()" style="padding: 0.45rem 1.1rem; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.45rem; border: 1.5px solid var(--primary-accent); color: var(--primary-accent); background: #ffffff; border-radius: 8px; cursor: pointer; box-shadow: var(--shadow-sm); transition: all 0.2s;">
+            <span>➕</span> <span>새 자료 카드 추가</span>
+          </button>
+        </div>
         <div id="materials-editor-list">
           <!-- Dynamically populated -->
         </div>
 
-        <h3 style="font-size: 1.05rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--primary);">
-          2. 참가자 현장 안내 박스 (5개)
-        </h3>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin: 2.25rem 0 0.75rem; flex-wrap: wrap; gap: 0.75rem;">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--primary); margin: 0;">
+            2. 참가자 현장 안내 박스 (<span id="guides-count-text">5</span>개)
+          </h3>
+          <button type="button" class="btn btn-outline" onclick="addNewGuide()" style="padding: 0.45rem 1.1rem; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.45rem; border: 1.5px solid #059669; color: #059669; background: #ffffff; border-radius: 8px; cursor: pointer; box-shadow: var(--shadow-sm); transition: all 0.2s;">
+            <span>➕</span> <span>새 안내 박스 추가</span>
+          </button>
+        </div>
         <div id="guides-editor-list">
           <!-- Dynamically populated -->
         </div>
@@ -1786,6 +1796,24 @@ function doGet(e) {
       const container = document.getElementById('materials-editor-list');
       if (!container || !FORUM_DATA.materials) return;
 
+      const badgeCount = document.getElementById('badge-materials-count');
+      if (badgeCount) badgeCount.textContent = FORUM_DATA.materials.length;
+      const textCount = document.getElementById('materials-count-text');
+      if (textCount) textCount.textContent = FORUM_DATA.materials.length;
+
+      if (FORUM_DATA.materials.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 3rem 1rem; background: #fff; border: 1.5px dashed #cbd5e1; border-radius: var(--radius-md); color: var(--text-muted);">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📂</div>
+            <p style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.75rem;">등록된 자료집 카드가 없습니다.</p>
+            <button type="button" class="btn btn-outline" onclick="addNewMaterial()" style="padding: 0.45rem 1.1rem; font-size: 0.85rem; font-weight: 700; border: 1.5px solid var(--primary-accent); color: var(--primary-accent); background: #ffffff; border-radius: 8px; cursor: pointer;">
+              <span>➕</span> <span>새 자료 카드 추가하기</span>
+            </button>
+          </div>
+        `;
+        return;
+      }
+
       container.innerHTML = FORUM_DATA.materials.map((m, idx) => {
         if (!m.badge) m.badge = {};
         if (!m.title) m.title = {};
@@ -1793,16 +1821,21 @@ function doGet(e) {
         if (!m.btnText) m.btnText = {};
 
         return `
-        <div class="card">
-          <div class="card-header" onclick="toggleCardBody('mat-body-${m.id}')" style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="card-header-title" style="display: flex; align-items: center; gap: 0.65rem;">
+        <div class="card" id="mat-card-${m.id}">
+          <div class="card-header" onclick="toggleCardBody('mat-body-${m.id}')" style="display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;">
+            <span class="card-header-title" style="display: flex; align-items: center; gap: 0.65rem; min-width: 0; flex: 1;">
               <span style="font-size: 1.25rem;">${m.icon || '📂'}</span>
-              <strong style="color: var(--primary); font-size: 1rem;">${escapeHtml(m.title.ko || m.id)}</strong>
-              <span class="card-badge" style="background: #e0f2fe; color: #0369a1; font-weight: 600;">${escapeHtml(m.badge.ko || '')}</span>
+              <strong style="color: var(--primary); font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(m.title.ko || m.id)}</strong>
+              <span class="card-badge" style="background: #e0f2fe; color: #0369a1; font-weight: 600; flex-shrink: 0;">${escapeHtml(m.badge.ko || '')}</span>
             </span>
-            <span style="font-size: 0.85rem; color: var(--primary-accent); font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
-              <span>✏️ 내용 수정 / 접기</span> <span style="font-size: 0.75rem;">▼</span>
-            </span>
+            <div style="display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0;">
+              <button type="button" onclick="event.stopPropagation(); deleteMaterial(${idx})" style="padding: 0.28rem 0.7rem; font-size: 0.78rem; font-weight: 600; color: #dc2626; background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem;" title="이 자료 카드 삭제">
+                <span>🗑️</span> <span>삭제</span>
+              </button>
+              <span style="font-size: 0.85rem; color: var(--primary-accent); font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
+                <span>✏️ 내용 수정 / 접기</span> <span style="font-size: 0.75rem;">▼</span>
+              </span>
+            </div>
           </div>
           <div class="card-body" id="mat-body-${m.id}">
             <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; background: #f8fafc; padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px dashed #cbd5e1;">
@@ -1864,15 +1897,91 @@ function doGet(e) {
               </label>
               <input type="url" class="form-control" value="${escapeHtml(m.link || '')}" placeholder="https://drive.google.com/..." oninput="FORUM_DATA.materials[${idx}].link = this.value; markUnsavedChanges();">
             </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; padding-top: 0.85rem; border-top: 1px dashed #e2e8f0; flex-wrap: wrap; gap: 0.5rem;">
+              <button type="button" onclick="deleteMaterial(${idx})" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; font-weight: 600; color: #dc2626; background: #fff; border: 1px solid #fca5a5; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;">
+                <span>🗑️ 이 자료 카드 삭제</span>
+              </button>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">
+                자료 고유 ID: <code>${escapeHtml(m.id)}</code>
+              </span>
+            </div>
           </div>
         </div>
         `;
       }).join('');
     }
 
+    function addNewMaterial() {
+      if (!Array.isArray(FORUM_DATA.materials)) {
+        FORUM_DATA.materials = [];
+      }
+      const newId = 'mat_' + Date.now();
+      FORUM_DATA.materials.push({
+        id: newId,
+        icon: "📂",
+        badge: {
+          ko: "PDF 문서",
+          ja: "PDF文書",
+          en: "PDF Document"
+        },
+        title: {
+          ko: "새 공식 자료집",
+          ja: "新規公式資料集",
+          en: "New Forum Material"
+        },
+        desc: {
+          ko: "자료에 대한 상세 안내 및 설명을 입력하세요.",
+          ja: "資料に関する詳細な説明を入力してください。",
+          en: "Detailed description of the newly added forum material."
+        },
+        btnText: {
+          ko: "자료 다운로드 (PDF) ⬇",
+          ja: "資料ダウンロード (PDF) ⬇",
+          en: "Download Material (PDF) ⬇"
+        },
+        link: ""
+      });
+      renderMaterialsEditor();
+      markUnsavedChanges();
+      showToast("새 자료집 카드가 추가되었습니다. 내용을 입력해 주세요.", "➕");
+      setTimeout(() => {
+        const newEl = document.getElementById('mat-card-' + newId);
+        if (newEl) newEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+
+    function deleteMaterial(idx) {
+      if (!FORUM_DATA.materials || !FORUM_DATA.materials[idx]) return;
+      const target = FORUM_DATA.materials[idx];
+      const name = target.title?.ko || target.id;
+      if (confirm(`정말 '${name}' 자료 카드를 삭제하시겠습니까?\n삭제 후 [수정사항 저장 및 배포]를 누르면 사이트에 반영됩니다.`)) {
+        FORUM_DATA.materials.splice(idx, 1);
+        renderMaterialsEditor();
+        markUnsavedChanges();
+        showToast(`'${name}' 자료가 삭제되었습니다.`, "🗑️");
+      }
+    }
+
     function renderGuidesEditor() {
       const container = document.getElementById('guides-editor-list');
       if (!container || !FORUM_DATA.guides) return;
+
+      const textCount = document.getElementById('guides-count-text');
+      if (textCount) textCount.textContent = FORUM_DATA.guides.length;
+
+      if (FORUM_DATA.guides.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 3rem 1rem; background: #fff; border: 1.5px dashed #cbd5e1; border-radius: var(--radius-md); color: var(--text-muted);">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📌</div>
+            <p style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.75rem;">등록된 현장 안내 항목이 없습니다.</p>
+            <button type="button" class="btn btn-outline" onclick="addNewGuide()" style="padding: 0.45rem 1.1rem; font-size: 0.85rem; font-weight: 700; border: 1.5px solid #059669; color: #059669; background: #ffffff; border-radius: 8px; cursor: pointer;">
+              <span>➕</span> <span>새 안내 박스 추가하기</span>
+            </button>
+          </div>
+        `;
+        return;
+      }
 
       container.innerHTML = FORUM_DATA.guides.map((g, idx) => {
         if (!g.title) g.title = {};
@@ -1880,16 +1989,21 @@ function doGet(e) {
         if (!g.desc) g.desc = {};
 
         return `
-        <div class="card">
-          <div class="card-header" onclick="toggleCardBody('guide-body-${g.id}')" style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="card-header-title" style="display: flex; align-items: center; gap: 0.65rem;">
+        <div class="card" id="guide-card-${g.id}">
+          <div class="card-header" onclick="toggleCardBody('guide-body-${g.id}')" style="display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;">
+            <span class="card-header-title" style="display: flex; align-items: center; gap: 0.65rem; min-width: 0; flex: 1;">
               <span style="font-size: 1.25rem;">${g.icon || '📌'}</span>
-              <strong style="color: var(--primary); font-size: 1rem;">${escapeHtml(g.title.ko || g.id)}</strong>
-              <span class="card-badge" style="background: #fef3c7; color: #92400e; font-weight: 600;">${escapeHtml(g.time.ko || '')}</span>
+              <strong style="color: var(--primary); font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(g.title.ko || g.id)}</strong>
+              <span class="card-badge" style="background: #fef3c7; color: #92400e; font-weight: 600; flex-shrink: 0;">${escapeHtml(g.time.ko || '')}</span>
             </span>
-            <span style="font-size: 0.85rem; color: var(--primary-accent); font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
-              <span>✏️ 내용 수정 / 접기</span> <span style="font-size: 0.75rem;">▼</span>
-            </span>
+            <div style="display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0;">
+              <button type="button" onclick="event.stopPropagation(); deleteGuide(${idx})" style="padding: 0.28rem 0.7rem; font-size: 0.78rem; font-weight: 600; color: #dc2626; background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem;" title="이 안내 박스 삭제">
+                <span>🗑️</span> <span>삭제</span>
+              </button>
+              <span style="font-size: 0.85rem; color: var(--primary-accent); font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
+                <span>✏️ 내용 수정 / 접기</span> <span style="font-size: 0.75rem;">▼</span>
+              </span>
+            </div>
           </div>
           <div class="card-body" id="guide-body-${g.id}">
             <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; background: #f8fafc; padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px dashed #cbd5e1;">
@@ -1932,10 +2046,64 @@ function doGet(e) {
                 <textarea class="form-control" rows="2" oninput="if (!FORUM_DATA.guides[${idx}].desc) FORUM_DATA.guides[${idx}].desc = {}; FORUM_DATA.guides[${idx}].desc.ja = this.value; markUnsavedChanges();">${escapeHtml(g.desc.ja || '')}</textarea>
               </div>
             </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; padding-top: 0.85rem; border-top: 1px dashed #e2e8f0; flex-wrap: wrap; gap: 0.5rem;">
+              <button type="button" onclick="deleteGuide(${idx})" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; font-weight: 600; color: #dc2626; background: #fff; border: 1px solid #fca5a5; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;">
+                <span>🗑️ 이 안내 박스 삭제</span>
+              </button>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">
+                안내 고유 ID: <code>${escapeHtml(g.id)}</code>
+              </span>
+            </div>
           </div>
         </div>
         `;
       }).join('');
+    }
+
+    function addNewGuide() {
+      if (!Array.isArray(FORUM_DATA.guides)) {
+        FORUM_DATA.guides = [];
+      }
+      const newId = 'guide_' + Date.now();
+      FORUM_DATA.guides.push({
+        id: newId,
+        icon: "📌",
+        title: {
+          ko: "새 현장 안내 항목",
+          ja: "新規ご案内項目",
+          en: "New Information Notice"
+        },
+        time: {
+          ko: "상시 안내",
+          ja: "終日案内",
+          en: "All-day"
+        },
+        desc: {
+          ko: "참가자를 위한 상세 안내 내용을 입력하세요.",
+          ja: "参加者向けの詳しいご案内内容を入力してください。",
+          en: "Detailed instructions and guidance for attendees."
+        }
+      });
+      renderGuidesEditor();
+      markUnsavedChanges();
+      showToast("새 현장 안내 박스가 추가되었습니다. 내용을 입력해 주세요.", "➕");
+      setTimeout(() => {
+        const newEl = document.getElementById('guide-card-' + newId);
+        if (newEl) newEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+
+    function deleteGuide(idx) {
+      if (!FORUM_DATA.guides || !FORUM_DATA.guides[idx]) return;
+      const target = FORUM_DATA.guides[idx];
+      const name = target.title?.ko || target.id;
+      if (confirm(`정말 '${name}' 안내 박스를 삭제하시겠습니까?\n삭제 후 [수정사항 저장 및 배포]를 누르면 사이트에 반영됩니다.`)) {
+        FORUM_DATA.guides.splice(idx, 1);
+        renderGuidesEditor();
+        markUnsavedChanges();
+        showToast(`'${name}' 안내 박스가 삭제되었습니다.`, "🗑️");
+      }
     }
 
     // 7. Render Contacts Editor
