@@ -2815,9 +2815,6 @@
           <h3 class="material-card-title">한국 세션 발표자료집</h3>
           <p class="material-card-desc">윤태련 대표, 염동철 교수, 김성민 대표, 박철수 대표의 4인 발표 슬라이드를 하나로 묶은 단일 통합 PDF 자료집입니다.</p>
           <div class="material-card-actions">
-            <a href="https://drive.google.com/drive/folders/02_Korea_Speakers_Demo?usp=sharing" target="_blank" rel="noopener noreferrer" class="material-card-btn-secondary">
-              <span>📁</span> 개별 발표자료 폴더 열람 ↗
-            </a>
             <a href="https://drive.google.com/file/d/2026_Korea_Session_Combined_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
               통합 자료집 다운로드 (PDF) ⬇
             </a>
@@ -2829,9 +2826,6 @@
           <h3 class="material-card-title">일본 세션 발표자료집</h3>
           <p class="material-card-desc">아오야기 교수, 타카하시 모토나리 코치, 츠게 요이치로 대표의 3인 발표 슬라이드를 하나로 묶은 단일 통합 PDF 자료집입니다.</p>
           <div class="material-card-actions">
-            <a href="https://drive.google.com/drive/folders/03_Japan_Speakers_Demo?usp=sharing" target="_blank" rel="noopener noreferrer" class="material-card-btn-secondary">
-              <span>📁</span> 개별 발표자료 폴더 열람 ↗
-            </a>
             <a href="https://drive.google.com/file/d/2026_Japan_Session_Combined_Demo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
               통합 자료집 다운로드 (PDF) ⬇
             </a>
@@ -4312,29 +4306,11 @@
       function renderMaterials(lang) {
         const grid = document.getElementById('materials-card-grid');
         if (!grid || typeof MATERIALS_DATA === 'undefined') return;
-        grid.innerHTML = MATERIALS_DATA.map((m, idx) => {
+        grid.innerHTML = MATERIALS_DATA.map(m => {
           const badge = m.badge[lang] || m.badge.en;
           const title = m.title[lang] || m.title.en;
           const desc = m.desc[lang] || m.desc.en;
           const btnText = m.btnText[lang] || m.btnText.en;
-          const folderText = m.folderText ? (m.folderText[lang] || m.folderText.en) : null;
-          const isFeatured = (idx === 1 || idx === 2);
-          const secondaryBtnHtml = (m.folderLink && folderText) ? `
-            <a href="${m.folderLink}" target="_blank" rel="noopener noreferrer" class="material-card-btn-secondary">
-              <span>📁</span> ${folderText}
-            </a>
-          ` : '';
-
-          const actionsHtml = secondaryBtnHtml ? `
-            ${secondaryBtnHtml}
-            <a href="${m.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
-              ${btnText}
-            </a>
-          ` : `
-            <a href="${m.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
-              ${btnText}
-            </a>
-          `;
 
           return `<div class="material-card">
             <div class="material-card-icon">${m.icon}</div>
@@ -4342,7 +4318,9 @@
             <h3 class="material-card-title">${title}</h3>
             <p class="material-card-desc">${desc}</p>
             <div class="material-card-actions">
-              ${actionsHtml}
+              <a href="${m.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary material-card-btn-primary">
+                ${btnText}
+              </a>
             </div>
           </div>`;
         }).join('');
