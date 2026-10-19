@@ -1091,6 +1091,254 @@
       box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
     }
 
+    /* Attendee Hub Showcase & Glowing Delegate Pass Card */
+    .attendee-hub-section {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.75rem;
+      align-items: stretch;
+      margin-bottom: 2.5rem;
+    }
+    .attendee-hub-section .attendee-lookup-card {
+      margin-bottom: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .attendee-lookup-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.85rem 0 1.15rem;
+    }
+    .attendee-highlight-item {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #0369a1;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 0.3rem 0.65rem;
+    }
+
+    /* Uiverse Animated Glowing Border Beam Card */
+    .attendee-hub-section .card,
+    .glow-pass-card {
+      --white: hsl(0, 0%, 100%);
+      --black: hsl(240, 15%, 9%);
+      --paragraph: hsl(0, 0%, 83%);
+      --line: hsl(240, 9%, 17%);
+      --primary: hsl(266, 92%, 58%);
+
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      padding: 1.25rem 1.15rem;
+      width: 19rem;
+      max-width: 100%;
+      background-color: hsla(240, 15%, 9%, 1);
+      background-image: radial-gradient(
+          at 88% 40%,
+          hsla(240, 15%, 9%, 1) 0px,
+          transparent 85%
+        ),
+        radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+        radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+        radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
+        radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
+        radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
+
+      border-radius: 1rem;
+      box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+      z-index: 1;
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
+
+    .attendee-hub-section .card .card__border,
+    .glow-pass-card .card__border {
+      overflow: hidden;
+      pointer-events: none;
+
+      position: absolute;
+      z-index: -10;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
+      background-image: linear-gradient(
+        0deg,
+        hsl(0, 0%, 100%) -50%,
+        hsl(0, 0%, 40%) 100%
+      );
+
+      border-radius: 1rem;
+    }
+
+    .attendee-hub-section .card .card__border::before,
+    .glow-pass-card .card__border::before {
+      content: "";
+      pointer-events: none;
+
+      position: absolute;
+      z-index: 200;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      transform-origin: center center;
+
+      width: 200%;
+      height: 12rem;
+      background-image: linear-gradient(
+        0deg,
+        hsla(0, 0%, 100%, 0) 0%,
+        hsl(277, 95%, 60%) 40%,
+        hsl(277, 95%, 60%) 60%,
+        hsla(0, 0%, 40%, 0) 100%
+      );
+
+      animation: rotate-border-beam 8s linear infinite;
+    }
+
+    @keyframes rotate-border-beam {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .attendee-hub-section .card .card_title__container .card_title,
+    .glow-pass-card .card_title__container .card_title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      display: block;
+      letter-spacing: -0.01em;
+    }
+
+    .attendee-hub-section .card .card_title__container .card_paragraph,
+    .glow-pass-card .card_title__container .card_paragraph {
+      margin-top: 0.25rem;
+      width: 100%;
+      font-size: 0.72rem;
+      line-height: 1.4;
+      color: var(--paragraph);
+      margin-bottom: 0;
+    }
+
+    .attendee-hub-section .card .line,
+    .glow-pass-card .line {
+      width: 100%;
+      height: 0.1rem;
+      background-color: var(--line);
+      border: none;
+      margin: 0.15rem 0;
+    }
+
+    .attendee-hub-section .card .card__list,
+    .glow-pass-card .card__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .attendee-hub-section .card .card__list .card__list_item,
+    .glow-pass-card .card__list .card__list_item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .attendee-hub-section .card .card__list .card__list_item .check,
+    .glow-pass-card .card__list .card__list_item .check {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 1.15rem;
+      height: 1.15rem;
+      background-color: var(--primary);
+      flex-shrink: 0;
+      border-radius: 50%;
+    }
+
+    .attendee-hub-section .card .card__list .card__list_item .check .check_svg,
+    .glow-pass-card .card__list .card__list_item .check .check_svg {
+      width: 0.75rem;
+      height: 0.75rem;
+      fill: var(--black);
+    }
+
+    .attendee-hub-section .card .card__list .card__list_item .list_text,
+    .glow-pass-card .card__list .card__list_item .list_text {
+      font-size: 0.75rem;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .attendee-hub-section .card .button,
+    .glow-pass-card .button {
+      cursor: pointer;
+
+      padding: 0.65rem 1rem;
+      width: 100%;
+      background-image: linear-gradient(
+        0deg,
+        rgba(94, 58, 238, 1) 0%,
+        rgba(197, 107, 240, 1) 100%
+      );
+
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--white);
+
+      border: 0;
+      border-radius: 9999px;
+      box-shadow: inset 0 -2px 25px -4px var(--white);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .attendee-hub-section .card .button:hover,
+    .glow-pass-card .button:hover {
+      transform: translateY(-2px);
+      box-shadow: inset 0 -2px 25px -2px var(--white), 0 4px 15px rgba(168, 85, 247, 0.45);
+    }
+
+    @media (max-width: 992px) {
+      .attendee-hub-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .attendee-hub-section .attendee-lookup-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .attendee-hub-section .attendee-lookup-action {
+        width: 100%;
+        margin-top: 1rem;
+      }
+      .attendee-hub-section .attendee-lookup-action .attendee-open-modal-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
     /* Attendee Lookup & Name Badge Modal */
     .attendee-modal-content {
       max-width: 840px;
@@ -2993,19 +3241,72 @@
         </div>
       </div>
 
-      <!-- Attendee Registration Lookup & Badge Verification Card -->
-      <div class="attendee-lookup-card">
-        <div class="attendee-lookup-icon">📋</div>
-        <div class="attendee-lookup-info">
-          <div class="attendee-lookup-badge" data-i18n="venue.lookupBadge">사전 등록자 확인 서비스</div>
-          <h3 class="attendee-lookup-title" data-i18n="venue.lookupTitle">참가자 명단 및 네임택(명찰) 표기 확인</h3>
-          <p class="attendee-lookup-desc" data-i18n="venue.lookupDesc">
-            포럼 당일 신속한 현장 명찰 수령과 저녁 네트워킹 리셉션(만찬) 참석 확인을 위해, 등록된 이름과 소속 표기(한글·한자·영문)를 미리 점검해 보세요.
-          </p>
+      <!-- Attendee Registration Lookup & Official Pass Showcase Container -->
+      <div class="attendee-hub-section">
+        <div class="attendee-lookup-card">
+          <div class="attendee-lookup-icon">📋</div>
+          <div class="attendee-lookup-info">
+            <div class="attendee-lookup-badge" data-i18n="venue.lookupBadge">사전 등록자 확인 서비스</div>
+            <h3 class="attendee-lookup-title" data-i18n="venue.lookupTitle">참가자 명단 및 네임택(명찰) 표기 확인</h3>
+            <p class="attendee-lookup-desc" data-i18n="venue.lookupDesc">
+              포럼 당일 신속한 현장 명찰 수령과 저녁 네트워킹 리셉션(만찬) 참석 확인을 위해, 등록된 이름과 소속 표기(한글·한자·영문)를 미리 점검해 보세요.
+            </p>
+            <div class="attendee-lookup-highlights">
+              <span class="attendee-highlight-item" data-i18n="venue.hlTime">🕒 09:40 1F 로비 등록 데스크</span>
+              <span class="attendee-highlight-item" data-i18n="venue.hlBadge">🏷️ 공식 네임택 & 키트 지급</span>
+              <span class="attendee-highlight-item" data-i18n="venue.hlLunch">🍱 17F 정갈한 일식 도시락</span>
+              <span class="attendee-highlight-item" data-i18n="venue.hlDinner">🥂 19:00 공식 만찬(간친회) 포함</span>
+            </div>
+            <div class="attendee-lookup-action">
+              <button type="button" class="btn btn-primary attendee-open-modal-btn" onclick="openAttendeeModal()">
+                <span data-i18n="venue.lookupBtn">참가자 명단 검색 & 명찰 확인</span> 🔍
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="attendee-lookup-action">
-          <button type="button" class="btn btn-primary attendee-open-modal-btn" onclick="openAttendeeModal()">
-            <span data-i18n="venue.lookupBtn">참가자 명단 검색 & 명찰 확인</span> 🔍
+
+        <!-- Uiverse Animated Glowing Border Beam Card (Official Forum All-Access Pass) -->
+        <div class="card glow-pass-card">
+          <div class="card__border"></div>
+          <div class="card_title__container">
+            <span class="card_title" data-i18n="venue.passTitle">2026 Forum All-Access Pass</span>
+            <p class="card_paragraph" data-i18n="venue.passSubtitle">한·일 멘탈코칭 포럼 공식 참가 패스</p>
+          </div>
+          <hr class="line">
+          <ul class="card__list">
+            <li class="card__list_item">
+              <span class="check">
+                <svg class="check_svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </span>
+              <span class="list_text" data-i18n="venue.passItem1">24개 전 세션 청강 및 동시통역 지원</span>
+            </li>
+            <li class="card__list_item">
+              <span class="check">
+                <svg class="check_svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </span>
+              <span class="list_text" data-i18n="venue.passItem2">공식 발표자료집 & 프로필북 통합본</span>
+            </li>
+            <li class="card__list_item">
+              <span class="check">
+                <svg class="check_svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </span>
+              <span class="list_text" data-i18n="venue.passItem3">17F 메인홀 정갈한 일식 도시락 & 다과</span>
+            </li>
+            <li class="card__list_item">
+              <span class="check">
+                <svg class="check_svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </span>
+              <span class="list_text" data-i18n="venue.passItem4">창립 10주년 공식 네트워킹 만찬 초대</span>
+            </li>
+            <li class="card__list_item">
+              <span class="check">
+                <svg class="check_svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </span>
+              <span class="list_text" data-i18n="venue.passItem5">사전 등록 네임택 & 디지털 명찰 발급</span>
+            </li>
+          </ul>
+          <button type="button" class="button" onclick="openAttendeeModal()">
+            <span data-i18n="venue.passBtn">참가자 명단 & 명찰 확인하기 🔍</span>
           </button>
         </div>
       </div>
@@ -3682,7 +3983,19 @@
               attendeeTabAll: "All Attendees",
               attendeeTabKorea: "🇰🇷 Korea",
               attendeeTabJapan: "🇯🇵 Japan",
-              attendeePrivacyNotice: "🔒 Personal contacts (phone/email) are strictly withheld for privacy. If your name spelling or affiliation needs correction, please contact the secretariat or visit the 1F check-in desk on forum day."
+              attendeePrivacyNotice: "🔒 Personal contacts (phone/email) are strictly withheld for privacy. If your name spelling or affiliation needs correction, please contact the secretariat or visit the 1F check-in desk on forum day.",
+              hlTime: "🕒 09:40 Check-in Desk 1F",
+              hlBadge: "🏷️ Official Name Badge & Kit",
+              hlLunch: "🍱 Japanese Bento Lunch 17F",
+              hlDinner: "🥂 19:00 Networking Reception",
+              passTitle: "2026 Forum All-Access Pass",
+              passSubtitle: "Official Delegate Pass · Yokohama Kannai",
+              passItem1: "Access to all 24 sessions & bilingual interpretation",
+              passItem2: "Official Presentation Slides & Profile Book PDF",
+              passItem3: "Gourmet Japanese Bento Lunch & Refreshments",
+              passItem4: "Official 10th Anniversary Evening Dinner Reception",
+              passItem5: "Official Printed Name Badge & Digital Verification",
+              passBtn: "Verify Name Badge & Directory 🔍"
             },
             fieldflow: {
               tag: "Double 10th Anniversary Milestone (2016–2026)",
@@ -3822,7 +4135,19 @@
               attendeeTabAll: "전체 명단",
               attendeeTabKorea: "🇰🇷 한국 참가단",
               attendeeTabJapan: "🇯🇵 일본 참가단",
-              attendeePrivacyNotice: "🔒 개인정보 보호 정책: 참가자의 개인 연락처(전화번호·이메일)는 안전하게 보호되어 공개되지 않습니다. 네임택 영문 철자나 소속 표기 수정이 필요하신 경우, 사전 문의 또는 행사 당일 1층 등록 데스크에 말씀해 주시면 즉시 정정해 드립니다."
+              attendeePrivacyNotice: "🔒 개인정보 보호 정책: 참가자의 개인 연락처(전화번호·이메일)는 안전하게 보호되어 공개되지 않습니다. 네임택 영문 철자나 소속 표기 수정이 필요하신 경우, 사전 문의 또는 행사 당일 1층 등록 데스크에 말씀해 주시면 즉시 정정해 드립니다.",
+              hlTime: "🕒 09:40 1F 로비 등록 데스크",
+              hlBadge: "🏷️ 공식 네임택 & 키트 지급",
+              hlLunch: "🍱 17F 정갈한 일식 도시락",
+              hlDinner: "🥂 19:00 공식 만찬(간친회) 포함",
+              passTitle: "2026 포럼 올액세스 패스",
+              passSubtitle: "한·일 멘탈코칭 포럼 공식 참가 패스",
+              passItem1: "24개 전 세션 청강 및 동시통역 지원",
+              passItem2: "공식 발표자료집 & 프로필북 통합본",
+              passItem3: "17F 메인홀 정갈한 일식 도시락 & 다과",
+              passItem4: "창립 10주년 기념 공식 만찬(간친회) 초대",
+              passItem5: "사전 등록 네임택 & 디지털 명찰 발급",
+              passBtn: "참가자 명단 & 명찰 확인하기 🔍"
             },
             fieldflow: {
               tag: "한·일 공동 10주년 기념 (2016–2026)",
@@ -3962,7 +4287,19 @@
               attendeeTabAll: "全参加者",
               attendeeTabKorea: "🇰🇷 韓国参加団",
               attendeeTabJapan: "🇯🇵 日本参加団",
-              attendeePrivacyNotice: "🔒 個人情報保護方針：電話番号やメールアドレスなどの連絡先は公開されません。ネームタグのスペルや所属名の修正をご希望の場合は、当日の1階受付または事務局までお申し出ください。"
+              attendeePrivacyNotice: "🔒 個人情報保護方針：電話番号やメールアドレスなどの連絡先は公開されません。ネームタグのスペルや所属名の修正をご希望の場合は、当日の1階受付または事務局までお申し出ください。",
+              hlTime: "🕒 09:40 1Fロビー受付デスク",
+              hlBadge: "🏷️ 公式ネームタグ＆キット配布",
+              hlLunch: "🍱 17F特選和食弁当・お茶",
+              hlDinner: "🥂 19:00 公式懇親会（レセプション）含む",
+              passTitle: "2026 フォーラム・オールアクセスパス",
+              passSubtitle: "日韓メンタルコーチングフォーラム 公式参加証",
+              passItem1: "全24セッション聴講＆日韓同時通訳サポート",
+              passItem2: "公式発表資料集＆登壇者プロフィールブック",
+              passItem3: "17階特選和食弁当・お茶サービス付き",
+              passItem4: "創立10周年記念 公式懇親会（レセプション）ご招待",
+              passItem5: "公式ネームタグ（名札）＆デジタルバッジ発行",
+              passBtn: "参加者名簿・名札を確認する 🔍"
             },
             fieldflow: {
               tag: "日韓共同 創立10周年記念（2016–2026）",
